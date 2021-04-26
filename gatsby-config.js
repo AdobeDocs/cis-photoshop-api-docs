@@ -12,23 +12,22 @@
 
 module.exports = {
   siteMetadata: {
-    versions: [
-      {
-        title: 'v2.0'
-      },
-      {
-        title: 'v1.4',
-        path: 'https://github.com/AdobeDocs/analytics-1.4-apis'
-      }
-    ],
     pages: [
       {
-        title: 'Adobe Analytics',
+        title: 'Photoshop API Reference',
         path: '/'
       },
       {
-        title: 'Guides',
-        path: '/guides/'
+        title: 'Getting Started',
+        path: '/getting-started/'
+      },
+      {
+        title: 'Features',
+        path: '/features/'
+      },
+      {
+        title: 'Sample code',
+        path: '/sample-code/'
       },
       {
         title: 'API Reference',
@@ -41,102 +40,52 @@ module.exports = {
     ],
     subPages: [
       {
-        title: 'Get Started',
-        path: '/guides/',
+        title: 'Getting started',
+        path: '/getting-started/',
         pages: [
           {
-            title: 'Overview',
-            path: '/guides/'
-          },
-          {
-            title: 'Creating an OAuth Client',
-            path: '/guides/creating_oauth_client/'
-          },
-          {
-            title: 'OAuth using cURL',
-            path: '/guides/oauth_using_curl/'
-          },
-          {
-            title: 'OAuth using POSTMAN',
-            path: '/guides/oauth_using_postman/'
-          },
-          {
-            title: 'JWT Authentication',
-            path: '/guides/jwt_authentication/'
+            title: 'FAQ',
+            path: '/getting-started/faq/'
           }
         ]
       },
       {
-        title: 'Reporting API',
-        path: '/guides/reporting_api/',
+        title: 'Features',
+        path: '/features/',
         pages: [
           {
-            title: 'Overview',
-            path: '/guides/reporting_api/'
-          },
-          {
-            title: 'Reporting with breakdowns',
-            path: '/guides/reporting_api/reporting_breakdowns/',
+            title: 'Photoshop',
+            path: '/features/photoshop/',
             pages: [
               {
-                title: 'Reporting with single breakdowns',
-                path: '/guides/reporting_api/reporting_breakdowns/',
+                title: 'Supported Features',
+                path: '/features/photoshop/supported-features/'
               },
               {
-                title: 'Reporting with multiple breakdowns',
-                path: '/guides/reporting_api/reporting_breakdowns/reporting_multiple_breakdowns/',
-              },
+                title: 'How to use the APIs',
+                path: '/features/photoshop/examples/'
+              }
             ]
           },
           {
-            title: 'Reporting tips and tricks',
-            path: '/guides/reporting_api/reporting_tips_tricks/'
-          }
-        ]
-      },
-      {
-        title: 'Discovery API',
-        path: '/guides/discovery_api/'
-      },
-      {
-        title: 'Segments API',
-        path: '/guides/segments_api/'
-      },
-      {
-        title: 'Calculated Metrics API',
-        path: '/guides/calculated_metrics_api/'
-      },
-      {
-        title: 'Migrating',
-        path: '/guides/migrating/'
-      },
-      {
-        title: 'Overview',
-        path: '/support/',
-        header: true,
-        pages: [
-          {
-            title: 'Help',
-            path: '/support/'
+            title: 'Lightroom',
+            path: '/features/lightroom/',
+            pages: [
+              {
+                title: 'How to use the APIs',
+                path: '/features/lightroom/examples/'
+              }
+            ]
           },
           {
-            title: 'FAQ',
-            path: '/support/FAQ/'
-          },
-          {
-            title: 'How to contribute',
-            path: '/support/contribute/'
-          }
-        ]
-      },
-      {
-        title: 'Community',
-        path: '/support/community/',
-        header: true,
-        pages: [
-          {
-            title: 'Information',
-            path: '/support/community/'
+            title: 'ImageCutout',
+            path: '/features/imagecutout/',
+            pages: [
+              {
+                title: 'How to use the APIs',
+                path: '/features/imagecutout/examples/'
+              }
+            ]
           }
         ]
       }
