@@ -20,7 +20,7 @@ Adobe Photoshop API provides the capability to edit images with Photoshop, Light
 * [Quick start guide](getting-started/index.md)
 * [Features guide](features/index.md)
 * [API reference](api.md)
-* [Github repository](https://github.com/AdobeDocs/cja-apis)
+* [Github repository](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release)
 
 ## Overview
 
