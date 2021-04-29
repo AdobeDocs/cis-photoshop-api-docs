@@ -5,5 +5,6 @@ contributors:
   - https://github.com/khound
 ---
 
-# Support Channel
-Please reach out to us at https://psd-services.zendesk.com/
+## Support Channel
+
+Please reach out to us at https://psd-services.zendesk.com/ for any support related questions.

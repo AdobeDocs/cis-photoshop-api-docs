@@ -5,7 +5,7 @@ description: Learn how to use Photoshop APIs.
 # How to use the APIs
 
 The API's are documented at https://adobedocs.github.io/photoshop-api-docs-pre-release/
-The code snippets are using one of our [sample psd](https://github.com/AdobeDocs/photoshop-api-docs-pre-release/blob/master/sample_files/Example.psd) files. Please feel free to download and use it for testing. Just remember you will need to have this file stored in one of the accepted external storage. For more information on storage please refer to the [File Storage](https://github.com/AdobeDocs/photoshop-api-docs-pre-release#input-and-output-file-storage).
+The code snippets are using one of our [sample psd](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/blob/main/assets/Example.psd) files. Please feel free to download and use it for testing. Just remember you will need to have this file stored in one of the accepted external storage. For more information on storage please refer to the [File Storage](../../photoshop#input-and-output-file-storage).
 
 ## Example 1: /smartObject
 
@@ -81,14 +81,14 @@ https: //image.adobe.io/pie/psdService/smartObject
 ]}'
 ```
 
-A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 6](#example-6-fetch-the-status-of-the-job-after-successfully-submitting-a-request).
+A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 6](#example-6-fetch-the-status).
 
 ## Example 2: /documentOperations
 
 This example section will provide information and samples to demonstrate the use of `/documentOperations` API to work with Text Layers in particular.
-Please refer to the [The add, edit and delete objects](#the-add-edit-and-delete-objects) section for more information on how to apply these operations on a text layer.
+Please refer to the [The add, edit and delete objects](../supported-features/#the-add-edit-and-delete-objects) section for more information on how to apply these operations on a text layer.
 
-### Sample 2.1: Making a text layer edit
+### Sample 1: Making a text layer edit
 
 ```shell
 curl -X POST \
@@ -139,7 +139,7 @@ curl -X POST \
 }'
 ```
 
-### Sample 2.2: Custom font in a text layer
+### Sample 2: Custom font in a text layer
 This will change the font in a text layer named `My Text Layer` to a custom font `VeganStylePersonalUse`.
 **Note**: the value for the `fontName` field in the `text.characterStyles` section is the full postscript name of the custom font.
 
@@ -193,7 +193,7 @@ curl -X POST \
 }'
 ```
 
-### Sample 2.3: Dictating actions for missing fonts
+### Sample 3: Dictating actions for missing fonts
 In this request for example, if `MySampleFont` is not found while processing the request, the system default font (`ArialMT`) will be used as `manageMissingFonts` is set to `useDefault`
 ```shell
 curl -X POST \
@@ -247,16 +247,16 @@ curl -X POST \
 }'
 ```
 
-A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 6](#example-6-fetch-the-status-of-the-job-after-successfully-submitting-a-request).
+A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 6](#example-6-fetch-the-status).
 
 ## Example 3: /documentOperations
 
 The `/documentOperations` API can be used to make layer and/or document level edits to your PSD and then generate new renditions with the changes. You can pass in a flat array of only the layers that you wish to act upon, in the request body's `options.layers` argument.
 
 The layer name (or the layer id) will be used by the service to identify the correct layer to operation upon in your PSD.
-Please refer to the [The add, edit and delete objects](#the-add-edit-and-delete-objects) section for more information on how to apply these operations on a layer.
+Please refer to the [The add, edit and delete objects](../supported-features/#the-add-edit-and-delete-objects) section for more information on how to apply these operations on a layer.
 
-### Sample 3.1: Making a simple edit
+### Sample 1: Making a simple edit
 ```shell
 curl -X POST \
   https://image.adobe.io/pie/psdService/documentOperations \
@@ -293,11 +293,11 @@ curl -X POST \
 }'
 ```
 
-### Sample 3.2: Creating new Renditions
+### Sample 2: Creating new Renditions
 
 See the `/renditionCreate` examples below as the format for the `outputs` object in the request body is identical
 
-### Sample 3.3: Swapping the image in a smart object layer
+### Sample 3: Swapping the image in a smart object layer
 
 In this example we want to swap the smart object in an existing embedded smart object layer, the Hero Image layer in Example.psd. We are requesting the following:
 
@@ -305,7 +305,7 @@ In this example we want to swap the smart object in an existing embedded smart o
 - The `layers.input` object is included to indicate where the replacement image can be found
 - The `layers.smartObject` object is included to indicate specific information related to this image as SO
 
-All the files used in the example are available in [sample_files](master/sample_files). You can download the files and put it in your CC account or any storage(AWS, Azure or Dropbox).
+All the files used in the example are available in [sample_files](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/tree/main/assets). You can download the files and put it in your CC account or any storage(AWS, Azure or Dropbox).
 
 ```shell
 curl -X POST \
@@ -358,9 +358,9 @@ curl -X POST \
 }'
 ```
 
-A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 6](#example-6-fetch-the-status-of-the-job-after-successfully-submitting-a-request).
+A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 6](#example-6-fetch-the-status).
 
-### Sample 3.4: Adding a new adjustment layer
+### Sample 4: Adding a new adjustment layer
 
 This example shows how you can add a new brightnessContrast adjustment layer to the top of your PSD.  Things to note:
 
@@ -410,9 +410,9 @@ curl -X POST \
 }'
 ```
 
-A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 6](#example-6-fetch-the-status-of-the-job-after-successfully-submitting-a-request).
+A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 6](#example-6-fetch-the-status).
 
-### Sample 3.5: Editing a pixel layer
+### Sample 5: Editing a pixel layer
 
 In this example we want to replace the image in an existing pixel layer, the Hero Image layer in Example.psd. We are requesting the following:
 
@@ -474,7 +474,7 @@ A call to this API initiates an asynchronous job and returns a response containi
 
 The `/renditionsCreate` endpoint can take a number of input PSD files and generate new image renditions or a new PSD
 
-### Sample 4.1: A single file input
+### Sample 1: A single file input
 
 This sample API call will request two different output renditions from our Example.psd input:
 
@@ -516,7 +516,7 @@ A call to this API initiates an asynchronous job and returns a response containi
 
 The `/documentManifest` api can take one or more input PSD's to generate JSON manifest files from. The JSON manifest is the tree representation of all of the layer objects contained in the PSD document.
 
-### Sample 5.1: Initiate a job to retrieve a PSD's JSON manifest
+### Sample 1: Initiate a job to retrieve a PSD's JSON manifest
 
 Using Example.psd, with the use case of a document stored in your external storage (ie. azure, aws, dropbox), a typical curl call might look like this:
 
@@ -535,7 +535,7 @@ curl -X POST \
   ]
 }'
 ```
-A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job and the same response will also contain the JSON manifest. This is illustrated in [Example 6](#example-6-fetch-the-status-of-the-job-after-successfully-submitting-a-request) below.
+A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job and the same response will also contain the JSON manifest. This is illustrated in [Example 6](#example-6-fetch-the-status) below.
 
 ##  Example 6: Fetch the status
 Each of our Photoshop APIs, when invoked, initiates an asynchronous job and returns a response body that contains the href to poll for status of the job.
@@ -558,7 +558,7 @@ curl -X GET \
   -H 'Content-Type: application/json' \
   -H 'x-api-key: <YOUR_API_KEY>'
 ```
-### Sample 6.1 Poll for job status - documentManifest
+### Sample 1 Poll for job status - documentManifest
 
 Once your job completes successfully (no errors/failures reported), the status response will contain your document's JSON manifest along with other metadata about the input document. The JSON Manifest is further described in the [api docs](https://git.corp.adobe.com/pages/dice/pie-in-the-sky/#api-Documents-document_manifest_status)
 
@@ -727,7 +727,7 @@ Once your job completes successfully (no errors/failures reported), the status r
   }
 }
 ```
-### Sample 6.2 Poll for job status - Other APIs
+### Sample 2 Poll for job status - Other APIs
 
 Once your job completes successfully (no errors/failures reported), this will return a response body containing the job status for each requested output. For the `/renditionCreate` API call in Example 4 in Sample 4.1 as illustrated above, a sample response containing the job status is as shown below:
 
@@ -767,7 +767,7 @@ Once your job completes successfully (no errors/failures reported), this will re
 
 ##  Example 7: Photoshop Actions
 
-### Sample 7.1 - Play ALL actions in .atn file.
+### Sample 1 - Play ALL actions in .atn file.
 ```
 export token=<YOUR_TOKEN>
 export api_key =<YOUR_API_KEY>
@@ -795,7 +795,7 @@ curl -H "Authorization: Bearer $token" -H "x-api-key: $api_key" https://image.ad
   ]
 }'
 ```
-### Sample 7.2 - Play a specific action
+### Sample 2 - Play a specific action
 
 By default, Photoshop API will attempt to play all actions in an action set.  If you would like to only playback a specific action, you can specify `actionName` and the name of the action you want to invoke (see example below).
 

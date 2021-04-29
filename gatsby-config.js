@@ -26,8 +26,8 @@ module.exports = {
         path: '/features/'
       },
       {
-        title: 'Sample code',
-        path: '/sample-code/'
+        title: 'Release Notes',
+        path: '/release-notes/'
       },
       {
         title: 'API Reference',
@@ -59,7 +59,13 @@ module.exports = {
             pages: [
               {
                 title: 'Supported Features',
-                path: '/features/photoshop/supported-features/'
+                path: '/features/photoshop/supported-features/',
+                pages: [
+                  {
+                    title: 'Supported Fonts',
+                    path: '/features/photoshop/supported-features/supported-fonts'
+                  }
+                ]
               },
               {
                 title: 'How to use the APIs',

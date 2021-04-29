@@ -9,7 +9,7 @@ The Image Cutout API is powered by Sensei, Adobe’s Artificial Intelligence Tec
 
 | Original        | Mask           | Cutout  |
 | :-------------: |:-------------:| :-----:|
-| ![Alt text](assets/sensei_orig.jpg?raw=true "Original Image") | ![Alt text](assets/sensei_mask.png?raw=true "Mask") | ![Alt text](assets/sensei_cutout.png?raw=true "Original Image") |
+| ![image](./sensei_orig.jpg) | ![image](./sensei_mask.png)| ![image](./sensei_cutout.png)|
 
 
 ## General Workflow
