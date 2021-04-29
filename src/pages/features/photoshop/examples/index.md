@@ -5,7 +5,7 @@ description: Learn how to use Photoshop APIs.
 # How to use the APIs
 
 The API's are documented at https://adobedocs.github.io/photoshop-api-docs-pre-release/
-The code snippets are using one of our [sample psd](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/blob/main/assets/Example.psd) files. Please feel free to download and use it for testing. Just remember you will need to have this file stored in one of the accepted external storage. For more information on storage please refer to the [File Storage](../../photoshop#input-and-output-file-storage).
+The code snippets are using one of our [sample psd](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/blob/main/sample_files/Example.psd) files. Please feel free to download and use it for testing. Just remember you will need to have this file stored in one of the accepted external storage. For more information on storage please refer to the [File Storage](../../photoshop#input-and-output-file-storage).
 
 ## Example 1: /smartObject
 
@@ -305,7 +305,7 @@ In this example we want to swap the smart object in an existing embedded smart o
 - The `layers.input` object is included to indicate where the replacement image can be found
 - The `layers.smartObject` object is included to indicate specific information related to this image as SO
 
-All the files used in the example are available in [sample_files](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/tree/main/assets). You can download the files and put it in your CC account or any storage(AWS, Azure or Dropbox).
+All the files used in the example are available in [sample_files](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/tree/main/sample_files). You can download the files and put it in your CC account or any storage(AWS, Azure or Dropbox).
 
 ```shell
 curl -X POST \
