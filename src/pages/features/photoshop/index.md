@@ -24,7 +24,7 @@ If you are making multiple edits to a PSD during the course of a user session it
 
 ## Sample Code
 
-The [sample_code](sample_code) folder in this repo contains sample code for calling the Photoshop APIs.
+The [sample_code](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/tree/main/sample-code) contains sample code for calling the Photoshop APIs.
 
 Note that the sample code is covered by the MIT license.
 

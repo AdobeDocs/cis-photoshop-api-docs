@@ -5,7 +5,7 @@ description: Learn about the available features in Photoshop Service.
 
 # Supported Features
 
-This is a partial list of currently supported features.  Please also see the [Release Notes](https://forums.adobeprerelease.com/photoshopapiservice/categories/releasenotes) for a list of added features
+This is a partial list of currently supported features.  Please also see the [Release Notes](../release/index.md) for a list of added features
 
 ## SmartObject
 
@@ -19,7 +19,7 @@ The Photoshop APIs currently support creating and editing of Embedded Smart Obje
 
 The API's are documented [here](https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Photoshop-document_operations)
 We also have an example of replacing a Smart Object within a layer.
-[Smart Object Example Code](#sample-1-replacing-a-smartobject)
+[Smart Object Example Code](../examples/#sample-1-replacing-a-smartobject)
 For better performance, we rasterize our smart objects that are bigger than  2000 pixels * 2000 pixels.
 For optimal processing, please make sure the embedded smart object that you want to replace only contains alphanumeric characters in it's name.
 
@@ -37,7 +37,7 @@ The API's are documented [here](https://adobedocs.github.io/photoshop-api-docs-p
 
 We also have an example of making a simple text layer edit.
 
-[Text layer Example Code](#sample-21-making-a-text-layer-edit)
+[Text layer Example Code](../examples/#sample-1-making-a-text-layer-edit)
 
 ### Font handling
 In order to be able to correctly operate on text layers in the PSD, the corresponding fonts needed for these layers will need to be available when the server is processing the PSD. These include fonts from the following cases:
@@ -47,7 +47,7 @@ In order to be able to correctly operate on text layers in the PSD, the correspo
 While referencing fonts in the API request, please ensure that the correct Postscript name for that font is used. Referencing to that font with any other name will result in the API treating this as a missing font.
 
 The Photoshop APIs supports using the following category of fonts:
-- Currently Installed Fonts on the server listed [here](SupportedFonts.md)
+- Currently Installed Fonts on the server listed [here](/supported-fonts/index.md)
 - Fonts that you are authorized to access via [Adobe Fonts](https://fonts.adobe.com/fonts).
   **Note:** Currently only available for OAuth tokens, JWT service token support is forthcoming.
 - Custom/Other Fonts: These are the fonts that are either owned by you or the ones that only you are authorized to use.
@@ -62,7 +62,7 @@ The Photoshop APIs supports using the following category of fonts:
   **Note:** This also applies to any other font present in the document which is not to be found in the first 2 categories above.
 
 Here is an example usage of a custom font
-[Custom font](#sample-22-using-a-custom-font-in-a-text-layer)
+[Custom font](../examples/#sample-2-custom-font-in-a-text-layer)
 
 ### Handle missing fonts in the document.
 
@@ -77,7 +77,7 @@ For any textLayer edit/add operation, if the font used specifically for that lay
   - `useDefault` to use our system designated default font, which is: `ArialMT`
 
 Here is an example usage of `manageMissingFonts` and `globalFont`
-[Handle missing fonts](#sample-23-dictating-actions-for-missing-fonts)
+[Handle missing fonts](../examples/#sample-3-dictating-actions-for-missing-fonts)
 
 ### Limitations
 - Most of the text attributes retain their respective original values. There are some attributes however that do not retain their original values. For example (and not limited to): tracking, leading, kerning
@@ -105,7 +105,7 @@ The following are known limitations for the Alpha release
 * The action should operate on one document.  Multiple documents support will be in a future release
 
 Here are examples of submitting and executing Photoshop Actions.
-[Execute Photoshop Actions](#sample-71---play-all-actions-in-atn-file)
+[Execute Photoshop Actions](../examples/#sample-1---play-all-actions-in-atn-file)
 
 ## Rendering / Conversions
 
@@ -115,7 +115,7 @@ Here are examples of submitting and executing Photoshop Actions.
 - Convert between any of the supported filetypes (PSD, JPEG, TIFF, PNG)
 
 Here is an example of creating JPEG and PNG rendtions of a PSD document.
-[Render PSD document](#sample-41-a-single-file-input)
+[Render PSD document](../examples/#sample-1-a-single-file-input)
 
 ## Layer level edits
 
@@ -148,9 +148,9 @@ The `add` and `move` blocks must also supply one of the attributes `insertAbove`
 **Note**: Adding a new layer does not require the ID to be included, the service will generate a new layer id for you.
 
 Here are some examples of making various layer level edits.
-- [Layer level editing](#sample-31-making-a-simple-edit)
-- [Adding a new Adjustment Layer](#sample-34-adding-a-new-adjustment-layer)
-- [Editing Image in a Pixel Layer](#sample-35-editing-the-image-in-a-pixel-layer)
+- [Layer level editing](../examples/#sample-1-making-a-simple-edit)
+- [Adding a new Adjustment Layer](../examples/#sample-4-adding-a-new-adjustment-layer)
+- [Editing Image in a Pixel Layer](../examples/#sample-5-editing-the-image-in-a-pixel-layer)
 
 ## Document level edits
 - Crop a PSD

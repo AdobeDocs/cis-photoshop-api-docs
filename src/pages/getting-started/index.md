@@ -68,7 +68,7 @@ You can find details on interacting with Adobe IMS API’s and authentication in
 1. [General Authentication Information](https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/AuthenticationOverview/AuthenticationGuide.md)
 2. [OAuth Authentication](https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/OAuth/OAuth.md)
 3. [IMS API’s](https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/Resources/IMS.md)
-4. [OAuth Sample Code](sample_code/oauth-sample-app)
+4. [OAuth Sample Code](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/tree/main/sample-code/oauth-sample-app)
 
 ## Free trial users (JWT authentication)
 
@@ -132,7 +132,7 @@ You can find details on interacting with Adobe IMS API’s and authentication in
 1. [General Authentication Information](https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/AuthenticationOverview/AuthenticationGuide.md)
 2. [JWT/Service Token Authentication](https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/JWT/JWT.md)
 3. [IMS API’s](https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/Resources/IMS.md)
-4. [JWT Sample Code](sample_code/jwt-sample-app)  
+4. [JWT Sample Code](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/tree/main/sample-code/jwt-sample-app)  
 
 ## API Keys
 
