@@ -7,4 +7,4 @@ contributors:
 
 ## Support Channel
 
-Please reach out to us at https://psd-services.zendesk.com/ for any support related questions.
+Please reach out to psdservices@adobe.com or submit a ticket here https://psd-services.zendesk.com/hc/en-us/requests/new for support or feedback.

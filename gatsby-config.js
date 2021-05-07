@@ -14,24 +14,36 @@ module.exports = {
   siteMetadata: {
     pages: [
       {
-        title: 'Photoshop API Reference',
+        title: 'Photoshop API Overview',
         path: '/'
       },
       {
-        title: 'Getting Started',
-        path: '/getting-started/'
+        title: 'Authentication',
+        path: '/authentication/'
+      },
+      {
+        title: 'Hello World',
+        path: '/hello-world/'
+      },
+      {
+        title: 'General Workflow',
+        path: '/general-workflow/'
       },
       {
         title: 'Features',
         path: '/features/'
       },
       {
-        title: 'Release Notes',
-        path: '/release-notes/'
+        title: 'Code Samples',
+        path: '/code-sample/'
       },
       {
         title: 'API Reference',
         path: '/api/'
+      },
+      {
+        title: 'Release Notes',
+        path: '/release-notes/'
       },
       {
         title: 'Support',
@@ -40,60 +52,30 @@ module.exports = {
     ],
     subPages: [
       {
-        title: 'Getting started',
-        path: '/getting-started/',
-        pages: [
-          {
-            title: 'FAQ',
-            path: '/getting-started/faq/'
-          }
-        ]
+        title: 'Authentication',
+        path: '/authentication/'
+      },
+      {
+        title: 'Hello World',
+        path: '/hello-world/'
+      },
+      {
+        title: 'General Workflow',
+        path: '/general-workflow/'
       },
       {
         title: 'Features',
         path: '/features/',
         pages: [
           {
-            title: 'Photoshop',
-            path: '/features/photoshop/',
-            pages: [
-              {
-                title: 'Supported Features',
-                path: '/features/photoshop/supported-features/',
-                pages: [
-                  {
-                    title: 'Supported Fonts',
-                    path: '/features/photoshop/supported-features/supported-fonts'
-                  }
-                ]
-              },
-              {
-                title: 'How to use the APIs',
-                path: '/features/photoshop/examples/'
-              }
-            ]
-          },
-          {
-            title: 'Lightroom',
-            path: '/features/lightroom/',
-            pages: [
-              {
-                title: 'How to use the APIs',
-                path: '/features/lightroom/examples/'
-              }
-            ]
-          },
-          {
-            title: 'ImageCutout',
-            path: '/features/imagecutout/',
-            pages: [
-              {
-                title: 'How to use the APIs',
-                path: '/features/imagecutout/examples/'
-              }
-            ]
+            title: 'Supported Fonts',
+            path: '/features/supported-fonts/'
           }
         ]
+      },
+      {
+        title: 'Code Samples',
+        path: '/code-sample/'
       }
     ]
   },
