@@ -80,5 +80,5 @@ module.exports = {
     ]
   },
   plugins: [`@adobe/gatsby-theme-aio`],
-  pathPrefix: process.env.PATH_PREFIX || '/photoshop/photoshop-api-docs-pre-release/'
+  pathPrefix: process.env.PATH_PREFIX || '/photoshop/photoshop-api-docs/'
 };
