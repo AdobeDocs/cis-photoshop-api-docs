@@ -52,18 +52,6 @@ module.exports = {
     ],
     subPages: [
       {
-        title: 'Authentication',
-        path: '/authentication/'
-      },
-      {
-        title: 'Hello World',
-        path: '/hello-world/'
-      },
-      {
-        title: 'General Workflow',
-        path: '/general-workflow/'
-      },
-      {
         title: 'Features',
         path: '/features/',
         pages: [

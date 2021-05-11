@@ -15,11 +15,11 @@ Adobe Photoshop API provides the capability to edit images with Photoshop, Light
 
 ## Welcome to Photoshop API!
 
-The Adobe Photoshop API gives you access to a subset of Photoshop, Lightroom, and Sensei services. The API will allow you to make both layer and document level edits to Photoshop PSD files as well as perform a number of image edits and improvements.
+The Adobe Photoshop API gives you access to a subset of Photoshop, Lightroom and Sensei services. The API will allow you to make both layer and document level edits to Photoshop PSD files as well as perform a number of image edits and improvements.
 
 The Photoshop API is designed with REST like principles and uses standard HTTP response codes, verbs and authentication and returns JSON-encoded responses. The examples you see are written in cURL but you can use any language of your choice to interact with the API.
 
-The [Getting started] page will walk you through making your first API call and authenticating your request.
+The [Authentication](../authentication/) and [Hello world](../hello-world/) pages will walk you through authenticating and making your first API call your request.
 
 ## Public Beta
 
@@ -35,7 +35,10 @@ Also known as the `client_id`. You must additionally pass in your Adobe API key 
 
 ## Authentication
 
-The Photoshop API uses client id’s (also known as api keys) and authentication tokens to authenticate requests. There are two different kinds of authorization tokens available: Internal Adobe user access (OAuth 2.0 access token) Free trial user (Service token using JSON Web Token/JWT) In order to use the Photoshop API's you’ll need to get an API key (also known as a CLIENT ID) and a Client Secret. Once you have those you can use them to programmatically get an access token to authenticate your requests. We’ll walk you through the steps below.
+The Photoshop API uses client id’s (also known as api keys) and authentication tokens to authenticate requests. There are two different kinds of authorization tokens available:
+- JSON Web Token/JWT . Available for Free trial user and Internal Adobe user access.
+- OAuth 2.0 token. Available only for Internal Adobe user access.  
+In order to use the Photoshop API's you’ll need to get an API key (also known as a CLIENT ID) and a Client Secret. Once you have those you can use them to programmatically get an access token to authenticate your requests. We’ll walk you through the steps in [Authentication](../authentication/).
 
 ## Retries
 
