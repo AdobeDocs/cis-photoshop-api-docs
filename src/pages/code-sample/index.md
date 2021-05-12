@@ -6,14 +6,12 @@ description: Code Examples.
 
 ## Photoshop
 
-The code snippets are using one of our [sample psd](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/blob/main/sample_files/Example.psd) files. Please feel free to download and use it for testing. Just remember you will need to have this file stored in one of the accepted external storage. For more information on storage please refer to the [File Storage](../../photoshop#input-and-output-file-storage).
+The code snippets are using one of our [sample psd](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_files/Example.psd) files. Please feel free to download and use it for testing. Just remember you will need to have this file stored in one of the accepted external storage. For more information on storage please refer to the [File Storage](../general-workflow/#input-and-output-file-storage).
 
-### Example 1: /smartObject
-
+### Example 1: Replacing a SmartObject
 The `/smartObject` endpoint can take an input PSD file with an embedded smartobject and can replace with another smartobject.
 This API is a simple API developed to ease the smartObject replacement workflow for an user.
 
-#### Sample 1: Replacing a SmartObject
 This example shows how you can replace an embedded smart object
 
 ``` shell
@@ -46,8 +44,8 @@ https: //image.adobe.io/pie/psdService/smartObject \
 ]}'
 ```
 
-#### Sample 2: Creating a SmartObject
-This example shows how you can create an embedded smart object
+### Example 2: Creating a SmartObject
+This example shows how you can create an embedded smart object using the `/smartObject` endpoint.
 
 ``` shell
 curl - H "Authorization: Bearer $token" \
@@ -82,14 +80,9 @@ https: //image.adobe.io/pie/psdService/smartObject
 ]}'
 ```
 
-A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 6](#example-6-fetch-the-status).
+A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api).
 
-### Example 2: /documentOperations
-
-This example section will provide information and samples to demonstrate the use of `/documentOperations` API to work with Text Layers in particular.
-Please refer to the [The add, edit and delete objects](../supported-features/#the-add-edit-and-delete-objects) section for more information on how to apply these operations on a text layer.
-
-#### Sample 1: Making a text layer edit
+### Example 3: Making a text layer edit
 
 ```shell
 curl -X POST \
@@ -140,7 +133,7 @@ curl -X POST \
 }'
 ```
 
-#### Sample 2: Custom font in a text layer
+### Example 4: Custom font in a text layer
 This will change the font in a text layer named `My Text Layer` to a custom font `VeganStylePersonalUse`.
 **Note**: the value for the `fontName` field in the `text.characterStyles` section is the full postscript name of the custom font.
 
@@ -194,7 +187,7 @@ curl -X POST \
 }'
 ```
 
-#### Sample 3: Dictating actions for missing fonts
+### Example 5: Dictating actions for missing fonts
 In this request for example, if `MySampleFont` is not found while processing the request, the system default font (`ArialMT`) will be used as `manageMissingFonts` is set to `useDefault`
 ```shell
 curl -X POST \
@@ -248,16 +241,9 @@ curl -X POST \
 }'
 ```
 
-A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 6](#example-6-fetch-the-status).
+A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api).
 
-### Example 3: /documentOperations
-
-The `/documentOperations` API can be used to make layer and/or document level edits to your PSD and then generate new renditions with the changes. You can pass in a flat array of only the layers that you wish to act upon, in the request body's `options.layers` argument.
-
-The layer name (or the layer id) will be used by the service to identify the correct layer to operation upon in your PSD.
-Please refer to the [The add, edit and delete objects](../supported-features/#the-add-edit-and-delete-objects) section for more information on how to apply these operations on a layer.
-
-#### Sample 1: Making a simple edit
+### Example 6: Making a simple edit
 ```shell
 curl -X POST \
   https://image.adobe.io/pie/psdService/documentOperations \
@@ -294,19 +280,9 @@ curl -X POST \
 }'
 ```
 
-#### Sample 2: Creating new Renditions
+### Example 7: Swapping the image in a smart object layer
 
-See the `/renditionCreate` examples below as the format for the `outputs` object in the request body is identical
-
-#### Sample 3: Swapping the image in a smart object layer
-
-In this example we want to swap the smart object in an existing embedded smart object layer, the Hero Image layer in Example.psd. We are requesting the following:
-
-- The `edit` key is included to indicate we want to edit this layer
-- The `layers.input` object is included to indicate where the replacement image can be found
-- The `layers.smartObject` object is included to indicate specific information related to this image as SO
-
-All the files used in the example are available in [sample_files](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/tree/main/sample_files). You can download the files and put it in your CC account or any storage(AWS, Azure or Dropbox).
+In this example we are replacing the smartobject using `documentOperations` API
 
 ```shell
 curl -X POST \
@@ -359,15 +335,11 @@ curl -X POST \
 }'
 ```
 
-A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 6](#example-6-fetch-the-status).
+A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api).
 
-#### Sample 4: Adding a new adjustment layer
+### Example 8: Adding a new adjustment layer
 
-This example shows how you can add a new brightnessContrast adjustment layer to the top of your PSD.  Things to note:
-
-- NEW KEYWORD TO INDICATE AN ADDITION: The `add` key is included, along with `insertAbove` in the new layer object to indicate exactly where you want the new layer placed in the overall Manifest tree.  
-- LAYER TYPE IS REQUIRED: The type indicates you want a new layer of type adjustment layer.
-- LAYER ID AND INDEX ARE NOT PRESENT: The layer index and id are not supported for add operations. The index is implied by the objects position in the manifest tree and the ID will be generated by the service and returned to you in subsequent calls to `/documentManifest`
+This example shows how you can add a new brightnessContrast adjustment layer to the top of your PSD.
 
 ```shell
 curl -X POST \
@@ -411,15 +383,11 @@ curl -X POST \
 }'
 ```
 
-A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 6](#example-6-fetch-the-status).
+A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api).
 
-#### Sample 5: Editing a pixel layer
+### Example 9: Editing a pixel layer
 
-In this example we want to replace the image in an existing pixel layer, the Hero Image layer in Example.psd. We are requesting the following:
-
-- NEW KEYWORD TO INDICATE AN EDIT: The `edit` key is included to indicate we want to edit this layer
-- NEW KEYWORD TO INDICATE IMAGE REPLACEMENT INFO: The `layers.input` object is included to indicate where the replacement image can be found
-
+In this example we want to replace the image in an existing pixel layer, the Hero Image layer in Example.psd.
 
 ```shell
 curl -X POST \
@@ -469,18 +437,10 @@ curl -X POST \
 '
 ```
 
-A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 6](#example-6-fetch-the-status-of-the-job-after-successfully-submitting-a-request).
+A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api).
 
-### Example 4: /renditionCreate
-
-The `/renditionsCreate` endpoint can take a number of input PSD files and generate new image renditions or a new PSD
-
-#### Sample 1: A single file input
-
-This sample API call will request two different output renditions from our Example.psd input:
-
-- `Example.jpeg` is a new JPEG rendition that has a width of 512 pixels
-- `Example.png` is a new fullsize PNG rendition
+### Example 10: Create a document rendition
+Generate multiple output rendition with the Simple API `renditionCreate`
 
 ```shell
 curl -X POST \
@@ -511,13 +471,11 @@ curl -X POST \
 }'
 ```
 
-A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 6](#example-6-fetch-the-status-of-the-job-after-successfully-submitting-a-request).
+A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api).
 
-### Example 5: /documentManifest
+### Example 11: Retrieve a PSD's JSON manifest
 
-The `/documentManifest` api can take one or more input PSD's to generate JSON manifest files from. The JSON manifest is the tree representation of all of the layer objects contained in the PSD document.
-
-#### Sample 1: Initiate a job to retrieve a PSD's JSON manifest
+The `/documentManifest` api can take one input PSD's to generate a JSON manifest file. The JSON manifest is the tree representation of all of the layer objects contained in the PSD document.
 
 Using Example.psd, with the use case of a document stored in your external storage (ie. azure, aws, dropbox), a typical curl call might look like this:
 
@@ -536,9 +494,9 @@ curl -X POST \
   ]
 }'
 ```
-A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job and the same response will also contain the JSON manifest. This is illustrated in [Example 6](#example-6-fetch-the-status) below.
+A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job and the same response will also contain the JSON manifest. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api) below.
 
-###  Example 6: Fetch the status
+###  Example 12: Fetch the status of an API
 Each of our Photoshop APIs, when invoked, initiates an asynchronous job and returns a response body that contains the href to poll for status of the job.
 
 ```json
@@ -559,9 +517,9 @@ curl -X GET \
   -H 'Content-Type: application/json' \
   -H 'x-api-key: <YOUR_API_KEY>'
 ```
-#### Sample 1 Poll for job status - documentManifest
+### Example 13: Poll for job status for documentManifest
 
-Once your job completes successfully (no errors/failures reported), the status response will contain your document's JSON manifest along with other metadata about the input document. The JSON Manifest is further described in the [api docs](https://git.corp.adobe.com/pages/dice/pie-in-the-sky/#api-Documents-document_manifest_status)
+Once your job completes successfully (no errors/failures reported), the status response will contain your document's JSON manifest along with other metadata about the input document. The JSON Manifest is further described in the [api docs](https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Photoshop-document-manifest-status)
 
 ```json
 {
@@ -728,7 +686,7 @@ Once your job completes successfully (no errors/failures reported), the status r
   }
 }
 ```
-#### Sample 2 Poll for job status - Other APIs
+### Example 14: Poll for job status for all Other APIs
 
 Once your job completes successfully (no errors/failures reported), this will return a response body containing the job status for each requested output. For the `/renditionCreate` API call in Example 4 in Sample 4.1 as illustrated above, a sample response containing the job status is as shown below:
 
@@ -766,9 +724,7 @@ Once your job completes successfully (no errors/failures reported), this will re
 }
 ```
 
-###  Example 7: Photoshop Actions
-
-#### Sample 1 - Play ALL actions in .atn file.
+### Example 15 : Photoshop Actions - Play ALL actions in .atn file.
 ```
 export token=<YOUR_TOKEN>
 export api_key =<YOUR_API_KEY>
@@ -796,7 +752,7 @@ curl -H "Authorization: Bearer $token" -H "x-api-key: $api_key" https://image.ad
   ]
 }'
 ```
-#### Sample 2 - Play a specific action
+### Example 16 : Photoshop Actions Play a specific action
 
 By default, Photoshop API will attempt to play all actions in an action set.  If you would like to only playback a specific action, you can specify `actionName` and the name of the action you want to invoke (see example below).
 
@@ -1095,11 +1051,11 @@ And this will return a request body containing the job status for each requested
 
 ## Sensei
 
-First be sure to follow the instructions in the [Overview](../../../getting-started/#overview) section to get your token.
+First be sure to follow the instructions in the [Authentication](../authentication/) section to get your token.
 
 ### Example 1: Image cutout
 
-The `/cutout` api takes a single input image to generate your mask or cutout from. Using [Example.jpg](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/blob/main/sample_files/Example.jpg), a typical curl call might look like this:
+The `/cutout` api takes a single input image to generate your mask or cutout from. Using [Example.jpg](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_files/Example.jpg), a typical curl call might look like this:
 
 ```shell
 curl -X POST \
@@ -1173,26 +1129,26 @@ Once the job is complete your successful `/status` response will look similar to
 The workflow is exactly the same as [creating an image cutout](#example-1-initiate-a-job-to-create-an-image-cutout) except you use the `/mask` endpoint instead of `/cutout`.  
 
 ### Example 3: (Generate ImageCutOut result as Photoshop path)
-This workflow is ONLY for users who'd like to generate cutout result as Photoshop path instead of regular mask or cutout in above [example 1](#example-1-initiate-a-job-to-create-an-image-cutout) and [example 2](#example-2-initiate-a-job-to-create-an-image-mask). You will need to chain API calls to ImageCutOut service and Photoshop Service to achieve this goal.
+This workflow is ONLY for users who'd like to generate cutout result as Photoshop path instead of regular mask or cutout in above [example 1](/code-sample/#example-1-image-cutout) and [example 2](/code-sample/#example-2-image-mask). You will need to chain API calls to ImageCutOut service and Photoshop Service to achieve this goal.
 
 #### Sample Input/Output
-Sample input from [here](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/blob/main/sample_files/ic_customized_workflow/input.jpg).
-Sample output from [here](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/blob/main/sample_files/ic_customized_workflow/result_with_path.jpg) (Note: you will need to open result in Photoshop Desktop application so that you will see the path in path panel)
+Sample input from [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_files/ic_customized_workflow/input.jpg).
+Sample output from [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_files/ic_customized_workflow/result_with_path.jpg) (Note: you will need to open result in Photoshop Desktop application so that you will see the path in path panel)
 
 #### Instructions
 
-1. Download the make-file.atn file from [here](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/blob/main/sample_files/ic_customized_workflow/make-path.atn) (this file will be used in the Photoshop action API call)
+1. Download the make-file.atn file from [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_files/ic_customized_workflow/make-path.atn) (this file will be used in the Photoshop action API call)
 2. Make the first API call to ImageCutOut service to generate intermediate result as RGBA cutout
 3. Make the second API call to Photoshop action service to use above intermediate result as well as the make-file.atn file to generate final JPEG format result with desired PS path embedded
 4. Open the final result with Photoshop Desktop app to check generated path in path panel
 
 
 #### Sample Code
-You can download the sample end-to-end bash script [here](https://github.com/AdobeDocs/cis-photoshop-api-docs-pre-release/tree/main/sample-code/ic-customized-workflow-app) and then follow the comments to try it out this customized workflow.
+You can download the sample end-to-end bash script [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/ic-customized-workflow-app) and then follow the comments to try it out this customized workflow.
 
 ## Triggering an Event from the API's
 In order to start receiving the events in your Webhook Application, the additional thing that needs to be done is to pass in your IMS ORG ID in a header: `x-gw-ims-org-id: <YOUR_IMS_ORG_ID>`, when you make an API call to initiate a job. Please have a look at the examples below that demonstrates the usage of the new header and a sample event received for that job.
-### Example 1: /documentManifest (Retrieving a PSD manifest from the Photoshop API)
+### Example 1: Retrieving a PSD manifest from the Photoshop API
 
 #### Step 1: Initiate a job to retrieve a PSD's JSON manifest
 
@@ -1293,7 +1249,7 @@ The value in the key `body` inside the event JSON contains the result of the job
   }
 }
 ```
-### Example 2: /autoTone (Auto tone an image through the Lightroom API)
+### Example 2: Auto tone an image through the Lightroom API
 
 #### Step 1: Initiate a job to auto tone an image
 ```shell

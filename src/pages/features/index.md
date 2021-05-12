@@ -5,7 +5,7 @@ description: Learn about the available features in Photoshop API.
 
 # Supported Features
 
-This is a list of currently supported features.  Please also see the [Release Notes](../release/index.md) for a list of added newly added features
+This is a list of currently supported features.  Please also see the [Release Notes](../release-notes/index.md) for a list of newly added features
 
 ## Photoshop
 
@@ -21,15 +21,15 @@ The Photoshop APIs currently support creating and editing of Embedded Smart Obje
 
 - If your document contains transparent pixels (e.g some .png) for the smart object layer, you may not get consistent bounds.
 
-The API's are documented [here](https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Photoshop-document_operations)
+The API's are documented [here](https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Photoshop-document_operations).
 We also have an example of replacing a Smart Object within a layer.
-[Smart Object Example Code](../examples/#sample-1-replacing-a-smartobject)
+[Smart Object Example Code](../code-sample/#example-1-smartobject).
 For better performance, we rasterize our smart objects that are bigger than  2000 pixels * 2000 pixels.
 For optimal processing, please make sure the embedded smart object that you want to replace only contains alphanumeric characters in it's name.
 
 ### Text layers
 
-The Photoshop APIs currently support creating and editing of Text Layer with different fonts, character styles and paragraph styles. The set of text attributes that can be edited is listed below:
+The Photoshop API currently support creating and editing of Text Layer with different fonts, character styles and paragraph styles. The set of text attributes that can be edited is listed below:
 - Edit the text contents
 - Change the font (See the `Fonts` section for more info)
 - Edit the font size
@@ -41,7 +41,7 @@ The API's are documented [here](https://adobedocs.github.io/photoshop-api-docs-p
 
 We also have an example of making a simple text layer edit.
 
-[Text layer Example Code](../examples/#sample-1-making-a-text-layer-edit)
+[Text layer Example Code](../code-sample/#sample-1-making-a-text-layer-edit)
 
 #### Font handling
 
@@ -52,7 +52,7 @@ In order to be able to correctly operate on text layers in the PSD, the correspo
 While referencing fonts in the API request, please ensure that the correct Postscript name for that font is used. Referencing to that font with any other name will result in the API treating this as a missing font.
 
 The Photoshop APIs supports using the following category of fonts:
-- Currently Installed Fonts on the server listed [here](/supported-fonts/index.md)
+- Currently Installed Fonts on the server listed [here](/features/supported-fonts/)
 - Fonts that you are authorized to access via [Adobe Fonts](https://fonts.adobe.com/fonts).
   **Note:** Currently only available for OAuth tokens, JWT service token support is forthcoming.
 - Custom/Other Fonts: These are the fonts that are either owned by you or the ones that only you are authorized to use.
@@ -60,14 +60,14 @@ The Photoshop APIs supports using the following category of fonts:
   For including an href to the font in your request, please ensure the font file name to be in this format: `<font_postscript_name>.<ext>`, when it is being uploaded in your choice of storage. A sample `options.fonts` section will look like so:
   ```json
   {
-    "storage": "adobe",
-    "href": "/files/OpenSansCondensed-Light.ttf"
+    "storage": "external",
+    "href": "<Storage URL to OpenSansCondensed-Light.ttf>"
   }
   ```
   **Note:** This also applies to any other font present in the document which is not to be found in the first 2 categories above.
 
 Here is an example usage of a custom font
-[Custom font](../examples/#sample-2-custom-font-in-a-text-layer)
+[Custom font](../code-sample/#sample-2-custom-font-in-a-text-layer)
 
 #### Handle missing fonts in the document.
 
@@ -81,15 +81,14 @@ For any textLayer edit/add operation, if the font used specifically for that lay
   - `fail` to force the request/job to fail
   - `useDefault` to use our system designated default font, which is: `ArialMT`
 
-Here is an example usage of `manageMissingFonts` and `globalFont`
-[Handle missing fonts](../examples/#sample-3-dictating-actions-for-missing-fonts)
+Here is an example usage of `manageMissingFonts` and `globalFont`. [Handle missing fonts](../code-sample/#sample-3-dictating-actions-for-missing-fonts)
 
 #### Limitations
 
 - Most of the text attributes retain their respective original values. There are some attributes however that do not retain their original values. For example (and not limited to): tracking, leading, kerning
 
-### Photoshop Actions
-#### Execute Photoshop Actions (`New!`)
+### Photoshop Actions(`New!`)
+#### Execute Photoshop Actions
 
 Adobe Photoshop APIs supports playing back Photoshop Actions recorded from Photoshop.  <a href="https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Photoshop-photoshopActions" target="_blank">Click here to see API documentation</a>
 
@@ -111,7 +110,7 @@ The following are known limitations for the Alpha release
 * The action should operate on one document.  Multiple documents support will be in a future release
 
 Here are examples of submitting and executing Photoshop Actions.
-[Execute Photoshop Actions](../examples/#sample-1---play-all-actions-in-atn-file)
+[Execute Photoshop Actions](../code-sample/#sample-1---play-all-actions-in-atn-file)
 
 ### Rendering / Conversions
 
@@ -121,7 +120,7 @@ Here are examples of submitting and executing Photoshop Actions.
 - Convert between any of the supported filetypes (PSD, JPEG, TIFF, PNG)
 
 Here is an example of creating JPEG and PNG rendtions of a PSD document.
-[Render PSD document](../examples/#sample-1-a-single-file-input)
+[Render PSD document](../code-sample/#sample-1-a-single-file-input)
 
 ### Layer level edits
 
