@@ -41,7 +41,7 @@ The API's are documented [here](https://adobedocs.github.io/photoshop-api-docs-p
 
 We also have an example of making a simple text layer edit.
 
-[Text layer Example Code](../code-sample/#sample-1-making-a-text-layer-edit)
+[Text layer Example Code](../code-sample/#example-3-making-a-text-layer-edit)
 
 #### Font handling
 
@@ -67,7 +67,7 @@ The Photoshop APIs supports using the following category of fonts:
   **Note:** This also applies to any other font present in the document which is not to be found in the first 2 categories above.
 
 Here is an example usage of a custom font
-[Custom font](../code-sample/#sample-2-custom-font-in-a-text-layer)
+[Custom font](../code-sample/#example-4-custom-font-in-a-text-layer)
 
 #### Handle missing fonts in the document.
 
@@ -81,7 +81,7 @@ For any textLayer edit/add operation, if the font used specifically for that lay
   - `fail` to force the request/job to fail
   - `useDefault` to use our system designated default font, which is: `ArialMT`
 
-Here is an example usage of `manageMissingFonts` and `globalFont`. [Handle missing fonts](../code-sample/#sample-3-dictating-actions-for-missing-fonts)
+Here is an example usage of `manageMissingFonts` and `globalFont`. [Handle missing fonts](../code-sample/#example-5-dictating-actions-for-missing-fonts)
 
 #### Limitations
 
@@ -110,7 +110,7 @@ The following are known limitations for the Alpha release
 * The action should operate on one document.  Multiple documents support will be in a future release
 
 Here are examples of submitting and executing Photoshop Actions.
-[Execute Photoshop Actions](../code-sample/#sample-1---play-all-actions-in-atn-file)
+[Execute Photoshop Actions with all actions](../code-sample/#example-15--photoshop-actions---play-all-actions-in-atn-file) and [Execute Photoshop Actions with a specific action](../code-sample/#example-16--photoshop-actions-play-a-specific-action)
 
 ### Rendering / Conversions
 
@@ -120,7 +120,7 @@ Here are examples of submitting and executing Photoshop Actions.
 - Convert between any of the supported filetypes (PSD, JPEG, TIFF, PNG)
 
 Here is an example of creating JPEG and PNG rendtions of a PSD document.
-[Render PSD document](../code-sample/#sample-1-a-single-file-input)
+[Render PSD document](../code-sample/#example-10-create-a-document-rendition)
 
 ### Layer level edits
 
@@ -153,9 +153,9 @@ The `add` and `move` blocks must also supply one of the attributes `insertAbove`
 **Note**: Adding a new layer does not require the ID to be included, the service will generate a new layer id for you.
 
 Here are some examples of making various layer level edits.
-- [Layer level editing](../examples/#sample-1-making-a-simple-edit)
-- [Adding a new Adjustment Layer](../examples/#sample-4-adding-a-new-adjustment-layer)
-- [Editing Image in a Pixel Layer](../examples/#sample-5-editing-the-image-in-a-pixel-layer)
+- [Layer level editing](../code-sample/#example-6-making-a-simple-edit)
+- [Adding a new Adjustment Layer](../code-sample/#example-8-adding-a-new-adjustment-layer)
+- [Editing Image in a Pixel Layer](../code-sample/#example-9-editing-a-pixel-layer)
 
 ### Document level edits
 - Crop a PSD
@@ -184,7 +184,7 @@ The preset file can be created by editing an image in lightroom and exporting it
 The details on how to create a preset can be found [here](https://helpx.adobe.com/lightroom-cc/how-to/photo-presets-lightroom-cc.html).
 If the use case would be to be able to create an `.xmp` file from a set of slider values obtained directly from a user, there are 2 ways to achieve this workflow:
 1. Start with the empty `.xmp` file from [here](https://github.com/AdobeDocs/lightroom-api-docs/tree/master/sample-app/crs.xml) and add the corresponding slider values
-2. Or please look ahead in this documentation page at the [/edit API](https://github.com/AdobeDocs/lightroom-api-docs#edit)
+2. Or please look ahead in this documentation page at the [/edit API](/features/#edit)
 
 ### Edit
 
@@ -228,9 +228,9 @@ As the names indicate, these event types represent events triggered by the indiv
 ### Registering your application to our Event Provider
 #### Prerequisites needed to use the Event Provider
 
-1. Only supported for a `JWT Integration`: You will have to create your own JWT Integration, please refer to [this](#free-trial-users-jwt-authentication) section of the document for details on how to create a Service Integration.
+1. Only supported for a `JWT Integration`: You will have to create your own JWT Integration, please refer to [this](../authentication/#generating-a-token) section of the document for details on how to create a Service Integration.
 2. Make sure that the integration is created under your own Organization Role in https://console.adobe.io and this will ensure that you have a unique `Organization ID`. A typical ID would look something like this: `ABCDEF123B6CCB7B0A495E2E@AdobeOrg` and can be found in the overview section of the details of the integration.
-3. Create a Webhook application. [This](https://www.adobe.io/apis/experienceplatform/events/docs.html#!adobedocs/adobeio-events/master/intro/webhooks_intro.md) page gives all the details of what the skeleton of a basic application would look like. You can find a sample NodeJS application [here](sample_code/webhook-sample-app)
+3. Create a Webhook application. [This](https://www.adobe.io/apis/experienceplatform/events/docs.html#!adobedocs/adobeio-events/master/intro/webhooks_intro.md) page gives all the details of what the skeleton of a basic application would look like. You can find a sample NodeJS application [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/webhook-sample-app)
 
 #### Registering the Webhook
 Once the above prerequisites are met, you can now proceed to register the webhook to the service integration. The steps to do that can be found  [here](https://www.adobe.io/apis/experienceplatform/events/docs.html#!adobedocs/adobeio-events/master/intro/webhooks_intro.md#your-first-webhook).
