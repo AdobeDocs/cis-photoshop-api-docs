@@ -63,7 +63,12 @@ module.exports = {
       },
       {
         title: 'Code Samples',
-        path: '/code-sample/'
+        path: '/code-sample/',
+        pages: [
+          {
+            path: '/code-sample/../..'
+          }
+        ]
       }
     ]
   },
