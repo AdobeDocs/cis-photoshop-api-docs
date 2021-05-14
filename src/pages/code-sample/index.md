@@ -704,12 +704,12 @@ Once your job completes successfully (no errors/failures reported), this will re
           {
             "href":"<SIGNED_GET_URL>",          
             "width": 512,
-            "storage":"adobe",
+            "storage":"external",
             "type":"image/jpeg"    
           },
           {
             "href":"<SIGNED_GET_URL>",
-            "storage":"adobe",
+            "storage":"external",
             "type":"image/png"
           }
         ]
@@ -1036,7 +1036,7 @@ And this will return a request body containing the job status for each requested
         "self":
         {
           "href":"<output_file_href>",
-          "storage":"adobe"
+          "storage":"external"
         }
       }
     }

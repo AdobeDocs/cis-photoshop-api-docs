@@ -18,12 +18,8 @@ module.exports = {
         path: '/'
       },
       {
-        title: 'Authentication',
-        path: '/authentication/'
-      },
-      {
-        title: 'Hello World',
-        path: '/hello-world/'
+        title: 'Getting Started',
+        path: '/getting-started/'
       },
       {
         title: 'General Workflow',
@@ -52,23 +48,20 @@ module.exports = {
     ],
     subPages: [
       {
+        title: 'Getting Started',
+        path: '/getting-started/'
+      },
+      {
+        title: 'General Workflow',
+        path: '/general-workflow/'
+      },
+      {
         title: 'Features',
-        path: '/features/',
-        pages: [
-          {
-            title: 'Supported Fonts',
-            path: '/features/supported-fonts/'
-          }
-        ]
+        path: '/features/'
       },
       {
         title: 'Code Samples',
-        path: '/code-sample/',
-        pages: [
-          {
-            path: '/code-sample/../..'
-          }
-        ]
+        path: '/code-sample/'
       }
     ]
   },
