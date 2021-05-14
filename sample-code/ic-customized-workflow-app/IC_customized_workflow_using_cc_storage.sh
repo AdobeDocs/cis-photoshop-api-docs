@@ -36,11 +36,11 @@ curl -s $ic_endpoint \
 -H "x-api-key: $api_key"  \
 -d '{
   "input": {
-    "storage":"adobe",
+    "storage":"external",
     "href": "'$input_url'"
   },
   "output": {
-    "storage":"adobe",
+    "storage":"external",
     "href": "'$intermediate_output_url'",
     "mask": {
       "format":"soft"
