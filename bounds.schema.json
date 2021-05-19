@@ -1,0 +1,40 @@
+{
+  "$schema":"http://json-schema.org/draft-07/schema#",
+  "$id":"bounds.schema.json",
+  "title":"a bounds obect",
+  "description":"The bounds of the layer. Only applicable for the following layer types: ['layer','textLayer','layerSection','smartObject','contentLayer']",
+  "definitions":{
+    "bounds":{
+      "type": "object",
+      "minProperties": 1,
+      "anyOf": [
+        {"required": ["height"]},
+        {"required": ["width"]},
+        {"required": ["left"]},
+        {"required": ["top"]}
+      ],
+      "properties": {
+        "height": {
+          "type": "number",
+          "description": "in pixels",
+          "minimum": 4.00,
+          "maximum": 32000.00
+        },
+        "left": {
+          "type": "integer",
+          "description": "in pixels"
+        },
+        "top": {
+          "type": "integer",
+          "description": "in pixels"
+        },
+        "width": {
+          "type": "number",
+          "description": "in pixels",
+          "minimum": 4.00,
+          "maximum": 32000.00
+        }
+      }
+    }
+  }
+}
