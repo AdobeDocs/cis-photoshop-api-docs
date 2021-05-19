@@ -115,7 +115,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "./schema/post_smart_object.schema.json"
+                "$ref": "./post_smart_object.schema.json"
               }
             }
           },
