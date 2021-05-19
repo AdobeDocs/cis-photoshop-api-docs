@@ -1,0 +1,165 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "file_output.schema.json",
+  "title": "a file output obect",
+  "description": "Represents the collective fields needed to indicate an output file, destination and format",
+  "definitions": {
+    "output_object": {
+      "type": "object",
+      "description": "An object describing the requested file outputs (a new psd file or supported renditions)",
+      "required": [
+        "href",
+        "storage",
+        "type"
+      ],
+      "properties": {
+        "storage": {
+          "$ref": "file_input.schema.json#/definitions/storage"
+        },
+        "href": {
+          "description": "Either a Creative Cloud assets path for storage='adobe' OR a presignedPUTURL.",
+          "type": "string",
+          "minLength": 1
+        },
+        "width": {
+          "description": "size, in pixels, of the renditions. Width of 0 generates a full size rendition. Height is not neccessary as the rendition generate will automatically maintain the aspect ratio. Only required for image renditions",
+          "type": "number"
+        },
+        "type": {
+          "description": "desired image format. 'image/vnd.adobe.photoshop' specifies a PSD file",
+          "enum": [
+            "image/jpeg",
+            "image/png",
+            "image/tiff",
+            "image/vnd.adobe.photoshop",
+            "vnd.adobe.photoshop"
+          ],
+          "type": "string"
+        },
+        "overwrite": {
+          "description": "if the output file already exists should it be overwritten. Will eventually support eTags",
+          "type": "boolean",
+          "default": true
+        },
+        "trimToCanvas": {
+          "description": "If the renditions needs to be of Canvas size. True, trims the renditions to Canvas size, while false makes the renditions to Layer Size",
+          "type": "boolean",
+          "default": false
+        },
+        "layers": {
+          "$ref": "#/definitions/layers"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "pattern": "image/jpeg"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "quality": {
+                "description": "desired JPEG image quality, integers range from 1 to 7",
+                "type": "number",
+                "minimum": 1,
+                "maximum": 7
+              },
+              "compression": {
+                "not": {}
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "pattern": "image/png"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "compression": {
+                "description": "desired PNG compression level: small, medium and large",
+                "enum": [
+                  "small",
+                  "medium",
+                  "large"
+                ],
+                "type": "string"
+              },
+              "quality": {
+                "not": {}
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "storage": {
+                "pattern": "(^azure|external|dropbox$)"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "href": {
+                "format": "uri",
+                "description": "A URI representing the path to the output file"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "href": {
+                "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                "description": "A string representing the path to the output CC file"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "output_objects": {
+      "type": "array",
+      "minLength": 1,
+      "description": "An array of hashes describing the output files. each output object will be either 'external', 'adobe', 'azure' or 'dropbox'",
+      "items": {
+        "$ref": "#/definitions/output_object"
+      }
+    },
+    "layers": {
+      "type": "array",
+      "minItems": 1,
+      "description": "any layer that needs to be rendered for",
+      "minProperties": 1,
+      "anyOf": [
+        {
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "required": [
+            "name"
+          ]
+        }
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "the layer id"
+        },
+        "name": {
+          "type": "string",
+          "description": "the layer name"
+        }
+      }
+    }
+  }
+}
