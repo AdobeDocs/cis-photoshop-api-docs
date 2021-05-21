@@ -201,18 +201,18 @@ These are the APIs powered by Sensei, Adobe’s Artificial Intelligence Technolo
 | :-------------: |:-------------:| :-----:|
 | ![alt image](./sensei_orig.jpg?raw=true "Original Image") | ![alt image](./sensei_mask.png?raw=true "Mask")| ![alt image](./sensei_cutout.png?raw=true "Original Image")|
 
-The API's are documented at [https://adobedocs.github.io/photoshop-api-docs/#api-Sensei](https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Sensei)
+The API's are documented at [Image Cutout API Reference](https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Sensei)
 
 ### Image Cutout
 
-Initiate a job to create an image cutout. Code example here.
+Initiate a job to create an image cutout. Code example [here](../code-sample/#example-1-generate-image-cutout).
 
 ### Image Mask
 
-Initiate a job to create an image mask. Code example here.
+Initiate a job to create an image mask. Code example [here](../code-sample/#example-2-generate-image-mask).
 
-### Customized Workflow
-You can make a 'customized workflow' by chaining different APIs. Example of which can be found here.(TODO)
+## Customized Workflow
+You can make a 'customized workflow' by chaining different APIs. Example of which can be found [here](../code-sample/#example-3-generate-imagecutout-result-as-photoshop-path)
 
 
 ## Using Webhooks through Adobe I/O Events (`Pre-Release Feature!!`)

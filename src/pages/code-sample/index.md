@@ -1053,7 +1053,7 @@ And this will return a request body containing the job status for each requested
 
 First be sure to follow the instructions in the [Authentication](../authentication/) section to get your token.
 
-### Example 1: Image cutout
+### Example 1: Generate image cutout
 
 The `/cutout` api takes a single input image to generate your mask or cutout from. Using [Example.jpg](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_files/Example.jpg), a typical curl call might look like this:
 
@@ -1072,7 +1072,7 @@ curl -X POST \
       "storage":"external",
       "href":"<SIGNED_PUT_URL>",
       "mask":{
-         "format":"binary"
+         "format":"soft"
       }
    }
 }'
@@ -1118,17 +1118,18 @@ Once the job is complete your successful `/status` response will look similar to
         "storage": "external",
         "href": "<SIGNED_PUT_URL>",
         "mask": {
-            "format": "binary"
+            "format": "soft"
         }
     }
 }
 ```
 
-### Example 2: Image mask
+### Example 2: Generate image mask
 
 The workflow is exactly the same as [creating an image cutout](/code-sample/#example-1-image-cutout) except you use the `/mask` endpoint instead of `/cutout`.  
 
-### Example 3: (Generate ImageCutOut result as Photoshop path)
+## Customized Workflow
+### Example 1: Generate cutout result as Photoshop path
 This workflow is ONLY for users who'd like to generate cutout result as Photoshop path instead of regular mask or cutout in above [example 1](/code-sample/#example-1-image-cutout) and [example 2](/code-sample/#example-2-image-mask). You will need to chain API calls to ImageCutOut service and Photoshop Service to achieve this goal.
 
 #### Sample Input/Output
