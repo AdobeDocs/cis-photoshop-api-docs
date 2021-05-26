@@ -6,8 +6,7 @@ contributors:
 ---
 # Getting started with Photoshop API
 
-To access Photoshop API, you need to be authenticated.For that you will need an Authorization Token and an API Key.
-Let's create your access and make a `hello world` call.
+The first step in accessing the Photoshop APIs is getting authenticated. For that you will need an Authorization Token and an API Key. With the steps below, we'll show you how to gain access and make your first `hello world` call.
 
 ## Get access
 Here are the steps to start with our API
