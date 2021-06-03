@@ -7,29 +7,71 @@
   },
   "servers": [
     {
-      "url": "https://https://image.adobe.io/"
+      "url": "https://image.adobe.io/"
     }
   ],
   "tags": [
     {
-      "name": "pie/psdService",
-      "description": "Photoshop API"
+      "name": "Lightroom",
+      "description": "APIs powered by Lightroom"
+    },
+    {
+      "name": "Image Cutout",
+      "description": "APIs powered by Sensei"
     }
   ],
   "paths": {
-    "/pie/psdService/text": {
+    "/lrService/autoStraighten": {
       "post": {
         "tags": [
-          "textEdit"
+          "Lightroom"
         ],
-        "summary": "Edit one or more text layers",
-        "operationId": "textEdit",
+        "summary": "Auto straighten an image",
+        "description": "Initiates an asynchronous job to auto straighten an image",
+        "operationId": "autoStraighten",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
-          "description": "inputs, options, and outputs objects",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/textEdit"
+                "$ref": "./acr/post_auto_straighten.schema.json"
               }
             }
           },
@@ -37,456 +79,561 @@
         },
         "responses": {
           "202": {
-            "description": "Accepted",
-            "content": {}
-          },
-          "400": {
-            "description": "InputValidationError, PayloadValidationError, RequestBodyError",
-            "content": {}
-          },
-          "401": {
-            "description": "MissingAuthTokenError, InvalidAuthTokenError",
-            "content": {}
-          },
-          "403": {
-            "description": "AuthForbidden",
-            "content": {}
-          },
-          "404": {
-            "description": "FileExistsErrors, InputFileExistsErrors, ResourceNotFound",
-            "content": {}
-          },
-          "415": {
-            "description": "InvalidContentTypeError",
-            "content": {}
-          },
-          "500": {
-            "description": "UndefinedError",
-            "content": {}
-          }
-        },
-        "x-codegen-request-body-name": "body"
-      }
-    },
-    "/pie/psdService/status/{jobId}": {
-      "get": {
-        "tags": [
-          "status"
-        ],
-        "summary": "Get status by Job ID",
-        "description": "Returns a status",
-        "operationId": "status",
-        "parameters": [
-          {
-            "name": "jobId",
-            "in": "path",
-            "description": "ID of a job",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
+            "description": "Successful operation",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/APIResponse"
+                  "$ref": "./api_response_success_schema.json"
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_400_error_schema.json"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Trial Limit Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_402_error_schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_403_error_schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "shell",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/autoStraighten \\\n
+            --header 'Authorization: STRING_VALUE' \\\n
+            --header 'content-type: application/json' \\\n
+            --header 'x-api-key: STRING_VALUE' \\\n
+            --data '{\"inputs\":{\"href\":\"href\",\"storage\":\"storage\"},\"outputs\":[{\"href\":\"href\",\"storage\":\"storage\",\"type\":\"type\",\"quality\": \"quality\",\"overwrite\": \"overwrite\"}]}'"
+          }
+        ]
       }
     },
-    "/pie/psdService/smartObject": {
+    "/lrService/autoTone": {
       "post": {
         "tags": [
-          "smartObject"
+          "Lightroom"
         ],
-        "summary": "Replace a Smart Object",
-        "description": "Replace a Smart Object",
-        "operationId": "smartObject",
+        "summary": "Auto tone an image",
+        "description": "Initiates an asynchronous job to auto tone an image",
+        "operationId": "autoTone",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
-          "description": "inputs, options, and outputs objects",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "./post_smart_object.schema.json"
+                "$ref": "./acr/post_auto_tone.schema.json"
               }
             }
           },
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "successful operation",
+          "202": {
+            "description": "Successful operation",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/APIResponse"
+                  "$ref": "./api_response_success_schema.json"
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_400_error_schema.json"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Trial Limit Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_402_error_schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_403_error_schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "shell",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/autoStraighten \\\n
+            --header 'Authorization: STRING_VALUE' \\\n
+            --header 'content-type: application/json' \\\n
+            --header 'x-api-key: STRING_VALUE' \\\n
+            --data '{\"inputs\":{\"href\":\"href\",\"storage\":\"storage\"},\"outputs\":[{\"href\":\"href\",\"storage\":\"storage\",\"type\":\"type\",\"quality\": \"quality\",\"overwrite\": \"overwrite\"}]}'"
+          }
+        ]
       }
-    }
-  },
-  "components": {
-    "schemas": {
-      "textEdit": {
-        "required": [
-          "inputs",
-          "options",
-          "outputs"
+    },
+    "/lrService/edit": {
+      "post": {
+        "tags": [
+          "Lightroom"
         ],
-        "type": "object",
-        "properties": {
-          "inputs": {
-            "type": "array",
-            "xml": {
-              "name": "input",
-              "wrapped": true
-            },
-            "items": {
-              "$ref": "#/components/schemas/input"
+        "summary": "Apply edits on an image.",
+        "description": "Initiates an asynchronous job to apply a set of edit parameters on an image.",
+        "operationId": "edit",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           },
-          "options": {
-            "type": "object",
-            "properties": {
-              "layers": {
-                "minItems": 1,
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer",
-                      "description": "The id of the layer you want to insert. Use either id OR name."
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "The name of the layer you want to insert. Use either id OR name"
-                    },
-                    "text": {
-                      "type": "object",
-                      "properties": {
-                        "contents": {
-                          "type": "string",
-                          "description": "the contents of the text layer"
-                        },
-                        "orientation": {
-                          "type": "string",
-                          "description": "the text's orientation",
-                          "enum": [
-                            "horizontal",
-                            "vertical"
-                          ]
-                        },
-                        "antiAlias": {
-                          "type": "string",
-                          "description": "the text's anti aliasing type which determines the smoothness of the jagged edges of the text.",
-                          "enum": [
-                            "antiAliasNone",
-                            "antiAliasSharp",
-                            "antiAliasCrisp",
-                            "antiAliasStrong",
-                            "antiAliasSmooth",
-                            "antiAliasPlatformLCD",
-                            "antiAliasPlatformGray"
-                          ]
-                        },
-                        "characterStyles": {
-                          "$ref": "#/components/schemas/character_styles"
-                        },
-                        "paragraphStyles": {
-                          "$ref": "#/components/schemas/paragraph_styles"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "fonts": {
-                "type": "array",
-                "xml": {
-                  "name": "font",
-                  "wrapped": true
-                },
-                "items": {
-                  "$ref": "#/components/schemas/font"
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./acr/post_image_edit.schema.json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_success_schema.json"
                 }
               }
-            },
-            "xml": {
-              "name": "options",
-              "wrapped": true
             }
           },
-          "outputs": {
-            "type": "array",
-            "xml": {
-              "name": "outputs",
-              "wrapped": true
-            },
-            "items": {
-              "$ref": "#/components/schemas/output"
-            }
-          }
-        },
-        "xml": {
-          "name": "text"
-        }
-      },
-      "input": {
-        "required": [
-          "href",
-          "storage"
-        ],
-        "type": "object",
-        "properties": {
-          "href": {
-            "type": "string",
-            "description": "Either a Creative Cloud assets path for storage=\"adobe\" OR a presignedPUTURL.  The \"/files\" path directly corresponds to the root of your local \"Creative Cloud Files\" folder.",
-            "example": "files/sample.jpg"
-          },
-          "storage": {
-            "type": "string",
-            "description": "storage platforms supported.  Default value: adobe.  Allowed values: \"adobe\", \"external\", \"azure\", \"dropbox\"",
-            "example": "adobe"
-          }
-        },
-        "xml": {
-          "name": "Input"
-        }
-      },
-      "character_styles": {
-        "minItems": 1,
-        "type": "array",
-        "description": "array of character_style objects",
-        "items": {
-          "$ref": "#/components/schemas/character_style"
-        }
-      },
-      "character_style": {
-        "type": "object",
-        "properties": {
-          "size": {
-            "maximum": 5400,
-            "minimum": 0.04,
-            "type": "number",
-            "description": "the font size, in pixels"
-          },
-          "fontPostScriptName": {
-            "type": "string",
-            "description": "the font's postscript name to be used to set the font for this layer."
-          },
-          "color": {
-            "type": "object",
-            "description": "fontColor in rgb format",
-            "allOf": [
-              {
-                "type": "object"
-              },
-              {
-                "type": "object"
-              },
-              {
-                "type": "object"
-              }
-            ]
-          },
-          "leading": {
-            "type": "number",
-            "description": "the font's leading value, where leading is the distance between each line of text."
-          },
-          "tracking": {
-            "type": "number",
-            "description": "the font's tracking value, where tracking is the horizontal spacing between a range of characters."
-          },
-          "baseline": {
-            "type": "string",
-            "description": "Indicates if the text is raised or lowered in relation to a font’s baseline",
-            "enum": [
-              "subScript",
-              "superScript"
-            ]
-          },
-          "fontCaps": {
-            "type": "string",
-            "description": "the text's capitalization values",
-            "enum": [
-              "allCaps",
-              "smallCaps"
-            ]
-          },
-          "autoKern": {
-            "type": "string",
-            "description": "the text's kerning setting. Optical: set based on the shape of the font. Metrics: uses kern pairs included in fonts",
-            "enum": [
-              "opticalKern",
-              "metricsKern"
-            ]
-          },
-          "strikethrough": {
-            "type": "boolean",
-            "description": "Toggle strikethrough for selected text"
-          },
-          "syntheticBold": {
-            "type": "boolean",
-            "description": "Toggle bold for selected text"
-          },
-          "syntheticItalic": {
-            "type": "boolean",
-            "description": "Toggle italic for selected text"
-          },
-          "underline": {
-            "type": "boolean",
-            "description": "Toggle underlining of text"
-          },
-          "ligature": {
-            "type": "boolean",
-            "description": "Toggle text ligature, which are special characters in a font that combine two or more characters"
-          },
-          "fractions": {
-            "type": "boolean",
-            "description": "Toggle automatic formatting of fractions: numbers separated by a slash (such as 1/2)"
-          },
-          "stylisticAlternates": {
-            "type": "boolean",
-            "description": "Toggle stylisticAlternates, which formats stylized characters that create a purely aesthetic effect"
-          },
-          "verticalScale": {
-            "maximum": 1000,
-            "minimum": 0,
-            "type": "number",
-            "description": "the amount of vertical scaling to apply to the font"
-          },
-          "horizontalScale": {
-            "maximum": 1000,
-            "minimum": 0,
-            "type": "number",
-            "description": "the amount of horizontal scaling to apply to the font"
-          }
-        },
-        "description": "character style settings"
-      },
-      "paragraph_styles": {
-        "minItems": 1,
-        "type": "array",
-        "description": "array of paragraph_style objects",
-        "items": {
-          "$ref": "#/components/schemas/paragraph_style"
-        }
-      },
-      "paragraph_style": {
-        "type": "object",
-        "properties": {
-          "align": {
-            "type": "string",
-            "description": "the paragraph alignment",
-            "enum": [
-              "left",
-              "center",
-              "right",
-              "justify",
-              "justifyLeft",
-              "justifyCenter",
-              "justifyRight"
-            ]
-          }
-        },
-        "description": "paragraph style settings"
-      },
-      "font": {
-        "required": [
-          "href",
-          "storage"
-        ],
-        "type": "object",
-        "properties": {
-          "href": {
-            "type": "string",
-            "description": "Either a Creative Cloud assets path for storage=\"adobe\" OR a presignedPUTURL.  The \"/files\" path directly corresponds to the root of your local \"Creative Cloud Files\" folder.",
-            "example": "files/sample.otf"
-          },
-          "storage": {
-            "type": "string",
-            "description": "storage platforms supported.  Default value: adobe.  Allowed values: \"adobe\", \"external\", \"azure\", \"dropbox\"",
-            "example": "adobe"
-          }
-        },
-        "xml": {
-          "name": "action"
-        }
-      },
-      "output": {
-        "required": [
-          "href",
-          "storage",
-          "type"
-        ],
-        "type": "object",
-        "properties": {
-          "href": {
-            "type": "string",
-            "description": "Either a Creative Cloud assets path for storage=\"adobe\" OR a presignedPUTURL.  The \"/files\" path directly corresponds to the root of your local \"Creative Cloud Files\" folder.",
-            "example": "files/sample.png"
-          },
-          "storage": {
-            "type": "string",
-            "description": "storage platforms supported.  Default value: adobe.  Allowed values: \"adobe\", \"external\", \"azure\", \"dropbox\"",
-            "example": "adobe"
-          },
-          "type": {
-            "type": "string",
-            "description": "Allowed values: \"image/jpeg\", \"image/png\", \"image/tiff\", \"image/vnd.adobe.photoshop\"",
-            "example": "image/png"
-          }
-        }
-      },
-      "APIResponse": {
-        "type": "object",
-        "properties": {
-          "input": {
-            "type": "string",
-            "format": "string"
-          },
-          "status": {
-            "type": "string",
-            "format": "string"
-          },
-          "created": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "modified": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "_links": {
-            "type": "object",
-            "properties": {
-              "href": {
-                "type": "string",
-                "format": "string"
-              },
-              "storage": {
-                "type": "string",
-                "format": "string"
-              },
-              "type": {
-                "type": "string",
-                "format": "string"
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_400_error_schema.json"
+                }
               }
             }
+          },
+          "402": {
+            "description": "Trial Limit Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_402_error_schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_403_error_schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "shell",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/autoStraighten \\\n
+            --header 'Authorization: STRING_VALUE' \\\n
+            --header 'content-type: application/json' \\\n
+            --header 'x-api-key: STRING_VALUE' \\\n
+            --data '{\"inputs\":{\"href\":\"href\",\"storage\":\"storage\"},\"outputs\":[{\"href\":\"href\",\"storage\":\"storage\",\"type\":\"type\",\"quality\": \"quality\",\"overwrite\": \"overwrite\"}]}'"
+          }
+        ]
+      }
+    },
+    "/lrService/presets": {
+      "post": {
+        "tags": [
+          "Lightroom"
+        ],
+        "summary": "Apply a presets on an image",
+        "description": "Initiates an asynchronous job to apply a preset on an image.",
+        "operationId": "presets",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./acr/post_presets.schema.json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_success_schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_400_error_schema.json"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Trial Limit Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_402_error_schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_403_error_schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "shell",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/autoStraighten \\\n
+            --header 'Authorization: STRING_VALUE' \\\n
+            --header 'content-type: application/json' \\\n
+            --header 'x-api-key: STRING_VALUE' \\\n
+            --data '{\"inputs\":{\"href\":\"href\",\"storage\":\"storage\"},\"outputs\":[{\"href\":\"href\",\"storage\":\"storage\",\"type\":\"type\",\"quality\": \"quality\",\"overwrite\": \"overwrite\"}]}'"
+          }
+        ]
+      }
+    },
+    "/lrService/xmp": {
+      "post": {
+        "tags": [
+          "Lightroom"
+        ],
+        "summary": "Apply xmp on an image.",
+        "description": "Initiates an asynchronous job to apply an XMP setting to an image.",
+        "operationId": "xmp",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./acr/post_xmp.schema.json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_success_schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_400_error_schema.json"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Trial Limit Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_402_error_schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_403_error_schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "shell",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/autoStraighten \\\n
+            --header 'Authorization: STRING_VALUE' \\\n
+            --header 'content-type: application/json' \\\n
+            --header 'x-api-key: STRING_VALUE' \\\n
+            --data '{\"inputs\":{\"href\":\"href\",\"storage\":\"storage\"},\"outputs\":[{\"href\":\"href\",\"storage\":\"storage\",\"type\":\"type\",\"quality\": \"quality\",\"overwrite\": \"overwrite\"}]}'"
+          }
+        ]
       }
     }
   }
