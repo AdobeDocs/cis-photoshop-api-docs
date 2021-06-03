@@ -1,0 +1,143 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "post_image_edit.schema.json",
+  "title": "post_image_edit",
+  "description": "Initiates an asynchronous job to edit an image",
+  "type": "object",
+  "required": [
+    "inputs",
+    "outputs",
+    "options"
+  ],
+  "properties": {
+    "inputs": {
+      "type": "object",
+      "minProperties": 1,
+      "description": "The input assets for your call",
+      "required": [
+        "source"
+      ],
+      "properties": {
+        "source": {
+          "$ref": "inputs.schema.json#/definitions/inputs"
+        }
+      }
+    },
+    "outputs": {
+      "$ref": "outputs.schema.json#/definitions/outputs"
+    },
+    "options": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "properties": {
+        "Exposure": {
+          "type": "number",
+          "minimum": -5,
+          "maximum": 5,
+          "multipleOf": 0.01
+        },
+        "Saturation": {
+          "type": "number",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "Contrast": {
+          "type": "number",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "VignetteAmount": {
+          "type": "number",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "Vibrance": {
+          "type": "number",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "Highlights": {
+          "type": "number",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "Shadows": {
+          "type": "number",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "Whites": {
+          "type": "number",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "Blacks": {
+          "type": "number",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "Clarity": {
+          "type": "number",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "Dehaze": {
+          "type": "number",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "Texture": {
+          "type": "number",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "Sharpness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 150
+        },
+        "ColorNoiseReduction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "NoiseReduction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "SharpenDetail": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "SharpenEdgeMasking": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "SharpenRadius": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 3,
+          "multipleOf": 0.01
+        },
+        "WhiteBalance": {
+          "type": "string",
+          "enum": [
+            "As Shot",
+            "Auto",
+            "Cloudy",
+            "Custom",
+            "Daylight",
+            "Flash",
+            "Fluorescent",
+            "Shade",
+            "Tungsten"
+          ]
+        }
+      }
+    }
+  }
+}
