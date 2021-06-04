@@ -27,7 +27,7 @@
           "Lightroom"
         ],
         "summary": "Auto straighten an image",
-        "description": "Initiates an asynchronous job to auto straighten an image.\nTo get status of this job,call [Status API](/api/#operation/acrstatus).",
+        "description": "Initiates an asynchronous job to auto straighten an image. \\\nTo get status of this job, call [Status API](/api/#operation/acrstatus).",
         "operationId": "autoStraighten",
         "parameters": [
           {
@@ -135,11 +135,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/autoStraighten \\\n
-            --header 'Authorization: STRING_VALUE' \\\n
-            --header 'content-type: application/json' \\\n
-            --header 'x-api-key: STRING_VALUE' \\\n
-            --data '{\"inputs\":{\"href\":\"href\",\"storage\":\"storage\"},\"outputs\":[{\"href\":\"href\",\"storage\":\"storage\",\"type\":\"type\",\"quality\": \"quality\",\"overwrite\": \"overwrite\"}]}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/autoStraighten \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":{\"href\":\"string\",\"storage\":\"external\"},\\\n\"options\":{\"uprightMode\":\"full\",\"constrainCrop\":false},\"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/jpeg\"}]}'"
           }
         ]
       }
@@ -258,11 +254,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/autoStraighten \\\n
-            --header 'Authorization: STRING_VALUE' \\\n
-            --header 'content-type: application/json' \\\n
-            --header 'x-api-key: STRING_VALUE' \\\n
-            --data '{\"inputs\":{\"href\":\"href\",\"storage\":\"storage\"},\"outputs\":[{\"href\":\"href\",\"storage\":\"storage\",\"type\":\"type\",\"quality\": \"quality\",\"overwrite\": \"overwrite\"}]}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/autoTone \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":{\"href\":\"string\",\"storage\":\"external\"},\"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/jpeg\"}]}'"
           }
         ]
       }
@@ -381,11 +373,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/autoStraighten \\\n
-            --header 'Authorization: STRING_VALUE' \\\n
-            --header 'content-type: application/json' \\\n
-            --header 'x-api-key: STRING_VALUE' \\\n
-            --data '{\"inputs\":{\"href\":\"href\",\"storage\":\"storage\"},\"outputs\":[{\"href\":\"href\",\"storage\":\"storage\",\"type\":\"type\",\"quality\": \"quality\",\"overwrite\": \"overwrite\"}]}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/xmp \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\": {\"source\": {\"href\":\"string\",\"storage\":\"external\"}, \\\n\"options\": \"<options>\"},\"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"type\"}]}'"
           }
         ]
       }
@@ -504,11 +492,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/autoStraighten \\\n
-            --header 'Authorization: STRING_VALUE' \\\n
-            --header 'content-type: application/json' \\\n
-            --header 'x-api-key: STRING_VALUE' \\\n
-            --data '{\"inputs\":{\"href\":\"href\",\"storage\":\"storage\"},\"outputs\":[{\"href\":\"href\",\"storage\":\"storage\",\"type\":\"type\",\"quality\": \"quality\",\"overwrite\": \"overwrite\"}]}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/presets \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\": {\"source\": {\"href\":\"string\",\"storage\":\"external\"}, \\\n\"presets\": [{\"href\":\"string\",\"storage\":\"external\"}]},\"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"type\"}]}'"
           }
         ]
       }
@@ -627,11 +611,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/autoStraighten \\\n
-            --header 'Authorization: STRING_VALUE' \\\n
-            --header 'content-type: application/json' \\\n
-            --header 'x-api-key: STRING_VALUE' \\\n
-            --data '{\"inputs\":{\"href\":\"href\",\"storage\":\"storage\"},\"outputs\":[{\"href\":\"href\",\"storage\":\"storage\",\"type\":\"type\",\"quality\": \"quality\",\"overwrite\": \"overwrite\"}]}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/xmp \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\": {\"source\": {\"href\":\"string\",\"storage\":\"external\"}, \\\n\"options\": {\"xmp\":\"string\"},\"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"type\"}]}'"
           }
         ]
       }
