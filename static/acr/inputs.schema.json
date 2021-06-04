@@ -5,9 +5,9 @@
   "description": "An input object",
   "definitions": {
     "href": {
-      "description": "Either a presignedGETURL for storage='external' OR Creative Cloud assets path for storage='adobe' ",
+      "description": "Either a presignedURL for storage='external' OR Creative Cloud assets path for storage='adobe' ",
       "type": "string",
-      "minLength": 1,
+      "minLength": 1
     },
     "storage": {
       "description": "Storage platforms supported.",

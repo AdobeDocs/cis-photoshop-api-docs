@@ -26,7 +26,7 @@
     "details": {
       "type": "string",
       "description": "Further descriptions of the exact error where details is substituted for a specific issue.",
-      "example" : "Trial limit for the subscribed plan has been exceeded. For questions about additional capacity please reach out to PS team at psdservices@adobe.com"
+      "example" : "Trial limit for the subscribed plan has been exceeded.\nFor questions about additional capacity please reach out to PS team at psdservices@adobe.com"
     }
   }
 }
