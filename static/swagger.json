@@ -27,7 +27,7 @@
           "Lightroom"
         ],
         "summary": "Auto straighten an image",
-        "description": "Initiates an asynchronous job to auto straighten an image",
+        "description": "Initiates an asynchronous job to auto straighten an image.\nTo get status of this job,call [Status API](/api/#operation/acrstatus).",
         "operationId": "autoStraighten",
         "parameters": [
           {
@@ -150,7 +150,7 @@
           "Lightroom"
         ],
         "summary": "Auto tone an image",
-        "description": "Initiates an asynchronous job to auto tone an image",
+        "description": "Initiates an asynchronous job to auto tone an image.\nTo get status of this job,call [Status API](/api/#operation/acrstatus).",
         "operationId": "autoTone",
         "parameters": [
           {
@@ -273,7 +273,7 @@
           "Lightroom"
         ],
         "summary": "Apply edits on an image.",
-        "description": "Initiates an asynchronous job to apply a set of edit parameters on an image.",
+        "description": "Initiates an asynchronous job to apply a set of edit parameters on an image.\nTo get status of this job,call [Status API](/api/#operation/acrstatus).",
         "operationId": "edit",
         "parameters": [
           {
@@ -396,7 +396,7 @@
           "Lightroom"
         ],
         "summary": "Apply a presets on an image",
-        "description": "Initiates an asynchronous job to apply a preset on an image.",
+        "description": "Initiates an asynchronous job to apply a preset on an image.\nTo get status of this job,call [Status API](/api/#operation/acrstatus).",
         "operationId": "presets",
         "parameters": [
           {
@@ -519,7 +519,7 @@
           "Lightroom"
         ],
         "summary": "Apply xmp on an image.",
-        "description": "Initiates an asynchronous job to apply an XMP setting to an image.",
+        "description": "Initiates an asynchronous job to apply an XMP setting to an image.\nTo get status of this job,call [Status API](/api/#operation/acrstatus).",
         "operationId": "xmp",
         "parameters": [
           {
@@ -634,6 +634,73 @@
             --data '{\"inputs\":{\"href\":\"href\",\"storage\":\"storage\"},\"outputs\":[{\"href\":\"href\",\"storage\":\"storage\",\"type\":\"type\",\"quality\": \"quality\",\"overwrite\": \"overwrite\"}]}'"
           }
         ]
+      }
+    },
+    "/lrService/status/{jobId}": {
+      "get": {
+        "tags": [
+          "Lightroom"
+        ],
+        "summary": "Returns the status of a job.",
+        "description": "Returns the status of a job.",
+        "operationId": "acrstatus",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "The jobId to get status for.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./acr/get_status.schema.json"
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
