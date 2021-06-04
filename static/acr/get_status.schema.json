@@ -13,12 +13,12 @@
     "created": {
       "type": "string",
       "format": "YYYY-DD-MMThh:mm:ss.mmmmmZ",
-      "description": "Created timestamp of the job.",
+      "description": "Created timestamp of the job."
     },
     "modified": {
       "type": "string",
       "format": "YYYY-DD-MMThh:mm:ss.mmmmmZ",
-      "description": "Modified timestamp of the job.",
+      "description": "Modified timestamp of the job."
     },
     "outputs": {
       "type": "object",
@@ -61,10 +61,10 @@
         }
       }
     },
-    "_links":{
+    "_links": {
       "type": "object",
       "properties": {
-        "self" : {
+        "self": {
           "type": "object",
           "properties": {
             "href": {
