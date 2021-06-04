@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "get_status_success.schema.json",
+  "title": "get_status",
+  "description": "Returns the status of a job.",
+  "type": "object",
+  "properties": {
+    "jobId": {
+      "type": "string",
+      "description": "The job's id requested",
+      "example": "f54e0fcb-260b-47c3-b520-de0d17dc2b67"
+    },
+    "created": {
+      "type": "string",
+      "format": "YYYY-DD-MMThh:mm:ss.mmmmmZ",
+      "description": "Created timestamp of the job.",
+    },
+    "modified": {
+      "type": "string",
+      "format": "YYYY-DD-MMThh:mm:ss.mmmmmZ",
+      "description": "Modified timestamp of the job.",
+    },
+    "outputs": {
+      "type": "object",
+      "properties": {
+        "input": {
+          "type": "string",
+          "description": "The original input href.",
+          "example": "presigned_GET_URL"
+        },
+        "status": {
+          "type": "string",
+          "description": "The job status",
+          "enum": [
+            "pending",
+            "running",
+            "succeeded",
+            "failed"
+          ],
+          "example": "string"
+        },
+        "details": {
+          "type": "string",
+          "description": "Description of the exact error that is reported by the requested job. Will appear in the response only if there is an error."
+        },
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "$ref": "inputs.schema.json#/definitions/href"
+                },
+                "storage": {
+                  "$ref": "inputs.schema.json#/definitions/storage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "_links":{
+      "type": "object",
+      "properties": {
+        "self" : {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "description": "Link that client can use to track status.",
+              "example": "https://image.adobe.io/lrService/status/f54e0fcb-260b-47c3-b520-de0d17dc2b67"
+            }
+          }
+        }
+      }
+    }
+  }
+}

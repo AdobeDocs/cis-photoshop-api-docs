@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "api_response.schema.json",
+  "title": "api_response",
+  "description": "Provides API response",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "format": "string",
+      "description": "A short, human-readable summary of the problem",
+      "example": "Unauthorized"
+    },
+    "type": {
+      "type": "string",
+      "format": "string",
+      "description": "A machine-readable error type",
+      "example": "InvalidAuthTokenError"
+    },
+    "code": {
+      "type": "string",
+      "format": "string",
+      "description": "A machine-readable error code",
+      "example": 403
+    },
+    "details": {
+      "type": "object",
+      "description": "Further descriptions of the exact error where details is substituted for a specific issue.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name for the detailed error.",
+          "example": "<path_to_invalid_file>"
+        },
+        "reason": {
+          "type": "string",
+          "description": "Details of error reason.",
+          "example": "Unable to access the input href"
+          }
+      }
+    }
+  }
+}
