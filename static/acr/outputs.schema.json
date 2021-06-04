@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "outputs.schema.json",
+  "title": "a file output obect",
+  "description": "Represents the collective fields needed to indicate an output file, destination and format",
+  "definitions": {
+    "output": {
+      "type": "object",
+      "description": "An object describing the requested file outputs (a new psd file or supported renditions)",
+      "required": [
+        "href",
+        "storage",
+        "type"
+      ],
+      "properties": {
+        "storage": {
+          "$ref": "inputs.schema.json#/definitions/storage"
+        },
+        "href": {
+          "$ref": "inputs.schema.json#/definitions/href"
+        },
+        "type": {
+          "description": "Desired output image format",
+          "enum": [
+            "image/jpeg",
+            "image/x-adobe-dng",
+            "image/png"
+          ],
+          "type": "string"
+        },
+        "overwrite": {
+          "description": "If the output file already exists should it be overwritten.",
+          "type": "boolean",
+          "default": true
+        },
+        "quality": {
+          "description": "Quality of the JPEG outputs (will be ignored for other output types). Ranges from 0 to 12, with 12 as the highest quality.",
+          "type": "int",
+          "default": 12,
+          "minimum": 0,
+          "maximum": 12
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "pattern": "image/jpeg"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "quality": {
+                "description": "Desired JPEG image quality, integers range from 0 to 12",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 12
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "storage": {
+                "pattern": "(^adobe$)"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "href": {
+                "pattern": "^/?(files|temp|cloud-content|assets)/.*",
+                "description": "A string representing the path to the output CC file"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "href": {
+                "format": "uri",
+                "description": "A URI representing the path to the output file"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "outputs": {
+      "type": "array",
+      "minLength": 1,
+      "description": "An array of output objects. each output object will be either 'external' or 'adobe'",
+      "items": {
+        "$ref": "#/definitions/output"
+      }
+    }
+  }
+}
