@@ -666,7 +666,9 @@
             "in": "path",
             "description": "The jobId to get status for.",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
