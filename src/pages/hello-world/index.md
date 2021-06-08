@@ -26,4 +26,4 @@ Congrats! You just made your first request to the Photoshop API.
 `NOTE: Your token will expire every 24 hours and will need to be refreshed after it expires.`
 
 ### Internal Adobe Users Only
-If you are generating OAuth token, use the generated token from https://www.adobe-prerelease.com/sign-up/ and your api key in the curl command above.
+If you are generating OAuth token, use the generated token from https://www.adobe.com/go/photoshopapi_signup and your api key in the curl command above.
