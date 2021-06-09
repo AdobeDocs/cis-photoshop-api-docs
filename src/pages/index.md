@@ -24,7 +24,7 @@ The [Getting Started](../photoshop-api-docs/getting-started/) page will walk you
 
 ## Public Beta
 
-If you'd like to join our newly announced beta, please sign-up [here](https://www.adobe-prerelease.com/sign-up/) and follow the steps to generate your trial credentials. Please keep in mind the trial is currently limited to 5,000 calls, must be in a non-production environment, and requires acceptance of our pre-release terms. 
+If you'd like to join our newly announced beta, please sign-up [here](https://www.adobe.com/go/photoshopapi_signup) and follow the steps to generate your trial credentials. Please keep in mind the trial is currently limited to 5,000 calls, must be in a non-production environment, and requires acceptance of our pre-release terms. 
 
 ## Support
 
