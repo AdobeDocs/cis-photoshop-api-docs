@@ -11,7 +11,7 @@ The first step in accessing the Photoshop APIs is getting authenticated. For tha
 ## Get access
 Here are the steps to start with our API
 
-1. If you **haven't signed up** and generated credentials please follow this link and follow the steps on the confirmation modal: https://www.adobe-prerelease.com/sign-up/
+1. If you **haven't signed up** and generated credentials please follow this link and follow the steps on the confirmation modal: https://www.adobe.com/go/photoshopapi_signup
 
 1. If you **have** already signed up and need a new key, Go to https://console.adobe.io/home and **sign in to the IO Console.**
 1. Click on **Create a new project** under the **Quick Start** section on the middle of your screen
