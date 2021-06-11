@@ -1,0 +1,163 @@
+{
+  "$schema":"http://json-schema.org/draft-07/schema#",
+  "$id":"post_cutout.schema.json",
+  "title":"post_cutout",
+  "description":"",
+  "type":"object",
+  "required":[
+    "input",
+    "output"
+  ],
+  "properties":{
+    "input":{
+      "type":"object",
+      "required":["href","storage"],
+      "properties":{
+        "href": {
+          "description": "Either a presignedURL for storage='external' OR Creative Cloud assets path for storage='adobe'.",
+          "type": "string",
+          "minLength": 1
+        },
+        "storage": {
+          "description": "Is the asset stored on Adobe's cloud or an external service (like AWS S3, Azure, Dropbox)",
+          "type": "string",
+          "enum": [
+            "adobe",
+            "external",
+            "azure",
+            "dropbox"
+          ],
+          "default": "external"
+        }
+      },
+      "if": {
+        "properties": {
+          "storage": {
+            "pattern": "(^azure|external|dropbox$)"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "href": {
+            "format": "uri",
+            "description": "A URI representing the path to the input file"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "href": {
+            "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+            "description": "A string representing the path to the input Creative Cloud file"
+          }
+        }
+      }
+    },
+    "options":{
+      "type":"object",
+      "properties":{
+        "optimize": {
+          "type": "string",
+          "enum":["performance","batch"],
+          "default": "performance",
+          "description": "The value 'performance' optimizes for speed and 'batch' ensures the job will not fail due to timeout"
+        },
+        "process": {
+          "type": "object",
+          "hidden": true,
+          "properties": {
+            "postprocess": {
+              "type": "boolean"
+            }
+          }
+        },
+        "service": {
+          "type": "object",
+          "properties": {
+            "version": {
+              "type":"string",
+              "enum":["2.0","3.0"],
+              "default": "2.0",
+              "description": "Version of the service"
+            }
+          }
+        }
+      }
+    },
+    "output":{
+      "type":"object",
+      "required":["href","storage"],
+      "properties":{
+        "href": {
+          "type": "string",
+          "minLength": 1,
+          "description": "A URI representing the path to the input file"
+        },
+        "storage": {
+          "description": "Is the asset stored on Adobe's cloud or an external service (like AWS S3, Azure, Dropbox)",
+          "type": "string",
+          "enum": [
+            "adobe",
+            "external",
+            "azure",
+            "dropbox"
+          ],
+          "default": "external"
+        },
+        "overwrite": {
+          "description": "If the file already exists, indicates if the output file should be overwritten. Only applies to CC Storage",
+          "type": "boolean",
+          "default": true
+        },
+        "color": {
+          "type":"object",
+          "required":["space"],
+          "properties":{
+            "space":{
+              "type":"string",
+              "enum":["rgba","rgb"],
+              "description": "Color space for the output image",
+              "example": "rgb"
+            }
+          }
+        },
+        "mask": {
+          "type":"object",
+          "required":["format"],
+          "properties":{
+            "format":{
+              "type":"string",
+              "enum":["soft","binary"],
+              "default": "soft",
+              "description": "A soft (feathered) mask or binary mask"
+            }
+          }
+        }
+      },
+      "if": {
+        "properties": {
+          "storage": {
+            "pattern": "(^azure|external|dropbox$)"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "href": {
+            "format": "uri",
+            "description": "A URI representing the path to the input file"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "href": {
+            "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+            "description": "A string representing the path to the input Creative Cloud file"
+          }
+        }
+      }
+    }
+  }
+}
