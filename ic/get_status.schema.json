@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "get_status_success.schema.json",
+  "title": "get_status",
+  "description": "Returns the status of a job.",
+  "type": "object",
+  "properties": {
+    "jobId": {
+      "type": "string",
+      "description": "The job's id requested",
+      "example": "f54e0fcb-260b-47c3-b520-de0d17dc2b67"
+    },
+    "created": {
+      "type": "string",
+      "format": "YYYY-DD-MMThh:mm:ss.mmmmmZ",
+      "description": "Created timestamp of the job."
+    },
+    "modified": {
+      "type": "string",
+      "format": "YYYY-DD-MMThh:mm:ss.mmmmmZ",
+      "description": "Modified timestamp of the job."
+    },
+    "status": {
+      "type": "string",
+      "description": "The job status",
+      "enum": [
+        "pending",
+        "running",
+        "succeeded",
+        "failed"
+      ],
+      "example": "string"
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "minLength": 1,
+          "description": "A URI representing the path to the input file"
+        },
+        "storage": {
+          "description": "Is the asset stored on Adobe's cloud or an external service (like AWS S3, Azure, Dropbox)",
+          "type": "string",
+          "enum": [
+            "adobe",
+            "external",
+            "azure",
+            "dropbox"
+          ],
+          "default": "external"
+        },
+        "mask": {
+          "type":"object",
+          "required":["format"],
+          "properties":{
+            "format":{
+              "type":"string",
+              "enum":["soft","binary"],
+              "default": "soft",
+              "description": "A soft (feathered) mask or binary mask"
+            }
+          }
+        },
+        "color": {
+          "type":"object",
+          "required":["space"],
+          "properties":{
+            "space":{
+              "type":"string",
+              "enum":["rgba","rgb"],
+              "description": "Color space for the output image",
+              "example": "rgb"
+            }
+          }
+        }
+      }
+    },
+    "options":{
+      "type":"object",
+      "properties":{
+        "optimize": {
+          "type": "string",
+          "enum":["performance","batch"],
+          "default": "performance",
+          "description": "The value 'performance' optimizes for speed and 'batch' ensures the job will not fail due to timeout"
+        }
+      }
+    },
+    "_links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "description": "Link that client can use to track status.",
+              "example": "https://image.adobe.io/sensei/status/f54e0fcb-260b-47c3-b520-de0d17dc2b67"
+            }
+          }
+        }
+      }
+    }
+  }
+}
