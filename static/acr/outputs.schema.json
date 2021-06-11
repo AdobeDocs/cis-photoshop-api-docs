@@ -29,13 +29,13 @@
           "type": "string"
         },
         "overwrite": {
-          "description": "If the output file already exists should it be overwritten.",
+          "description": "If the output file already exists should it be overwritten. Only applies to CC Storage",
           "type": "boolean",
           "default": true
         },
         "quality": {
           "description": "Quality of the JPEG outputs (will be ignored for other output types). Ranges from 0 to 12, with 12 as the highest quality.",
-          "type": "int",
+          "type": "number",
           "default": 12,
           "minimum": 0,
           "maximum": 12
