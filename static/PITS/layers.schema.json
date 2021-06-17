@@ -150,7 +150,7 @@
                 "$ref": "#/definitions/vertical_align"
               }
             },
-            "anyOf": [
+            "oneOf": [
               {
                 "required": [
                   "id"
@@ -379,8 +379,8 @@
     },
     "id": {
       "type": "integer",
-      "description": "the layer id",
-      "example": "some id here"
+      "description": "The layer id",
+      "example": 110
     },
     "index": {
       "type": "integer",
@@ -470,7 +470,8 @@
     },
     "locked": {
       "type": "boolean",
-      "description": "is the layer editable"
+      "description": "Is the layer locked",
+      "default": false
     },
     "mask": {
       "type": "object",
@@ -528,7 +529,13 @@
     },
     "name": {
       "type": "string",
-      "description": "The layer name"
+      "description": "The layer name. You can identify a layer by id or name. That makes either id or name a required field.",
+      "example": "My Layer"
+    },
+    "visible": {
+      "type": "boolean",
+      "description": "Is the layer visible",
+      "default" : true
     },
     "smart_object": {
       "type": "object",
