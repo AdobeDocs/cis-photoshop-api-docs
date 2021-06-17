@@ -1046,7 +1046,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "./pits/post_smart_object.schema.json"
+                "$ref": "./PITS/post_smart_object.schema.json"
               }
             }
           },
