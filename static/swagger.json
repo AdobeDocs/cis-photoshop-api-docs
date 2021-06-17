@@ -12,6 +12,10 @@
   ],
   "tags": [
     {
+      "name": "Photoshop",
+      "description": "APIs powered by Photoshop"
+    },
+    {
       "name": "Lightroom",
       "description": "APIs powered by Lightroom"
     },
@@ -990,6 +994,125 @@
             }
           }
         }
+      }
+    },
+    "/pie/psdService/smartObject": {
+      "post": {
+        "tags": [
+          "Photoshop"
+        ],
+        "summary": "Replace Smart Object",
+        "description": " Edits a PSD for replacing embedded smart object and then generate renditions and/or save a new psd.",
+        "operationId": "smartObject",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./pits/post_smart_object.schema.json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_success_schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_400_error_schema.json"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Trial Limit Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_402_error_schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_403_error_schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "shell",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/sensei/mask \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"input\":{\"href\":\"string\",\"storage\":\"external\"},\\\n \"output\":{\"href\":\"string\",\"storage\":\"external\",\"overwrite\":true,\"mask\":{\"format\":\"soft\"}}}'"
+          }
+        ]
       }
     }
   }
