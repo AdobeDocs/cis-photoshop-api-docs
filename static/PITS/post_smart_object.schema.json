@@ -26,44 +26,62 @@
             ],
             "properties": {
               "id": {
-                "type": "integer",
-                "description": "The id of the layer you want to insert. Use either id OR name.",
-                "example": "Some ID"
+                "$ref": "layers.schema.json#/definitions/id"
               },
               "name": {
-                "type": "string",
-                "description": "The name of the layer you want to insert . Use either id OR name",
-                "example": "Some random name"
+                "$ref": "layers.schema.json#/definitions/name"
               },
               "locked": {
-                "type": "boolean",
-                "description": "is the layer editable",
-                "example": true
+                "$ref": "layers.schema.json#/definitions/locked"
               },
               "visible": {
-                "type": "boolean",
-                "description": "is the layer visible",
-                "example": true
+                "$ref": "layers.schema.json#/definitions/visible"
               },
               "add": {
                 "$ref":"layers.schema.json#/definitions/add"
               },
-              "edit": {
-                "$ref":"layers.schema.json#/definitions/edit"
-              },
               "input": {
-                "$ref":"file_input.schema.json#/definitions/input_object"
+                "$ref":"file_input.schema.json#/definitions/input_objects_smart_object"
               },
               "bounds":{
-                "$ref":"bounds.schema.json#/definitions/bounds"
+                "type": "object",
+                "minProperties": 1,
+                "properties": {
+                  "height": {
+                    "type": "number",
+                    "description": "in pixels",
+                    "minimum": 4.00,
+                    "maximum": 32000.00
+                  },
+                  "left": {
+                    "type": "integer",
+                    "description": "in pixels"
+                  },
+                  "top": {
+                    "type": "integer",
+                    "description": "in pixels"
+                  },
+                  "width": {
+                    "type": "number",
+                    "description": "in pixels",
+                    "minimum": 4.00,
+                    "maximum": 32000.00
+                  }
+                },
+                "oneOf": [
+                  {"required": ["height"]},
+                  {"required": ["width"]},
+                  {"required": ["left"]},
+                  {"required": ["top"]}
+                ]
               }
             }
         }
       }
-    },
-    "outputs": {
-      "$ref": "file_output.schema.json#/definitions/output_objects"
     }
+  },
+  "outputs": {
+    "$ref": "file_output.schema.json#/definitions/output_object_smart_object"
   }
  }
 }

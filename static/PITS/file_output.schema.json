@@ -17,8 +17,7 @@
           "$ref": "file_input.schema.json#/definitions/storage"
         },
         "href": {
-          "description": "Either a Creative Cloud assets path for storage='adobe' OR a presignedPUTURL.",
-          "type": "string",
+          "$ref": "file_input.schema.json#/definitions/href",
           "minLength": 1
         },
         "width": {
@@ -48,6 +47,117 @@
         },
         "layers": {
           "$ref": "#/definitions/layers"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "pattern": "image/jpeg"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "quality": {
+                "description": "desired JPEG image quality, integers range from 1 to 7",
+                "type": "number",
+                "minimum": 1,
+                "maximum": 7
+              },
+              "compression": {
+                "not": {}
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "pattern": "image/png"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "compression": {
+                "description": "desired PNG compression level: small, medium and large",
+                "enum": [
+                  "small",
+                  "medium",
+                  "large"
+                ],
+                "type": "string"
+              },
+              "quality": {
+                "not": {}
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "storage": {
+                "pattern": "(^azure|external|dropbox$)"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "href": {
+                "format": "uri",
+                "description": "A URI representing the path to the output file"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "href": {
+                "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                "description": "A string representing the path to the output CC file"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "output_object_smart_object": {
+      "type": "object",
+      "description": "An object describing the requested file outputs (a new psd file or supported renditions)",
+      "required": [
+        "href",
+        "storage",
+        "type"
+      ],
+      "properties": {
+        "storage": {
+          "$ref": "file_input.schema.json#/definitions/storage"
+        },
+        "href": {
+          "$ref": "file_input.schema.json#/definitions/href"
+        },
+        "width": {
+          "description": "Size, in pixels, of the renditions. Width of 0 generates a full size rendition. Height is not neccessary as the rendition generate will automatically maintain the aspect ratio. Only required for image renditions",
+          "type": "number"
+        },
+        "type": {
+          "description": "Desired image format. 'image/vnd.adobe.photoshop' specifies a PSD file",
+          "enum": [
+            "image/jpeg",
+            "image/png",
+            "image/tiff",
+            "image/vnd.adobe.photoshop",
+            "vnd.adobe.photoshop"
+          ],
+          "type": "string"
+        },
+        "overwrite": {
+          "description": "if the output file already exists should it be overwritten. Will eventually support eTags",
+          "type": "boolean",
+          "default": true
         }
       },
       "allOf": [
