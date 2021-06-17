@@ -4,12 +4,12 @@
   "title": "post_smart_object",
   "description": "Initiates an asynchronous job to replace an embedded smart object and also create one ",
   "type": "object",
-  "required":["inputs","options","outputs"],
+  "required": ["inputs", "options", "outputs"],
   "properties": {
     "inputs": {
-      "$ref":"file_input.schema.json#/definitions/input_objects_max_1"
+      "$ref": "file_input.schema.json#/definitions/input_objects_max_1"
     },
-    "options":{
+    "options": {
       "type": "object",
       "minProperties": 1,
       "required": ["layers"],
@@ -19,7 +19,7 @@
           "minItems": 1,
           "items": {
             "type": "object",
-            "required":[
+            "required": [
               "id",
               "name",
               "input"
@@ -38,50 +38,21 @@
                 "$ref": "layers.schema.json#/definitions/visible"
               },
               "add": {
-                "$ref":"layers.schema.json#/definitions/add"
+                "$ref": "layers.schema.json#/definitions/add"
               },
               "input": {
-                "$ref":"file_input.schema.json#/definitions/input_objects_smart_object"
+                "$ref": "file_input.schema.json#/definitions/input_objects_smart_object"
               },
-              "bounds":{
-                "type": "object",
-                "minProperties": 1,
-                "properties": {
-                  "height": {
-                    "type": "number",
-                    "description": "in pixels",
-                    "minimum": 4.00,
-                    "maximum": 32000.00
-                  },
-                  "left": {
-                    "type": "integer",
-                    "description": "in pixels"
-                  },
-                  "top": {
-                    "type": "integer",
-                    "description": "in pixels"
-                  },
-                  "width": {
-                    "type": "number",
-                    "description": "in pixels",
-                    "minimum": 4.00,
-                    "maximum": 32000.00
-                  }
-                },
-                "oneOf": [
-                  {"required": ["height"]},
-                  {"required": ["width"]},
-                  {"required": ["left"]},
-                  {"required": ["top"]}
-                ]
+              "bounds": {
+                "$ref": "bounds.schema.json#/definitions/bounds"
               }
             }
+          }
         }
       }
+    },
+    "outputs": {
+      "$ref": "file_output.schema.json#/definitions/output_object_smart_object"
     }
-  },
-  "outputs": {
-    "$ref": "file_output.schema.json#/definitions/output_object_smart_object"
   }
- }
 }
