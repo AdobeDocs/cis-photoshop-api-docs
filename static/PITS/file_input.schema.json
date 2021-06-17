@@ -5,12 +5,13 @@
   "description": "Represents the collective fields needed to indicate an input file",
   "definitions": {
     "href": {
-      "description": "Either a Creative Cloud assets path for storage='adobe' OR a presignedGETURL.",
+      "description": "Either a presignedURL for storage='external' OR Creative Cloud assets path for storage='adobe'.",
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "example": "presignedURL"
     },
     "storage": {
-      "description": "is the asset stored on Adobe's cloud or an external service (like AWS S3, Azure, Dropbox)",
+      "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox) or Adobe's cloud",
       "type": "string",
       "enum": [
         "adobe",
@@ -18,7 +19,7 @@
         "azure",
         "dropbox"
       ],
-      "default": "adobe"
+      "default": "external"
     },
     "actionName": {
       "description": "is the action name in atn file",
@@ -27,7 +28,7 @@
     "input_objects_max_1": {
       "": "used when the inputs array can only contain one input object",
       "type": "array",
-      "description": "An array of hashes describing the input files to edit. each input object will be either 'external', 'adobe', 'azure' or 'dropbox'",
+      "description": "An input file to add or edit",
       "maxItems": 1,
       "items": {
         "$ref": "#/definitions/input_object"
@@ -62,6 +63,47 @@
       "type": "object",
       "minProperties": 1,
       "description": "An input file to add or edit. The input object will be either 'external', 'adobe', 'azure' or 'dropbox'",
+      "required": [
+        "href",
+        "storage"
+      ],
+      "properties": {
+        "storage": {
+          "$ref": "#/definitions/storage"
+        },
+        "href": {
+          "$ref": "#/definitions/href"
+        }
+      },
+      "if": {
+        "properties": {
+          "storage": {
+            "pattern": "(^azure|external|dropbox$)"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "href": {
+            "format": "uri",
+            "description": "A URI representing the path to the input file"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "href": {
+            "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+            "description": "A string representing the path to the input CC file"
+          }
+        }
+      }
+    },
+    "input_objects_smart_object": {
+      "type": "object",
+      "minProperties": 1,
+      "description": "An object describing the input file to add or replace for the Embedded Smart Object layer. Edited images are replaced for exact pixel size.
+      Currently supported filetypes includes `png`,`jpeg`,`psd`,`svg`,`ai`,`pdf`",
       "required": [
         "href",
         "storage"
