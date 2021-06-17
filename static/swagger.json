@@ -1110,7 +1110,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/sensei/mask \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"input\":{\"href\":\"string\",\"storage\":\"external\"},\\\n \"output\":{\"href\":\"string\",\"storage\":\"external\",\"overwrite\":true,\"mask\":{\"format\":\"soft\"}}}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/smartObject \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"string\",\"storage\":\"external\"}],\\\n \"options\":{\"layers\":[{\"name\":\"New\",\\\n \"input\":{\"href\":\"string\",\"storage\":\"string\"},\"bounds\":{\"width\":602,\"height\":400}}]}\\\n \"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/jpeg\"}]}'"
           }
         ]
       }
