@@ -38,13 +38,18 @@
                 "$ref": "layers.schema.json#/definitions/visible"
               },
               "add": {
-                "$ref": "layers.schema.json#/definitions/add"
+                "$ref": "layers.schema.json#/definitions/add",
+                "description": "Inidicates you want to add a new layer. You must also indicate where you want to
+                insert the new layer by supplying one of the attributes `insertAbove`, `insertBelow`, `insertInto`,
+                `insertTop` or `insertBottom`. `add` block overwrites default `edit` block."
               },
               "input": {
                 "$ref": "file_input.schema.json#/definitions/input_objects_smart_object"
               },
               "bounds": {
-                "$ref": "bounds.schema.json#/definitions/bounds"
+                "$ref": "bounds.schema.json#/definitions/bounds",
+                "description": "The bounds of this layer. While replacing a smart object if you provide the
+                same aspect ratio(width/height) as of the actual image as a bound, the embedded SO will not be a distorted image."
               }
             }
           }
