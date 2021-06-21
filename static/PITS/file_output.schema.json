@@ -17,11 +17,16 @@
           "$ref": "file_input.schema.json#/definitions/storage"
         },
         "href": {
-          "$ref": "file_input.schema.json#/definitions/href",
+          "description": "Either a Creative Cloud assets path for storage='adobe' OR a presignedPUTURL.",
+          "type": "string",
           "minLength": 1
         },
         "width": {
           "description": "size, in pixels, of the renditions. Width of 0 generates a full size rendition. Height is not neccessary as the rendition generate will automatically maintain the aspect ratio. Only required for image renditions",
+          "type": "number"
+        },
+        "maxWidth": {
+          "description": "size, in pixels, of the renditions. When width is 0, maxWidth can be provided to get the rendition size. maxWidth when less than document width gets precedence over width. Height is not neccessary as the rendition generate will automatically maintain the aspect ratio. ",
           "type": "number"
         },
         "type": {
@@ -114,10 +119,27 @@
             }
           },
           "else": {
-            "properties": {
-              "href": {
-                "pattern": "^/?(files|temp|cloud-content|assets)/.+",
-                "description": "A string representing the path to the output CC file"
+            "if" : {
+              "properties": {
+                "storage": {
+                  "pattern": "(^cclib$)"
+                }
+              }
+            },
+            "then" : {
+              "properties": {
+                "href": {
+                  "pattern": "^/?(api)/.+",
+                  "description": "A string representing the path to the output CC Libraries file"
+                }
+              }
+            },
+            "else" : {
+              "properties": {
+                "href": {
+                  "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                  "description": "A string representing the path to the output CC Storage file"
+                }
               }
             }
           }
@@ -225,10 +247,27 @@
             }
           },
           "else": {
-            "properties": {
-              "href": {
-                "pattern": "^/?(files|temp|cloud-content|assets)/.+",
-                "description": "A string representing the path to the output CC file"
+            "if" : {
+              "properties": {
+                "storage": {
+                  "pattern": "(^cclib$)"
+                }
+              }
+            },
+            "then" : {
+              "properties": {
+                "href": {
+                  "pattern": "^/?(api)/.+",
+                  "description": "A string representing the path to the output CC Libraries file"
+                }
+              }
+            },
+            "else" : {
+              "properties": {
+                "href": {
+                  "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                  "description": "A string representing the path to the output CC Storage file"
+                }
               }
             }
           }
@@ -241,6 +280,14 @@
       "description": "An array of hashes describing the output files. each output object will be either 'external', 'adobe', 'azure' or 'dropbox'",
       "items": {
         "$ref": "#/definitions/output_object"
+      }
+    },
+    "output_objects_smart_object": {
+      "type": "array",
+      "minLength": 1,
+      "description": "An array of hashes describing the output files. each output object will be either 'external', 'adobe', 'azure' or 'dropbox'",
+      "items": {
+        "$ref": "#/definitions/output_object_smart_object"
       }
     },
     "layers": {
