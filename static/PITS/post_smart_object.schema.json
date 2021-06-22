@@ -19,9 +19,18 @@
           "minItems": 1,
           "items": {
             "type": "object",
+            "oneOf": [{
+                "required": [
+                  "id"
+                ]
+              },
+              {
+                "required": [
+                  "name"
+                ]
+              }
+            ],
             "required": [
-              "id",
-              "name",
               "input"
             ],
             "properties": {
@@ -39,17 +48,15 @@
               },
               "add": {
                 "$ref": "layers.schema.json#/definitions/add",
-                "description": "Inidicates you want to add a new layer. You must also indicate where you want to
-                insert the new layer by supplying one of the attributes `insertAbove`, `insertBelow`, `insertInto`,
-                `insertTop` or `insertBottom`. `add` block overwrites default `edit` block."
+                "description": "Inidicates you want to add a new layer. You must also indicate where you want to insert the new layer by supplying one of the attributes `insertAbove`, `insertBelow`, `insertInto`,`insertTop` or `insertBottom`. `add` block overwrites default `edit` block."
               },
               "input": {
-                "$ref": "file_input.schema.json#/definitions/input_objects_smart_object"
+                "$ref": "file_input.schema.json#/definitions/input_object",
+                "description": "An object describing the input file to add or replace for the Embedded Smart Object layer. Edited images are replaced for exact pixel size. Currently supported filetypes includes `png`,`jpeg`,`psd`,`svg`,`ai`,`pdf`."
               },
               "bounds": {
                 "$ref": "bounds.schema.json#/definitions/bounds",
-                "description": "The bounds of this layer. While replacing a smart object if you provide the
-                same aspect ratio(width/height) as of the actual image as a bound, the embedded SO will not be a distorted image."
+                "description": "The bounds of this layer. While replacing a smart object if you provide the same aspect ratio(width / height) as of the actual image as a bound,the embedded SO will not be a distorted image."
               }
             }
           }
@@ -57,7 +64,7 @@
       }
     },
     "outputs": {
-      "$ref": "file_output.schema.json#/definitions/output_object_smart_object"
+      "$ref": "file_output.schema.json#/definitions/output_objects_smart_object"
     }
   }
 }
