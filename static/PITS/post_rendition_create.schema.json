@@ -1,0 +1,17 @@
+{
+  "$schema":"http://json-schema.org/draft-07/schema#",
+  "$id":"post_rendition_create.schema.json",
+  "title":"post_rendition_create_operations",
+  "description":"Initiates an asynchronous job to generate renditions from a PSD file",
+  "type": "object",
+  "required":["inputs","outputs"],
+  "properties": {
+    "inputs": {
+      "$ref":"file_input.schema.json#/definitions/input_objects_max_1",
+      "description":"An object describing an input file. Currently supported filetypes include:`jpeg`, `png`, `psd`, `tiff`. Current support is for files less than 1000MB."
+    },
+    "outputs": {
+      "$ref":"file_output.schema.json#/definitions/output_objects_document"
+    }
+  }
+}

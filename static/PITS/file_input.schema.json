@@ -63,7 +63,7 @@
     "input_object": {
       "type": "object",
       "minProperties": 1,
-      "description": "An input file to add or edit. The input object will be either 'external', 'adobe', 'azure' or 'dropbox'",
+      "description": "An object describing an input file. Currently supported filetypes include:`jpeg`, `png`, `psd`, `tiff`",
       "required": [
         "href",
         "storage"
