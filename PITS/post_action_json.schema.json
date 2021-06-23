@@ -1,0 +1,152 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "post_action_json.schema.json",
+  "title": "post_action_json",
+  "description": "Initiates an asynchronous job to play Photoshop Action JSON",
+  "type": "object",
+  "required": [
+    "inputs",
+    "options",
+    "outputs"
+  ],
+  "properties": {
+    "inputs": {
+      "$ref": "file_input.schema.json#/definitions/input_objects_max_1"
+    },
+    "options": {
+      "type": "object",
+      "required": ["actions"],
+      "properties": {
+        "actions": {
+          "$ref": "file_input.schema.json#/definitions/input_objects_action",
+          "description": "An array of action objects you wish photoshopActions to execute. We currently only support one input object."
+        },
+        "fonts": {
+          "$ref": "file_input.schema.json#/definitions/input_objects",
+          "description": "An array of font objects you wish use when executing the action."
+        },
+        "patterns": {
+          "type": "array",
+          "description": "A pattern object which tells the API where to download the pattern file that is needed for your action",
+          "minItems": 1,
+          "items": {
+            "required": [
+              "href",
+              "storage"
+            ],
+            "properties": {
+              "storage": {
+                "$ref": "file_input.schema.json#/definitions/storage"
+              },
+              "href": {
+                "$ref": "file_input.schema.json#/definitions/href"
+              }
+            },
+            "if": {
+              "properties": {
+                "storage": {
+                  "pattern": "(^azure|external|dropbox$)"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "href": {
+                  "format": "uri",
+                  "description": "A URI representing the path to the input file"
+                }
+              }
+            },
+            "else": {
+              "if": {
+                "properties": {
+                  "storage": {
+                    "pattern": "(^cclib$)"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "href": {
+                    "pattern": "^/?(api)/.+",
+                    "description": "A string representing the path to the input CC Libraries file"
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "href": {
+                    "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                    "description": "A string representing the path to the input CC Storage file"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "brushes": {
+          "type": "array",
+          "description": "A brush object which tells the API where to download the pattern file that is needed for your action",
+          "minItems": 1,
+          "items": {
+            "required": [
+              "href",
+              "storage"
+            ],
+            "properties": {
+              "storage": {
+                "$ref": "file_input.schema.json#/definitions/storage"
+              },
+              "href": {
+                "$ref": "file_input.schema.json#/definitions/href"
+              }
+            },
+            "if": {
+              "properties": {
+                "storage": {
+                  "pattern": "(^azure|external|dropbox$)"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "href": {
+                  "format": "uri",
+                  "description": "A URI representing the path to the input file"
+                }
+              }
+            },
+            "else": {
+              "if": {
+                "properties": {
+                  "storage": {
+                    "pattern": "(^cclib$)"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "href": {
+                    "pattern": "^/?(api)/.+",
+                    "description": "A string representing the path to the input CC Libraries file"
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "href": {
+                    "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                    "description": "A string representing the path to the input CC Storage file"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "outputs": {
+      "$ref": "file_output_pegasus.schema.json#/definitions/output_objects"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "post_artboard_create.schema.json",
+  "title": "post_artboard_create",
+  "description": "Initiates an asynchronous job to export a list of input PSDs as artboards, to a new psd.",
+  "type": "object",
+  "required": [
+    "options",
+    "outputs"
+  ],
+  "properties": {
+    "options": {
+      "type": "object",
+      "required": [
+        "artboard"
+      ],
+      "properties": {
+        "artboard": {
+          "$ref": "file_input.schema.json#/definitions/artboard_objects",
+          "description": "Contains an array of input objects"
+        }
+      }
+    },
+    "outputs": {
+      "$ref": "file_output.schema.json#/definitions/output_objects"
+    }
+  }
+}

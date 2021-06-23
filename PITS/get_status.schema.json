@@ -10,20 +10,10 @@
       "description": "The job's id requested",
       "example": "f54e0fcb-260b-47c3-b520-de0d17dc2b67"
     },
-    "created": {
-      "type": "string",
-      "format": "YYYY-DD-MMThh:mm:ss.mmmmmZ",
-      "description": "Created timestamp of the job."
-    },
-    "modified": {
-      "type": "string",
-      "format": "YYYY-DD-MMThh:mm:ss.mmmmmZ",
-      "description": "Modified timestamp of the job."
-    },
     "outputs": {
       "type": "array",
       "minItems": 1,
-      "items" : {
+      "items": {
         "properties": {
           "input": {
             "type": "string",
@@ -41,21 +31,37 @@
             ],
             "example": "string"
           },
-          "details": {
+          "created": {
             "type": "string",
-            "description": "Description of the exact error that is reported by the requested job. Will appear in the response only if there is an error."
+            "format": "YYYY-DD-MMThh:mm:ss.mmmmmZ",
+            "description": "Created timestamp of the job."
+          },
+          "modified": {
+            "type": "string",
+            "format": "YYYY-DD-MMThh:mm:ss.mmmmmZ",
+            "description": "Modified timestamp of the job."
           },
           "_links": {
             "type": "object",
             "properties": {
-              "self": {
-                "type": "object",
-                "properties": {
-                  "href": {
-                    "$ref": "inputs.schema.json#/definitions/href"
-                  },
-                  "storage": {
-                    "$ref": "inputs.schema.json#/definitions/storage"
+              "renditions": {
+                "type": "array",
+                "minItems": 1,
+                "description": "Array of rendition objects",
+                "items": {
+                  "properties": {
+                    "href": {
+                      "$ref": "file_input.schema.json#/definitions/href"
+                    },
+                    "storage": {
+                      "$ref": "file_input.schema.json#/definitions/storage"
+                    },
+                    "width": {
+                      "$ref": "file_output.schema.json#/definitions/width"
+                    },
+                    "type": {
+                      "$ref": "file_output.schema.json#/definitions/type"
+                    }
                   }
                 }
               }
@@ -73,7 +79,7 @@
             "href": {
               "type": "string",
               "description": "Link that client can use to track status.",
-              "example": "https://image.adobe.io/lrService/status/f54e0fcb-260b-47c3-b520-de0d17dc2b67"
+              "example": "https://image.adobe.io/pie/psdService/status/f54e0fcb-260b-47c3-b520-de0d17dc2b67"
             }
           }
         }
