@@ -4,6 +4,24 @@
   "title": "a file output obect",
   "description": "Represents the collective fields needed to indicate an output file, destination and format",
   "definitions": {
+    "href": {
+      "description": "Either a presignedGETURL OR a Creative Cloud assets path for storage='adobe'.",
+      "type": "string",
+      "minLength": 1,
+      "example": "presignedURL"
+    },
+    "storage": {
+      "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox) or Adobe's cloud.",
+      "type": "string",
+      "enum": [
+        "adobe",
+        "external",
+        "azure",
+        "dropbox",
+        "cclib"
+      ],
+      "default": "external"
+    },
     "width": {
       "description": "size, in pixels, of the renditions. Width of 0 generates a full size rendition. Height is not neccessary as the rendition generate will automatically maintain the aspect ratio. Only required for image renditions",
       "type": "number"
@@ -62,11 +80,11 @@
         "type"
       ],
       "properties": {
-        "storage": {
-          "$ref": "file_input.schema.json#/definitions/storage"
-        },
         "href": {
-          "$ref": "file_input.schema.json#/definitions/href"
+          "$ref": "#/definitions/href"
+        },
+        "storage": {
+          "$ref": "#/definitions/storage"
         },
         "width": {
           "$ref": "#/definitions/width"
@@ -77,6 +95,12 @@
         "type": {
           "$ref": "#/definitions/type"
         },
+        "quality": {
+          "$ref": "#/definitions/quality"
+        },
+        "compression": {
+          "$ref": "#/definitions/compression"
+        },
         "overwrite": {
           "$ref": "#/definitions/overwrite"
         },
@@ -85,6 +109,9 @@
         },
         "layers": {
           "$ref": "#/definitions/layers"
+        },
+        "iccProfile": {
+          "$ref": "iccProfile.schema.json#/definitions/iccProfile"
         }
       },
       "allOf": [{
@@ -187,11 +214,11 @@
         "type"
       ],
       "properties": {
-        "storage": {
-          "$ref": "file_input.schema.json#/definitions/storage"
-        },
         "href": {
-          "$ref": "file_input.schema.json#/definitions/href"
+          "$ref": "#/definitions/href"
+        },
+        "storage": {
+          "$ref": "#/definitions/storage"
         },
         "width": {
           "$ref": "#/definitions/width"
@@ -294,205 +321,31 @@
         }
       ]
     },
-    "output_object_document": {
-      "type": "object",
-      "description": "An object describing the requested file outputs (a new psd file or supported renditions)",
-      "required": [
-        "href",
-        "storage",
-        "type"
-      ],
-      "properties": {
-        "storage": {
-          "$ref": "file_input.schema.json#/definitions/storage"
-        },
-        "href": {
-          "$ref": "file_input.schema.json#/definitions/href"
-        },
-        "width": {
-          "$ref": "#/definitions/width"
-        },
-        "maxWidth": {
-          "$ref": "#/definitions/maxWidth"
-        },
-        "type": {
-          "$ref": "#/definitions/type",
-          "description": "Desired image format. \n`image/vnd.adobe.photoshop` - Create a new PSD file `image/jpeg`,`image/png`,`image/tiff` - Create a new jpeg,png or tiff rendition. \nImage mode coversions: Certain image modes (`rgb`, `cmyk`, `greyscale` etc) must be converted to another image mode before a rendition can be created:\nTiff Requested: Multichannel and Duotone will convert to RGB,\nPNG Requested: CMYK, HSL, HSB, Multichannel, Duotone, Lab and XYZ will convert to RGB."
-        },
-        "quality": {
-          "$ref": "#/definitions/quality"
-        },
-        "compression": {
-          "$ref": "#/definitions/compression"
-        },
-        "trimToCanvas": {
-          "$ref": "#/definitions/trimToCanvas"
-        },
-        "overwrite": {
-          "$ref": "#/definitions/overwrite"
-        },
-        "layers": {
-          "$ref": "#/definitions/layers"
-        },
-        "iccProfile": {
-          "$ref": "#/definitions/iccProfile"
-        }
-      },
-      "allOf": [{
-          "if": {
-            "properties": {
-              "type": {
-                "pattern": "image/jpeg"
-              }
-            }
-          },
-          "then": {
-            "properties": {
-              "quality": {
-                "description": "desired JPEG image quality, integers range from 1 to 7",
-                "type": "number",
-                "minimum": 1,
-                "maximum": 7
-              },
-              "compression": {
-                "not": {}
-              }
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "type": {
-                "pattern": "image/png"
-              }
-            }
-          },
-          "then": {
-            "properties": {
-              "compression": {
-                "description": "desired PNG compression level: small, medium and large",
-                "enum": [
-                  "small",
-                  "medium",
-                  "large"
-                ],
-                "type": "string"
-              },
-              "quality": {
-                "not": {}
-              }
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "storage": {
-                "pattern": "(^azure|external|dropbox$)"
-              }
-            }
-          },
-          "then": {
-            "properties": {
-              "href": {
-                "format": "uri",
-                "description": "A URI representing the path to the output file"
-              }
-            }
-          },
-          "else": {
-            "if": {
-              "properties": {
-                "storage": {
-                  "pattern": "(^cclib$)"
-                }
-              }
-            },
-            "then": {
-              "properties": {
-                "href": {
-                  "pattern": "^/?(api)/.+",
-                  "description": "A string representing the path to the output CC Libraries file"
-                }
-              }
-            },
-            "else": {
-              "properties": {
-                "href": {
-                  "pattern": "^/?(files|temp|cloud-content|assets)/.+",
-                  "description": "A string representing the path to the output CC Storage file"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "layers": {
       "type": "array",
       "minItems": 1,
-      "description": "any layer that needs to be rendered for",
+      "description": "Any layer that needs to be rendered for",
       "minProperties": 1,
-      "anyOf": [{
-          "required": [
-            "id"
-          ]
-        },
-        {
-          "required": [
-            "name"
-          ]
-        }
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "description": "the layer id"
-        },
-        "name": {
-          "type": "string",
-          "description": "the layer name"
-        }
-      }
-    },
-    "iccProfile": {
-      "type": "object",
-      "description": "An object describing the icc profile to convert to.",
-      "minProperties": 1,
-      "properties": {
-        "imageMode": {
-          "type": "string",
-          "description": "The image mode \\\n Allowed values for iccProfile file `grayscale`, `rgb`, `cmyk` \\\n Allowed values for iccProfile Name `rgb`, `grayscale`. "
-        },
-        "input": {
-          "type": "object",
-          "description": "An object describing the icc profile. ",
-          "minProperties": 1,
-          "properties": {
-            "storage": {
-              "$ref": "file_input.schema.json#/definitions/storage"
-            },
-            "href": {
-              "$ref": "file_input.schema.json#/definitions/href"
-            },
-            "profileName": {
-              "type": "string",
-              "description": "The name of the color profile",
-              "enum": [
-                "Adobe RGB (1998)",
-                "Apple RGB",
-                "ColorMatch RGB",
-                "sRGB IEC61966-2.1",
-                "Dot Gain 10%",
-                "Dot Gain 15%",
-                "Dot Gain 20%",
-                "Dot Gain 25%",
-                "Dot Gain 30%",
-                "Gray Gamma 1.8",
-                "Gray Gamma 2.2"
-              ]
-            }
+      "items": {
+        "anyOf": [{
+            "required": [
+              "id"
+            ]
+          },
+          {
+            "required": [
+              "name"
+            ]
+          }
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The layer id"
+          },
+          "name": {
+            "type": "string",
+            "description": "The layer name"
           }
         }
       }
@@ -511,14 +364,6 @@
       "description": "An array of hashes describing the output files. each output object will be either 'external', 'adobe', 'azure' or 'dropbox'",
       "items": {
         "$ref": "#/definitions/output_object_smart_object"
-      }
-    },
-    "output_objects_document": {
-      "type": "array",
-      "minLength": 1,
-      "description": "An array of hashes describing the output files. each output object will be either 'external', 'adobe', 'azure' or 'dropbox'",
-      "items": {
-        "$ref": "#/definitions/output_object_document"
       }
     }
   }
