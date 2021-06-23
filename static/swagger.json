@@ -996,6 +996,125 @@
         }
       }
     },
+    "/pie/psdService/renditionCreate": {
+      "post": {
+        "tags": [
+          "Photoshop"
+        ],
+        "summary": "Create renditions",
+        "description": " Create renditions.",
+        "operationId": "renditionCreate",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./PITS/post_rendition_create.schema.json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_success_schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_400_error_schema.json"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Trial Limit Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_402_error_schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_403_error_schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "shell",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/renditionCreate \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"string\",\"storage\":\"external\"}],\\\n \"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/jpeg\",\"quality\": 5},\\\n {\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/png\",\\\n \"layers\":[{\"name\":\"bug\"},{\"name\":\"flower\"}]}]}'"
+          }
+        ]
+      }
+    },
     "/pie/psdService/smartObject": {
       "post": {
         "tags": [
@@ -1111,125 +1230,6 @@
           {
             "lang": "shell",
             "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/smartObject \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"string\",\"storage\":\"external\"}],\\\n \"options\":{\"layers\":[{\"name\":\"New\",\\\n \"input\":{\"href\":\"string\",\"storage\":\"string\"},\"bounds\":{\"width\":602,\"height\":400}}]}\\\n \"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/jpeg\"}]}'"
-          }
-        ]
-      }
-    },
-    "/pie/psdService/renditionCreate": {
-      "post": {
-        "tags": [
-          "Photoshop"
-        ],
-        "summary": "Create renditions",
-        "description": " Create renditions.",
-        "operationId": "renditionCreate",
-        "parameters": [
-          {
-            "name": "Authorization",
-            "description": "Authorization",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-api-key",
-            "description": "API key/client id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Content-Type",
-            "description": "application/json",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-gw-ims-org-id",
-            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "./PITS/post_rendition_create.schema.json"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "202": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "./api_response_success_schema.json"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "./api_response_400_error_schema.json"
-                }
-              }
-            }
-          },
-          "402": {
-            "description": "Trial Limit Exceeded",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "./api_response_402_error_schema.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "./api_response_403_error_schema.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "./api_response_404_error_schema.json"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "x-codeSamples": [
-          {
-            "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/renditionCreate \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"string\",\"storage\":\"external\"}],\"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/jpeg\",\"quality\": 5},{\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/png\",\"layers\":[{\"name\":\"bug\"},{\"name\":\"flower\"}]}]}'"
           }
         ]
       }

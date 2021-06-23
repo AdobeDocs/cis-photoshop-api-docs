@@ -11,7 +11,7 @@
       "description":"An object describing an input file. Currently supported filetypes include:`jpeg`, `png`, `psd`, `tiff`. Current support is for files less than 1000MB."
     },
     "outputs": {
-      "$ref":"file_output.schema.json#/definitions/output_objects_document"
+      "$ref":"file_output.schema.json#/definitions/output_objects"
     }
   }
 }
