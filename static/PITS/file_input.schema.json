@@ -23,7 +23,7 @@
       "default": "external"
     },
     "actionName": {
-      "description": "is the action name in atn file",
+      "description": "If you only want to execute a particular action, you may specify whcih action to play from the ActionSet",
       "type": "string"
     },
     "input_objects_max_1": {

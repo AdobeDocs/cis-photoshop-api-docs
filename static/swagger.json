@@ -695,7 +695,7 @@
           "Image Cutout"
         ],
         "summary": "Create Image Cutout",
-        "description": " Generates a PNG file in 4 channel RGBA format with the generated cutout mask \\\n applied to the input image generate a PNG file in 4 channel RGBA format with the generated cutout \\\n mask applied to the input image.",
+        "description": " Generates a PNG file in 4 channel RGBA format with the generated cutout mask \\\n applied to the input image generate a PNG file in 4 channel RGBA format with the generated cutout \\\n mask applied to the input image.\nTo get status of this job,call [Status API](/api/#operation/icstatus).",
         "operationId": "cutout",
         "parameters": [
           {
@@ -814,7 +814,7 @@
           "Image Cutout"
         ],
         "summary": "Create Mask",
-        "description": " generate a mask PNG.",
+        "description": " Generates a mask PNG.\nTo get status of this job,call [Status API](/api/#operation/icstatus).",
         "operationId": "mask",
         "parameters": [
           {
@@ -1002,7 +1002,7 @@
           "Photoshop"
         ],
         "summary": "Create renditions",
-        "description": " Create renditions.",
+        "description": " Create renditions.\nTo get status of this job,call [Status API](/api/#operation/pitsstatus).",
         "operationId": "renditionCreate",
         "parameters": [
           {
@@ -1121,7 +1121,7 @@
           "Photoshop"
         ],
         "summary": "Replace Smart Object",
-        "description": " Edits a PSD for replacing embedded smart object and then generate renditions and/or save a new psd.",
+        "description": " Edits a PSD for replacing embedded smart object and then generate renditions and/or save a new psd.\nTo get status of this job,call [Status API](/api/#operation/pitsstatus).",
         "operationId": "smartObject",
         "parameters": [
           {
@@ -1232,6 +1232,313 @@
             "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/smartObject \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"string\",\"storage\":\"external\"}],\\\n \"options\":{\"layers\":[{\"name\":\"New\",\\\n \"input\":{\"href\":\"string\",\"storage\":\"string\"},\"bounds\":{\"width\":602,\"height\":400}}]}\\\n \"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/jpeg\"}]}'"
           }
         ]
+      }
+    },
+    "/pie/psdService/photoshopActions": {
+      "post": {
+        "tags": [
+          "Photoshop"
+        ],
+        "summary": "Executes Photoshop Actions on a given image",
+        "description": " Executes Photoshop Actions on a given image.\nTo get status of this job,call [Status API](/api/#operation/pitsstatus).",
+        "operationId": "photoshopActions",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./PITS/post_action_json.schema.json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_success_schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_400_error_schema.json"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Trial Limit Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_402_error_schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_403_error_schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "shell",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/photoshopActions \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"string\",\"storage\":\"external\"}],\\\n \"options\":{\"actions\":[{\"href\":\"https://some-presigned-url.com/Oil-paint.atn\",\"storage\":\"string\"}]}\\\n \"outputs\":[{\"href\":\"https://some-presigned-url.com/output.jpg\",\"storage\":\"external\",\"type\":\"image/jpeg\"}]}'"
+          }
+        ]
+      }
+    },
+    "/pie/psdService/artboardCreate": {
+      "post": {
+        "tags": [
+          "Photoshop"
+        ],
+        "summary": "Creates an artboard.",
+        "description": " Creates an artboard.\nTo get status of this job,call [Status API](/api/#operation/pitsstatus).",
+        "operationId": "artboardCreate",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./PITS/post_artboard_create.schema.json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_success_schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_400_error_schema.json"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Trial Limit Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_402_error_schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_403_error_schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "shell",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/photoshopActions \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"string\",\"storage\":\"external\"}],\\\n \"options\":{\"actions\":[{\"href\":\"https://some-presigned-url.com/Oil-paint.atn\",\"storage\":\"string\"}]}\\\n \"outputs\":[{\"href\":\"https://some-presigned-url.com/output.jpg\",\"storage\":\"external\",\"type\":\"image/jpeg\"}]}'"
+          }
+        ]
+      }
+    },
+    "/pie/psdService/status/{jobId}": {
+      "get": {
+        "tags": [
+          "Photoshop"
+        ],
+        "summary": "Returns the status of a job.",
+        "description": "Returns the status of a job.",
+        "operationId": "pitsstatus",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "The jobId to get status for.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./PITS/get_status.schema.json"
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
