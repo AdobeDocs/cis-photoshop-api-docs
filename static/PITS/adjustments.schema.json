@@ -31,7 +31,7 @@
     },
     "exposure":{
       "type":"object",
-      "description":"exposure settings",
+      "description":"Exposure settings",
       "minProperties": 1,
       "anyOf": [
         {"required": ["exposure"]},
@@ -42,21 +42,21 @@
         "exposure":{
           "type":"number",
           "description":"The layer's exposure",
-          "default":0.0,
+          "default":0,
           "minimum":-20,
           "maximum":20
         },
         "offset":{
           "type":"number",
           "description":"The layer's offset.",
-          "default":0.0,
+          "default":0,
           "minimum":-0.5,
           "maximum":0.5
         },
         "gammaCorrection":{
           "type":"number",
           "description":"The layer's gammaCorrection.",
-          "default":1.0,
+          "default":1,
           "minimum":0.01,
           "maximum":9.99
         }
@@ -64,7 +64,7 @@
     },
     "hue_saturation":{
       "type":"object",
-      "description":"hue and saturation settings",
+      "description":"Hue and saturation settings",
       "minProperties": 1,
       "anyOf": [
         {"required": ["colorize"]},
@@ -120,7 +120,7 @@
     },
     "color_balance":{
       "type":"object",
-      "description":"color balance settings",
+      "description":"Color balance settings",
       "minProperties": 1,
       "anyOf": [
         {"required": ["preserveLuminosity"]},

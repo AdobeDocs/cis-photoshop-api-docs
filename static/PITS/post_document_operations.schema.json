@@ -65,9 +65,6 @@
     },
     "outputs": {
       "$ref": "file_output.schema.json#/definitions/output_objects"
-    },
-    "jobId": {
-      "type": "string"
     }
   }
 }
