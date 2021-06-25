@@ -15,6 +15,7 @@
     },
     "options": {
       "type": "object",
+      "description": "Any of `layers`, `document`, `globalFont`, `fonts` or `manageMissingFonts` is required",
       "anyOf": [
         {
           "required": [
@@ -47,19 +48,24 @@
           "$ref": "layers.schema.json#/definitions/layer_objects"
         },
         "document": {
-          "$ref": "document.schema.json#/definitions/document"
+          "$ref": "document.schema.json#/definitions/document",
+          "description": "Set of document level edits. Document level edits will always be applied AFTER layer level edits have been performed. One of `canvasSize`, `imageSize` or `trim` is required"
         },
         "globalFont": {
-          "type": "string"
+          "type": "string",
+          "descrition": "The full postscript name of the font to be used as the global default for the document. This font will be used for any text layer which has a missing font and no other font has been specifically provided for that layer. If this font itself is missing, the option specified for manageMissingFonts from above will take effect."
         },
         "fonts": {
-          "$ref": "file_input.schema.json#/definitions/input_objects"
+          "$ref": "file_input.schema.json#/definitions/input_objects",
+          "description": "Array of custom fonts needed in this document"
         },
         "manageMissingFonts": {
           "enum": [
             "fail",
             "useDefault"
-          ]
+          ],
+          "default": "useDefault",
+          "description": "Action to take if there are one or more missing fonts in the document. `fail` - The job will not succeed and the status will be set to `failed`, with the details of the error provided in the `details` section in the status.`useDefault` - The job will succeed, however, by default all the missing fonts will be replaced with this font: ArialMT"
         }
       }
     },
