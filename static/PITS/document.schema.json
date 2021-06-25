@@ -1,0 +1,99 @@
+{
+  "$schema":"http://json-schema.org/draft-07/schema#",
+  "$id":"document.schema.json",
+  "title":"a document object",
+  "description":"Document level edits. Right now supports crop and resize.",
+  "definitions": {
+    "document": {
+      "type": "object",
+      "minProperties": 1,
+      "anyOf": [
+        {"required": ["imageSize"]},
+        {"required": ["canvasSize"]},
+        {"required": ["trim"]}
+      ],
+      "properties":{
+        "imageSize": {
+          "$ref": "#/definitions/imageSize"
+        },
+        "canvasSize": {
+          "$ref": "#/definitions/canvasSize"
+        },
+        "trim": {
+          "$ref": "#/definitions/trim"
+        }
+      }
+    },
+    "trim": {
+      "type": "object",
+      "minProperties": 1,
+      "required": ["basedOn"],
+      "description": "trim parameters",
+      "properties": {
+        "basedOn": {
+          "type": "string",
+          "description": "what pixels should the trim be based on",
+          "enum":["transparentPixels"]
+        }
+      }
+    },
+    "imageSize": {
+      "type": "object",
+      "minProperties": 1,
+      "allOf": [
+        {"required": ["height"]},
+        {"required": ["width"]}
+      ],
+      "properties": {
+        "height": {
+          "type": "integer",
+          "description": "in pixels"
+        },
+        "width": {
+          "type": "integer",
+          "description": "in pixels"
+        }
+      }
+    },
+    "canvasSize": {
+      "type": "object",
+      "minProperties": 1,
+      "required": ["bounds"],
+      "properties": {
+        "bounds":{
+          "type": "object",
+          "description": "The bounds to crop a document",
+    			"minProperties": 1,
+          "anyOf": [
+            {"required": ["top"]},
+            {"required": ["left"]},
+            {"required": ["bottom"]},
+            {"required": ["right"]}
+          ],
+          "properties": {
+            "top": {
+              "type": "integer",
+              "minimum":0,
+              "description": "in pixels"
+            },
+            "left": {
+              "type": "integer",
+              "minimum":0,
+              "description": "in pixels"
+            },
+            "bottom": {
+              "type": "integer",
+              "minimum":0,
+              "description": "in pixels"
+            },
+            "right": {
+              "type": "integer",
+              "minimum":0,
+              "description": "in pixels"
+            }
+          }
+        }
+      }
+    }
+  }
+}

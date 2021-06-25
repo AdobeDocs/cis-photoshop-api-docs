@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "post_document_operations.schema.json",
+  "title": "post_document_operations",
+  "description": "Initiates an asynchronous job to apply edits to a psd and return a new psd and/or renditions",
+  "type": "object",
+  "required": [
+    "inputs",
+    "options",
+    "outputs"
+  ],
+  "properties": {
+    "inputs": {
+      "$ref": "file_input.schema.json#/definitions/input_objects_max_1"
+    },
+    "options": {
+      "type": "object",
+      "anyOf": [
+        {
+          "required": [
+            "layers"
+          ]
+        },
+        {
+          "required": [
+            "document"
+          ]
+        },
+        {
+          "required": [
+            "globalFont"
+          ]
+        },
+        {
+          "required": [
+            "fonts"
+          ]
+        },
+        {
+          "required": [
+            "manageMissingFonts"
+          ]
+        }
+      ],
+      "properties": {
+        "layers": {
+          "$ref": "layers.schema.json#/definitions/layer_objects"
+        },
+        "document": {
+          "$ref": "document.schema.json#/definitions/document"
+        },
+        "globalFont": {
+          "type": "string"
+        },
+        "fonts": {
+          "$ref": "file_input.schema.json#/definitions/input_objects"
+        },
+        "manageMissingFonts": {
+          "enum": [
+            "fail",
+            "useDefault"
+          ]
+        }
+      }
+    },
+    "outputs": {
+      "$ref": "file_output.schema.json#/definitions/output_objects"
+    },
+    "jobId": {
+      "type": "string"
+    }
+  }
+}
