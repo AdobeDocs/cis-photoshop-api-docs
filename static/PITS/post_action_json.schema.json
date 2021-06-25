@@ -15,7 +15,13 @@
     },
     "options": {
       "type": "object",
-      "required": ["actions"],
+      "oneOf": [
+        {
+          "required": [
+            "actionJSON"
+          ]
+        }
+      ],
       "properties": {
         "actions": {
           "$ref": "file_input.schema.json#/definitions/input_objects_action",
@@ -40,6 +46,9 @@
               },
               "href": {
                 "$ref": "file_input.schema.json#/definitions/href"
+              },
+              "actionName" :{
+                "$ref": "file_input.schema.json#/definitions/actionName"
               }
             },
             "if": {
@@ -99,6 +108,9 @@
               },
               "href": {
                 "$ref": "file_input.schema.json#/definitions/href"
+              },
+              "actionName" :{
+                "$ref": "file_input.schema.json#/definitions/actionName"
               }
             },
             "if": {

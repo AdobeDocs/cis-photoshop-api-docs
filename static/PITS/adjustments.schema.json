@@ -6,7 +6,7 @@
   "definitions": {
     "brightness_contrast":{
       "type":"object",
-      "description":"brightness and contrast settings",
+      "description":"Brightness and contrast settings",
       "minProperties": 1,
       "anyOf": [
         {"required": ["brightness"]},
@@ -15,15 +15,17 @@
       "properties":{
         "brightness":{
           "type":"integer",
-          "description":"the adjustmentLayer's brightness",
+          "description":"The adjustmentLayer's brightness",
           "minimum":-150,
-          "maximum":150
+          "maximum":150,
+          "default": 0
         },
         "contrast":{
           "type":"integer",
-          "description":"the adjustmentLayer's contrast",
+          "description":"The adjustmentLayer's contrast",
           "minimum":-150,
-          "maximum":150
+          "maximum":150,
+          "default": 0
         }
       }
     },
@@ -39,22 +41,22 @@
       "properties":{
         "exposure":{
           "type":"number",
-          "description":"the layer's exposure",
-          "default":0,
+          "description":"The layer's exposure",
+          "default":0.0,
           "minimum":-20,
           "maximum":20
         },
         "offset":{
           "type":"number",
-          "description":"the layer's offset.",
-          "default":0,
+          "description":"The layer's offset.",
+          "default":0.0,
           "minimum":-0.5,
           "maximum":0.5
         },
         "gammaCorrection":{
           "type":"number",
-          "description":"the layer's gammaCorrection.",
-          "default":1,
+          "description":"The layer's gammaCorrection.",
+          "default":1.0,
           "minimum":0.01,
           "maximum":9.99
         }
@@ -71,12 +73,13 @@
       "properties":{
         "colorize":{
           "type":"boolean",
-          "description":"colorize"
+          "description":"Colorize",
+          "default": false
         },
         "channels":{
           "type":"array",
           "minItems":1,
-          "description":"an array of hashes representing the 'master' channel (the remaining five channels of 'magentas', 'yellows', 'greens', etc are not yet supported)",
+          "description":"An array of hashes representing the 'master' channel (the remaining five channels of 'magentas', 'yellows', 'greens', etc are not yet supported)",
           "items":{
             "type":"object",
             "anyOf": [
@@ -95,17 +98,20 @@
               "hue":{
                 "type":"integer",
                 "minimum":-180,
-                "maximum":180
+                "maximum":180,
+                "default": 0
               },
               "saturation":{
                 "type":"integer",
                 "minimum":-100,
-                "maximum":100
+                "maximum":100,
+                "default": 0
               },
               "lightness":{
                 "type":"integer",
                 "minimum":-100,
-                "maximum":100
+                "maximum":100,
+                "default": 0
               }
             }
           }
@@ -129,7 +135,7 @@
         },
         "shadowLevels":{
           "type":"array",
-          "description":"array of 3 ints",
+          "description":"Array of 3 ints",
           "items":{
             "type":"integer",
             "minimum":-100,
@@ -140,7 +146,7 @@
         },
         "midtoneLevels":{
           "type":"array",
-          "description":"array of 3 ints",
+          "description":"Array of 3 ints",
           "items":{
             "type":"integer",
             "minimum":-100,
@@ -151,7 +157,7 @@
         },
         "hightoneLevels":{
           "type":"array",
-          "description":"array of 3 ints",
+          "description":"Array of 3 ints",
           "items":{
             "type":"integer",
             "minimum":-100,
