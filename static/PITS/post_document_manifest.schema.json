@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "post_document_manifest.schema.json",
+  "title": "post_document_manifest",
+  "description": "Initiates an asynchronous job to extract and return a psd file's layer information",
+  "type": "object",
+  "required":["inputs"],
+  "properties": {
+    "inputs": {
+      "$ref":"file_input.schema.json#/definitions/input_objects_max_1"
+    },
+    "options":{
+      "type": "object",
+      "minProperties": 1,
+      "anyOf": [
+        {"required": ["thumbnails"]}
+      ],
+      "properties": {
+        "thumbnails": {
+          "type": "object",
+          "description":"Include presigned GET URLs to small preview thumbnails for any renderable layer.",
+          "minProperties": 1,
+          "anyOf": [
+            {"required": ["type"]}
+          ],
+          "properties": {
+            "type":{
+              "description": "Desired thumbnail format",
+              "enum":["image/jpeg","image/png","image/tiff"],
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

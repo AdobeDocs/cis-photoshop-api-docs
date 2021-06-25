@@ -324,7 +324,7 @@
     "layers": {
       "type": "array",
       "minItems": 1,
-      "description": "Any layer that needs to be rendered for",
+      "description": "Any layer that needs to be rendered for. Any of `id` or `name` is required.",
       "minProperties": 1,
       "items": {
         "anyOf": [{

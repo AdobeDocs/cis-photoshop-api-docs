@@ -80,6 +80,7 @@
     },
     "paragraph_style":{
       "type":"object",
+      "description":"Array of paragraph_style object. `alignment` is required.",
       "minProperties": 1,
       "anyOf": [
         {"required": ["alignment"]}

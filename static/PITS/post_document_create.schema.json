@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "post_document_create.schema.json",
+  "title": "post_document_create",
+  "description": "Initiates an asynchronous job to create a new psd and/or renditions",
+  "type": "object",
+  "required": [
+    "options",
+    "outputs"
+  ],
+  "properties": {
+    "options": {
+      "type": "object",
+      "description": "`document[]` is required. Any of `layers[]`, `globalFont`, `fonts[]` and `manageMissingFonts` required.",
+      "required": [
+        "document"
+      ],
+      "anyOf": [{
+          "required": [
+            "layers"
+          ]
+        },
+        {
+          "required": [
+            "globalFont"
+          ]
+        },
+        {
+          "required": [
+            "fonts"
+          ]
+        },
+        {
+          "required": [
+            "manageMissingFonts"
+          ]
+        }
+      ],
+      "properties": {
+        "document": {
+          "type": "object",
+          "minProperties": 1,
+          "description": "Document object with params to be created. All of `height`, `width`, `resolution`, `mode` and `fill` required",
+          "allOf": [{
+              "required": [
+                "height"
+              ]
+            },
+            {
+              "required": [
+                "width"
+              ]
+            },
+            {
+              "required": [
+                "resolution"
+              ]
+            },
+            {
+              "required": [
+                "mode"
+              ]
+            },
+            {
+              "required": [
+                "fill"
+              ]
+            }
+          ],
+          "properties": {
+            "height": {
+              "type": "integer",
+              "description": "In pixels"
+            },
+            "width": {
+              "type": "integer",
+              "description": "In pixels"
+            },
+            "resolution": {
+              "type": "integer",
+              "minimum": 72,
+              "maximum": 300,
+              "description": "In pixels per inch"
+            },
+            "fill": {
+              "type": "string",
+              "enum": [
+                "white",
+                "backgroundColor",
+                "transparent"
+              ],
+              "description": "Type of fill for the background layer"
+            },
+            "mode": {
+              "type": "string",
+              "enum": [
+                "bitmap",
+                "greyscale",
+                "indexed",
+                "rgb",
+                "cmyk",
+                "hsl",
+                "hsb",
+                "multichannel",
+                "duotone",
+                "lab",
+                "xyz"
+              ],
+              "description": "Color space"
+            },
+            "depth": {
+              "type": "integer",
+              "enum": [
+                8,
+                16,
+                32
+              ],
+              "description": "Bit depth, this is either 8, 16 or 32 bit"
+            }
+          }
+        },
+        "layers": {
+          "$ref": "layers_create.schema.json#/definitions/layer_objects",
+          "description": "An array of layer objects representing the layers to be created, in the same order as provided (from top to bottom)."
+        },
+        "globalFont": {
+          "type": "string",
+          "descrition": "The full postscript name of the font to be used as the global default for the document. This font will be used for any text layer which has a missing font and no other font has been specifically provided for that layer. If this font itself is missing, the option specified for manageMissingFonts from above will take effect."
+        },
+        "fonts": {
+          "$ref": "file_input.schema.json#/definitions/input_objects",
+          "description": "Array of custom fonts needed in this document"
+        },
+        "manageMissingFonts": {
+          "enum": [
+            "fail",
+            "useDefault"
+          ],
+          "default": "useDefault",
+          "description": "Action to take if there are one or more missing fonts in the document. `fail` - The job will not succeed and the status will be set to `failed`, with the details of the error provided in the `details` section in the status.`useDefault` - The job will succeed, however, by default all the missing fonts will be replaced with this font: ArialMT"
+        }
+      }
+    },
+    "outputs": {
+      "$ref": "file_output.schema.json#/definitions/output_objects"
+    }
+  },
+  "additionalProperties": false
+}
