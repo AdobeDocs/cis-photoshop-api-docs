@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "dev-site-documentation-template",
+  "name": "cis-photoshop-api-docs",
   "version": "1.0.0",
   "license": "Apache-2.0",
   "repository": {
@@ -14,8 +14,9 @@
   "dependencies": {
     "@adobe/gatsby-theme-aio": "^3.10.0",
     "gatsby": "^3.6.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react": "15.6.2",
+    "react-dom": "15.6.2",
+    "swagger-ui-react": "^3.51.0"
   },
   "scripts": {
     "start": "gatsby build && gatsby serve",
