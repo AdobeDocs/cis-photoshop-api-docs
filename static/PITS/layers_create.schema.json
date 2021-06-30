@@ -107,7 +107,7 @@
     },
     "adjustments": {
       "type": "object",
-      "definition": "Supported adjustment layer attributes. Any of `brightnessContrast`, `exposure`, `hueSaturation` or `colorBalance` required",
+      "description": "Supported adjustment layer attributes. Any of `brightnessContrast`, `exposure`, `hueSaturation` or `colorBalance` required",
       "minProperties": 1,
       "anyOf": [
         {
@@ -336,25 +336,7 @@
         "smartObject",
         "fillLayer",
         "backgroundLayer"
-      ],
-      "properties": {
-        "linked": {
-          "type": "boolean",
-          "description": "indicates if the smart object is a linked smart object or an embedded smart object",
-          "default": "false"
-        },
-        "type": {
-          "description": "desired image format for the smart object. 'image/vnd.adobe.photoshop' specifies a PSD file",
-          "enum": [
-            "image/jpeg",
-            "image/png",
-            "image/tiff",
-            "image/vnd.adobe.photoshop",
-            "vnd.adobe.photoshop"
-          ],
-          "type": "string"
-        }
-      }
+      ]
     },
     "blendOptions": {
       "type": "object",

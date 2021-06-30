@@ -1,0 +1,635 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "layers.schema.json",
+  "title": "layer objects",
+  "definitions": {
+    "layer_objects": {
+      "type": "array",
+      "minItems": 1,
+      "description": "A tree of layer objects representing the PSD layer structure extracted from the psd document.",
+      "items": {
+        "$ref": "#/definitions/layer_object"
+      }
+    },
+    "layer_object": {
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "thumbnail": {
+          "$ref": "#/definitions/thumbnail"
+        },
+        "index": {
+          "$ref": "#/definitions/index"
+        },
+        "bounds": {
+          "$ref": "#/definitions/bounds"
+        },
+        "locked": {
+          "$ref": "#/definitions/locked"
+        },
+        "visible": {
+          "$ref": "#/definitions/visible"
+        },
+        "mask": {
+          "$ref": "#/definitions/mask"
+        },
+        "type": {
+          "$ref": "#/definitions/type"
+        },
+        "adjustments": {
+          "$ref": "#/definitions/adjustments"
+        },
+        "smartObject": {
+          "$ref": "#/definitions/smart_object"
+        },
+        "text": {
+          "$ref": "#/definitions/text"
+        },
+        "blendOptions": {
+          "$ref": "#/definitions/blendOptions"
+        },
+        "fill": {
+          "$ref": "#/definitions/fill"
+        },
+        "children": {
+          "$ref": "#/definitions/children"
+        }
+      }
+    },
+    "adjustments": {
+      "type": "object",
+      "definition": "Supported adjustment layer attributes. Any of `brightnessContrast`, `exposure`, `hueSaturation` or `colorBalance` is required",
+      "minProperties": 1,
+      "properties": {
+        "brightness_contrast":{
+          "type":"object",
+          "description":"Brightness and contrast settings",
+          "minProperties": 1,
+          "properties":{
+            "brightness":{
+              "type":"integer",
+              "description":"The adjustmentLayer's brightness",
+              "minimum":-150,
+              "maximum":150,
+              "default": 0
+            },
+            "contrast":{
+              "type":"integer",
+              "description":"The adjustmentLayer's contrast",
+              "minimum":-150,
+              "maximum":150,
+              "default": 0
+            }
+          }
+        },
+        "exposure":{
+          "type":"object",
+          "description":"Exposure settings",
+          "minProperties": 1,
+          "properties":{
+            "exposure":{
+              "type":"number",
+              "description":"The layer's exposure",
+              "default":0,
+              "minimum":-20,
+              "maximum":20
+            },
+            "offset":{
+              "type":"number",
+              "description":"The layer's offset.",
+              "default":0,
+              "minimum":-0.5,
+              "maximum":0.5
+            },
+            "gammaCorrection":{
+              "type":"number",
+              "description":"The layer's gammaCorrection.",
+              "default":1,
+              "minimum":0.01,
+              "maximum":9.99
+            }
+          }
+        },
+        "hue_saturation":{
+          "type":"object",
+          "description":"Hue and saturation settings",
+          "minProperties": 1,
+          "properties":{
+            "colorize":{
+              "type":"boolean",
+              "description":"Colorize",
+              "default": false
+            },
+            "channels":{
+              "type":"array",
+              "minItems":1,
+              "description":"An array of hashes representing the 'master' channel (the remaining five channels of 'magentas', 'yellows', 'greens', etc are not yet supported)",
+              "items":{
+                "type":"object",
+                "properties":{
+                  "channel":{
+                    "type":"string",
+                    "enum":[
+                      "master"
+                    ]
+                  },
+                  "hue":{
+                    "type":"integer",
+                    "minimum":-180,
+                    "maximum":180,
+                    "default": 0
+                  },
+                  "saturation":{
+                    "type":"integer",
+                    "minimum":-100,
+                    "maximum":100,
+                    "default": 0
+                  },
+                  "lightness":{
+                    "type":"integer",
+                    "minimum":-100,
+                    "maximum":100,
+                    "default": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "color_balance":{
+          "type":"object",
+          "description":"Color balance settings",
+          "minProperties": 1,
+          "properties":{
+            "preserveLuminosity":{
+              "type":"boolean",
+              "description":"preserveLuminosity"
+            },
+            "shadowLevels":{
+              "type":"array",
+              "description":"Array of 3 ints",
+              "items":{
+                "type":"integer",
+                "minimum":-100,
+                "maximum":100,
+                "minItems":3,
+                "maxItems":3
+              }
+            },
+            "midtoneLevels":{
+              "type":"array",
+              "description":"Array of 3 ints",
+              "items":{
+                "type":"integer",
+                "minimum":-100,
+                "maximum":100,
+                "minItems":3,
+                "maxItems":3
+              }
+            },
+            "hightoneLevels":{
+              "type":"array",
+              "description":"Array of 3 ints",
+              "items":{
+                "type":"integer",
+                "minimum":-100,
+                "maximum":100,
+                "minItems":3,
+                "maxItems":3
+              }
+            }
+          }
+        }
+      }
+    },
+    "bounds":{
+      "type": "object",
+      "minProperties": 1,
+      "description": "The bounds of the layer.",
+      "properties": {
+        "height": {
+          "type": "number",
+          "description": "in pixels",
+          "minimum": 4.00,
+          "maximum": 32000.00
+        },
+        "left": {
+          "type": "integer",
+          "description": "in pixels"
+        },
+        "top": {
+          "type": "integer",
+          "description": "in pixels"
+        },
+        "width": {
+          "type": "number",
+          "description": "in pixels",
+          "minimum": 4.00,
+          "maximum": 32000.00
+        }
+      }
+    },
+    "children": {
+      "type": "array",
+      "minItems": 1,
+      "description": "An array of nested layer objects. Only layerSections (group layers) can include children"
+    },
+    "id": {
+      "type": "integer",
+      "description": "The layer id",
+      "example": 110
+    },
+    "index": {
+      "type": "integer",
+      "description": "The z-index",
+      "example": 1
+    },
+    "locked": {
+      "type": "boolean",
+      "description": "Is the layer editable",
+      "example": false
+    },
+    "mask": {
+      "type": "object",
+      "minItems": 1,
+      "description": "An object describing the input mask to be added or replaced. Supported mask type is Layer Mask. The input file must be a greyscale image. Supported file types are `jpeg`, `png` and `psd`.",
+      "properties": {
+        "linked": {
+          "type": "boolean",
+          "description": "Indicates a mask is linked to the layer or not",
+          "default": true
+        },
+        "enabled": {
+          "type": "boolean",
+          "description": "Indicates a mask is enabled on that layer or not",
+          "default": true
+        },
+        "offset": {
+          "type": "object",
+          "minProperties": 1,
+          "description": "An object to specify mask offset on the layer. Any of `x` or `y` is required",
+          "properties": {
+            "x": {
+              "type": "integer",
+              "description": "Offset to indicate horizontal move of the mask",
+              "default": 0
+            },
+            "y": {
+              "type": "integer",
+              "description": "Offset to indicate vertical move of the mask",
+              "default": 0
+            }
+          }
+        },
+        "clip": {
+          "type": "boolean",
+          "description": "Indicates if this is a clipped layer. A layer can't be clipped if it is the bottommost layer, a start/end of a layer set, or if base turns out to be end of group."
+        }
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "The layer name. You can identify a layer by id or name. That makes either id or name a required field.",
+      "example": "My Layer"
+    },
+    "thumbnail": {
+      "type": "string",
+      "description": "If thumbnails were requested, a presigned GET URL to the thumbnail.",
+      "example": "My Layer"
+    },
+    "visible": {
+      "type": "boolean",
+      "description": "Is the layer visible",
+      "default": true
+    },
+    "smart_object": {
+      "type": "object",
+      "minItems": 1,
+      "description": "Indicates the attributes to create or edit a smart object layer",
+      "properties": {
+        "linked": {
+          "type": "boolean",
+          "description": "Indicates if the smart object is a linked smart object or an embedded smart object",
+          "default": "false"
+        },
+        "name":{
+          "type": "string",
+          "description": "Name of the embedded or linked smart object. Currently we support Embedded Smart Object only.",
+          "example":"AdobeStock_30356686.jpeg"
+        },
+        "type": {
+          "type": "string",
+          "description": "Desired image format for the smart object.",
+          "example": "image/jpeg"
+        },
+        "path": {
+          "type": "string",
+          "description": "Attribute for only Linked Smart Object. Indicates the relative path for the Linked Smart Object."
+        },
+        "instanceId": {
+          "type": "string",
+          "description": "Attribute for only Embedded Smart Object. Indicates instance id of this embedded smart object. This id is unique for different smart object instances. InstanceId may have value as `unknown`, if the embedded smart object is generated using any other application than adobe applications like PS, Lr etc. We are deriving the value 'InstanceID' from the RAW Data of the document.",
+          "example": "9639B6991344E0118B78ABF2481BBFE2"
+        }
+      }
+    },
+    "fill": {
+      "type": "object",
+      "minItems": 1,
+      "minProperties": 1,
+      "description": "An object describing the attributes specific to creating or editing a fill layer.",
+      "properties": {
+        "solidColor": {
+          "type": "object",
+          "description": "An object describing the solid color fill for this fill layer. Currently supported mode is RGB only.",
+          "minProperties": 1,
+          "properties": {
+            "rgb": {
+              "type": "object",
+              "minProperties": 1,
+              "description": "Color in 8 bit rgb format",
+              "properties": {
+                "red": {
+                  "type": "integer",
+                  "description": "The color red value",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                "green": {
+                  "type": "integer",
+                  "description": "The color green value",
+                  "minimum": 0,
+                  "maximum": 255
+                },
+                "blue": {
+                  "type": "integer",
+                  "description": "The color blue value",
+                  "minimum": 0,
+                  "maximum": 255
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "text":{
+      "type":"object",
+      "description":"Supported text layer attributes.",
+      "minProperties":1,
+      "properties":{
+        "content":{
+          "type":"string",
+          "description":"The text string"
+        },
+        "characterStyles":{
+          "$ref":"#/definitions/character_styles"
+        },
+        "paragraphStyles":{
+          "$ref":"#/definitions/paragraph_styles"
+        }
+      }
+    },
+    "character_styles":{
+      "type":"array",
+      "minItems":1,
+      "description":"Array of character_style objects",
+      "items":{
+        "$ref":"#/definitions/character_style"
+      }
+    },
+    "character_style":{
+      "type":"object",
+      "description":"character style settings",
+      "minProperties": 1,
+      "properties":{
+        "from": {
+          "$ref":"#/definitions/from"
+        },
+        "to": {
+          "$ref":"#/definitions/to"
+        },
+        "fontSize": {
+          "type":"number",
+          "description":"The font size, in pixels",
+          "minimum":0.04,
+          "maximum":5400
+        },
+        "fontName": {
+          "type":"string",
+          "description":"The font's postscript name. See `https://github.com/AdobeDocs/photoshop-api-docs/blob/master/SupportedFonts.md` for the list of currently supported fonts"
+        },
+        "fontColor": {
+          "$ref":"#/definitions/fontColor"
+        },
+        "orientation": {
+          "type":"string",
+          "description":"The text's orientation",
+          "enum":[ "horizontal", "vertical" ]
+        }
+      }
+    },
+    "fontColor": {
+      "type": "object",
+      "minProperties": 1,
+      "description": "The font color settings. It can be in one of the formats `rgb`, `cmyk`, `gray`, `lab`",
+      "properties": {
+        "rgb": {
+          "type": "object",
+          "minProperties": 1,
+          "description": "fontColor in rgb format",
+          "properties": {
+            "red": {
+              "type": "integer",
+              "description": "The color red value",
+              "minimum":0,
+              "maximum":65535
+            },
+            "green": {
+              "type": "integer",
+              "description": "The color green value",
+              "minimum":0,
+              "maximum":65535
+            },
+            "blue": {
+              "type": "integer",
+              "description": "The color blue value",
+              "minimum":0,
+              "maximum":65535
+            }
+          }
+        },
+        "lab": {
+          "type": "object",
+          "minProperties": 1,
+          "description": "fontColor in lab format",
+          "properties": {
+            "luminance": {
+              "type": "integer",
+              "description": "The color luminance value",
+              "minimum":0,
+              "maximum":65535
+            },
+            "a": {
+              "type": "integer",
+              "description": "The color a value",
+              "minimum":0,
+              "maximum":65535
+            },
+            "b": {
+              "type": "integer",
+              "description": "The color b value",
+              "minimum":0,
+              "maximum":65535
+            }
+          }
+        },
+        "gray": {
+          "type": "object",
+          "minProperties": 1,
+          "description": "fontColor in gray format",
+          "properties": {
+            "gray": {
+              "type": "integer",
+              "description": "The color gray value",
+              "minimum":0,
+              "maximum":65535
+            }
+          }
+        },
+        "cmyk": {
+          "type": "object",
+          "minProperties": 1,
+          "description": "fontColor in cmyk format",
+          "properties": {
+            "cyan": {
+              "type": "integer",
+              "description": "The color cyan value",
+              "minimum":0,
+              "maximum":65535
+            },
+            "magenta": {
+              "type": "integer",
+              "description": "The color magenta value",
+              "minimum":0,
+              "maximum":65535
+            },
+            "yellowColor": {
+              "type": "integer",
+              "description": "The color yellow value",
+              "minimum":0,
+              "maximum":65535
+            },
+            "black": {
+              "type": "integer",
+              "description": "The color black value",
+              "minimum":0,
+              "maximum":65535
+            }
+          }
+        }
+      }
+    },
+    "paragraph_styles":{
+      "type":"array",
+      "minItems":1,
+      "description":"Array of paragraph_style objects",
+      "items":{
+        "$ref":"#/definitions/paragraph_style"
+      }
+    },
+    "paragraph_style":{
+      "type":"object",
+      "minProperties": 1,
+      "description":"Paragraph style settings",
+      "properties":{
+        "alignment":{
+          "type":"string",
+          "description":"The paragraph alignment",
+          "enum":[ "left", "center", "right", "justify", "justifyLeft", "justifyCenter", "justifyRight" ]
+        },
+        "from": {
+          "$ref":"#/definitions/from"
+        },
+        "to": {
+          "$ref":"#/definitions/to"
+        }
+      }
+    },
+    "from": {
+      "type":"integer",
+      "description":"The beginning of the range of characters that this characterStyle applies to. Based on initial index of 0. For example a style applied to only the first two characters would be from=0 and to=1",
+      "minimum":0
+    },
+    "to": {
+      "type":"integer",
+      "description":"The ending of the range of characters that this characterStyle applies to. Based on initial index of 0. For example a style applied to only the first two characters would be from=0 and to=1",
+      "minimum":0
+    },
+    "type": {
+      "type": "string",
+      "description": "Supported layer types.",
+      "enum": [
+        "layer",
+        "textLayer",
+        "adjustmentLayer",
+        "layerSection",
+        "smartObject",
+        "fillLayer",
+        "backgroundLayer"
+      ]
+    },
+    "blendOptions": {
+      "type": "object",
+      "description": "Blend options, including opacity and blend mode",
+      "minProperties": 1,
+      "properties": {
+        "opacity": {
+          "type": "integer",
+          "description": "opacity value",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "blendMode": {
+          "type": "string",
+          "description": "Blend mode of a layer",
+          "enum": [
+            "normal",
+            "dissolve",
+            "darken",
+            "multiply",
+            "colorBurn",
+            "linearBurn",
+            "darkerColor",
+            "lighten",
+            "screen",
+            "colorDodge",
+            "linearDodge",
+            "lighterColor",
+            "overlay",
+            "softLight",
+            "hardLight",
+            "vividLight",
+            "linearLight",
+            "pinLight",
+            "hardMix",
+            "difference",
+            "exclusion",
+            "subtract",
+            "divide",
+            "hue",
+            "saturation",
+            "color",
+            "luminosity"
+          ]
+        }
+      }
+    }
+  }
+}
