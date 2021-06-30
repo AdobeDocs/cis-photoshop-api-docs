@@ -125,7 +125,7 @@
         },
         "globalFont": {
           "type": "string",
-          "descrition": "The full postscript name of the font to be used as the global default for the document. This font will be used for any text layer which has a missing font and no other font has been specifically provided for that layer. If this font itself is missing, the option specified for manageMissingFonts from above will take effect."
+          "description": "The full postscript name of the font to be used as the global default for the document. This font will be used for any text layer which has a missing font and no other font has been specifically provided for that layer. If this font itself is missing, the option specified for manageMissingFonts from above will take effect."
         },
         "fonts": {
           "$ref": "file_input.schema.json#/definitions/input_objects",
