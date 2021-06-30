@@ -89,7 +89,6 @@
         "from": { "required": ["to"] },
         "to": { "required": ["from"] }
       },
-      "description":"Paragraph style settings",
       "properties":{
         "alignment":{
           "type":"string",
