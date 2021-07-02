@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "dev-site-documentation-template",
+  "name": "cis-photoshop-api-docs",
   "version": "1.0.0",
   "license": "Apache-2.0",
   "repository": {
@@ -8,8 +8,8 @@
     "url": "https://github.com/AdobeDocs/dev-site-product-template"
   },
   "author": {
-    "name": "Stephan Ringel",
-    "url": "https://github.com/icaraps"
+    "name": "Sudipta Khound",
+    "url": "https://github.com/khound"
   },
   "dependencies": {
     "@adobe/gatsby-theme-aio": "^3.10.0",
