@@ -59,14 +59,14 @@
             }
           },
           "else": {
-            "if" : {
+            "if": {
               "properties": {
                 "storage": {
                   "pattern": "(^cclib$)"
                 }
               }
             },
-            "then" : {
+            "then": {
               "properties": {
                 "href": {
                   "pattern": "^/?(api)/.+",
@@ -74,7 +74,7 @@
                 }
               }
             },
-            "else" : {
+            "else": {
               "properties": {
                 "href": {
                   "pattern": "^/?(files|temp|cloud-content|assets)/.+",
@@ -136,8 +136,7 @@
           "$ref": "#/definitions/children"
         }
       },
-      "allOf": [
-        {
+      "allOf": [{
           "if": {
             "properties": {
               "edit": {
@@ -147,8 +146,7 @@
                 "$ref": "#/definitions/move"
               }
             },
-            "oneOf": [
-              {
+            "oneOf": [{
                 "required": [
                   "edit"
                 ]
@@ -161,8 +159,7 @@
             ]
           },
           "then": {
-            "allOf": [
-              {
+            "allOf": [{
                 "if": {
                   "properties": {
                     "type": {
@@ -196,8 +193,7 @@
                   ]
                 },
                 "then": {
-                  "allOf": [
-                    {
+                  "allOf": [{
                       "properties": {
                         "fillToCanvas": {
                           "$ref": "#/definitions/fill_to_canvas"
@@ -222,8 +218,7 @@
                 }
               }
             ],
-            "anyOf": [
-              {
+            "anyOf": [{
                 "required": [
                   "id"
                 ]
@@ -248,8 +243,7 @@
             ]
           },
           "then": {
-            "allOf": [
-              {
+            "allOf": [{
                 "if": {
                   "properties": {
                     "type": {
@@ -277,8 +271,7 @@
                   }
                 },
                 "then": {
-                  "allOf": [
-                    {
+                  "allOf": [{
                       "properties": {
                         "fillToCanvas": {
                           "$ref": "#/definitions/fill_to_canvas"
@@ -330,8 +323,7 @@
                 "$ref": "#/definitions/name"
               }
             },
-            "anyOf": [
-              {
+            "anyOf": [{
                 "required": [
                   "id"
                 ]
@@ -355,42 +347,22 @@
       "type": "object",
       "description": "Supported adjustment layer attributes. Any of `brightnessContrast`, `exposure`, `hueSaturation` or `colorBalance` is required",
       "minProperties": 1,
-      "anyOf": [
-        {
-          "required": [
-            "brightnessContrast"
-          ]
-        },
-        {
-          "required": [
-            "exposure"
-          ]
-        },
-        {
-          "required": [
-            "hueSaturation"
-          ]
-        },
-        {
-          "required": [
-            "colorBalance"
-          ]
+      "anyOf": [{
+        "properties": {
+          "brightnessContrast": {
+            "$ref": "adjustments.schema.json#/definitions/brightness_contrast"
+          },
+          "exposure": {
+            "$ref": "adjustments.schema.json#/definitions/exposure"
+          },
+          "hueSaturation": {
+            "$ref": "adjustments.schema.json#/definitions/hue_saturation"
+          },
+          "colorBalance": {
+            "$ref": "adjustments.schema.json#/definitions/color_balance"
+          }
         }
-      ],
-      "properties": {
-        "brightnessContrast": {
-          "$ref": "adjustments.schema.json#/definitions/brightness_contrast"
-        },
-        "exposure": {
-          "$ref": "adjustments.schema.json#/definitions/exposure"
-        },
-        "hueSaturation": {
-          "$ref": "adjustments.schema.json#/definitions/hue_saturation"
-        },
-        "colorBalance": {
-          "$ref": "adjustments.schema.json#/definitions/color_balance"
-        }
-      }
+      }]
     },
     "children": {
       "type": "array",
@@ -431,127 +403,72 @@
     },
     "insertAttrs": {
       "minProperties": 1,
-      "oneOf": [
-        {
-          "required": [
-            "insertAbove"
-          ]
-        },
-        {
-          "required": [
-            "insertBelow"
-          ]
-        },
-        {
-          "required": [
-            "insertBottom"
-          ]
-        },
-        {
-          "required": [
-            "insertInto"
-          ]
-        },
-        {
-          "required": [
-            "insertTop"
-          ]
-        }
-      ],
-      "properties": {
-        "insertAbove": {
-          "type": "object",
-          "description": "Used to place the layer above another. If the layer indicated is a group layer than the layer will be inserted above the group layer. Any of `id` or `name` is required.",
-          "minProperties": 1,
-          "oneOf": [
-            {
-              "required": [
-                "id"
-              ]
-            },
-            {
-              "required": [
-                "name"
-              ]
-            }
-          ],
-          "properties": {
-            "id": {
-              "type": "integer",
-              "description": "The id of the layer you want to insert. Use either id OR name."
-            },
-            "name": {
-              "type": "string",
-              "description": "The name of the layer you want to insert . Use either id OR name"
-            }
+      "anyOf": [{
+        "properties": {
+          "insertAbove": {
+            "type": "object",
+            "description": "Used to place the layer above another. If the layer indicated is a group layer than the layer will be inserted above the group layer. Any of `id` or `name` is required.",
+            "minProperties": 1,
+            "anyOf": [{
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "The id of the layer you want to insert. Use either id OR name."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "The name of the layer you want to insert . Use either id OR name"
+                }
+              }
+            }]
+          },
+          "insertBelow": {
+            "type": "object",
+            "description": "Used to place the layer below another. If the layer indicated is a group layer than the layer will be inserted below (and outside of) the group layer. Any of `id` or `name` is required.",
+            "minProperties": 1,
+            "anyOf": [{
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "The id of the layer you want to insert. Use either id OR name."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "The name of the layer you want to insert . Use either id OR name"
+                }
+              }
+            }]
+          },
+          "insertInto": {
+            "type": "object",
+            "description": "Used to insert the layer inside of a group. Useful when you need to place a layer into an empty group.",
+            "minProperties": 1,
+            "$ref": "#/definitions/layerlocator"
+          },
+          "insertTop": {
+            "type": "boolean",
+            "description": "Indicates that the layer should be added at the top of the layer stack."
+          },
+          "insertBottom": {
+            "type": "boolean",
+            "description": "Indicates that the layer should be added at the bottom of the layer stack. If the image has a background image than the new layer will be inserted above it instead."
           }
-        },
-        "insertBelow": {
-          "type": "object",
-          "description": "Used to place the layer below another. If the layer indicated is a group layer than the layer will be inserted below (and outside of) the group layer. Any of `id` or `name` is required.",
-          "minProperties": 1,
-          "oneOf": [
-            {
-              "required": [
-                "id"
-              ]
-            },
-            {
-              "required": [
-                "name"
-              ]
-            }
-          ],
-          "properties": {
-            "id": {
-              "type": "integer",
-              "description": "The id of the layer you want to insert. Use either id OR name."
-            },
-            "name": {
-              "type": "string",
-              "description": "The name of the layer you want to insert . Use either id OR name"
-            }
-          }
-        },
-        "insertInto": {
-          "type": "object",
-          "description": "Used to insert the layer inside of a group. Useful when you need to place a layer into an empty group.",
-          "minProperties": 1,
-          "$ref": "#/definitions/layerlocator"
-        },
-        "insertTop": {
-          "type": "boolean",
-          "description": "Indicates that the layer should be added at the top of the layer stack."
-        },
-        "insertBottom": {
-          "type": "boolean",
-          "description": "Indicates that the layer should be added at the bottom of the layer stack. If the image has a background image than the new layer will be inserted above it instead."
         }
-      }
+      }]
     },
     "layerlocator": {
-      "oneOf": [
-        {
-          "required": [
-            "id"
-          ]
-        },
-        {
-          "required": [
-            "name"
-          ]
+      "anyOf": [{
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The id of the layer you want to edit or add. Use either id OR name."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the layer you want to edit or add . Use either id OR name"
+          }
         }
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "description": "The id of the layer you want to insert. Use either id OR name."
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the layer you want to insert . Use either id OR name"
-        }
-      }
+      }]
     },
     "locked": {
       "type": "boolean",
@@ -579,31 +496,21 @@
         "offset": {
           "type": "object",
           "minProperties": 1,
-          "anyOf": [
-            {
-              "required": [
-                "x"
-              ]
-            },
-            {
-              "required": [
-                "y"
-              ]
+          "anyOf": [{
+            "properties": {
+              "x": {
+                "type": "integer",
+                "description": "Offset to indicate horizontal move of the mask",
+                "default": 0
+              },
+              "y": {
+                "type": "integer",
+                "description": "Offset to indicate vertical move of the mask",
+                "default": 0
+              }
             }
-          ],
-          "description": "An object to specify mask offset on the layer. Any of `x` or `y` is required",
-          "properties": {
-            "x": {
-              "type": "integer",
-              "description": "Offset to indicate horizontal move of the mask",
-              "default": 0
-            },
-            "y": {
-              "type": "integer",
-              "description": "Offset to indicate vertical move of the mask",
-              "default": 0
-            }
-          }
+          }],
+          "description": "An object to specify mask offset on the layer. Any of `x` or `y` is required"
         },
         "clip": {
           "type": "boolean",
@@ -615,8 +522,7 @@
       "type": "object",
       "description": "Inidicates you want to move new layer identified by it's id or name. You must also indicate where you want to insert the layer by supplying one of the attributes `insertAbove`, `insertBelow`, `insertInto`, `insertTop` or `insertBottom`.",
       "minProperties": 1,
-      "oneOf": [
-        {
+      "oneOf": [{
           "required": [
             "insertAbove"
           ]
@@ -647,82 +553,52 @@
           "type": "object",
           "description": "Used to place the layer above another. If the layer indicated is a group layer than the layer will be inserted above the group layer.",
           "minProperties": 1,
-          "oneOf": [
-            {
-              "required": [
-                "id"
-              ]
-            },
-            {
-              "required": [
-                "name"
-              ]
+          "anyOf": [{
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "The id of the layer you want to insert. Use either id OR name."
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the layer you want to insert . Use either id OR name"
+              }
             }
-          ],
-          "properties": {
-            "id": {
-              "type": "integer",
-              "description": "The id of the layer you want to insert. Use either id OR name."
-            },
-            "name": {
-              "type": "string",
-              "description": "The name of the layer you want to insert . Use either id OR name"
-            }
-          }
+          }]
         },
         "insertBelow": {
           "type": "object",
           "description": "Used to place the layer below another. If the layer indicated is a group layer than the layer will be inserted below (and outside of) the group layer.",
           "minProperties": 1,
-          "oneOf": [
-            {
-              "required": [
-                "id"
-              ]
-            },
-            {
-              "required": [
-                "name"
-              ]
+          "oneOf": [{
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "The id of the layer you want to insert. Use either id OR name."
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the layer you want to insert . Use either id OR name"
+              }
             }
-          ],
-          "properties": {
-            "id": {
-              "type": "integer",
-              "description": "The id of the layer you want to insert. Use either id OR name."
-            },
-            "name": {
-              "type": "string",
-              "description": "The name of the layer you want to insert . Use either id OR name"
-            }
-          }
+          }]
         },
         "insertInto": {
           "type": "object",
           "description": "Used to insert the layer inside of a group. Useful when you need to place a layer into an empty group.",
           "minProperties": 1,
-          "oneOf": [
-            {
-              "required": [
-                "id"
-              ]
-            },
-            {
-              "required": [
-                "name"
-              ]
+          "anyOf": [{
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "The id of the layer you want to insert. Use either id OR name."
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the layer you want to insert . Use either id OR name"
+              }
             }
-          ],
-          "properties": {
-            "id": {
-              "type": "integer",
-              "description": "The id of the layer you want to insert. Use either id OR name."
-            },
-            "name": {
-              "type": "string",
-              "description": "The name of the layer you want to insert . Use either id OR name"
-            }
-          }
+          }]
         },
         "insertTop": {
           "type": "boolean",
@@ -732,10 +608,10 @@
           "type": "boolean",
           "description": "Indicates that the layer should be added at the bottom of the layer stack. If the image has a background image than the new layer will be inserted above it instead."
         },
-        "moveChildren" : {
+        "moveChildren": {
           "type": "boolean",
           "description": "If layer is a group layer than move = true the set as a unit. Otherwise an empty group is moved and any children are left where they were, ungrouped.",
-          "default" : true
+          "default": true
         }
       }
     },
@@ -744,10 +620,10 @@
       "description": "The layer name. You can identify a layer by id or name. That makes either id or name a required field.",
       "example": "My Layer"
     },
-    "visible":{
+    "visible": {
       "type": "boolean",
       "description": "Is the layer visible",
-      "default" : true
+      "default": true
     },
     "smart_object": {
       "type": "object",
@@ -771,55 +647,34 @@
           "type": "object",
           "description": "An object describing the solid color fill for this fill layer. Currently supported mode is RGB only.",
           "minProperties": 1,
-          "anyOf": [
-            {
-              "required": [
-                "rgb"
-              ]
-            }
-          ],
+          "required": ["rgb"],
           "properties": {
             "rgb": {
               "type": "object",
               "minProperties": 1,
-              "anyOf": [
-                {
-                  "required": [
-                    "red"
-                  ]
-                },
-                {
-                  "required": [
-                    "green"
-                  ]
-                },
-                {
-                  "required": [
-                    "blue"
-                  ]
+              "anyOf": [{
+                "properties": {
+                  "red": {
+                    "type": "integer",
+                    "description": "The color red value",
+                    "minimum": 0,
+                    "maximum": 255
+                  },
+                  "green": {
+                    "type": "integer",
+                    "description": "The color green value",
+                    "minimum": 0,
+                    "maximum": 255
+                  },
+                  "blue": {
+                    "type": "integer",
+                    "description": "The color blue value",
+                    "minimum": 0,
+                    "maximum": 255
+                  }
                 }
-              ],
-              "description": "Color in 8 bit rgb format",
-              "properties": {
-                "red": {
-                  "type": "integer",
-                  "description": "The color red value",
-                  "minimum": 0,
-                  "maximum": 255
-                },
-                "green": {
-                  "type": "integer",
-                  "description": "The color green value",
-                  "minimum": 0,
-                  "maximum": 255
-                },
-                "blue": {
-                  "type": "integer",
-                  "description": "The color blue value",
-                  "minimum": 0,
-                  "maximum": 255
-                }
-              }
+              }],
+              "description": "Color in 8 bit rgb format"
             }
           }
         }

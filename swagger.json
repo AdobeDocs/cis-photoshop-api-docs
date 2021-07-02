@@ -1284,7 +1284,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "./PITS/post_action_json.schema.json"
+                "$ref": "./PITS/post_photoshop_actions.schema.json"
               }
             }
           },
@@ -1637,7 +1637,7 @@
             }
           },
           {
-            "name": "jobId",
+            "name": "jobId_documentmanifest",
             "in": "path",
             "description": "The jobId to get status for.",
             "required": true,

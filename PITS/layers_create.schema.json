@@ -55,8 +55,7 @@
           "$ref": "#/definitions/fill"
         }
       },
-      "allOf": [
-        {
+      "allOf": [{
           "required": [
             "type"
           ]
@@ -73,8 +72,7 @@
             }
           },
           "then": {
-            "allOf": [
-              {
+            "allOf": [{
                 "properties": {
                   "fillToCanvas": {
                     "$ref": "#/definitions/fill_to_canvas"
@@ -109,42 +107,22 @@
       "type": "object",
       "description": "Supported adjustment layer attributes. Any of `brightnessContrast`, `exposure`, `hueSaturation` or `colorBalance` required",
       "minProperties": 1,
-      "anyOf": [
-        {
-          "required": [
-            "brightnessContrast"
-          ]
-        },
-        {
-          "required": [
-            "exposure"
-          ]
-        },
-        {
-          "required": [
-            "hueSaturation"
-          ]
-        },
-        {
-          "required": [
-            "colorBalance"
-          ]
+      "anyOf": [{
+        "properties": {
+          "brightnessContrast": {
+            "$ref": "adjustments.schema.json#/definitions/brightness_contrast"
+          },
+          "exposure": {
+            "$ref": "adjustments.schema.json#/definitions/exposure"
+          },
+          "hueSaturation": {
+            "$ref": "adjustments.schema.json#/definitions/hue_saturation"
+          },
+          "colorBalance": {
+            "$ref": "adjustments.schema.json#/definitions/color_balance"
+          }
         }
-      ],
-      "properties": {
-        "brightnessContrast": {
-          "$ref": "adjustments.schema.json#/definitions/brightness_contrast"
-        },
-        "exposure": {
-          "$ref": "adjustments.schema.json#/definitions/exposure"
-        },
-        "hueSaturation": {
-          "$ref": "adjustments.schema.json#/definitions/hue_saturation"
-        },
-        "colorBalance": {
-          "$ref": "adjustments.schema.json#/definitions/color_balance"
-        }
-      }
+      }]
     },
     "children": {
       "type": "array",
@@ -160,28 +138,18 @@
       "description": "the z-index"
     },
     "layerlocator": {
-      "oneOf": [
-        {
-          "required": [
-            "id"
-          ]
-        },
-        {
-          "required": [
-            "name"
-          ]
+      "anyOf": [{
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The id of the layer you want to insert. Use either id OR name."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the layer you want to insert . Use either id OR name"
+          }
         }
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "description": "The id of the layer you want to insert. Use either id OR name."
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the layer you want to insert . Use either id OR name"
-        }
-      }
+      }]
     },
     "locked": {
       "type": "boolean",
@@ -212,29 +180,19 @@
         "offset": {
           "type": "object",
           "minProperties": 1,
-          "anyOf": [
-            {
-              "required": [
-                "x"
-              ]
-            },
-            {
-              "required": [
-                "y"
-              ]
+          "anyOf": [{
+            "properties": {
+              "x": {
+                "type": "integer",
+                "description": "Offset to indicate horizontal move of the mask"
+              },
+              "y": {
+                "type": "integer",
+                "description": "Offset to indicate vertical move of the mask"
+              }
             }
-          ],
-          "description": "Offset settings. Any of `x` or `y` is required",
-          "properties": {
-            "x": {
-              "type": "integer",
-              "description": "Offset to indicate horizontal move of the mask"
-            },
-            "y": {
-              "type": "integer",
-              "description": "Offset to indicate vertical move of the mask"
-            }
-          }
+          }],
+          "description": "Offset settings. Any of `x` or `y` is required"
         },
         "clip": {
           "type": "boolean",
@@ -268,55 +226,34 @@
           "type": "object",
           "description": "An object describing the solid color fill for this fill layer. Currently supported mode is RGB only.",
           "minProperties": 1,
-          "anyOf": [
-            {
-              "required": [
-                "rgb"
-              ]
-            }
-          ],
+          "required": ["rgb"],
           "properties": {
             "rgb": {
               "type": "object",
               "minProperties": 1,
-              "anyOf": [
-                {
-                  "required": [
-                    "red"
-                  ]
-                },
-                {
-                  "required": [
-                    "green"
-                  ]
-                },
-                {
-                  "required": [
-                    "blue"
-                  ]
+              "anyOf": [{
+                "properties": {
+                  "red": {
+                    "type": "integer",
+                    "description": "the color red value",
+                    "minimum": 0,
+                    "maximum": 255
+                  },
+                  "green": {
+                    "type": "integer",
+                    "description": "the color green value",
+                    "minimum": 0,
+                    "maximum": 255
+                  },
+                  "blue": {
+                    "type": "integer",
+                    "description": "the color blue value",
+                    "minimum": 0,
+                    "maximum": 255
+                  }
                 }
-              ],
-              "description": "Color in 8 bit rgb format",
-              "properties": {
-                "red": {
-                  "type": "integer",
-                  "description": "the color red value",
-                  "minimum": 0,
-                  "maximum": 255
-                },
-                "green": {
-                  "type": "integer",
-                  "description": "the color green value",
-                  "minimum": 0,
-                  "maximum": 255
-                },
-                "blue": {
-                  "type": "integer",
-                  "description": "the color blue value",
-                  "minimum": 0,
-                  "maximum": 255
-                }
-              }
+              }],
+              "description": "Color in 8 bit rgb format"
             }
           }
         }

@@ -51,62 +51,8 @@
                 "description": "Inidicates you want to add a new layer. You must also indicate where you want to insert the new layer by supplying one of the attributes `insertAbove`, `insertBelow`, `insertInto`,`insertTop` or `insertBottom`. `add` block overwrites default `edit` block."
               },
               "input": {
-                "type": "object",
-                "minProperties": 1,
-                "description": "An object describing the input file to add or replace for the Embedded Smart Object layer. Edited images are replaced for exact pixel size. Currently supported filetypes includes `png`,`jpeg`,`psd`,`svg`,`ai`,`pdf`.",
-                "required": [
-                  "href",
-                  "storage"
-                ],
-                "properties": {
-                  "storage": {
-                    "$ref": "file_input.schema.json#/definitions/storage"
-                  },
-                  "href": {
-                    "$ref": "file_input.schema.json#/definitions/href"
-                  }
-                },
-                "if": {
-                  "properties": {
-                    "storage": {
-                      "pattern": "(^azure|external|dropbox$)"
-                    }
-                  }
-                },
-                "then": {
-                  "properties": {
-                    "href": {
-                      "format": "uri",
-                      "description": "A URI representing the path to the input file"
-                    }
-                  }
-                },
-                "else": {
-                  "if": {
-                    "properties": {
-                      "storage": {
-                        "pattern": "(^cclib$)"
-                      }
-                    }
-                  },
-                  "then": {
-                    "properties": {
-                      "href": {
-                        "pattern": "^/?(api)/.+",
-                        "description": "A string representing the path to the input CC Libraries file"
-                      }
-                    }
-                  },
-                  "else": {
-                    "properties": {
-                      "href": {
-                        "pattern": "^/?(files|temp|cloud-content|assets)/.+",
-                        "description": "A string representing the path to the input CC Storage file"
-                      }
-                    }
-                  }
-                }
-
+                "$ref": "file_input.schema.json#/definitions/input_object",
+                "description": "An object describing the input file to add or replace for the Embedded Smart Object layer. Edited images are replaced for exact pixel size. Currently supported filetypes includes `png`,`jpeg`,`psd`,`svg`,`ai`,`pdf`."
               },
               "bounds": {
                 "$ref": "bounds.schema.json#/definitions/bounds",
