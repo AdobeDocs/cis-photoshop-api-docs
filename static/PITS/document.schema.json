@@ -1,48 +1,50 @@
 {
-  "$schema":"http://json-schema.org/draft-07/schema#",
-  "$id":"document.schema.json",
-  "title":"a document object",
-  "description":"Document level edits. Right now supports crop and resize.",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "document.schema.json",
+  "title": "a document object",
+  "description": "Document level edits. Right now supports crop and resize.",
   "definitions": {
     "document": {
       "type": "object",
       "minProperties": 1,
-      "anyOf": [
-        {"required": ["imageSize"]},
-        {"required": ["canvasSize"]},
-        {"required": ["trim"]}
-      ],
-      "properties":{
-        "imageSize": {
-          "$ref": "#/definitions/imageSize"
-        },
-        "canvasSize": {
-          "$ref": "#/definitions/canvasSize"
-        },
-        "trim": {
-          "$ref": "#/definitions/trim"
+      "description": "Set of document level edits. Document level edits will always be applied AFTER layer level edits have been performed.",
+      "anyOf": [{
+        "properties": {
+          "imageSize": {
+            "$ref": "#/definitions/imageSize"
+          },
+          "canvasSize": {
+            "$ref": "#/definitions/canvasSize"
+          },
+          "trim": {
+            "$ref": "#/definitions/trim"
+          }
         }
-      }
+      }]
     },
     "trim": {
       "type": "object",
       "minProperties": 1,
       "required": ["basedOn"],
-      "description": "trim parameters",
+      "description": "Image trim parameters.",
       "properties": {
         "basedOn": {
           "type": "string",
           "description": "what pixels should the trim be based on",
-          "enum":["transparentPixels"]
+          "enum": ["transparentPixels"]
         }
       }
     },
     "imageSize": {
       "type": "object",
       "minProperties": 1,
-      "allOf": [
-        {"required": ["height"]},
-        {"required": ["width"]}
+      "description": "Resize parameters. resizing a PSD always maintains the original aspect ratio by default. If the new width & height values specified in the parameters does not match the original aspect ratio, then the specified height will not be used and the height will be determined automatically.",
+      "allOf": [{
+          "required": ["height"]
+        },
+        {
+          "required": ["width"]
+        }
       ],
       "properties": {
         "height": {
@@ -58,40 +60,37 @@
     "canvasSize": {
       "type": "object",
       "minProperties": 1,
+      "description": "Crop parameters",
       "required": ["bounds"],
       "properties": {
-        "bounds":{
+        "bounds": {
           "type": "object",
           "description": "The bounds to crop a document",
-    			"minProperties": 1,
-          "anyOf": [
-            {"required": ["top"]},
-            {"required": ["left"]},
-            {"required": ["bottom"]},
-            {"required": ["right"]}
-          ],
-          "properties": {
-            "top": {
-              "type": "integer",
-              "minimum":0,
-              "description": "in pixels"
-            },
-            "left": {
-              "type": "integer",
-              "minimum":0,
-              "description": "in pixels"
-            },
-            "bottom": {
-              "type": "integer",
-              "minimum":0,
-              "description": "in pixels"
-            },
-            "right": {
-              "type": "integer",
-              "minimum":0,
-              "description": "in pixels"
+          "minProperties": 1,
+          "anyOf": [{
+            "properties": {
+              "top": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "in pixels, y co-ordinate of top left of the document"
+              },
+              "left": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "in pixels, x co-ordinate top left of the document"
+              },
+              "bottom": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "in pixels, y co-ordinate of bottom right of the document"
+              },
+              "right": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "in pixels, x co-ordinate bottom right of the document"
+              }
             }
-          }
+          }]
         }
       }
     }

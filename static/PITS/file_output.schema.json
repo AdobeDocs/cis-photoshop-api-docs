@@ -66,8 +66,8 @@
       "description": "If the renditions needs to be of Canvas size. True, trims the renditions to Canvas size, while false makes the renditions to Layer Size",
       "type": "boolean",
       "enum": [
-        "true",
-        "false"
+        true,
+        false
       ],
       "default": false
     },
@@ -328,26 +328,17 @@
       "minProperties": 1,
       "items": {
         "anyOf": [{
-            "required": [
-              "id"
-            ]
-          },
-          {
-            "required": [
-              "name"
-            ]
+          "properties": {
+            "id": {
+              "type": "integer",
+              "description": "The layer id"
+            },
+            "name": {
+              "type": "string",
+              "description": "The layer name"
+            }
           }
-        ],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "The layer id"
-          },
-          "name": {
-            "type": "string",
-            "description": "The layer name"
-          }
-        }
+        }]
       }
     },
     "output_objects": {
