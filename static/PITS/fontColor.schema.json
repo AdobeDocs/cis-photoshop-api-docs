@@ -9,150 +9,111 @@
       "minProperties": 1,
       "description": "The font color settings. It can be in one of the formats `rgb`, `cmyk`, `gray`, `lab`",
       "anyOf": [{
-          "required": ["rgb"]
-        },
-        {
-          "required": ["lab"]
-        },
-        {
-          "required": ["gray"]
-        },
-        {
-          "required": ["cmyk"]
-        }
-      ],
-      "properties": {
-        "rgb": {
-          "type": "object",
-          "minProperties": 1,
-          "anyOf": [{
-              "required": ["red"]
-            },
-            {
-              "required": ["green"]
-            },
-            {
-              "required": ["blue"]
+        "properties": {
+          "rgb": {
+            "type": "object",
+            "minProperties": 1,
+            "anyOf": [{
+              "properties": {
+                "red": {
+                  "type": "integer",
+                  "description": "The color red value",
+                  "minimum": 0,
+                  "maximum": 65535
+                },
+                "green": {
+                  "type": "integer",
+                  "description": "The color green value",
+                  "minimum": 0,
+                  "maximum": 65535
+                },
+                "blue": {
+                  "type": "integer",
+                  "description": "The color blue value",
+                  "minimum": 0,
+                  "maximum": 65535
+                }
+              }
+            }],
+            "description": "fontColor in rgb format"
+          },
+          "lab": {
+            "type": "object",
+            "minProperties": 1,
+            "anyOf": [{
+              "properties": {
+                "luminance": {
+                  "type": "integer",
+                  "description": "The color luminance value",
+                  "minimum": 0,
+                  "maximum": 65535
+                },
+                "a": {
+                  "type": "integer",
+                  "description": "The color a value",
+                  "minimum": 0,
+                  "maximum": 65535
+                },
+                "b": {
+                  "type": "integer",
+                  "description": "The color b value",
+                  "minimum": 0,
+                  "maximum": 65535
+                }
+              }
+            }],
+            "description": "fontColor in lab format"
+          },
+          "gray": {
+            "type": "object",
+            "minProperties": 1,
+            "required": ["gray"],
+            "description": "fontColor in gray format",
+            "properties": {
+              "gray": {
+                "type": "integer",
+                "description": "The color gray value",
+                "minimum": 0,
+                "maximum": 65535
+              }
             }
-          ],
-          "description": "fontColor in rgb format",
-          "properties": {
-            "red": {
-              "type": "integer",
-              "description": "The color red value",
-              "minimum":0,
-              "maximum":65535
-            },
-            "green": {
-              "type": "integer",
-              "description": "The color green value",
-              "minimum":0,
-              "maximum":65535
-            },
-            "blue": {
-              "type": "integer",
-              "description": "The color blue value",
-              "minimum":0,
-              "maximum":65535
-            }
-          }
-        },
-        "lab": {
-          "type": "object",
-          "minProperties": 1,
-          "anyOf": [{
-              "required": ["luminance"]
-            },
-            {
-              "required": ["a"]
-            },
-            {
-              "required": ["b"]
-            }
-          ],
-          "description": "fontColor in lab format",
-          "properties": {
-            "luminance": {
-              "type": "integer",
-              "description": "The color luminance value",
-              "minimum":0,
-              "maximum":65535
-            },
-            "a": {
-              "type": "integer",
-              "description": "The color a value",
-              "minimum":0,
-              "maximum":65535
-            },
-            "b": {
-              "type": "integer",
-              "description": "The color b value",
-              "minimum":0,
-              "maximum":65535
-            }
-          }
-        },
-        "gray": {
-          "type": "object",
-          "minProperties": 1,
-          "anyOf": [{
-            "required": ["gray"]
-          }],
-          "description": "fontColor in gray format",
-          "properties": {
-            "gray": {
-              "type": "integer",
-              "description": "The color gray value",
-              "minimum":0,
-              "maximum":65535
-            }
-          }
-        },
-        "cmyk": {
-          "type": "object",
-          "minProperties": 1,
-          "anyOf": [{
-              "required": ["cyan"]
-            },
-            {
-              "required": ["magenta"]
-            },
-            {
-              "required": ["yellowColor"]
-            },
-            {
-              "required": ["black"]
-            }
-          ],
-          "description": "fontColor in cmyk format",
-          "properties": {
-            "cyan": {
-              "type": "integer",
-              "description": "The color cyan value",
-              "minimum":0,
-              "maximum":65535
-            },
-            "magenta": {
-              "type": "integer",
-              "description": "The color magenta value",
-              "minimum":0,
-              "maximum":65535
-            },
-            "yellowColor": {
-              "type": "integer",
-              "description": "The color yellow value",
-              "minimum":0,
-              "maximum":65535
-            },
-            "black": {
-              "type": "integer",
-              "description": "The color black value",
-              "minimum":0,
-              "maximum":65535
-            }
+          },
+          "cmyk": {
+            "type": "object",
+            "minProperties": 1,
+            "anyOf": [{
+                "properties": {
+                  "cyan": {
+                    "type": "integer",
+                    "description": "The color cyan value",
+                    "minimum": 0,
+                    "maximum": 65535
+                  },
+                  "magenta": {
+                    "type": "integer",
+                    "description": "The color magenta value",
+                    "minimum": 0,
+                    "maximum": 65535
+                  },
+                  "yellowColor": {
+                    "type": "integer",
+                    "description": "The color yellow value",
+                    "minimum": 0,
+                    "maximum": 65535
+                  },
+                  "black": {
+                    "type": "integer",
+                    "description": "The color black value",
+                    "minimum": 0,
+                    "maximum": 65535
+                  }
+                }
+              }
+            ],
+            "description": "fontColor in cmyk format"
           }
         }
-      }
+      }]
     }
   }
 }

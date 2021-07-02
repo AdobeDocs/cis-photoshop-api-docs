@@ -1,117 +1,119 @@
 {
-  "$schema":"http://json-schema.org/draft-07/schema#",
-  "$id":"text.schema.json",
-  "title":"a text object",
-  "description":"text layer attributes",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "text.schema.json",
+  "title": "a text object",
+  "description": "text layer attributes",
   "definitions": {
-    "text":{
-      "type":"object",
-      "definition":"Supported text layer attributes.",
-      "minProperties":1,
-      "properties":{
-        "content":{
-          "type":"string",
-          "description":"The text string"
+    "text": {
+      "type": "object",
+      "definition": "Supported text layer attributes.",
+      "minProperties": 1,
+      "properties": {
+        "content": {
+          "type": "string",
+          "description": "The text string"
         },
-        "characterStyles":{
-          "$ref":"#/definitions/character_styles"
+        "characterStyles": {
+          "$ref": "#/definitions/character_styles"
         },
-        "paragraphStyles":{
-          "$ref":"#/definitions/paragraph_styles"
+        "paragraphStyles": {
+          "$ref": "#/definitions/paragraph_styles"
         }
       }
     },
-    "character_styles":{
-      "type":"array",
-      "minItems":1,
-      "description":"Array of character_style objects",
-      "items":{
-        "$ref":"#/definitions/character_style"
+    "character_styles": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Array of character_style objects",
+      "items": {
+        "$ref": "#/definitions/character_style"
       }
     },
-    "character_style":{
-      "type":"object",
-      "description":"character style settings",
+    "character_style": {
+      "type": "object",
+      "description": "character style settings",
       "minProperties": 1,
-      "anyOf": [
-        {"required": ["fontSize"]},
-        {"required": ["fontName"]},
-        {"required": ["fontColor"]},
-        {"required": ["orientation"]}
-      ],
+      "anyOf": [{
+        "properties": {
+          "from": {
+            "$ref": "#/definitions/from"
+          },
+          "to": {
+            "$ref": "#/definitions/to"
+          },
+          "fontSize": {
+            "type": "number",
+            "description": "The font size, in pixels",
+            "minimum": 0.04,
+            "maximum": 5400
+          },
+          "fontName": {
+            "type": "string",
+            "description": "The font's postscript name. See `https://github.com/AdobeDocs/photoshop-api-docs/blob/master/SupportedFonts.md` for the list of currently supported fonts"
+          },
+          "fontColor": {
+            "$ref": "fontColor.schema.json#/definitions/fontColor"
+          },
+          "orientation": {
+            "type": "string",
+            "description": "The text's orientation",
+            "enum": ["horizontal", "vertical"]
+          }
+        }
+      }],
       "dependencies": {
-        "from": { "required": ["to"] },
-        "to": { "required": ["from"] }
-      },
-      "properties":{
         "from": {
-          "$ref":"#/definitions/from"
+          "required": ["to"]
         },
         "to": {
-          "$ref":"#/definitions/to"
-        },
-        "fontSize": {
-          "type":"number",
-          "description":"The font size, in pixels",
-          "minimum":0.04,
-          "maximum":5400
-        },
-        "fontName": {
-          "type":"string",
-          "description":"The font's postscript name. See `https://github.com/AdobeDocs/photoshop-api-docs/blob/master/SupportedFonts.md` for the list of currently supported fonts"
-        },
-        "fontColor": {
-          "$ref":"fontColor.schema.json#/definitions/fontColor"
-        },
-        "orientation": {
-          "type":"string",
-          "description":"The text's orientation",
-          "enum":[ "horizontal", "vertical" ]
+          "required": ["from"]
         }
       }
     },
-    "paragraph_styles":{
-      "type":"array",
-      "minItems":1,
-      "description":"Array of paragraph_style objects",
-      "items":{
-        "$ref":"#/definitions/paragraph_style"
+    "paragraph_styles": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Array of paragraph_style objects",
+      "items": {
+        "$ref": "#/definitions/paragraph_style"
       }
     },
-    "paragraph_style":{
-      "type":"object",
-      "description":"Array of paragraph_style object. `alignment` is required.",
+    "paragraph_style": {
+      "type": "object",
+      "description": "Array of paragraph_style object. `alignment` is required.",
       "minProperties": 1,
-      "anyOf": [
-        {"required": ["alignment"]}
-      ],
+      "required": ["alignment"],
       "dependencies": {
-        "from": { "required": ["to"] },
-        "to": { "required": ["from"] }
-      },
-      "properties":{
-        "alignment":{
-          "type":"string",
-          "description":"The paragraph alignment",
-          "enum":[ "left", "center", "right", "justify", "justifyLeft", "justifyCenter", "justifyRight" ]
-        },
         "from": {
-          "$ref":"#/definitions/from"
+          "required": ["to"]
         },
         "to": {
-          "$ref":"#/definitions/to"
+          "required": ["from"]
+        }
+      },
+      "properties": {
+        "alignment": {
+          "type": "string",
+          "description": "The paragraph alignment",
+          "enum": ["left", "center", "right", "justify", "justifyLeft", "justifyCenter", "justifyRight"]
+        },
+        "from": {
+          "$ref": "#/definitions/from"
+        },
+        "to": {
+          "$ref": "#/definitions/to"
         }
       }
     },
     "from": {
-      "type":"integer",
-      "description":"The beginning of the range of characters that this characterStyle applies to. Based on initial index of 0. For example a style applied to only the first two characters would be from=0 and to=1",
-      "minimum":0
+      "type": "integer",
+      "description": "The beginning of the range of characters that this characterStyle applies to. Based on initial index of 0. For example a style applied to only the first two characters would be from=0 and to=1",
+      "minimum": 0
     },
     "to": {
-      "type":"integer",
-      "description":"The ending of the range of characters that this characterStyle applies to. Based on initial index of 0. For example a style applied to only the first two characters would be from=0 and to=1",
-      "minimum":0
+      "type": "integer",
+      "description": "The ending of the range of characters that this characterStyle applies to. Based on initial index of 0. For example a style applied to only the first two characters would be from=0 and to=1",
+      "minimum": 0
     }
   }
 }
