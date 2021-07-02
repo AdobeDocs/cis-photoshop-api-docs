@@ -28,61 +28,8 @@
           "$ref": "bounds.schema.json#/definitions/bounds"
         },
         "input": {
-          "type": "object",
-          "minProperties": 1,
-          "description": "An object describing the input file to add or replace for a Pixel or Embedded Smart Object layer. Supported image types are PNG or JPEG.",
-          "required": [
-            "href",
-            "storage"
-          ],
-          "properties": {
-            "storage": {
-              "$ref": "file_input.schema.json#/definitions/storage"
-            },
-            "href": {
-              "$ref": "file_input.schema.json#/definitions/href"
-            }
-          },
-          "if": {
-            "properties": {
-              "storage": {
-                "pattern": "(^azure|external|dropbox$)"
-              }
-            }
-          },
-          "then": {
-            "properties": {
-              "href": {
-                "format": "uri",
-                "description": "A URI representing the path to the input file"
-              }
-            }
-          },
-          "else": {
-            "if": {
-              "properties": {
-                "storage": {
-                  "pattern": "(^cclib$)"
-                }
-              }
-            },
-            "then": {
-              "properties": {
-                "href": {
-                  "pattern": "^/?(api)/.+",
-                  "description": "A string representing the path to the input CC Libraries file"
-                }
-              }
-            },
-            "else": {
-              "properties": {
-                "href": {
-                  "pattern": "^/?(files|temp|cloud-content|assets)/.+",
-                  "description": "A string representing the path to the input CC Storage file"
-                }
-              }
-            }
-          }
+          "$ref": "file_input.schema.json#/definitions/input_object",
+          "description": "An object describing the input file to add or replace for a Pixel or Embedded Smart Object layer. Supported image types are PNG or JPEG."
         },
         "locked": {
           "$ref": "#/definitions/locked"
@@ -522,98 +469,7 @@
       "type": "object",
       "description": "Inidicates you want to move new layer identified by it's id or name. You must also indicate where you want to insert the layer by supplying one of the attributes `insertAbove`, `insertBelow`, `insertInto`, `insertTop` or `insertBottom`.",
       "minProperties": 1,
-      "oneOf": [{
-          "required": [
-            "insertAbove"
-          ]
-        },
-        {
-          "required": [
-            "insertBelow"
-          ]
-        },
-        {
-          "required": [
-            "insertBottom"
-          ]
-        },
-        {
-          "required": [
-            "insertInto"
-          ]
-        },
-        {
-          "required": [
-            "insertTop"
-          ]
-        }
-      ],
-      "properties": {
-        "insertAbove": {
-          "type": "object",
-          "description": "Used to place the layer above another. If the layer indicated is a group layer than the layer will be inserted above the group layer.",
-          "minProperties": 1,
-          "anyOf": [{
-            "properties": {
-              "id": {
-                "type": "integer",
-                "description": "The id of the layer you want to insert. Use either id OR name."
-              },
-              "name": {
-                "type": "string",
-                "description": "The name of the layer you want to insert . Use either id OR name"
-              }
-            }
-          }]
-        },
-        "insertBelow": {
-          "type": "object",
-          "description": "Used to place the layer below another. If the layer indicated is a group layer than the layer will be inserted below (and outside of) the group layer.",
-          "minProperties": 1,
-          "oneOf": [{
-            "properties": {
-              "id": {
-                "type": "integer",
-                "description": "The id of the layer you want to insert. Use either id OR name."
-              },
-              "name": {
-                "type": "string",
-                "description": "The name of the layer you want to insert . Use either id OR name"
-              }
-            }
-          }]
-        },
-        "insertInto": {
-          "type": "object",
-          "description": "Used to insert the layer inside of a group. Useful when you need to place a layer into an empty group.",
-          "minProperties": 1,
-          "anyOf": [{
-            "properties": {
-              "id": {
-                "type": "integer",
-                "description": "The id of the layer you want to insert. Use either id OR name."
-              },
-              "name": {
-                "type": "string",
-                "description": "The name of the layer you want to insert . Use either id OR name"
-              }
-            }
-          }]
-        },
-        "insertTop": {
-          "type": "boolean",
-          "description": "Indicates that the layer should be added at the top of the layer stack."
-        },
-        "insertBottom": {
-          "type": "boolean",
-          "description": "Indicates that the layer should be added at the bottom of the layer stack. If the image has a background image than the new layer will be inserted above it instead."
-        },
-        "moveChildren": {
-          "type": "boolean",
-          "description": "If layer is a group layer than move = true the set as a unit. Otherwise an empty group is moved and any children are left where they were, ungrouped.",
-          "default": true
-        }
-      }
+      "$ref": "#/definitions/insertAttrs"
     },
     "name": {
       "type": "string",
