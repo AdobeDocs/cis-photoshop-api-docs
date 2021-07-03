@@ -19,17 +19,27 @@
           "minItems": 1,
           "items": {
             "type": "object",
-            "oneOf": [{
-                "required": [
-                  "id"
-                ]
+            "allOf": [{
+              "properties": {
+                "id": {
+                  "$ref": "layers.schema.json#/definitions/id"
+                },
+                "name": {
+                  "$ref": "layers.schema.json#/definitions/name"
+                }
               },
-              {
-                "required": [
-                  "name"
-                ]
-              }
-            ],
+              "anyOf": [{
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "required": [
+                    "name"
+                  ]
+                }
+              ]
+            }],
             "required": [
               "input"
             ],
