@@ -4,29 +4,35 @@
   "title": "post_photoshop_actions",
   "description": "Initiates an asynchronous job to play Photoshop Actions",
   "type": "object",
-  "required": [
-    "inputs",
-    "options",
-    "outputs"
-  ],
+  "required": ["inputs", "options", "outputs"],
   "properties": {
     "inputs": {
       "$ref": "file_input.schema.json#/definitions/input_objects_max_1"
     },
     "options": {
       "type": "object",
-      "oneOf": [
-        {
-          "required": [
-            "actions"
-          ]
+      "minProperties": 1,
+      "allOf": [{
+        "properties": {
+          "actions": {
+            "$ref": "file_input.schema.json#/definitions/input_objects_action"
+          },
+          "uxp": {
+            "$ref": "file_input.schema.json#/definitions/input_objects"
+          }
         },
-        {
-          "required": [
-            "uxp"
-          ]
-        }
-      ],
+        "anyOf": [{
+            "required": [
+              "actions"
+            ]
+          },
+          {
+            "required": [
+              "uxp"
+            ]
+          }
+        ]
+      }],
       "properties": {
         "actions": {
           "$ref": "file_input.schema.json#/definitions/input_objects_action",
@@ -47,7 +53,7 @@
       }
     },
     "outputs": {
-      "$ref": "file_output_pegasus.schema.json#/definitions/output_objects"
+      "$ref": "file_output.schema.json#/definitions/output_objects_smart_object"
     }
   }
 }
