@@ -519,7 +519,7 @@ curl -X GET \
 ```
 ### Example 13: Poll for job status for documentManifest
 
-Once your job completes successfully (no errors/failures reported), the status response will contain your document's JSON manifest along with other metadata about the input document. The JSON Manifest is further described in the [api docs](https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Photoshop-document-manifest-status)
+Once your job completes successfully (no errors/failures reported), the status response will contain your document's JSON manifest along with other metadata about the input document. The JSON Manifest is further described in the [api docs](../api/#operation/pitsstatus)
 
 ```json
 {

@@ -9,7 +9,7 @@ This is a list of currently supported features.  Please also see the [Release No
 
 ## Photoshop
 
-The API's are documented at [https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Lightroom](https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Photoshop)
+The API's are documented at [Photoshop API](../api/#tag/Photoshop)
 
 ### SmartObject
 
@@ -21,7 +21,7 @@ The Photoshop APIs currently support creating and editing of Embedded Smart Obje
 
 - If your document contains transparent pixels (e.g some .png) for the smart object layer, you may not get consistent bounds.
 
-The API's are documented [here](https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Photoshop-document_operations).
+The API's are documented [here](../api/#operation/smartObject).
 We also have an example of replacing a Smart Object within a layer.
 [Smart Object Example Code](../code-sample/#example-1-smartobject).
 For better performance, we rasterize our smart objects that are bigger than  2000 pixels * 2000 pixels.
@@ -37,7 +37,7 @@ The Photoshop API currently support creating and editing of Text Layer with diff
 - Edit the text orientation (horizontal/vertical)
 - Edit the paragraph alignment (left, center, right, justify, justifyLeft, justifyCenter, justifyRight)
 
-The API's are documented [here](https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Photoshop-document_operations)
+The API's are documented [here](../api/#operation/documentOperations)
 
 We also have an example of making a simple text layer edit.
 
@@ -90,7 +90,7 @@ Here is an example usage of `manageMissingFonts` and `globalFont`. [Handle missi
 ### Photoshop Actions(`New!`)
 #### Execute Photoshop Actions
 
-Adobe Photoshop APIs supports playing back Photoshop Actions recorded from Photoshop.  <a href="https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Photoshop-photoshopActions" target="_blank">Click here to see API documentation</a>
+Adobe Photoshop APIs supports playing back Photoshop Actions recorded from Photoshop. The API's are documented [here](../api/#operation/photoshopActions)
 
 An action is a series of tasks that you play back on a single file or a batch of files—menu commands, panel options, tool actions, and so on. For example, you can create an action that changes the size of an image, applies an effect to the image, and then saves the file in the desired format.
 
@@ -167,19 +167,19 @@ Here are some examples of making various layer level edits.
 
 
 ## Lightroom
-The API's are documented at [https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Lightroom](https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Lightroom)
+The API's are documented at [Lightroom API](../api/#tag/Lightroom)
 
 ### AutoTone
 
-Automatically tone an image to correct exposure/contrast/sharpness/etc
+Automatically tone an image to correct exposure/contrast/sharpness/etc. Code example [here](../code-sample/#example-1-autotone-an-image)
 
 ### AutoStraighten
 
-Applies the Auto Upright transformation on an image
+Applies the Auto Upright transformation on an image. Code example [here](../code-sample/#example-2-autostraighten-an-image)
 
 ### Presets
 
-Apply one or more XMP Lightroom presets to an image, by referencing preset file(s) stored on cloud.
+Apply one or more XMP Lightroom presets to an image, by referencing preset file(s) stored on cloud. Code example [here](../code-sample/#example-3--apply-presets-to-an-image)
 The preset file can be created by editing an image in lightroom and exporting it as a `.xmp` file.
 The details on how to create a preset can be found [here](https://helpx.adobe.com/lightroom-cc/how-to/photo-presets-lightroom-cc.html).
 If the use case would be to be able to create an `.xmp` file from a set of slider values obtained directly from a user, there are 2 ways to achieve this workflow:
@@ -188,10 +188,10 @@ If the use case would be to be able to create an `.xmp` file from a set of slide
 
 ### Edit
 
-Apply one or more Lightroom edits to an image.
+Apply one or more Lightroom edits to an image. Code example [here](../code-sample/#example-4-apply-edits-to-an-image)
 
 ### XMP
-Apply a Lightroom preset to an image, by passing in the preset XMP contents inline through the API.
+Apply a Lightroom preset to an image, by passing in the preset XMP contents inline through the API. Code example [here](../code-sample/#example-5-apply-xmp-to-an-image)
 
 ## Sensei
 These are the APIs powered by Sensei, Adobe’s Artificial Intelligence Technology, and Photoshop. The API's can identify the main subject of an image and produce two types of outputs. You can create a greyscale [mask](https://en.wikipedia.org/wiki/Layers_(digital_image_editing)#Layer_mask) png file that you can composite onto the original image (or any other).  You can also create a cutout where the mask has already composited onto your original image so that everything except the main subject has been removed.
@@ -201,7 +201,7 @@ These are the APIs powered by Sensei, Adobe’s Artificial Intelligence Technolo
 | :-------------: |:-------------:| :-----:|
 | ![alt image](./sensei_orig.jpg?raw=true "Original Image") | ![alt image](./sensei_mask.png?raw=true "Mask")| ![alt image](./sensei_cutout.png?raw=true "Original Image")|
 
-The API's are documented at [Image Cutout API Reference](https://adobedocs.github.io/photoshop-api-docs-pre-release/#api-Sensei)
+The API's are documented at [Sensei API Reference](../api/#tag/Sensei)
 
 ### Image Cutout
 

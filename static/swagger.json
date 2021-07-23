@@ -20,7 +20,7 @@
       "description": "APIs powered by Lightroom"
     },
     {
-      "name": "Image Cutout",
+      "name": "Sensei",
       "description": "APIs powered by Sensei"
     }
   ],
@@ -692,7 +692,7 @@
     "/sensei/cutout": {
       "post": {
         "tags": [
-          "Image Cutout"
+          "Sensei"
         ],
         "summary": "Create Image Cutout",
         "description": " Generates a PNG file in 4 channel RGBA format with the generated cutout mask \\\n applied to the input image generate a PNG file in 4 channel RGBA format with the generated cutout \\\n mask applied to the input image.\nTo get status of this job, call [Status API](/api/#operation/icstatus).",
@@ -811,7 +811,7 @@
     "/sensei/mask": {
       "post": {
         "tags": [
-          "Image Cutout"
+          "Sensei"
         ],
         "summary": "Create Mask",
         "description": " Generates a mask PNG.\nTo get status of this job, call [Status API](/api/#operation/icstatus).",
@@ -930,7 +930,7 @@
     "/sensei/status/{jobId}": {
       "get": {
         "tags": [
-          "Image Cutout"
+          "Sensei"
         ],
         "summary": "Get the status of a job.",
         "description": "Returns the status of a job.",
