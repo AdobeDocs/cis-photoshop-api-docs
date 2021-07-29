@@ -167,7 +167,10 @@ Here are some examples of making various layer level edits.
 
 
 ## Lightroom
-The API's are documented at [Lightroom API](../api/#tag/Lightroom)
+The API's are documented at [Lightroom API](../api/#tag/Lightroom).
+Any input image format that is supported by Lightroom is also supported by the APIs. To look at the list of these formats in more detail, please refer to: https://helpx.adobe.com/lightroom-classic/help/supported-file-formats.html
+
+At this point the output formats supported are JPG, DNG and PNG.
 
 ### AutoTone
 
