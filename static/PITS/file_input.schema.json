@@ -7,8 +7,7 @@
     "href": {
       "description": "Either a presignedGETURL OR a Creative Cloud assets path for storage='adobe'.",
       "type": "string",
-      "minLength": 1,
-      "example": "presignedURL"
+      "example" : "https://image.adobe.io/lrService/status/<:jobId>"
     },
     "storage": {
       "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox) or Adobe's cloud.",
@@ -29,7 +28,7 @@
     "input_objects_max_1": {
       "": "used when the inputs array can only contain one input object",
       "type": "array",
-      "description": "An input file to add or edit",
+      "description": "An object describing an input file. Currently supported filetypes include:`jpeg`, `png`, `psd`, `tiff`",
       "maxItems": 1,
       "items": {
         "$ref": "#/definitions/input_object"
