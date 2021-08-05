@@ -15,10 +15,20 @@
       "allOf": [{
         "properties": {
           "actions": {
-            "$ref": "file_input.schema.json#/definitions/input_objects_action"
+            "$ref": "file_input.schema.json#/definitions/input_objects_action",
+            "description": "An action object which tells the API where to download the action file"
           },
-          "uxp": {
-            "$ref": "file_input.schema.json#/definitions/input_objects"
+          "fonts": {
+            "$ref": "file_input.schema.json#/definitions/input_objects",
+            "description": "An array of font objects you wish to use when executing the action."
+          },
+          "patterns": {
+            "$ref": "file_input.schema.json#/definitions/input_objects",
+            "description": "Array of pattern objects (We currently only support one input object) An array of pattern objects you wish photoshopActions to use when playing an action that requires a custom pattern."
+          },
+          "brushes": {
+            "$ref": "file_input.schema.json#/definitions/input_objects",
+            "description": "An array of brush objects you wish to use when executing the action."
           }
         },
         "anyOf": [{
@@ -32,28 +42,10 @@
             ]
           }
         ]
-      }],
-      "properties": {
-        "actions": {
-          "$ref": "file_input.schema.json#/definitions/input_objects_action",
-          "description": "An action object which tells the API where to download the action file"
-        },
-        "fonts": {
-          "$ref": "file_input.schema.json#/definitions/input_objects",
-          "description": "An array of font objects you wish to use when executing the action."
-        },
-        "patterns": {
-          "$ref": "file_input.schema.json#/definitions/input_objects",
-          "description": "Array of pattern objects (We currently only support one input object) An array of pattern objects you wish photoshopActions to use when playing an action that requires a custom pattern."
-        },
-        "brushes": {
-          "$ref": "file_input.schema.json#/definitions/input_objects",
-          "description": "An array of brush objects you wish to use when executing the action."
-        }
-      }
+      }]
     },
     "outputs": {
-      "$ref": "file_output.schema.json#/definitions/output_objects_smart_object"
+      "$ref": "file_output_pegasus.schema.json#/definitions/output_objects"
     }
   }
 }
