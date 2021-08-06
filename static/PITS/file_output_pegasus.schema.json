@@ -133,7 +133,7 @@
     "output_objects": {
       "type": "array",
       "minLength": 1,
-      "description": "An array of hashes describing the output files. each output object will be either 'external', 'adobe', 'azure' or 'dropbox'",
+      "description": "An array of hashes describing the output files. Output file format can be any of `psd`, `jpeg`, `png`, or `tiff` and storage type can be any of `external`, `adobe`, `azure` or `dropbox`",
       "items": {
         "$ref": "#/definitions/output_object"
       }
