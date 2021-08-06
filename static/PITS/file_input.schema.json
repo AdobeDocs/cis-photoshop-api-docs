@@ -7,7 +7,8 @@
     "href": {
       "description": "Either a presignedGETURL OR a Creative Cloud assets path for storage='adobe'.",
       "type": "string",
-      "example" : "https://image.adobe.io/lrService/status/<:jobId>"
+      "minLength": 1,
+      "example": "presignedURL"
     },
     "storage": {
       "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox) or Adobe's cloud.",
