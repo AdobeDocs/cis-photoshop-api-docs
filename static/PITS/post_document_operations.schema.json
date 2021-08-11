@@ -14,7 +14,7 @@
       "$ref": "file_input.schema.json#/definitions/input_objects_max_1"
     },
     "options": {
-      "description": "Any of `layers`, `document`, `globalFont`, `fonts` or `manageMissingFonts` is required",
+      "description": "User can add/update any layer/document properties using options. Any of the `layers` or `document` is required",
       "$ref": "layer_options.schema.json#/definitions/options"
     },
     "outputs": {

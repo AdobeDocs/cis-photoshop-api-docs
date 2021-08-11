@@ -12,6 +12,7 @@
     "options": {
       "type": "object",
       "minProperties": 1,
+      "description": "User can replace smart object layers using options block ",
       "required": ["layers"],
       "properties": {
         "layers": {
@@ -21,11 +22,11 @@
             "type": "object",
             "allOf": [{
               "properties": {
-                "id": {
-                  "$ref": "layers.schema.json#/definitions/id"
-                },
                 "name": {
                   "$ref": "layers.schema.json#/definitions/name"
+                },
+                "id": {
+                  "$ref": "layers.schema.json#/definitions/id"
                 },
                 "locked": {
                   "$ref": "layers.schema.json#/definitions/locked"
@@ -48,12 +49,12 @@
               },
               "anyOf": [{
                   "required": [
-                    "id"
+                    "name"
                   ]
                 },
                 {
                   "required": [
-                    "name"
+                    "id"
                   ]
                 }
               ]

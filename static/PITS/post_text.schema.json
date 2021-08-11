@@ -7,7 +7,7 @@
     "character_styles": {
       "type": "array",
       "minItems": 1,
-      "description": "Array of character_style objects",
+      "description": "Array of character_style objects. Any of the `characterStyles` property is required.",
       "items": {
         "$ref": "#/definitions/character_style"
       }
@@ -16,21 +16,7 @@
       "type": "object",
       "description": "character style settings",
       "minProperties": 1,
-      "dependencies": {
-        "from": {
-          "required": ["to"]
-        },
-        "to": {
-          "required": ["from"]
-        }
-      },
       "properties": {
-        "from": {
-          "$ref": "text.schema.json#/definitions/from"
-        },
-        "to": {
-          "$ref": "text.schema.json#/definitions/to"
-        },
         "size": {
           "type": "number",
           "description": "The font size, in pixels",
@@ -67,21 +53,6 @@
               "description": "The color blue value",
               "minimum": 0,
               "maximum": 65535
-            }
-          }
-        },
-        "font": {
-          "type": "object",
-          "description": "Character style settings",
-          "minProperties": 1,
-          "properties": {
-            "family": {
-              "type": "string",
-              "description": "The family name of the font"
-            },
-            "style": {
-              "type": "string",
-              "description": "The font's style"
             }
           }
         },
@@ -154,7 +125,7 @@
     "paragraph_styles": {
       "type": "array",
       "minItems": 1,
-      "description": "Array of paragraph_style objects",
+      "description": "Array of paragraph_style objects. Any of the `paragraphStyles` properties is required.",
       "items": {
         "$ref": "#/definitions/paragraph_style"
       }
@@ -162,14 +133,6 @@
     "paragraph_style": {
       "type": "object",
       "minProperties": 1,
-      "dependencies": {
-        "from": {
-          "required": ["to"]
-        },
-        "to": {
-          "required": ["from"]
-        }
-      },
       "description": "Paragraph style settings",
       "properties": {
         "align": {
@@ -200,12 +163,6 @@
         "spaceAfter": {
           "type": "number",
           "description": "The amount of inspace to add after the paragraph"
-        },
-        "from": {
-          "$ref": "text.schema.json#/definitions/from"
-        },
-        "to": {
-          "$ref": "text.schema.json#/definitions/to"
         }
       },
       "additionalProperties": false
@@ -224,35 +181,40 @@
     "options": {
       "type": "object",
       "minProperties": 1,
-      "description": "Any of `layers`, `globalFont`, `fonts` or `manageMissingFonts` is required",
-      "anyOf": [{
+      "required": ["layers"],
+      "description": "User can update properties related to text layers and fonts using options block",
+      "allOf": [{
         "properties": {
           "manageMissingFonts": {
             "enum": [
               "fail",
               "useDefault"
-            ]
+            ],
+            "description": "Action to take if there are one or more missing fonts in the document. If not provided it takes the default font."
           },
           "globalFont": {
-            "type": "string"
+            "type": "string",
+            "description": "The full postscript name of the font to be used as the global default for the document. This font will be used for any text layer which has a missing font and no other font has been specifically provided for that layer. If this font itself is missing, the option specified for manageMissingFonts from above will take effect."
           },
           "fonts": {
-            "$ref": "file_input.schema.json#/definitions/input_objects"
+            "$ref": "file_input.schema.json#/definitions/input_objects",
+            "description": "An array of hashes describing the input files to edit. each input object will be either `external`, `adobe`, `azure` or `dropbox`"
           },
           "layers": {
             "type": "array",
             "minItems": 1,
+            "description": "Array of text layer objects you wish to act upon",
             "items": {
               "type": "object",
               "allOf": [{
                 "properties": {
-                  "id": {
-                    "type": "integer",
-                    "description": "The id of the layer you want to insert. Use either id OR name."
-                  },
                   "name": {
                     "type": "string",
                     "description": "The name of the layer you want to insert. Use either id OR name"
+                  },
+                  "id": {
+                    "type": "integer",
+                    "description": "The id of the layer you want to insert. Use either id OR name."
                   },
                   "bounds": {
                     "$ref": "bounds.schema.json#/definitions/bounds"
@@ -267,7 +229,7 @@
                   },
                   "text": {
                     "type": "object",
-                    "definition": "Supported text layer attributes.",
+                    "description": "Supported text layer attributes.",
                     "minProperties": 1,
                     "properties": {
                       "contents": {
@@ -303,12 +265,12 @@
               }],
               "oneOf": [{
                   "required": [
-                    "id"
+                    "name"
                   ]
                 },
                 {
                   "required": [
-                    "name"
+                    "id"
                   ]
                 }
               ]
