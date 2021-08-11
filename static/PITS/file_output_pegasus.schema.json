@@ -36,6 +36,21 @@
           "description": "if the output file already exists should it be overwritten. Will eventually support eTags",
           "type": "boolean",
           "default": true
+        },
+        "compression": {
+          "description": "Desired PNG compression level.",
+          "enum": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "type": "string"
+        },
+        "quality": {
+          "description": "desired JPEG image quality, integers range from 1 to 12",
+          "type": "number",
+          "minimum": 1,
+          "maximum": 12
         }
       },
       "allOf": [
