@@ -37,12 +37,12 @@ It enables user to
   - Text treatments such as strikethrough, underline, fontCaps
   - Character size and color
   - Line and character spacing through leading, tracking, autoKern settings
-- Paragraph properties that can be edited: align
+- All the paragraph properties are supported
 - Use custom fonts when specified through the options.fonts section in the API request body
-- Support Adobe bundled fonts as listed [here](https://github.com/AdobeDocs/photoshop-api-docs/blob/master/SupportedFonts.md)  
 
 #### Usage Recommendations
 - Ensure that the input file is a PSD and that it contains one or more text layers.
+- Please refer to [Font Handling](/features/#font-handling) and [Handle Missing Fonts](/features/#handle-missing-fonts-in-the-document) for better understanding.
 
 #### Known Limitations
 The following are known limitations for the Alpha release
