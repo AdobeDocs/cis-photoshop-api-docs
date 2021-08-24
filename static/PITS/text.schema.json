@@ -33,34 +33,32 @@
       "type": "object",
       "description": "character style settings",
       "minProperties": 1,
-      "anyOf": [{
-        "properties": {
-          "from": {
-            "$ref": "#/definitions/from"
-          },
-          "to": {
-            "$ref": "#/definitions/to"
-          },
-          "fontSize": {
-            "type": "number",
-            "description": "The font size, in pixels",
-            "minimum": 0.04,
-            "maximum": 5400
-          },
-          "fontName": {
-            "type": "string",
-            "description": "The font's postscript name. See `https://github.com/AdobeDocs/photoshop-api-docs/blob/master/SupportedFonts.md` for the list of currently supported fonts"
-          },
-          "fontColor": {
-            "$ref": "fontColor.schema.json#/definitions/fontColor"
-          },
-          "orientation": {
-            "type": "string",
-            "description": "The text's orientation",
-            "enum": ["horizontal", "vertical"]
-          }
+      "properties": {
+        "from": {
+          "$ref": "#/definitions/from"
+        },
+        "to": {
+          "$ref": "#/definitions/to"
+        },
+        "fontSize": {
+          "type": "number",
+          "description": "The font size, in pixels",
+          "minimum": 0.04,
+          "maximum": 5400
+        },
+        "fontName": {
+          "type": "string",
+          "description": "The font's postscript name. See `https://github.com/AdobeDocs/photoshop-api-docs/blob/master/SupportedFonts.md` for the list of currently supported fonts"
+        },
+        "fontColor": {
+          "$ref": "fontColor.schema.json#/definitions/fontColor"
+        },
+        "orientation": {
+          "type": "string",
+          "description": "The text's orientation",
+          "enum": ["horizontal", "vertical"]
         }
-      }],
+      },
       "dependencies": {
         "from": {
           "required": ["to"]

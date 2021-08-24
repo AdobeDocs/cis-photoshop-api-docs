@@ -784,7 +784,88 @@ curl -H "Authorization: Bearer $token" -H "x-api-key: $api_key" https://image.ad
   ]
 }'
 ```
+### Example 17: Edit Text Layers
 
+The `/text` endpoint can take an input PSD file with one or more text layers and can apply edits to it.
+
+This example shows how you can apply edits to two text layers
+
+```
+export token=<YOUR_TOKEN>
+export api_key =<YOUR_API_KEY>
+curl -H "Authorization: Bearer $token" -H "x-api-key: $api_key" https://image.adobe.io/pie/psdService/text -d '{
+  "inputs": [
+    {
+      "href": "<path_to_input_psd>",
+      "storage": "external"
+    }
+  ],
+  "options": {
+    "fonts": [{
+      "storage": "external",
+      "href": "<path_to_font>"
+    }],
+    "layers": [
+      {
+        "name": "<name_of_text_layer_1_to_edit>",
+        "text": {
+            "orientation": "horizontal",
+            "contents": "New text Contents 1",
+            "antiAlias": "antiAliasSharp",
+            "characterStyles": [{
+              "autoKern": "metricsKern",
+              "fontPostScriptName": "<font_postscript_name>",
+              "fontCaps": "allCaps",
+              "size": 25,
+              "leading": 20,
+              "tracking": 20,
+              "syntheticBold": true,
+              "ligature": true,
+              "syntheticItalic": true,
+              "color": {
+                "blue": 100,
+                "green": 200,
+                "red": 163
+              }
+            }],
+            "paragraphStyles": [{
+              "align": "right"
+            }]
+        }
+      },
+      {
+        "name": "<name_of_text_layer_2_to_edit>",
+        "text": {
+          "contents": "New text Contents 2",
+          "characterStyles": [{
+              "size": 45,
+              "stylisticAlternates": true,
+              "leading": 100,
+              "tracking": 100,
+              "baseline": "subScript",
+              "strikethrough": true,
+              "underline": true,
+              "verticalScale": 150,
+              "horizontalScale": 200,
+              "color": {
+                "blue": 300,
+                "green": 100,
+                "red": 63
+              }
+            }]
+        }
+      }
+    ]
+  },
+  "outputs": [
+    {
+      "href": "<path_to_output_psd>",
+      "type": "vnd.adobe.photoshop",
+      "storage": "external"
+    }
+  ]
+}'
+```
 
 ## Lightroom
 

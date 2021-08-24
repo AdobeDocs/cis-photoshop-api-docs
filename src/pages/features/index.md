@@ -27,65 +27,28 @@ We also have an example of replacing a Smart Object within a layer.
 For better performance, we rasterize our smart objects that are bigger than  2000 pixels * 2000 pixels.
 For optimal processing, please make sure the embedded smart object that you want to replace only contains alphanumeric characters in it's name.
 
-### Text layers
+### Text(`New!`)
 
-The Photoshop API currently support creating and editing of Text Layer with different fonts, character styles and paragraph styles. The set of text attributes that can be edited is listed below:
-- Edit the text contents
-- Change the font (See the `Fonts` section for more info)
-- Edit the font size
-- Change the font color in the following formats: rgb, cmyk, gray, lab
-- Edit the text orientation (horizontal/vertical)
-- Edit the paragraph alignment (left, center, right, justify, justifyLeft, justifyCenter, justifyRight)
+The Photoshop /text API supports editing one or more text layers from a Photoshop document. The API's are documented [here](./api/#operation/text)
 
-The API's are documented [here](../api/#operation/documentOperations)
+It enables user to
+- Format text properties such as antialias, orientation and be able to edit text contents. (Note: Changing only the text properties will not change any character/paragraph styling)
+- Some of the key character properties that can be formatted include (but not limited to):
+  - Text treatments such as strikethrough, underline, fontCaps
+  - Character size and color
+  - Line and character spacing through leading, tracking, autoKern settings
+- All the paragraph properties are supported
+- Use custom fonts when specified through the options.fonts section in the API request body
 
-We also have an example of making a simple text layer edit.
+#### Usage Recommendations
+- Ensure that the input file is a PSD and that it contains one or more text layers.
+- Please refer to [Font Handling](/features/#font-handling) and [Handle Missing Fonts](/features/#handle-missing-fonts-in-the-document) for better understanding.
 
-[Text layer Example Code](../code-sample/#example-3-making-a-text-layer-edit)
+#### Known Limitations
+The following are known limitations for the Alpha release
+- The API cannot automatically detect missing fonts in the layers. To prevent potential missing fonts from being replaced, please provide a href to the font(s) in the options.fonts section of the API. For more details on specifying custom fonts, please refer to the example section below.
 
-#### Font handling
-
-In order to be able to correctly operate on text layers in the PSD, the corresponding fonts needed for these layers will need to be available when the server is processing the PSD. These include fonts from the following cases:
-1. The font that is in the text layer being edited, but the font itself is not being changed
-2. If the font in a text layer is being changed to a new font
-
-While referencing fonts in the API request, please ensure that the correct Postscript name for that font is used. Referencing to that font with any other name will result in the API treating this as a missing font.
-
-The Photoshop APIs supports using the following category of fonts:
-- Currently Installed Fonts on the server listed [here](/features/supported-fonts/)
-- Fonts that you are authorized to access via [Adobe Fonts](https://fonts.adobe.com/fonts).
-  **Note:** Currently only available for OAuth tokens, JWT service token support is forthcoming.
-- Custom/Other Fonts: These are the fonts that are either owned by you or the ones that only you are authorized to use.
-  To use a custom font you must include an href to the font in your request. Look at the `options.fonts` section of the API docs for more information.
-  For including an href to the font in your request, please ensure the font file name to be in this format: `<font_postscript_name>.<ext>`, when it is being uploaded in your choice of storage. A sample `options.fonts` section will look like so:
-  ```json
-  {
-    "storage": "external",
-    "href": "<Storage URL to OpenSansCondensed-Light.ttf>"
-  }
-  ```
-  **Note:** This also applies to any other font present in the document which is not to be found in the first 2 categories above.
-
-Here is an example usage of a custom font
-[Custom font](../code-sample/#example-4-custom-font-in-a-text-layer)
-
-#### Handle missing fonts in the document.
-
-The API provides two options to control the behavior when there are missing fonts, as the request is being processed:
-- Specify a global font which would act as a default font for the current request: The `globalFont` field in the `options` section of the request can be used to specify the full postscript name of this font.
-For any textLayer edit/add operation, if the font used specifically for that layer is missing, this font will be used as the default. If the global font itself is missing, then the action to be taken will be dictated by the `manageMissingFonts` options as explained here in the next bullet point.
-
-**Note**: If using an OAuth integration, Adobe Fonts can be used as a global font as well. If the global font is a custom font, please upload the font to one of the cloud storage types that is supported and specify the `href` and `storage` type in the `options.fonts` section of the request.
-
-- Specify the action to be taken if one or more fonts required for the add/edit operation(s) are missing: The `manageMissingFonts` field in the `options` section of the request can be used to specify this action. It can accept one of the following 2 values:
-  - `fail` to force the request/job to fail
-  - `useDefault` to use our system designated default font, which is: `ArialMT`
-
-Here is an example usage of `manageMissingFonts` and `globalFont`. [Handle missing fonts](../code-sample/#example-5-dictating-actions-for-missing-fonts)
-
-#### Limitations
-
-- Most of the text attributes retain their respective original values. There are some attributes however that do not retain their original values. For example (and not limited to): tracking, leading, kerning
+[Here](../code-sample/#example-17-edit-text-layers) is a code example.
 
 ### Photoshop Actions(`New!`)
 #### Execute Photoshop Actions
@@ -156,6 +119,66 @@ Here are some examples of making various layer level edits.
 - [Layer level editing](../code-sample/#example-6-making-a-simple-edit)
 - [Adding a new Adjustment Layer](../code-sample/#example-8-adding-a-new-adjustment-layer)
 - [Editing Image in a Pixel Layer](../code-sample/#example-9-editing-a-pixel-layer)
+
+#### Text layers Edits
+
+The Photoshop API currently support creating and editing of Text Layer with different fonts, character styles and paragraph styles. The set of text attributes that can be edited is listed below:
+- Edit the text contents
+- Change the font (See the `Fonts` section for more info)
+- Edit the font size
+- Change the font color in the following formats: rgb, cmyk, gray, lab
+- Edit the text orientation (horizontal/vertical)
+- Edit the paragraph alignment (left, center, right, justify, justifyLeft, justifyCenter, justifyRight)
+
+The API's are documented [here](../api/#operation/documentOperations)
+
+We also have an example of making a simple text layer edit.
+
+[Text layer Example Code](../code-sample/#example-3-making-a-text-layer-edit)
+
+##### Font handling
+
+In order to be able to correctly operate on text layers in the PSD, the corresponding fonts needed for these layers will need to be available when the server is processing the PSD. These include fonts from the following cases:
+1. The font that is in the text layer being edited, but the font itself is not being changed
+2. If the font in a text layer is being changed to a new font
+
+While referencing fonts in the API request, please ensure that the correct Postscript name for that font is used. Referencing to that font with any other name will result in the API treating this as a missing font.
+
+The Photoshop APIs supports using the following category of fonts:
+- Currently Installed Fonts on the server listed [here](/features/supported-fonts/)
+- Fonts that you are authorized to access via [Adobe Fonts](https://fonts.adobe.com/fonts).
+  **Note:** Currently only available for OAuth tokens, JWT service token support is forthcoming.
+- Custom/Other Fonts: These are the fonts that are either owned by you or the ones that only you are authorized to use.
+  To use a custom font you must include an href to the font in your request. Look at the `options.fonts` section of the API docs for more information.
+  For including an href to the font in your request, please ensure the font file name to be in this format: `<font_postscript_name>.<ext>`, when it is being uploaded in your choice of storage. A sample `options.fonts` section will look like so:
+  ```json
+  {
+    "storage": "external",
+    "href": "<Storage URL to OpenSansCondensed-Light.ttf>"
+  }
+  ```
+  **Note:** This also applies to any other font present in the document which is not to be found in the first 2 categories above.
+
+Here is an example usage of a custom font
+[Custom font](../code-sample/#example-4-custom-font-in-a-text-layer)
+
+##### Handle missing fonts in the document.
+
+The API provides two options to control the behavior when there are missing fonts, as the request is being processed:
+- Specify a global font which would act as a default font for the current request: The `globalFont` field in the `options` section of the request can be used to specify the full postscript name of this font.
+For any textLayer edit/add operation, if the font used specifically for that layer is missing, this font will be used as the default. If the global font itself is missing, then the action to be taken will be dictated by the `manageMissingFonts` options as explained here in the next bullet point.
+
+**Note**: If using an OAuth integration, Adobe Fonts can be used as a global font as well. If the global font is a custom font, please upload the font to one of the cloud storage types that is supported and specify the `href` and `storage` type in the `options.fonts` section of the request.
+
+- Specify the action to be taken if one or more fonts required for the add/edit operation(s) are missing: The `manageMissingFonts` field in the `options` section of the request can be used to specify this action. It can accept one of the following 2 values:
+  - `fail` to force the request/job to fail
+  - `useDefault` to use our system designated default font, which is: `ArialMT`
+
+Here is an example usage of `manageMissingFonts` and `globalFont`. [Handle missing fonts](../code-sample/#example-5-dictating-actions-for-missing-fonts)
+
+##### Limitations
+
+- Most of the text attributes retain their respective original values. There are some attributes however that do not retain their original values. For example (and not limited to): tracking, leading, kerning
 
 ### Document level edits
 - Crop a PSD
