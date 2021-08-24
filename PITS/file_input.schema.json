@@ -29,7 +29,7 @@
     "input_objects_max_1": {
       "": "used when the inputs array can only contain one input object",
       "type": "array",
-      "description": "An input file to add or edit",
+      "description": "An object describing an input file. Currently supported filetypes include:`jpeg`, `png`, `psd`, `tiff`",
       "maxItems": 1,
       "items": {
         "$ref": "#/definitions/input_object"
