@@ -12,6 +12,7 @@
     "options": {
       "type": "object",
       "minProperties": 1,
+      "description": "User can replace smart object layers using options block ",
       "required": ["layers"],
       "properties": {
         "layers": {
@@ -21,54 +22,46 @@
             "type": "object",
             "allOf": [{
               "properties": {
+                "name": {
+                  "$ref": "layers.schema.json#/definitions/name"
+                },
                 "id": {
                   "$ref": "layers.schema.json#/definitions/id"
                 },
-                "name": {
-                  "$ref": "layers.schema.json#/definitions/name"
+                "locked": {
+                  "$ref": "layers.schema.json#/definitions/locked"
+                },
+                "visible": {
+                  "$ref": "layers.schema.json#/definitions/visible"
+                },
+                "add": {
+                  "$ref": "layers.schema.json#/definitions/add",
+                  "description": "Inidicates you want to add a new layer. You must also indicate where you want to insert the new layer by supplying one of the attributes `insertAbove`, `insertBelow`, `insertInto`,`insertTop` or `insertBottom`. `add` block overwrites default `edit` block."
+                },
+                "input": {
+                  "$ref": "file_input.schema.json#/definitions/input_object",
+                  "description": "An object describing the input file to add or replace for the Embedded Smart Object layer. Edited images are replaced for exact pixel size. Currently supported filetypes includes `png`,`jpeg`,`psd`,`svg`,`ai`,`pdf`."
+                },
+                "bounds": {
+                  "$ref": "bounds.schema.json#/definitions/bounds",
+                  "description": "The bounds of this layer. While replacing a smart object if you provide the same aspect ratio(width / height) as of the actual image as a bound,the embedded SO will not be a distorted image."
                 }
               },
               "anyOf": [{
                   "required": [
-                    "id"
+                    "name"
                   ]
                 },
                 {
                   "required": [
-                    "name"
+                    "id"
                   ]
                 }
               ]
             }],
             "required": [
               "input"
-            ],
-            "properties": {
-              "id": {
-                "$ref": "layers.schema.json#/definitions/id"
-              },
-              "name": {
-                "$ref": "layers.schema.json#/definitions/name"
-              },
-              "locked": {
-                "$ref": "layers.schema.json#/definitions/locked"
-              },
-              "visible": {
-                "$ref": "layers.schema.json#/definitions/visible"
-              },
-              "add": {
-                "$ref": "layers.schema.json#/definitions/add",
-                "description": "Inidicates you want to add a new layer. You must also indicate where you want to insert the new layer by supplying one of the attributes `insertAbove`, `insertBelow`, `insertInto`,`insertTop` or `insertBottom`. `add` block overwrites default `edit` block."
-              },
-              "input": {
-                "$ref": "file_input.schema.json#/definitions/input_object",
-                "description": "An object describing the input file to add or replace for the Embedded Smart Object layer. Edited images are replaced for exact pixel size. Currently supported filetypes includes `png`,`jpeg`,`psd`,`svg`,`ai`,`pdf`."
-              },
-              "bounds": {
-                "$ref": "bounds.schema.json#/definitions/bounds",
-                "description": "The bounds of this layer. While replacing a smart object if you provide the same aspect ratio(width / height) as of the actual image as a bound,the embedded SO will not be a distorted image."
-              }
-            }
+            ]
           }
         }
       }
