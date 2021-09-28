@@ -13,7 +13,7 @@ Here are the steps to start with our API
 
 1. If you **haven't signed up** and generated credentials please follow this link and follow the steps on the confirmation modal: https://www.adobe.com/go/photoshopapi_signup
 
-1. If you **have** already signed up and need a new key, Go to https://console.adobe.io/home and **sign in to the IO Console.**
+1. If you **have** already signed up and need a new key, Go to https://developer.adobe.com/console/home and **sign in to the IO Console.**
 1. Click on **Create a new project** under the **Quick Start** section on the middle of your screen
 1. Click on **Add API**
 1. Select the **Adobe Photoshop APIs (Trial)** and click on **Next**
