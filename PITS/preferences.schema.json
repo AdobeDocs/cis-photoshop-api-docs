@@ -1,0 +1,21 @@
+{
+  "$schema":"http://json-schema.org/draft-07/schema#",
+  "$id":"preferences.schema.json",
+  "title":"preferences object",
+  "description":"preferences settings in photoshop",
+  "definitions":{
+    "preferences": {
+      "type": "object",
+      "properties": {
+        "resizeImageDuringPlace": {
+          "type": "boolean",
+          "description": "resize image during place"
+        },
+        "locale": {
+          "type": "string",
+          "description": "Locale string such as en_US, fr_FR, de_DE, ja_JP"
+        }
+      }
+    }
+  }
+}
