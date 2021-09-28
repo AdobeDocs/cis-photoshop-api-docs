@@ -1,0 +1,46 @@
+{
+  "$schema":"http://json-schema.org/draft-07/schema#",
+  "$id":"post_layer_brightness_contrast.schema.json",
+  "title":"post_layer_brightness_contrast",
+  "description":"Initiates an asynchronous job to edit existing brightness and contrast settings in PSD files",
+  "type": "object",
+  "required":["inputs","options","outputs"],
+  "properties": {
+    "inputs": {
+      "$ref":"file_input.schema.json#/definitions/input_objects_max_1"
+    },
+    "options": {
+      "type":"object",
+      "required":["layers"],
+      "properties": {
+        "layers" :{
+          "type":"array",
+          "minItems":1,
+          "items":{
+            "type":"object",
+            "required":[ "id","attributes" ],
+            "properties":{
+              "id": {
+                "$ref":"layers.schema.json#/definitions/id"
+              },
+              "attributes": {
+                "type":"object",
+                "properties": {
+                  "brightnessContrast": {
+                    "$ref":"adjustments.schema.json#/definitions/brightnessContrast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "outputs": {
+      "$ref":"file_output.schema.json#/definitions/output_objects"
+    },
+    "jobId": {
+      "type": "string"
+    }
+  }
+}
