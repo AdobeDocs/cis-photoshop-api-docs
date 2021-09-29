@@ -11,14 +11,13 @@
       "example": "presignedURL"
     },
     "storage": {
-      "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox) or Adobe's cloud. If you are using presigned url for dropbox or azure, use `storage=\"dropbox\"` or `storage=\"azure\"` else it is `storage=\"external\"`",
+      "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox) or Adobe's Creative Cloud files. If you are using presigned url for dropbox or azure, use `storage=\"dropbox\"` or `storage=\"azure\"` else it is `storage=\"external\"`",
       "type": "string",
       "enum": [
         "adobe",
         "external",
         "azure",
-        "dropbox",
-        "cclib"
+        "dropbox"
       ],
       "default": "external"
     },
