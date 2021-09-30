@@ -29,7 +29,7 @@
           "type": "string"
         },
         "overwrite": {
-          "description": "If the output file already exists should it be overwritten. Only applies to CC Storage",
+          "description": "If the output file already exists should it be overwritten.",
           "type": "boolean",
           "default": true
         },
