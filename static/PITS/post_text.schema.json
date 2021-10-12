@@ -137,6 +137,11 @@
       "properties": {
         "align": {
           "type": "string",
+          "description": "The paragraph alignment (deprecated, please use alignment)",
+          "enum": ["left", "center", "right", "justify", "justifyLeft", "justifyCenter", "justifyRight", "justifyAll"]
+        },
+        "alignment": {
+          "type": "string",
           "description": "The paragraph alignment",
           "enum": ["left", "center", "right", "justify", "justifyLeft", "justifyCenter", "justifyRight", "justifyAll"]
         },
@@ -234,7 +239,11 @@
                     "properties": {
                       "contents": {
                         "type": "string",
-                        "description": "The contents of the text layer"
+                        "description": "The contents of the text layer (deprecated, please use content)"
+                      },
+                      "content": {
+                        "type": "string",
+                        "description": "The content of the text layer"
                       },
                       "orientation": {
                         "type": "string",
