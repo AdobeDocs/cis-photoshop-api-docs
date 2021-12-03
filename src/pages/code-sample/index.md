@@ -15,11 +15,12 @@ This API is a simple API developed to ease the smartObject replacement workflow 
 This example shows how you can replace an embedded smart object
 
 ``` shell
-curl - H "Authorization: Bearer $token" \
-- H "x-api-key: $api_key" \
-- X POST \
-https: //image.adobe.io/pie/psdService/smartObject \
-- d '{
+curl -H "Authorization: Bearer $token" \
+-H "x-api-key: $api_key" \
+-H "Content-Type: application/json" \
+-X POST \
+https://image.adobe.io/pie/psdService/smartObject \
+-d '{
   "inputs": [
   {
     "href": "<SIGNED_GET_URL>",
@@ -48,11 +49,12 @@ https: //image.adobe.io/pie/psdService/smartObject \
 This example shows how you can create an embedded smart object using the `/smartObject` endpoint.
 
 ``` shell
-curl - H "Authorization: Bearer $token" \
-- H "x-api-key: $api_key" \
-- X POST \
-https: //image.adobe.io/pie/psdService/smartObject
-- d '{
+curl -H "Authorization: Bearer $token" \
+-H "x-api-key: $api_key" \
+-H "Content-Type: application/json" \
+-X POST \
+https://image.adobe.io/pie/psdService/smartObject
+-d '{
   "inputs": [
   {
     "href": "<SIGNED_GET_URL>",
@@ -89,6 +91,7 @@ curl -X POST \
   https://image.adobe.io/pie/psdService/documentOperations \
   -H "Authorization: Bearer $token"  \
   -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
   -d '{
   "inputs":[
     {
@@ -142,6 +145,7 @@ curl -X POST \
   https://image.adobe.io/pie/psdService/documentOperations \
   -H "Authorization: Bearer $token"  \
   -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
   -d '{
   "inputs":[
     {
@@ -194,6 +198,7 @@ curl -X POST \
   https://image.adobe.io/pie/psdService/documentOperations \
   -H "Authorization: Bearer $token"  \
   -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
   -d '{
   "inputs":[
     {
@@ -249,6 +254,7 @@ curl -X POST \
   https://image.adobe.io/pie/psdService/documentOperations \
   -H "Authorization: Bearer $token"  \
   -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
   -d '{
   "inputs":[
     {
@@ -289,6 +295,7 @@ curl -X POST \
   https://image.adobe.io/pie/psdService/documentOperations \
   -H "Authorization: Bearer $token"  \
   -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
   -d '{
   "inputs":[
     {
@@ -874,8 +881,8 @@ curl -H "Authorization: Bearer $token" -H "x-api-key: $api_key" https://image.ad
 ```shell
 curl -X POST \
 -H "authorization: Bearer $token" \
--H "Content-Type:application/json" \
--H "x-api-key:$x-api-key" \
+-H "Content-Type: application/json" \
+-H "x-api-key: $apiKey" \
 -d '{
     "inputs": {
         "href": "<href>",
@@ -910,8 +917,8 @@ To check the status of the job completion, use the `/status` API. An example usa
 ```shell
 curl -X POST \
 -H "authorization: Bearer $token" \
--H "Content-Type:application/json" \
--H "x-api-key:$x-api-key" \
+-H "Content-Type: application/json" \
+-H "x-api-key: $apiKey" \
 -d '{
     "inputs": {
         "href": "<href>",
@@ -948,8 +955,8 @@ To check the status of the job completion, use the `/status` API. An example usa
 ```shell
 curl -X POST \
 -H "authorization: Bearer $token" \
--H "Content-Type:application/json" \
--H "x-api-key:$x-api-key" \
+-H "Content-Type: application/json" \
+-H "x-api-key: $apiKey" \
 -d '{
     "inputs": {
         "source": {
@@ -995,8 +1002,8 @@ To check the status of the job completion, use the `/status` API. An example usa
 ```shell
 curl -X POST \
 -H "authorization: Bearer $token" \
--H "Content-Type:application/json" \
--H "x-api-key:$x-api-key" \
+-H "Content-Type: application/json" \
+-H "x-api-key: $apiKey" \
 -d '{
     "inputs": {
         "source": {
@@ -1054,8 +1061,8 @@ To check the status of the job completion, use the `/status` API. An example usa
 ```shell
 curl -X POST \
 -H "authorization: Bearer $token" \
--H "Content-Type:application/json" \
--H "x-api-key:$x-api-key" \
+-H "Content-Type: application/json" \
+-H "x-api-key: $apiKey" \
 -d '{
     "inputs": {
         "href": "<href>",
