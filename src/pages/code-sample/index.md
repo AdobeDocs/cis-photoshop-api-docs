@@ -53,7 +53,7 @@ curl -H "Authorization: Bearer $token" \
 -H "x-api-key: $api_key" \
 -H "Content-Type: application/json" \
 -X POST \
-https://image.adobe.io/pie/psdService/smartObject
+https://image.adobe.io/pie/psdService/smartObject \
 -d '{
   "inputs": [
   {
