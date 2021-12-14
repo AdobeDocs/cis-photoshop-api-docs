@@ -894,7 +894,7 @@ curl -X POST \
 
 ### Example 18 : Applying Product Crop
 
-The `productCrop` endpoint can take an input file and apply right crop to it. If it is a PSD file it will apply the change to the first layer.
+The `productCrop` endpoint can take an input file and apply right crop to it. We don't support multilayered PSD. 
 
 This example shows how you can apply the crop with required padding to an input file
 
