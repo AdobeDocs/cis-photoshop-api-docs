@@ -6,7 +6,16 @@ description: Code Examples.
 
 ## Photoshop
 
-The code snippets are using one of our [sample psd](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_files/Example.psd) files. Please feel free to download and use it for testing. Just remember you will need to have this file stored in one of the accepted external storage. For more information on storage please refer to the [File Storage](../general-workflow/#input-and-output-file-storage).
+The code snippets are using one of our [sample psd](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_files/Example.psd) files. Please feel free to download and use it for testing. Just remember you will need to have this file stored in one of the accepted external storages. For more information on storage please refer to the [File Storage](../general-workflow/#input-and-output-file-storage).
+
+For each of these examples to run. You first have to get your Bearer token and apikey. For ease of use, you can export your token and api key before running the examples.
+
+```shell
+export token="<YOUR_TOKEN>"
+```
+```shell
+export apiKey="<YOUR_API_KEY>"
+```
 
 ### Example 1: Replacing a SmartObject
 The `/smartObject` endpoint can take an input PSD file with an embedded smartobject and can replace with another smartobject.
@@ -15,31 +24,31 @@ This API is a simple API developed to ease the smartObject replacement workflow 
 This example shows how you can replace an embedded smart object
 
 ``` shell
-curl -H "Authorization: Bearer $token" \
--H "x-api-key: $api_key" \
--H "Content-Type: application/json" \
--X POST \
-https://image.adobe.io/pie/psdService/smartObject \
--d '{
+curl -X POST \
+  https://image.adobe.io/pie/psdService/smartObject \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
   "inputs": [
   {
     "href": "<SIGNED_GET_URL>",
-    "storage": "external"
+    "storage": "<storage>"
   }],
   "options": {
     "layers": [{
       "name": "HeroImage",
       "input": {
         "href": "<SIGNED_GET_URL>",
-        "storage": "external"
+        "storage": "<storage>"
       }
      }
     ]
   },
   "outputs": [
   {
-    "storage": "external",
-    "href": "<SIGNED_PUT_URL>",
+    "storage": "<storage>",
+    "href": "<SIGNED_POST_URL>",
     "type": "vnd.adobe.photoshop"
   }
 ]}'
@@ -49,16 +58,16 @@ https://image.adobe.io/pie/psdService/smartObject \
 This example shows how you can create an embedded smart object using the `/smartObject` endpoint.
 
 ``` shell
-curl -H "Authorization: Bearer $token" \
--H "x-api-key: $api_key" \
--H "Content-Type: application/json" \
--X POST \
-https://image.adobe.io/pie/psdService/smartObject \
--d '{
+curl -X POST \
+  https://image.adobe.io/pie/psdService/smartObject \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
   "inputs": [
   {
     "href": "<SIGNED_GET_URL>",
-    "storage": "external"
+    "storage": "<storage>"
   }],
   "options": {
     "layers": [{
@@ -68,15 +77,15 @@ https://image.adobe.io/pie/psdService/smartObject \
       },
       "input": {
         "href": "<SIGNED_GET_URL>",
-        "storage": "external"
+        "storage": "<storage>"
        }
       }
     ]
   },
   "outputs": [
   {
-    "storage": "external",
-    "href": "<SIGNED_PUT_URL>",
+    "storage": "<storage>",
+    "href": "<SIGNED_POST_URL>",
     "type": "vnd.adobe.photoshop"
   }
 ]}'
@@ -96,7 +105,7 @@ curl -X POST \
   "inputs":[
     {
       "href":"<SIGNED_GET_URL>",
-      "storage":"external"
+      "storage":"<storage>"
     }
   ],
   "options":{
@@ -128,7 +137,7 @@ curl -X POST \
   "outputs":[
     {
       "href":"<SIGNED_POST_URL>",
-      "storage":"external",
+      "storage":"<storage>",
       "type":"vnd.adobe.photoshop",
       "overwrite":true
     }
@@ -150,13 +159,13 @@ curl -X POST \
   "inputs":[
     {
       "href":"<SIGNED_GET_URL>",
-      "storage":"external"
+      "storage":"<storage>"
     }
   ],
   "options":{
     "fonts": {
-        storage: "external",
-        href: "<SIGNED_GET_URL_TO_VeganStylePersonalUse.ttf>"
+        "storage": "<storage>",
+        "href": "<SIGNED_GET_URL_TO_VeganStylePersonalUse.ttf>"
     },
     "layers":[
       {
@@ -183,7 +192,7 @@ curl -X POST \
   "outputs":[
     {
       "href":"<SIGNED_POST_URL>",
-      "storage":"external",
+      "storage":"<storage>",
       "type":"vnd.adobe.photoshop",
       "overwrite":true
     }
@@ -203,15 +212,15 @@ curl -X POST \
   "inputs":[
     {
       "href":"<SIGNED_GET_URL>",
-      "storage":"external"
+      "storage":"<storage>"
     }
   ],
   "options":{
     "manageMissingFonts": "useDefault",
     "globalFont": "MySampleFont",
     "fonts": {
-        storage: "external",
-        href: "<SIGNED_GET_URL_TO_VeganStylePersonalUse.ttf>"
+        "storage": "<storage>",
+        "href": "<SIGNED_GET_URL_TO_VeganStylePersonalUse.ttf>"
     },
     "layers":[
       {
@@ -238,7 +247,7 @@ curl -X POST \
   "outputs":[
     {
       "href":"<SIGNED_POST_URL>",
-      "storage":"external",
+      "storage":"<storage>",
       "type":"vnd.adobe.photoshop",
       "overwrite":true
     }
@@ -259,7 +268,7 @@ curl -X POST \
   "inputs":[
     {
       "href":"<SIGNED_GET_URL>",
-      "storage":"external"
+      "storage":"<storage>"
     }
   ],
   "options":{
@@ -278,7 +287,7 @@ curl -X POST \
   "outputs":[
     {
       "href":"<SIGNED_POST_URL>",
-      "storage":"external",
+      "storage":"<storage>",
       "type":"vnd.adobe.photoshop",
       "overwrite":true
     }
@@ -300,7 +309,7 @@ curl -X POST \
   "inputs":[
     {
       "href":"<SIGNED_GET_URL>",
-      "storage":"external"
+      "storage":"<storage>"
     }
   ],
   "options":{
@@ -309,7 +318,7 @@ curl -X POST \
         "edit":{},     
         "input":{                                       
           "href":"<SIGNED_GET_URL>",  
-          "storage":"external"
+          "storage":"<storage>"
         },
         "smartObject" : {                
           "type" : "image/png"
@@ -334,7 +343,7 @@ curl -X POST \
   "outputs":[
     {
       "href":"<SIGNED_POST_URL>",
-      "storage":"external",
+      "storage":"<storage>",
       "type":"vnd.adobe.photoshop",
       "overwrite":true
     }
@@ -351,14 +360,14 @@ This example shows how you can add a new brightnessContrast adjustment layer to 
 ```shell
 curl -X POST \
   https://image.adobe.io/pie/psdService/documentOperations \
-  -H 'Authorization: Bearer <auth_token>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <YOUR_API_KEY>' \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
   -d '{
   "inputs":[
     {
       "href":"<SIGNED_GET_URL>",
-      "storage":"external"
+      "storage":"<storage>"
     }
   ],
   "options":{
@@ -383,7 +392,7 @@ curl -X POST \
   "outputs":[
     {
       "href":"<SIGNED_POST_URL>",
-      "storage":"external",
+      "storage":"<storage>",
       "type":"image/jpeg"
     }
   ]
@@ -399,14 +408,14 @@ In this example we want to replace the image in an existing pixel layer, the Her
 ```shell
 curl -X POST \
   https://image.adobe.io/pie/psdService/documentOperations \
-  -H 'Authorization: Bearer <auth_token>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <YOUR_API_KEY>' \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
   -d '{
   "inputs":[
     {
       "href":"<SIGNED_GET_URL>",
-      "storage":"external"
+      "storage":"<storage>"
     }
   ],
   "options":{
@@ -415,7 +424,7 @@ curl -X POST \
         "edit":{},                    
         "input":{                                       
           "href":"<SIGNED_GET_URL>",
-          "storage":"external"
+          "storage":"<storage>"
         },
         "bounds":{
           "height":405,
@@ -435,7 +444,7 @@ curl -X POST \
   "outputs":[
     {
       "href":"<SIGNED_POST_URL>",
-      "storage":"external",
+      "storage":"<storage>",
       "type":"vnd.adobe.photoshop",
       "overwrite":true
     }
@@ -452,26 +461,26 @@ Generate multiple output rendition with the Simple API `renditionCreate`
 ```shell
 curl -X POST \
   https://image.adobe.io/pie/psdService/renditionCreate \
-  -H 'Authorization: Bearer <auth_token>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <YOUR_API_KEY>' \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
   -d '{
   "inputs":[
     {
       "href":"<SIGNED_GET_URL>",
-      "storage":"external"
+      "storage":"<storage>"
     }
   ],
   "outputs":[
     {
       "href":"<SIGNED_POST_URL1>",          
       "width": 512,
-      "storage":"external",
+      "storage":"<storage>",
       "type":"image/jpeg"      
     },
     {
       "href":"<SIGNED_POST_URL2>",
-      "storage":"external",
+      "storage":"<storage>",
       "type":"image/png"
     }
   ]
@@ -489,14 +498,14 @@ Using Example.psd, with the use case of a document stored in your external stora
 ```shell
 curl -X POST \
   https://image.adobe.io/pie/psdService/documentManifest \
-  -H 'Authorization: Bearer <auth_token>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <YOUR_API_KEY>' \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
   -d '{
   "inputs": [
     {
       "href":"<YOUR_PRESIGNED_URL>",
-      "storage":"external"
+      "storage":"<storage>"
     }
   ]
 }'
@@ -520,9 +529,9 @@ Using the job id returned from the response (ass above) of a successfully submit
 ```shell
 curl -X GET \
   https://image.adobe.io/pie/psdService/status/de2415fb-82c6-47fc-b102-04ad651c5ed4 \
-  -H 'Authorization: Bearer <auth_token>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <YOUR_API_KEY>'
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
 ```
 ### Example 13: Poll for job status for documentManifest
 
@@ -578,7 +587,7 @@ Once your job completes successfully (no errors/failures reported), the status r
                   "fontAvailable":true,
                   "fontName":"AdobeClean-Bold",
                   "fontSize":36,
-                  "orientation":"horizontal",
+                  "orientation":"horizontal"
                 }]               
               },
               "id":412,
@@ -604,7 +613,7 @@ Once your job completes successfully (no errors/failures reported), the status r
                   "fontAvailable":true,
                   "fontName":"AdobeClean-Regular",
                   "fontSize":15,
-                  "orientation":"horizontal",
+                  "orientation":"horizontal"
                 }]
               },
               "id":676,
@@ -711,12 +720,12 @@ Once your job completes successfully (no errors/failures reported), this will re
           {
             "href":"<SIGNED_GET_URL>",          
             "width": 512,
-            "storage":"external",
+            "storage":"<storage>",
             "type":"image/jpeg"    
           },
           {
             "href":"<SIGNED_GET_URL>",
-            "storage":"external",
+            "storage":"<storage>",
             "type":"image/png"
           }
         ]
@@ -732,10 +741,13 @@ Once your job completes successfully (no errors/failures reported), this will re
 ```
 
 ### Example 15 : Photoshop Actions - Play ALL actions in .atn file.
-```
-export token=<YOUR_TOKEN>
-export api_key =<YOUR_API_KEY>
-curl -H "Authorization: Bearer $token" -H "x-api-key: $api_key" https://image.adobe.io/pie/psdService/photoshopActions -d '{
+```shell
+curl -X POST \
+  https://image.adobe.io/pie/psdService/photoshopActions \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
   "inputs": [
     {
       "href": "https://as2.ftcdn.net/jpg/02/49/48/49/500_F_249484911_JifPIzjUqzkRhcdMkF9GnsUI9zaqdAsn.jpg",
@@ -752,7 +764,7 @@ curl -H "Authorization: Bearer $token" -H "x-api-key: $api_key" https://image.ad
   },
   "outputs": [
     {
-      "storage": "external",
+      "storage": "<storage>",
       "type": "image/jpeg",
       "href": "https://some-presigned-url/output.jpeg"
     }
@@ -763,10 +775,13 @@ curl -H "Authorization: Bearer $token" -H "x-api-key: $api_key" https://image.ad
 
 By default, Photoshop API will attempt to play all actions in an action set.  If you would like to only playback a specific action, you can specify `actionName` and the name of the action you want to invoke (see example below).
 
-```
-export token=<YOUR_TOKEN>
-export api_key =<YOUR_API_KEY>
-curl -H "Authorization: Bearer $token" -H "x-api-key: $api_key" https://image.adobe.io/pie/psdService/photoshopActions -d '{
+```shell
+curl -X POST \
+  https://image.adobe.io/pie/psdService/photoshopActions \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
   "inputs": [
     {
       "href": "https://as2.ftcdn.net/jpg/02/49/48/49/500_F_249484911_JifPIzjUqzkRhcdMkF9GnsUI9zaqdAsn.jpg",
@@ -784,7 +799,7 @@ curl -H "Authorization: Bearer $token" -H "x-api-key: $api_key" https://image.ad
   },
   "outputs": [
     {
-      "storage": "external",
+      "storage": "<storage>",
       "type": "image/jpeg",
       "href": "https://some-presigned-url/output.jpeg"
     }
@@ -797,20 +812,23 @@ The `/text` endpoint can take an input PSD file with one or more text layers and
 
 This example shows how you can apply edits to two text layers
 
-```
-export token=<YOUR_TOKEN>
-export api_key =<YOUR_API_KEY>
-curl -H "Authorization: Bearer $token" -H "x-api-key: $api_key" https://image.adobe.io/pie/psdService/text -d '{
+```shell
+curl -X POST \
+  https://image.adobe.io/pie/psdService/text \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
   "inputs": [
     {
-      "href": "<path_to_input_psd>",
-      "storage": "external"
+      "href": "<SIGNED_GET_URL>",
+      "storage": "<storage>"
     }
   ],
   "options": {
     "fonts": [{
-      "storage": "external",
-      "href": "<path_to_font>"
+      "storage": "<storage>",
+      "href": "<SIGNED_GET_URL>"
     }],
     "layers": [
       {
@@ -866,9 +884,9 @@ curl -H "Authorization: Bearer $token" -H "x-api-key: $api_key" https://image.ad
   },
   "outputs": [
     {
-      "href": "<path_to_output_psd>",
+      "href": "<SIGNED_POST_URL>",
       "type": "vnd.adobe.photoshop",
-      "storage": "external"
+      "storage": "<storage>"
     }
   ]
 }'
@@ -880,24 +898,24 @@ curl -H "Authorization: Bearer $token" -H "x-api-key: $api_key" https://image.ad
 
 ```shell
 curl -X POST \
--H "authorization: Bearer $token" \
--H "Content-Type: application/json" \
--H "x-api-key: $apiKey" \
--d '{
+  https://image.adobe.io/lrService/autoTone \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
     "inputs": {
-        "href": "<href>",
+        "href": "<SIGNED_GET_URL>",
         "storage": "<storage>"
     },
     "outputs": [
         {
-            "href": "<href>",
+            "href": "<SIGNED_POST_URL>",
             "type": "<type>",
             "storage": "<storage>",
             "overwrite": <boolean>
         }
     ]
 }'
-https://image.adobe.io/lrService/autoTone
 ```
 This initiates an asynchronous job and returns a request body containing the href to poll for job status.
 
@@ -916,24 +934,24 @@ To check the status of the job completion, use the `/status` API. An example usa
 
 ```shell
 curl -X POST \
--H "authorization: Bearer $token" \
--H "Content-Type: application/json" \
--H "x-api-key: $apiKey" \
--d '{
+  https://image.adobe.io/lrService/autoStraighten \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
     "inputs": {
-        "href": "<href>",
+        "href": "<SIGNED_GET_URL>",
         "storage": "<storage>"
     },
     "outputs": [
         {
-            "href": "<href>",
+            "href": "<SIGNED_POST_URL>",
             "type": "<type>",
             "storage": "<storage>",
             "overwrite": <boolean>
         }
     ]
 }'
-https://image.adobe.io/lrService/autoStraighten
 ```
 
 This initiates an asynchronous job and returns a request body containing the href to poll for job status.
@@ -954,36 +972,36 @@ To check the status of the job completion, use the `/status` API. An example usa
 
 ```shell
 curl -X POST \
--H "authorization: Bearer $token" \
--H "Content-Type: application/json" \
--H "x-api-key: $apiKey" \
--d '{
+  https://image.adobe.io/lrService/presets \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
     "inputs": {
         "source": {
-            "href": "<href>",
+            "href": "<SIGNED_GET_URL>",
             "storage": "<storage>"
         },
         "presets": [
             {
-                "href": "<href1>",
+                "href": "<SIGNED_GET_URL>",
                 "storage": "<storage>"
             },
             {
-                "href": "<href2>",
+                "href": "<SIGNED_GET_URL>",
                 "storage": "<storage>"
             }
         ]
     },
     "outputs": [
         {
-            "href": "<href>",
+            "href": "<SIGNED_POST_URL>",
             "type": "<type>",
             "storage": "<storage>",
             "overwrite": <boolean>
         }
     ]
 }'
-https://image.adobe.io/lrService/presets
 ```
 This initiates an asynchronous job and returns a request body containing the href to poll for job status.
 ```json
@@ -1001,13 +1019,14 @@ To check the status of the job completion, use the `/status` API. An example usa
 
 ```shell
 curl -X POST \
--H "authorization: Bearer $token" \
--H "Content-Type: application/json" \
--H "x-api-key: $apiKey" \
--d '{
+  https://image.adobe.io/lrService/edit \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
     "inputs": {
         "source": {
-            "href": "<href>",
+            "href": "<SIGNED_GET_URL>",
             "storage": "<storage>"
         }
     },
@@ -1034,14 +1053,13 @@ curl -X POST \
     },
     "outputs": [
         {
-            "href": "<href>",
+            "href": "<SIGNED_POST_URL>",
             "type": "<type>",
             "storage": "<storage>",
             "overwrite": <boolean>
         }
     ]
 }'
-https://image.adobe.io/lrService/edit
 ```
 This initiates an asynchronous job and returns a request body containing the href to poll for job status.
 ```json
@@ -1060,12 +1078,13 @@ To check the status of the job completion, use the `/status` API. An example usa
 
 ```shell
 curl -X POST \
--H "authorization: Bearer $token" \
--H "Content-Type: application/json" \
--H "x-api-key: $apiKey" \
--d '{
+  https://image.adobe.io/lrService/xmp \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
     "inputs": {
-        "href": "<href>",
+        "href": "<SIGNED_GET_URL>",
         "storage": "<storage>"
     },
     "options": {
@@ -1073,13 +1092,12 @@ curl -X POST \
     },
     "outputs": [
         {
-            "href": "<href>",
+            "href": "<SIGNED_POST_URL>",
             "storage": "<storage>",
             "type": "<type>"
         }
     ]
 }'
-https://image.adobe.io/lrService/xmp
 ```
 This initiates an asynchronous job and returns a request body containing the href to poll for job status.
 
@@ -1104,9 +1122,9 @@ Use the JobID to poll on the href that is returned in the response from one of t
 ```shell
 curl -X GET \
   https://image.adobe.io/lrService/status/<jobId> \
-  -H 'Authorization: Bearer <auth_token>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <YOUR_API_KEY>'
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
 ```
 
 And this will return a request body containing the job status for each requested output and eventually either errors or the hrefs to the requested outputs
@@ -1124,7 +1142,7 @@ And this will return a request body containing the job status for each requested
         "self":
         {
           "href":"<output_file_href>",
-          "storage":"external"
+          "storage":"<storage>"
         }
       }
     }
@@ -1148,17 +1166,17 @@ The `/cutout` api takes a single input image to generate your mask or cutout fro
 ```shell
 curl -X POST \
   https://image.adobe.io/sensei/cutout \
-  -H 'Authorization: Bearer <auth_token>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <YOUR_API_KEY>' \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
   -d '{
    "input":{
-      "storage":"external",
+      "storage":"<storage>",
       "href":"<SIGNED_GET_URL>"
    },
    "output":{
-      "storage":"external",
-      "href":"<SIGNED_PUT_URL>",
+      "storage":"<storage>",
+      "href":"<SIGNED_POST_URL>",
       "mask":{
          "format":"soft"
       }
@@ -1183,9 +1201,9 @@ Using the job id returned from the previous call you can poll on the returned `/
 ```shell
 curl -X GET \
   https://image.adobe.io/sensei/status/e3a13d81-a462-4b71-9964-28b2ef34aca7 \
-  -H 'Authorization: Bearer <auth_token>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <YOUR_API_KEY>'
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
 ```
 
 Once the job is complete your successful `/status` response will look similar to the response below; The output will have been placed in your requested location. In the event of failure the errors will be shown instead
@@ -1203,8 +1221,8 @@ Once the job is complete your successful `/status` response will look similar to
         }
     },
     "output": {
-        "storage": "external",
-        "href": "<SIGNED_PUT_URL>",
+        "storage": "<storage>",
+        "href": "<SIGNED_POST_URL>",
         "mask": {
             "format": "soft"
         }
@@ -1246,15 +1264,15 @@ The `/documentManifest` api can take one or more input PSD's to generate JSON ma
 ```shell
 curl -X POST \
   https://image.adobe.io/pie/psdService/documentManifest \
-  -H 'Authorization: Bearer <auth_token>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <YOUR_API_KEY>' \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
   -H 'x-gw-ims-org-id: <YOUR_IMS_ORG_ID>' \
   -d '{
   "inputs": [
     {
       "href":"<SIGNED_GET_URL>",
-      "storage":"external"
+      "storage":"<storage>"
     }
   ]
 }'
@@ -1351,13 +1369,13 @@ curl -X POST \
   -d '{
     "inputs": {
       "href": "<SIGNED_GET_URL>",
-      "storage": "external"
+      "storage": "<storage>"
     },
     "outputs": [
     {
-      "href": "<SIGNED_PUT_URL>",
+      "href": "<SIGNED_POST_URL>",
       "type": "<type>",
-      "storage": "external",
+      "storage": "<storage>",
       "overwrite": <boolean>
     }
   ]
@@ -1408,8 +1426,8 @@ The value in the key `body` inside the event JSON contains the result of the job
           "_links": {
             "self": [
               {
-                "href": "<SIGNED_PUT_URL>",
-                "storage": "external"
+                "href": "<SIGNED_POST_URL>",
+                "storage": "<storage>"
               }
             ]
           }
