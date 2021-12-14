@@ -892,6 +892,42 @@ curl -X POST \
 }'
 ```
 
+### Example 18 : Applying Product Crop
+
+The `productCrop` endpoint can take an input file and apply right crop to it. If it is a PSD file it will apply the change to the first layer.
+
+This example shows how you can apply the crop with required padding to an input file
+
+```shell
+curl -X POST \
+  https://image.adobe.io/pie/psdService/photoshopActions \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "inputs": [
+    {
+      "href": "<SIGNED_GET_URL>",
+      "storage": "<storage>"
+    }
+  ],
+  "options": {
+    {
+      "unit": "Pixels",
+      "width": 10,
+      "height": 10
+    }
+  },
+  "outputs": [
+    {
+      "storage": "<storage>",
+      "type": "image/jpeg",
+      "href": "<SIGNED_POST_URL>"
+    }
+  ]
+}'
+```
+
 ## Lightroom
 
 ### Example 1: Autotone an image
