@@ -87,7 +87,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./acr/api_response_success_schema.json"
                 }
               }
             }
@@ -206,7 +206,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./acr/api_response_success_schema.json"
                 }
               }
             }
@@ -325,7 +325,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./acr/api_response_success_schema.json"
                 }
               }
             }
@@ -444,7 +444,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./acr/api_response_success_schema.json"
                 }
               }
             }
@@ -563,7 +563,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./acr/api_response_success_schema.json"
                 }
               }
             }
@@ -751,7 +751,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./ic/api_response_success_schema.json"
                 }
               }
             }
@@ -870,7 +870,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./ic/api_response_success_schema.json"
                 }
               }
             }
@@ -1058,7 +1058,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./PITS/api_response_success_schema.json"
                 }
               }
             }
@@ -1185,7 +1185,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./PITS/api_response_success_schema.json"
                 }
               }
             }
@@ -1304,7 +1304,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./PITS/api_response_success_schema.json"
                 }
               }
             }
@@ -1423,7 +1423,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./PITS/api_response_success_schema.json"
                 }
               }
             }
@@ -1542,7 +1542,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./PITS/api_response_success_schema.json"
                 }
               }
             }
@@ -1661,7 +1661,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./PITS/api_response_success_schema.json"
                 }
               }
             }
@@ -1849,7 +1849,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./PITS/api_response_success_schema.json"
                 }
               }
             }
@@ -1968,7 +1968,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./api_response_success_schema.json"
+                  "$ref": "./PITS/api_response_success_schema.json"
                 }
               }
             }
