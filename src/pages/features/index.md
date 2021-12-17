@@ -42,11 +42,17 @@ It enables user to
 
 ### ProductCrop(`New!`)
 
-The ProductCrop API supports applying smart crop to your image. It uses photoshop Action JSON to achieve this functionality. The APIs are documented [here](./api/#operation/productCrop)
+The ProductCrop API supports applying smart crop to your image. The APIs are documented [here](./api/#operation/productCrop)
 
 It enables user to
 - Identify the product and get it cropped smartly.
 - Enter the required padding they need in their cropped image.
+
+### DepthBlur(`New!`)
+
+The DepthBlur API supports applying depth blur to your image. The APIs are documented [here](./api/#operation/depthBlur)
+
+Depth Blur is part of the Neural Filters gallery in Photoshop. It allows you to target the area and range of blur in photos, creating wide-aperture depth of field blur effects. You may choose different focal points or remove the focal point and control the depth blur through manipulating the focal range slider. Setting focusSubject to true will select the most prominent subject in the image and apply depth blur around that subject.
 
 #### Usage Recommendations
 - Ensure that the input file is a PSD and that it contains one or more text layers.
