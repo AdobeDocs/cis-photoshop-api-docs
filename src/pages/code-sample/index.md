@@ -892,6 +892,79 @@ curl -X POST \
 }'
 ```
 
+### Example 18 : Applying Product Crop
+
+The `productCrop` endpoint can take an input file and apply right crop to it. We don't support multilayered PSD. 
+
+This example shows how you can apply the crop with required padding to an input file
+
+```shell
+curl -X POST \
+  https://image.adobe.io/pie/psdService/productCrop \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "inputs": [
+    {
+      "href": "<SIGNED_GET_URL>",
+      "storage": "<storage>"
+    }
+  ],
+  "options": {
+    {
+      "unit": "Pixels",
+      "width": 10,
+      "height": 10
+    }
+  },
+  "outputs": [
+    {
+      "storage": "<storage>",
+      "type": "image/jpeg",
+      "href": "<SIGNED_POST_URL>"
+    }
+  ]
+}'
+```
+
+### Example 19 : Applying Depth Blur Neural Filter
+
+The `depthBlur` endpoint can take an input file and apply the depth blur neural filter.
+
+This example shows how you can apply depth blur with the appropriate parameters.
+
+```shell
+curl -X POST \
+  https://image.adobe.io/pie/psdService/depthBlur \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "inputs": [
+    {
+      "href": "<SIGNED_GET_URL>",
+      "storage": "<storage>"
+    }
+  ],
+  "options": {
+    "haze": 25,
+    "blurStrength": 30,
+    "focalSelector": {
+        "x": 0.22,
+        "y": 0.33
+    }
+  },
+  "outputs": [
+    {
+      "storage": "<storage>",
+      "type": "image/jpeg",
+      "href": "<SIGNED_POST_URL>"
+    }
+  ]
+}'
+```
+
 ## Lightroom
 
 ### Example 1: Autotone an image

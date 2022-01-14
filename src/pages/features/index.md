@@ -46,9 +46,31 @@ It enables user to
 
 #### Known Limitations
 The following are known limitations for the Alpha release
+
 - The API cannot automatically detect missing fonts in the layers. To prevent potential missing fonts from being replaced, please provide a href to the font(s) in the options.fonts section of the API. For more details on specifying custom fonts, please refer to the example section below.
 
 [Here](../code-sample/#example-17-edit-text-layers) is a code example.
+
+### ProductCrop(`New!`)
+
+The ProductCrop API supports applying smart crop to your image. The APIs are documented [here](./api/#operation/productCrop)
+
+It enables user to
+- Identify the product and get it cropped smartly.
+- Enter the required padding they need in their cropped image.
+
+#### Known Limitations
+- It doesn't crop the salient object when there is an image with person in it.
+
+[Here](../code-sample/#example-18--applying-product-crop) is a code example.
+
+### DepthBlur(`New!`)
+
+The DepthBlur API supports applying depth blur to your image. The APIs are documented [here](./api/#operation/depthBlur)
+
+Depth Blur is part of the Neural Filters gallery in Photoshop. It allows you to target the area and range of blur in photos, creating wide-aperture depth of field blur effects. You may choose different focal points or remove the focal point and control the depth blur through manipulating the focal range slider. Setting focusSubject to true will select the most prominent subject in the image and apply depth blur around that subject.
+
+[Here](../code-sample/#example-19--applying-depth-blur-neural-filter) is a code example.
 
 ### Photoshop Actions(`New!`)
 #### Execute Photoshop Actions
