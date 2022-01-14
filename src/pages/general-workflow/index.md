@@ -14,12 +14,12 @@ We currently do not support Cloud docs. You can use any of the following service
 - AWS S3: By using a presigned GET/PUT URL. More Info [here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html).
   Here are some code samples for getting presigned urls
   - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/aws-s3/presignedURLs.js) in Node.JS
-  - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/aws-s3/presignedURLs.js) in Python
-  - You can find a sample NodeJS application [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/aws-s3/example.js)
+  - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/aws-s3/presignedURLs.py) in Python
+  - You can find a sample NodeJS application [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/aws-s3/example.py)
 - Azure: By generating a SAS (Shared Access Signature) for upload/download. More Info [here](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-blob/12.9.0/index.html).
   Here are some code samples for getting presigned urls
   - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/azure/presignedURLs.js) in Node.JS
-  - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/azure/presignedURLs.js) in Python
+  - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/azure/presignedURLs.py) in Python
 - Dropbox: Generate temporary upload/download. More Info [here](https://www.dropbox.com/developers/documentation).
   You can create file upload link for dropbox [here](https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_upload_link)
 
