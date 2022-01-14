@@ -10,10 +10,18 @@ As you begin integrating the Ps APIs into your workflow, there are a few conside
 
 ## Input and Output file storage
 
-Currently we support the following storage types to reference your assets from:
-- AWS S3: By using a presigned GET/PUT URL
-- Azure: By generating a SAS (Shared Access Signature) for upload/download
-- Dropbox: Generate temporary upload/download links using https://dropbox.github.io/dropbox-api-v2-explorer/
+We currently do not support Cloud docs. You can use any of the following services for input and output storage.
+- AWS S3: By using a presigned GET/PUT URL. More Info [here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html).
+  Here are some sample code examples for getting presigned urls
+  - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/aws-s3/presignedURLs.js) in Node.JS
+  - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/aws-s3/presignedURLs.js) in Python
+  - You can find a sample NodeJS application [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/aws-s3/example.js)
+- Azure: By generating a SAS (Shared Access Signature) for upload/download. More Info [here](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-blob/12.9.0/index.html).
+  Here are some sample code examples for getting presigned urls
+  - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/azure/presignedURLs.js) in Node.JS
+  - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/azure/presignedURLs.js) in Python
+- Dropbox: Generate temporary upload/download. More Info [here](https://www.dropbox.com/developers/documentation).
+  You can create file upload link for dropbox [here](https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_upload_link)
 
 ## Current Limitations
 There are a few limitations to the APIs you should be aware of ahead of time.  
