@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "post_product_crop_action.schema.json",
+  "title": "post_product_crop_action_json",
+  "description": "Initiates an asynchronous job to play Product Crop Action JSON",
+  "type": "object",
+  "required": [
+    "inputs",
+    "options",
+    "outputs"
+  ],
+  "properties": {
+    "inputs": {
+      "$ref": "file_input.schema.json#/definitions/input_objects_max_1"
+    },
+    "options": {
+      "type": "object",
+      "required": ["unit","width","height"],
+      "properties": {
+        "unit": {
+          "type": "string",
+          "description": "Unit for width and height",
+          "enum": [
+            "Pixels",
+            "Percent"
+          ]
+        },
+        "width": {
+          "type": "number",
+          "description": "The width to be added as padding."
+        },
+        "height": {
+          "type": "number",
+          "description": "The height to be added as padding."
+        }
+      }
+    },
+    "outputs": {
+      "$ref": "file_output_pegasus.schema.json#/definitions/output_objects"
+    }
+  }
+}
