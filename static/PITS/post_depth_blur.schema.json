@@ -1,0 +1,120 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "post_depth_blur.schema.json",
+    "title": "post_depth_blur_json",
+    "description": "Initiates an asynchronous job to apply depth Blur Neural Filter",
+    "type": "object",
+    "required": [
+        "inputs",
+        "outputs"
+    ],
+    "properties": {
+        "inputs": {
+            "$ref": "file_input.schema.json#/definitions/input_objects_max_1"
+        },
+        "options": {
+            "type": "object",
+            "properties": {
+                "focalDistance": {
+                    "type": "integer",
+                    "description": "The distance of the point to be in focus. 0 would be the nearest point, 100 would be the furthest point",
+                    "default": 0,
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "focalRange": {
+                    "type": "integer",
+                    "description": "The range of the focal point",
+                    "default": 0,
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "focalSelector": {
+                    "type": "object",
+                    "description": "Co-ordinates of the specific focal point to select",
+                    "allOf": [{
+                        "properties": {
+                            "x": {
+                                "type": "number",
+                                "description": "X co-ordinate"
+                            },
+                            "y": {
+                                "type": "number",
+                                "description": "Y co-ordinate"
+                            }
+                        },
+                        "additionalProperties": false,
+                        "minProperties": 2
+                    }]
+                },
+                "focusSubject": {
+                    "type": "boolean",
+                    "description": "If enabled uses selectsubject to automatically select the prominent subject for focus. Also would override focalDistance",
+                    "default": false
+                },
+                "blurStrength": {
+                    "type": "integer",
+                    "description": "The amount of blur to apply",
+                    "default": 50,
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "haze": {
+                    "type": "integer",
+                    "description": "The amount of haze to apply",
+                    "default": 0,
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "temp": {
+                    "type": "integer",
+                    "description": "The value of the temperature to apply. -50 would be coldest and 50 would be the warmest setting",
+                    "default": 0,
+                    "minimum": -50,
+                    "maximum": 50
+                },
+                "tint": {
+                    "type": "integer",
+                    "description": "The amount of the tint to apply",
+                    "default": 0,
+                    "minimum": -50,
+                    "maximum": 50
+                },
+                "saturation": {
+                    "type": "integer",
+                    "description": "The amount of the saturation to apply. -50 implies fully unsaturated colors and 50 will fully saturate the colors",
+                    "default": 0,
+                    "minimum": -50,
+                    "maximum": 50
+                },
+                "brightness": {
+                    "type": "integer",
+                    "description": "The amount of the brightness to apply",
+                    "default": 0,
+                    "minimum": -50,
+                    "maximum": 50
+                },
+                "grain": {
+                    "type": "integer",
+                    "description": "The amount of the graining to add to the image",
+                    "default": 0,
+                    "minimum": 0,
+                    "maximum": 100
+                }
+            },
+            "allOf": [
+                {
+                    "not": {
+                        "required": [
+                            "focusSubject", "focalSelector"
+                        ]
+                    }
+                }
+            ],
+            "additionalProperties": false
+        },
+        "outputs": {
+            "$ref": "file_output_pegasus.schema.json#/definitions/output_objects"
+        }
+    }
+}
