@@ -1,4 +1,5 @@
 import boto3
+from botocore.config import Config
 import requests
 import json
 
@@ -15,7 +16,7 @@ autotone_url = 'https://image.adobe.io/lrService/autoTone'
 
 
 def get_presigned_url(bucket, key, operation, expires_in, region):
-    s3 = boto3.client('s3', region_name=region)
+    s3 = boto3.client('s3', config=Config(signature_version='s3v4'), region_name=region)
     url = s3.generate_presigned_url(operation, Params={'Bucket': bucket, 'Key': key}, ExpiresIn=expires_in)
     return url
 
