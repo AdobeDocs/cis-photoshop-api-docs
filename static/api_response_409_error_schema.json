@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "api_response_402.schema.json",
-  "title": "api_response_402",
+  "$id": "api_response_409.schema.json",
+  "title": "api_response_409",
   "description": "Provides API response",
   "type": "object",
   "properties": {
@@ -9,25 +9,35 @@
       "type": "string",
       "format": "string",
       "description": "A short, human-readable summary of the problem",
-      "example": "Trial Limit Exceeded Error"
+      "example": "Unable to upload asset"
     },
     "type": {
       "type": "string",
       "format": "string",
       "description": "A machine-readable error type",
-      "example": "TrialLimitExceededError"
+      "example": "FileOverwriteError"
     },
     "code": {
       "type": "string",
       "format": "string",
       "description": "A machine-readable error code",
-      "example": 402
+      "example": 409
     },
     "details": {
-      "type": "string",
+      "type": "object",
       "description": "Further descriptions of the exact error where details is substituted for a specific issue.",
-      "example" : "Trial limit for the subscribed plan has been exceeded.
-      For questions about additional capacity please reach out to PS team at psdservices@adobe.com"
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name for the detailed error.",
+          "example": "Asset Upload Error"
+        },
+        "reason": {
+          "type": "string",
+          "description": "Details of error reason.",
+          "example": "File exists and overwrite is diabled"
+          }
+      }
     }
   }
 }
