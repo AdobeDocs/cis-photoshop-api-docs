@@ -132,6 +132,26 @@
               }
             }
           },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -247,6 +267,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
                 }
               }
             }
@@ -370,6 +410,26 @@
               }
             }
           },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -485,6 +545,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
                 }
               }
             }
@@ -608,6 +688,26 @@
               }
             }
           },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -626,7 +726,7 @@
           "Lightroom"
         ],
         "summary": "Get the status of a job.",
-        "description": "Returns the status of a job.",
+        "description": "Returns the status of a job. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned .",
         "operationId": "acrstatus",
         "parameters": [
           {
@@ -796,6 +896,26 @@
               }
             }
           },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -803,7 +923,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/sensei/cutout \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"input\":{\"href\":\"string\",\"storage\":\"external\"},\\\n \"output\":{\"href\":\"string\",\"storage\":\"external\",\"overwrite\":true,\"mask\":{\"format\":\"soft\"}}}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/sensei/cutout \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"input\":{\"href\":\"string\",\"storage\":\"external\"},\\\n \"output\":{\"href\":\"string\",\"storage\":\"external\",\"mask\":{\"format\":\"soft\"}}}'"
           }
         ]
       }
@@ -915,6 +1035,26 @@
               }
             }
           },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -922,7 +1062,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/sensei/mask \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"input\":{\"href\":\"string\",\"storage\":\"external\"},\\\n \"output\":{\"href\":\"string\",\"storage\":\"external\",\"overwrite\":true,\"mask\":{\"format\":\"soft\"}}}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/sensei/mask \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"input\":{\"href\":\"string\",\"storage\":\"external\"},\\\n \"output\":{\"href\":\"string\",\"storage\":\"external\",\"mask\":{\"format\":\"soft\"}}}'"
           }
         ]
       }
@@ -933,7 +1073,7 @@
           "Sensei"
         ],
         "summary": "Get the status of a job.",
-        "description": "Returns the status of a job.",
+        "description": "Returns the status of a job. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned .",
         "operationId": "icstatus",
         "parameters": [
           {
@@ -1103,6 +1243,26 @@
               }
             }
           },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -1114,7 +1274,7 @@
           },
           {
             "lang": "batch_example",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/renditionCreate \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"presigned_get_url_to_folder_containing_files\",\\\n \"storage\":\"external\"}],\"outputs\":[{\"href\":\"presigned_put_url\",\\\n \"storage\":\"external\",\"type\":\"image\/jpeg\",\\\n \"width\":0,\"overwrite\":true,\"quality\":3},\\\n {\"href\":\"presigned_put_url\",\"storage\":\"external\",\\\n \"type\":\"image\/png\",\"width\":0,\"overwrite\":true,\"compression\":\"medium\"},\\\n {\"href\":\"presigned_put_url\",\"storage\":\"external\",\"type\":\"image\/vnd.adobe.photoshop\",\\\n \"overwrite\":true}]}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/renditionCreate \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"presigned_get_url_to_folder_containing_files\",\\\n \"storage\":\"external\"}],\"outputs\":[{\"href\":\"presigned_put_url\",\\\n \"storage\":\"external\",\"type\":\"image\/jpeg\",\\\n \"width\":0,\"quality\":3},\\\n {\"href\":\"presigned_put_url\",\"storage\":\"external\",\\\n \"type\":\"image\/png\",\"width\":0,\"compression\":\"medium\"},\\\n {\"href\":\"presigned_put_url\",\"storage\":\"external\",\"type\":\"image\/vnd.adobe.photoshop\"}]}'"
           },
           {
             "lang": "icc_profile_example",
@@ -1226,6 +1386,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
                 }
               }
             }
@@ -1349,6 +1529,26 @@
               }
             }
           },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -1464,6 +1664,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
                 }
               }
             }
@@ -1587,6 +1807,26 @@
               }
             }
           },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -1702,6 +1942,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
                 }
               }
             }
@@ -1825,6 +2085,26 @@
               }
             }
           },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -1832,7 +2112,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/documentOperations \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"presigned_get_url\",\"storage\":\"external\"}],\\\n \"options\":{\"manageMissingFonts\":\"useDefault\",\\\n \"globalFont\":\"MyriadPro-Bold\", \"fonts\":[{\"href\":\"presigned_get_url\",\"storage\":\"external\"}],\\\n \"document\":{\"canvasSize\":{\"bounds\":{\"top\":200,\"left\":200,\\\n \"bottom\":500,\"right\":500}},\"imageSize\":{\"height\":100,\"width\":100},\"trim\":{\"basedOn\":\\\n \"transparentPixels\"}},\\\n \"layers\":[{\"add\":{\"insertTop\":true},\"name\":\"new adjustment layer\",\\\n \"type\":\"adjustmentLayer\",\"visible\":true,\\\n \"adjustments\":{\"brightnessContrast\":{\"brightness\":-23,\"contrast\":15}}},\\\n {\"add\":{\"insertBottom\":true},\"name\":\"new content layer\",\"type\":\"fillLayer\",\"visible\":true,\"fill\":\\\n {\"solidColor\":{\"rgb\":{\"red\":0,\"green\":255,\"blue\":255}}},\\\n \"blendOptions\":{\"opacity\":90,\"blendMode\":\"normal\"}},\\\n {\"index\":8,\"locked\":false,\"name\":\"SO Layer\",\\\n \"type\":\"smartObject\",\"visible\":true,\\\n \"add\":{\"insertTop\":true},\"input\":{\"href\":\"files/input/Simple.psd\",\"storage\":\"external\"},\\\n \"smartObject\":{\"linked\":false}},{\"id\":33,\"edit\":{},\"index\":6,\\\n \"type\":\"textLayer\",\"name\":\"my text layer\",\\\n \"locked\":true,\"visible\":true,\\\n \"bounds\":{\"top\":50,\"left\":100,\"width\":500,\"height\":450},\\\n \"text\":{\"content\":\"NEW TEXT CHANGES\",\"characterStyles\":[{\"fontSize\":12.5,\\\n \"fontName\":\"Arial-BoldMT\",\"orientation\":\"horizontal\",\\\n \"fontColor\":{\"rgb\":{\"red\":26086,\"green\":23002,\"blue\":8224}}}],\\\n \"paragraphStyles\":[{\"alignment\":\"left\"}]},\"blendOptions\":{\"opacity\":90,\\\n \"blendMode\":\"normal\"}},\\\n {\"add\":{\"insertAbove\":{\"id\":53}},\"name\":\"New Exposure Layer\",\\\n \"type\":\"adjustmentLayer\",\"locked\":false,\"visible\":true,\\\n \"adjustments\":{\"exposure\":{\"exposure\":0.25,\\\n \"offset\":0.0049,\"gammaCorrection\":1.38}}},\\\n {\"edit\":{},\"id\":78,\"index\":2,\\\n \"type\":\"adjustmentLayer\",\"name\":\"Color Balance\",\\\n \"locked\":false,\"visible\":true,\"mask\":{\"input\":{\"href\":\"files/abc.psd\",\"storage\":\"external\"},\\\n \"enabled\":false,\"linked\":true,\"offset\":{\"x\":70,\"y\":50},\"clip\":true},\\\n \"adjustments\":{\"colorBalance\":{\"shadowLevels\":[0,10,20],\\\n \"preserveLuminosity\":true,\"midtoneLevels\":[30,40,50],\"highlightLevels\":[60,70,80]}}},\\\n {\"move\":\\\n {\"insertAbove\":{\"name\":\"Hue Saturation\"}},\\\n \"name\":\"new Image layer\",\"type\":\"layer\",\"visible\":true,\"input\":{\"href\":\"presigned_get_url\",\"storage\":\"external\"}},\\\n {\"edit\":{},\"id\":77,\"index\":1,\"type\":\"adjustmentLayer\",\"name\":\"Hue Saturation\",\"locked\":false,\"visible\":true,\\\n \"adjustements\":{\"hueSaturation\":{\"channels\":[{\"channel\":\"master\",\\\n \"hue\":-5,\"saturation\":20,\"lightness\":0}],\"colorize\":false}}},\\\n  {\"type\":\"backgroundLayer\",\"index\":0,\"locked\":true,\"id\":1,\"visible\":true,\"name\":\"Background\"}]},\\\n \"outputs\":[{\"href\":\"presigned_put_url\",\"storage\":\"external\",\\\n \"type\":\"image/jpeg\",\"width\":500,\"overwrite\":true,\"trimToCanvas\":false,\\\n \"layers\":[{\"id\":77}]},{\"href\":\"presigned_put_url\",\"storage\":\"external\",\\\n \"type\":\"image/vnd.adobe.photoshop\",\"overwrite\":false}]}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/documentOperations \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"presigned_get_url\",\"storage\":\"external\"}],\\\n \"options\":{\"manageMissingFonts\":\"useDefault\",\\\n \"globalFont\":\"MyriadPro-Bold\", \"fonts\":[{\"href\":\"presigned_get_url\",\"storage\":\"external\"}],\\\n \"document\":{\"canvasSize\":{\"bounds\":{\"top\":200,\"left\":200,\\\n \"bottom\":500,\"right\":500}},\"imageSize\":{\"height\":100,\"width\":100},\"trim\":{\"basedOn\":\\\n \"transparentPixels\"}},\\\n \"layers\":[{\"add\":{\"insertTop\":true},\"name\":\"new adjustment layer\",\\\n \"type\":\"adjustmentLayer\",\"visible\":true,\\\n \"adjustments\":{\"brightnessContrast\":{\"brightness\":-23,\"contrast\":15}}},\\\n {\"add\":{\"insertBottom\":true},\"name\":\"new content layer\",\"type\":\"fillLayer\",\"visible\":true,\"fill\":\\\n {\"solidColor\":{\"rgb\":{\"red\":0,\"green\":255,\"blue\":255}}},\\\n \"blendOptions\":{\"opacity\":90,\"blendMode\":\"normal\"}},\\\n {\"index\":8,\"locked\":false,\"name\":\"SO Layer\",\\\n \"type\":\"smartObject\",\"visible\":true,\\\n \"add\":{\"insertTop\":true},\"input\":{\"href\":\"files/input/Simple.psd\",\"storage\":\"external\"},\\\n \"smartObject\":{\"linked\":false}},{\"id\":33,\"edit\":{},\"index\":6,\\\n \"type\":\"textLayer\",\"name\":\"my text layer\",\\\n \"locked\":true,\"visible\":true,\\\n \"bounds\":{\"top\":50,\"left\":100,\"width\":500,\"height\":450},\\\n \"text\":{\"content\":\"NEW TEXT CHANGES\",\"characterStyles\":[{\"fontSize\":12.5,\\\n \"fontName\":\"Arial-BoldMT\",\"orientation\":\"horizontal\",\\\n \"fontColor\":{\"rgb\":{\"red\":26086,\"green\":23002,\"blue\":8224}}}],\\\n \"paragraphStyles\":[{\"alignment\":\"left\"}]},\"blendOptions\":{\"opacity\":90,\\\n \"blendMode\":\"normal\"}},\\\n {\"add\":{\"insertAbove\":{\"id\":53}},\"name\":\"New Exposure Layer\",\\\n \"type\":\"adjustmentLayer\",\"locked\":false,\"visible\":true,\\\n \"adjustments\":{\"exposure\":{\"exposure\":0.25,\\\n \"offset\":0.0049,\"gammaCorrection\":1.38}}},\\\n {\"edit\":{},\"id\":78,\"index\":2,\\\n \"type\":\"adjustmentLayer\",\"name\":\"Color Balance\",\\\n \"locked\":false,\"visible\":true,\"mask\":{\"input\":{\"href\":\"files/abc.psd\",\"storage\":\"external\"},\\\n \"enabled\":false,\"linked\":true,\"offset\":{\"x\":70,\"y\":50},\"clip\":true},\\\n \"adjustments\":{\"colorBalance\":{\"shadowLevels\":[0,10,20],\\\n \"preserveLuminosity\":true,\"midtoneLevels\":[30,40,50],\"highlightLevels\":[60,70,80]}}},\\\n {\"move\":\\\n {\"insertAbove\":{\"name\":\"Hue Saturation\"}},\\\n \"name\":\"new Image layer\",\"type\":\"layer\",\"visible\":true,\"input\":{\"href\":\"presigned_get_url\",\"storage\":\"external\"}},\\\n {\"edit\":{},\"id\":77,\"index\":1,\"type\":\"adjustmentLayer\",\"name\":\"Hue Saturation\",\"locked\":false,\"visible\":true,\\\n \"adjustements\":{\"hueSaturation\":{\"channels\":[{\"channel\":\"master\",\\\n \"hue\":-5,\"saturation\":20,\"lightness\":0}],\"colorize\":false}}},\\\n  {\"type\":\"backgroundLayer\",\"index\":0,\"locked\":true,\"id\":1,\"visible\":true,\"name\":\"Background\"}]},\\\n \"outputs\":[{\"href\":\"presigned_put_url\",\"storage\":\"external\",\\\n \"type\":\"image/jpeg\",\"width\":500,\"trimToCanvas\":false,\\\n \"layers\":[{\"id\":77}]},{\"href\":\"presigned_put_url\",\"storage\":\"external\",\\\n \"type\":\"image/vnd.adobe.photoshop\"}]}'"
           }
         ]
       }
@@ -1962,7 +2242,7 @@
           "Photoshop"
         ],
         "summary": "Get the status of documentManifest",
-        "description": "Returns the status of documentManifest API",
+        "description": "Returns the status of documentManifest API. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned .",
         "operationId": "documentManifestStatus",
         "parameters": [
           {
@@ -2132,6 +2412,26 @@
               }
             }
           },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -2139,7 +2439,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/documentCreate \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"options\":{\"document\":{\"height\":1000,\"width\":1000,\"resolution\":72,\\\n \"mode\":\"rgb\", \"fill\":\"transparent\",\"depth\":16},\\\n \"manageMissingFonts\":\"useDefault\",\"globalFont\":\"MyriadPro-Bold\",\"fonts\":[{\"href\":\"get_presigned_url\",\"storage\":\"external\"}],\\\n \"layers\":[{\"name\":\"new adjustment layer\",\"type\":\"adjustmentLayer\",\"visible\":true,\\\n \"adjustments\":{\"brightnessContrast\":{\"brightness\":-23,\"contrast\":15}}},{\"name\":\"new content layer\",\\\n \"type\":\"fillLayer\",\"visible\":true,\"fill\":{\"solidColor\":{\"rgb\":{\"red\":0,\"green\":255,\"blue\":255}}},\\\n \"blendOptions\":{\"opacity\":90,\"blendMode\":\"normal\"}},{\"locked\":false,\"name\":\"SO Layer\",\\\n \"type\":\"smartObject\",\"visible\":true,\"input\":{\"href\":\"files\/input\/Simple.psd\",\"storage\":\"adobe\"},\\\n \"smartObject\":{\"linked\":false}},{\"type\":\"textLayer\",\"name\":\"my text layer\",\"locked\":true,\"visible\":true,\\\n \"bounds\":{\"top\":50,\"left\":100,\"width\":500,\"height\":450},\"text\":{\"content\":\"NEW TEXT CHANGES\",\"characterStyles\":[{\"fontSize\":12.5,\"fontName\":\"Arial-BoldMT\",\\\n \"orientation\":\"horizontal\",\"fontColor\":{\"rgb\":{\"red\":26086,\"green\":23002,\"blue\":8224}}}],\\\n \"paragraphStyles\":[{\"alignment\":\"left\"}]},\"blendOptions\":{\"opacity\":90,\"blendMode\":\"normal\"}},\\\n {\"name\":\"New Exposure Layer\",\"type\":\"adjustmentLayer\",\"locked\":false,\"visible\":true,\\\n \"adjustments\":{\"exposure\":{\"exposure\":0.25,\"offset\":0.0049,\"gammaCorrection\":1.38}}},\\\n {\"type\":\"adjustmentLayer\",\"name\":\"Color Balance\",\"locked\":false,\"visible\":true,\\\n \"mask\":{\"input\":{\"href\":\"files\/abc.psd\",\"storage\":\"adobe\"},\\\n \"enabled\":false,\"linked\":true,\"offset\":{\"x\":70,\"y\":50},\"clip\":true},\\\n \"adjustments\":{\"colorBalance\":{\"shadowLevels\":[0,10,20],\"preserveLuminosity\":true,\"midtoneLevels\":[30,40,50],\\\n \"highlightLevels\":[60,70,80]}}},{\"name\":\"new Image layer\",\"type\":\"layer\",\"visible\":true,\\\n \"input\":{\"href\":\"hget_presigned_url\",\"storage\":\"external\"}},\\\n {\"type\":\"adjustmentLayer\",\"name\":\"Hue Saturation\",\\\n \"locked\":false,\"visible\":true,\"adjustements\":{\"hueSaturation\":\\\n {\"channels\":[{\"channel\":\"master\",\"hue\":-5,\"saturation\":20,\"lightness\":0}],\"colorize\":false}}},\\\n {\"type\":\"backgroundLayer\",\"locked\":true,\"visible\":true,\"name\":\"Background\"}]},\\\n\"outputs\":[{\"href\":\"put_presigned_url\",\"storage\":\"external\",\\\n \"type\":\"image\/jpeg\",\"width\":500,\"overwrite\":true,\"trimToCanvas\":false,\\\n\"layers\":[{\"id\":77}]},{\"href\":\"put_presigned_url\",\"storage\":\"external\",\\\n \"type\":\"image\/vnd.adobe.photoshop\",\"overwrite\":false}]}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/documentCreate \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"options\":{\"document\":{\"height\":1000,\"width\":1000,\"resolution\":72,\\\n \"mode\":\"rgb\", \"fill\":\"transparent\",\"depth\":16},\\\n \"manageMissingFonts\":\"useDefault\",\"globalFont\":\"MyriadPro-Bold\",\\\n \"fonts\":[{\"href\":\"get_presigned_url\",\"storage\":\"external\"}],\\\n \"layers\":[{\"name\":\"new adjustment layer\",\"type\":\"adjustmentLayer\",\"visible\":true,\\\n \"adjustments\":{\"brightnessContrast\":{\"brightness\":-23,\"contrast\":15}}},{\"name\":\"new content layer\",\\\n \"type\":\"fillLayer\",\"visible\":true,\"fill\":{\"solidColor\":{\"rgb\":{\"red\":0,\"green\":255,\"blue\":255}}},\\\n \"blendOptions\":{\"opacity\":90,\"blendMode\":\"normal\"}},{\"locked\":false,\"name\":\"SO Layer\",\\\n \"type\":\"smartObject\",\"visible\":true,\"input\":{\"href\":\"files\/input\/Simple.psd\",\"storage\":\"adobe\"},\\\n \"smartObject\":{\"linked\":false}},{\"type\":\"textLayer\",\"name\":\"my text layer\",\"locked\":true,\"visible\":true,\\\n \"bounds\":{\"top\":50,\"left\":100,\"width\":500,\"height\":450},\\\n \"text\":{\"content\":\"NEW TEXT CHANGES\",\\\n \"characterStyles\":[{\"fontSize\":12.5,\"fontName\":\"Arial-BoldMT\",\\\n \"orientation\":\"horizontal\",\"fontColor\":{\"rgb\":{\"red\":26086,\"green\":23002,\"blue\":8224}}}],\\\n \"paragraphStyles\":[{\"alignment\":\"left\"}]},\"blendOptions\":{\"opacity\":90,\"blendMode\":\"normal\"}},\\\n {\"name\":\"New Exposure Layer\",\"type\":\"adjustmentLayer\",\"locked\":false,\"visible\":true,\\\n \"adjustments\":{\"exposure\":{\"exposure\":0.25,\"offset\":0.0049,\"gammaCorrection\":1.38}}},\\\n {\"type\":\"adjustmentLayer\",\"name\":\"Color Balance\",\"locked\":false,\"visible\":true,\\\n \"mask\":{\"input\":{\"href\":\"files\/abc.psd\",\"storage\":\"adobe\"},\\\n \"enabled\":false,\"linked\":true,\\\n \"offset\":{\"x\":70,\"y\":50},\"clip\":true},\\\n \"adjustments\":{\"colorBalance\":{\"shadowLevels\":[0,10,20],\"preserveLuminosity\":true,\"midtoneLevels\":[30,40,50],\\\n \"highlightLevels\":[60,70,80]}}},{\"name\":\"new Image layer\",\"type\":\"layer\",\"visible\":true,\\\n \"input\":{\"href\":\"hget_presigned_url\",\"storage\":\"external\"}},\\\n {\"type\":\"adjustmentLayer\",\"name\":\"Hue Saturation\",\\\n \"locked\":false,\"visible\":true,\"adjustements\":{\"hueSaturation\":\\\n {\"channels\":[{\"channel\":\"master\",\"hue\":-5,\"saturation\":20,\"lightness\":0}],\"colorize\":false}}},\\\n {\"type\":\"backgroundLayer\",\"locked\":true,\"visible\":true,\"name\":\"Background\"}]},\\\n\"outputs\":[{\"href\":\"put_presigned_url\",\"storage\":\"external\",\\\n \"type\":\"image\/jpeg\",\"width\":500,\"trimToCanvas\":false,\\\n\"layers\":[{\"id\":77}]},{\"href\":\"put_presigned_url\",\"storage\":\"external\",\\\n \"type\":\"image\/vnd.adobe.photoshop\"}]}'"
           }
         ]
       }
@@ -2251,6 +2551,26 @@
               }
             }
           },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -2269,7 +2589,7 @@
           "Photoshop"
         ],
         "summary": "Get the status of a job.",
-        "description": "Returns the status of a job.",
+        "description": "Returns the status of a job. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned.",
         "operationId": "pitsstatus",
         "parameters": [
           {
@@ -2324,6 +2644,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "$ref": "./PITS/get_status.schema.json",
                   "$ref": "./PITS/get_status.schema.json"
                 }
               }

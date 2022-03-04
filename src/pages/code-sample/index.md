@@ -138,8 +138,7 @@ curl -X POST \
     {
       "href":"<SIGNED_POST_URL>",
       "storage":"<storage>",
-      "type":"vnd.adobe.photoshop",
-      "overwrite":true
+      "type":"vnd.adobe.photoshop"
     }
   ]
 }'
@@ -193,8 +192,7 @@ curl -X POST \
     {
       "href":"<SIGNED_POST_URL>",
       "storage":"<storage>",
-      "type":"vnd.adobe.photoshop",
-      "overwrite":true
+      "type":"vnd.adobe.photoshop"
     }
   ]
 }'
@@ -248,8 +246,7 @@ curl -X POST \
     {
       "href":"<SIGNED_POST_URL>",
       "storage":"<storage>",
-      "type":"vnd.adobe.photoshop",
-      "overwrite":true
+      "type":"vnd.adobe.photoshop"
     }
   ]
 }'
@@ -288,8 +285,7 @@ curl -X POST \
     {
       "href":"<SIGNED_POST_URL>",
       "storage":"<storage>",
-      "type":"vnd.adobe.photoshop",
-      "overwrite":true
+      "type":"vnd.adobe.photoshop"
     }
   ]
 }'
@@ -344,8 +340,7 @@ curl -X POST \
     {
       "href":"<SIGNED_POST_URL>",
       "storage":"<storage>",
-      "type":"vnd.adobe.photoshop",
-      "overwrite":true
+      "type":"vnd.adobe.photoshop"
     }
   ]
 }'
@@ -445,8 +440,7 @@ curl -X POST \
     {
       "href":"<SIGNED_POST_URL>",
       "storage":"<storage>",
-      "type":"vnd.adobe.photoshop",
-      "overwrite":true
+      "type":"vnd.adobe.photoshop"
     }
   ]
 }
@@ -894,7 +888,7 @@ curl -X POST \
 
 ### Example 18 : Applying Product Crop
 
-The `productCrop` endpoint can take an input file and apply right crop to it. We don't support multilayered PSD. 
+The `productCrop` endpoint can take an input file and apply right crop to it. We don't support multilayered PSD.
 
 This example shows how you can apply the crop with required padding to an input file
 
@@ -984,8 +978,7 @@ curl -X POST \
         {
             "href": "<SIGNED_POST_URL>",
             "type": "<type>",
-            "storage": "<storage>",
-            "overwrite": <boolean>
+            "storage": "<storage>"
         }
     ]
 }'
@@ -1020,8 +1013,7 @@ curl -X POST \
         {
             "href": "<SIGNED_POST_URL>",
             "type": "<type>",
-            "storage": "<storage>",
-            "overwrite": <boolean>
+            "storage": "<storage>"
         }
     ]
 }'
@@ -1070,8 +1062,7 @@ curl -X POST \
         {
             "href": "<SIGNED_POST_URL>",
             "type": "<type>",
-            "storage": "<storage>",
-            "overwrite": <boolean>
+            "storage": "<storage>"
         }
     ]
 }'
@@ -1128,8 +1119,7 @@ curl -X POST \
         {
             "href": "<SIGNED_POST_URL>",
             "type": "<type>",
-            "storage": "<storage>",
-            "overwrite": <boolean>
+            "storage": "<storage>"
         }
     ]
 }'
@@ -1448,8 +1438,7 @@ curl -X POST \
     {
       "href": "<SIGNED_POST_URL>",
       "type": "<type>",
-      "storage": "<storage>",
-      "overwrite": <boolean>
+      "storage": "<storage>"
     }
   ]
 }'

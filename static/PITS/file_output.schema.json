@@ -58,7 +58,7 @@
       "maximum": 7
     },
     "overwrite": {
-      "description": "if the output file already exists should it be overwritten. Will eventually support eTags",
+      "description": "if the output file already exists should it be overwritten. `overwrite` flag is used only when `storage = \"adobe\"`. Will eventually support eTags",
       "type": "boolean",
       "default": true
     },

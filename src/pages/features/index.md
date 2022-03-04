@@ -60,7 +60,8 @@ It enables user to
 - Enter the required padding they need in their cropped image.
 
 #### Known Limitations
-- It doesn't crop the salient object when there is an image with person in it.
+- The current model is trained to return a crop that respects the salient object within an image. There is a current known issue that when a person or portrait is contained within a salient object, the model will crop with the person as the focal area rather than the salient object that contains it. This is problematic in the case of an item where an image of a person is contained within a design (i.e. a t-shirt, collectible or art). Rather than crop to the intended item, the service will crop to the person within the item.
+We intend to correct this issue in future releases.
 
 [Here](../code-sample/#example-18--applying-product-crop) is a code example.
 
