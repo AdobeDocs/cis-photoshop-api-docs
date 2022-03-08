@@ -44,7 +44,8 @@ curl -s $ic_endpoint \
     "href": "'$intermediate_output_url'",
     "mask": {
       "format":"soft"
-    }
+    },
+    "overwrite":true
   }
 }'
 )
