@@ -36,6 +36,12 @@
         "xmp":{
           "type":"string",
           "description": "The XMP to apply."
+        },
+        "orientation":{
+          "type":"number",
+          "description": "The combination of flip and/or rotate to apply:\n\r\r1 = No flip or rotate\n\r\r2 = Flip Horizontal\n\r3 = Rotate 180\n\r4 = Flip Vertical\n\r5 = RotateLeft+FlipVertical which is the same as RotateRight+FlipHorizontal\n\r6 = Rotate Right\n\r7 = RotateRight+FlipVertical which is the same as RotateLeft+FlipHorizontal\n\r8 = Rotate Left",
+          "minimum": 1,
+          "maximum": 8
         }
       }
     }

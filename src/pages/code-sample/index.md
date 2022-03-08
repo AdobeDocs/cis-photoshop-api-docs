@@ -1161,7 +1161,8 @@ curl -X POST \
         "storage": "<storage>"
     },
     "options": {
-        "xmp": "<xmp>"
+        "xmp": "<xmp>",
+        "orientation": "<orientation>"
     },
     "outputs": [
         {
