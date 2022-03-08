@@ -29,7 +29,7 @@
           "type": "string"
         },
         "overwrite": {
-          "description": "If the output file already exists should it be overwritten.",
+          "description": "If the output file already exists should it be overwritten.`overwrite` flag is used only when `storage = \"adobe\"`",
           "type": "boolean",
           "default": true
         },
