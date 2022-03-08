@@ -100,8 +100,7 @@ curl -s $pegasus_endpoint \
   "outputs": [
     {
       "storage": "external",
-      "type": "image/jpeg",
-      "overwrite": true,
+      "type": "image/jpeg"
       "href": "'final_output_url'"
     }
   ]

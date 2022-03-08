@@ -48,8 +48,7 @@ curl -s $ic_endpoint \
     "href": "'intermediate_output_put_url'",
     "mask": {
       "format":"soft"
-    },
-    "overwrite":true
+    }
   }
 }'
 )
@@ -107,7 +106,6 @@ curl -s $pegasus_endpoint \
     {
       "storage": "external",
       "type": "image/jpeg",
-      "overwrite": true,
       "href": "'$final_output_url'"
     }
   ]
