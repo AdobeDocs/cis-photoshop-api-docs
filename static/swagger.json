@@ -437,7 +437,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/xmp \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\": {\"source\": {\"href\":\"string\",\"storage\":\"external\"}, \\\n\"options\": \"<options>\"},\"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"type\"}]}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/edit \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\": {\"source\": {\"href\":\"string\",\"storage\":\"external\"}, \\\n\"options\": \"<options>\"},\"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"type\"}]}'"
           }
         ]
       }
@@ -715,7 +715,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/xmp \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\": {\"source\": {\"href\":\"string\",\"storage\":\"external\"}, \\\n\"options\": {\"xmp\":\"string\"},\"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"type\"}]}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/xmp \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\": {\"source\": {\"href\":\"string\",\"storage\":\"external\"}, \\\n\"options\": {\"xmp\":\"string\", \"orientation\":\"orientation\"},\"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"type\"}]}'"
           }
         ]
       }
