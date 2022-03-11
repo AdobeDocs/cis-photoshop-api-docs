@@ -2644,7 +2644,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./PITS/get_status.schema.json",
                   "$ref": "./PITS/get_status.schema.json"
                 }
               }
