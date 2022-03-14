@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-pages-index-md","path":"/","result":{"pageContext":{"frontmatter":{"title":"Overview - Adobe Photoshop API","description":"This is the overview page of Adobe Photoshop API","contributors":["https://github.com/khound"]}}},"staticQueryHashes":["915530536"]}
+{
+    "componentChunkName": "component---src-pages-index-md",
+    "path": "/",
+    "result": {"pageContext":{"frontmatter":{"title":"Overview - Adobe Photoshop API","description":"This is the overview page of Adobe Photoshop API","contributors":["https://github.com/khound"]}}},
+    "staticQueryHashes": ["915530536"]}

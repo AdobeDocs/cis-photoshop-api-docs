@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-pages-support-index-md","path":"/support/","result":{"pageContext":{"frontmatter":{"title":"Support","description":"Page for Support","contributors":["https://github.com/khound"]}}},"staticQueryHashes":["915530536"]}
+{
+    "componentChunkName": "component---src-pages-support-index-md",
+    "path": "/support/",
+    "result": {"pageContext":{"frontmatter":{"title":"Support","description":"Page for Support","contributors":["https://github.com/khound"]}}},
+    "staticQueryHashes": ["915530536"]}
