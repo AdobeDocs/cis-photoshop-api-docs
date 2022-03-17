@@ -1,8 +1,9 @@
 const auth = require("@adobe/jwt-auth");
-const storage = require("@azure/storage-blob")
+let URL = require('url') 
+let AWS = require('aws-sdk')
 const fs = require("fs")
 const request = require('request')
-const endpoint = "https://image.adobe.io/pie/psdService/text"
+const endpoint = "https://image.adobe.io/pie/psdService/smartObject"
 
 /**********************************************************************/
 /**********************************************************************/
@@ -21,15 +22,14 @@ const imsConfig = {
 };
 
 // FILL OUT INFORMATION ABOUT YOUR AZURE BLOB STORAGE
-const azureStorageAccountName = "YOUR_AZURE_STORAGE_ACCOUNT_NAME";
-const azureAccountAccessKey = "YOUR_AZURE_ACCOUNT_ACCESS_KEY"
-const azureInputPath = "PATH/TO/INPUT/FILE/IN/YOUR/AZURE/account.psd";
-const azureOutputPath = "PATH/TO/WHERE/YOUR/WANT/THE/output.jpg";
-const azureContainerName= "YOUR_AZURE_COTAINER_NAME";
+const s3BucketName = "YOUR_BUCKET_NAME";
+const awsRegion = "YOUR_BUCKET_REGION"
+const s3InputPath = "PATH/TO/input.psd"
+const s3ReplacementImagePath = "PATH/TO/REPLACEMENT/image.png"
+const s3OutputPath = "PATH/TO/WHERE/YOU/WANT/THE/output.jpg";
 
 // FILL OUT INFORMATION ABOUT THE PSD AND TEXTLAYER
-const textLayerName = "NAME_OF_THE_LAYER";
-const textLayerContent = "YOUR_CONTENT";
+const smartObjectLayerName = "NAME_OF_THE_SMARTOBJECT_LAYER";
 
 /**********************************************************************/
 /**********************************************************************/
@@ -40,24 +40,18 @@ async function genearteIMSToken(){
   return creds;
 }
 
-async function generateSASUrl(accountname, key, containerName, blobName){
-  const cerds = new storage.StorageSharedKeyCredential(accountname,key);
-  const blobServiceClient = new storage.BlobServiceClient(`https://${accountname}.blob.core.windows.net`,cerds);
-  const client =blobServiceClient.getContainerClient(containerName)
-  const blobClient = client.getBlobClient(blobName);
-
-  const blobSAS = storage.generateBlobSASQueryParameters({
-    containerName, 
-    blobName, 
-    permissions: storage.BlobSASPermissions.parse("racwd"), 
-    startsOn: new Date(),
-    expiresOn: new Date(new Date().valueOf() + 86400)
-  }, 
-  cerds 
-  ).toString();
-
-  const sasUrl= blobClient.url+"?"+blobSAS;
-  return sasUrl;
+async function getSignedURL(bucket, destKey, region, op){
+  let s3 = new AWS.S3({ region: region, apiVersion: '2006-03-01', signatureVersion: 'v4' })
+  let params = {Bucket: bucket, Key: destKey};
+  return new Promise((resolve, reject) => {
+    s3.getSignedUrl(op, params, (err, url)=>{
+      if(err){
+        reject(err)
+      }else{
+        resolve(url)
+      }
+    });
+  })
 }
 
 async function postPhotoshopAPI(endpoint, apiKey, token, requestBody){
@@ -114,42 +108,32 @@ async function pollStatus(responseBody, apiKey, token){
 
 async function main(){
   let creds = await genearteIMSToken();
-  let inputSASUrl = await generateSASUrl(azureStorageAccountName, azureAccountAccessKey, azureContainerName, azureInputPath)
-  let outputSASUrl = await generateSASUrl(azureStorageAccountName, azureAccountAccessKey, azureContainerName, azureOutputPath)
+  let inputUrl = await getSignedURL(s3BucketName, s3InputPath, awsRegion, 'getObject')
+  let replacementImageUrl = await getSignedURL(s3BucketName, s3ReplacementImagePath, awsRegion, 'getObject')
+  let outputUrl = await getSignedURL(s3BucketName, s3OutputPath, awsRegion, 'putObject')
 
   let requestBody = {
     "inputs":[
       {
-        "href": inputSASUrl,
-        "storage": "azure"
+        "href": inputUrl,
+        "storage": "external"
       }
     ],
     "options":{
       "layers":[
         {
-          "name": textLayerName,
-          "text": {
-              "content": textLayerContent,
-              "orientation": "horizontal",
-              "characterStyles": [{
-                  "size": 15,
-                  "color": {
-                    "red":255,
-                    "green":0,
-                    "blue":0
-                  }
-              }],
-              "paragraphStyles": [{
-                "alignment": "right"
-              }]
+          "name": smartObjectLayerName,
+          "input": {
+            "href": replacementImageUrl,
+            "storage": "external"
           }
         }
       ]
     },
     "outputs":[
       {
-        "href": outputSASUrl,
-        "storage": "azure",
+        "href": outputUrl,
+        "storage": "external",
         "type": "image/jpeg"
       }
     ]
