@@ -1,0 +1,4 @@
+node_modules
+config/private.key
+config
+private.key
