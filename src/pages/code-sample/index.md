@@ -95,7 +95,7 @@ A call to this API initiates an asynchronous job and returns a response containi
 
 ### Example 3: Making a text layer edit
 
-<a href=https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_code/azure-blol-text-edit>Sample Code</a>
+<a href=https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_code/azure-blob-text-edit>Sample Code</a>
 
 ```shell
 curl -X POST \
