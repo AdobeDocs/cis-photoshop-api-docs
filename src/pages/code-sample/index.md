@@ -113,7 +113,6 @@ curl -X POST \
     "layers":[
       {
         "name": "My Text Layer",
-        "type": "textLayer",
         "text": {
             "content": "CHANGED TO NEW TEXT",
             "orientation": "horizontal",
@@ -149,7 +148,7 @@ This will change the font in a text layer named `My Text Layer` to a custom font
 
 ```shell
 curl -X POST \
-  https://image.adobe.io/pie/psdService/documentOperations \
+  https://image.adobe.io/pie/psdService/text \
   -H "Authorization: Bearer $token"  \
   -H "x-api-key: $apiKey" \
   -H "Content-Type: application/json" \
@@ -168,22 +167,22 @@ curl -X POST \
     "layers":[
       {
         "name": "My Text Layer",
-        "type": "textLayer",
         "text": {
-            "content": "CHANGED TO NEW TEXT WITH NEW FONT",
+            "content": "CHANGED TO NEW TEXT",
+            "orientation": "horizontal",
             "characterStyles": [{
-                "fontName": "VeganStylePersonalUse",
+                "size": 15,
                 "orientation": "horizontal",
-                "fontColor": {
-                    "rgb":{
-                       "red":26086,
-                       "green":23002,
-                       "blue":8224
-                    }
+                "color": {
+                    "red":255,
+                    "green":0,
+                    "blue":0
                 }
+            }],
+            "paragraphStyles": [{
+              "alignment": "right"
             }]
-        },
-        "edit": {}
+        }
       }
     ]
   },
@@ -201,7 +200,7 @@ curl -X POST \
 In this request for example, if `MySampleFont` is not found while processing the request, the system default font (`ArialMT`) will be used as `manageMissingFonts` is set to `useDefault`
 ```shell
 curl -X POST \
-  https://image.adobe.io/pie/psdService/documentOperations \
+  https://image.adobe.io/pie/psdService/text \
   -H "Authorization: Bearer $token"  \
   -H "x-api-key: $apiKey" \
   -H "Content-Type: application/json" \
@@ -222,22 +221,22 @@ curl -X POST \
     "layers":[
       {
         "name": "My Text Layer",
-        "type": "textLayer",
         "text": {
-            "content": "CHANGED TO NEW TEXT WITH NEW FONT",
+            "content": "CHANGED TO NEW TEXT",
+            "orientation": "horizontal",
             "characterStyles": [{
-                "fontName": "VeganStylePersonalUse",
+                "size": 15,
                 "orientation": "horizontal",
-                "fontColor": {
-                    "rgb":{
-                       "red":26086,
-                       "green":23002,
-                       "blue":8224
-                    }
+                "color": {
+                    "red":255,
+                    "green":0,
+                    "blue":0
                 }
+            }],
+            "paragraphStyles": [{
+              "alignment": "right"
             }]
-        },
-        "edit": {}
+        }
       }
     ]
   },
