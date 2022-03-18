@@ -21,7 +21,7 @@ export apiKey="<YOUR_API_KEY>"
 The `/smartObject` endpoint can take an input PSD file with an embedded smartobject and can replace with another smartobject.
 This API is a simple API developed to ease the smartObject replacement workflow for an user.
 
-This example shows how you can replace an embedded smart object
+This example shows how you can replace an embedded smart object.  <a href=https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_code/s3-smart-object-replacement>Sample Code</a>
 
 ``` shell
 curl -X POST \
@@ -95,9 +95,11 @@ A call to this API initiates an asynchronous job and returns a response containi
 
 ### Example 3: Making a text layer edit
 
+<a href=https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_code/s3-smart-object-replacement>Sample Code</a>
+
 ```shell
 curl -X POST \
-  https://image.adobe.io/pie/psdService/documentOperations \
+  https://image.adobe.io/pie/psdService/text \
   -H "Authorization: Bearer $token"  \
   -H "x-api-key: $apiKey" \
   -H "Content-Type: application/json" \
@@ -115,22 +117,20 @@ curl -X POST \
         "type": "textLayer",
         "text": {
             "content": "CHANGED TO NEW TEXT",
+            "orientation": "horizontal",
             "characterStyles": [{
-                "fontSize": 15,
+                "size": 15,
                 "orientation": "horizontal",
-                "fontColor": {
-                    "rgb":{
-                       "red":26086,
-                       "green":23002,
-                       "blue":8224
-                    }
+                "color": {
+                    "red":255,
+                    "green":0,
+                    "blue":0
                 }
             }],
             "paragraphStyles": [{
               "alignment": "right"
             }]
-        },
-        "edit": {}
+        }
       }
     ]
   },
