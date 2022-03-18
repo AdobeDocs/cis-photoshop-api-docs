@@ -21,7 +21,7 @@ export apiKey="<YOUR_API_KEY>"
 The `/smartObject` endpoint can take an input PSD file with an embedded smartobject and can replace with another smartobject.
 This API is a simple API developed to ease the smartObject replacement workflow for an user.
 
-This example shows how you can replace an embedded smart object
+This example shows how you can replace an embedded smart object.  <a href="https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/s3-smart-object-replacement">Sample Code</a>
 
 ``` shell
 curl -X POST \
@@ -94,10 +94,11 @@ curl -X POST \
 A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api) and [Example 14](/code-sample/#example-14-poll-for-job-status-for-all-other-apis)
 
 ### Example 3: Making a text layer edit
+This example shows how you can edit a text layer using the `/text` endpoint. <a href="https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/azure-blob-text-edit">Sample Code</a>
 
 ```shell
 curl -X POST \
-  https://image.adobe.io/pie/psdService/documentOperations \
+  https://image.adobe.io/pie/psdService/text \
   -H "Authorization: Bearer $token"  \
   -H "x-api-key: $apiKey" \
   -H "Content-Type: application/json" \
@@ -112,25 +113,22 @@ curl -X POST \
     "layers":[
       {
         "name": "My Text Layer",
-        "type": "textLayer",
         "text": {
             "content": "CHANGED TO NEW TEXT",
+            "orientation": "horizontal",
             "characterStyles": [{
-                "fontSize": 15,
+                "size": 15,
                 "orientation": "horizontal",
-                "fontColor": {
-                    "rgb":{
-                       "red":26086,
-                       "green":23002,
-                       "blue":8224
-                    }
+                "color": {
+                    "red":255,
+                    "green":0,
+                    "blue":0
                 }
             }],
             "paragraphStyles": [{
               "alignment": "right"
             }]
-        },
-        "edit": {}
+        }
       }
     ]
   },
@@ -150,7 +148,7 @@ This will change the font in a text layer named `My Text Layer` to a custom font
 
 ```shell
 curl -X POST \
-  https://image.adobe.io/pie/psdService/documentOperations \
+  https://image.adobe.io/pie/psdService/text \
   -H "Authorization: Bearer $token"  \
   -H "x-api-key: $apiKey" \
   -H "Content-Type: application/json" \
@@ -169,22 +167,22 @@ curl -X POST \
     "layers":[
       {
         "name": "My Text Layer",
-        "type": "textLayer",
         "text": {
-            "content": "CHANGED TO NEW TEXT WITH NEW FONT",
+            "content": "CHANGED TO NEW TEXT",
+            "orientation": "horizontal",
             "characterStyles": [{
-                "fontName": "VeganStylePersonalUse",
+                "size": 15,
                 "orientation": "horizontal",
-                "fontColor": {
-                    "rgb":{
-                       "red":26086,
-                       "green":23002,
-                       "blue":8224
-                    }
+                "color": {
+                    "red":255,
+                    "green":0,
+                    "blue":0
                 }
+            }],
+            "paragraphStyles": [{
+              "alignment": "right"
             }]
-        },
-        "edit": {}
+        }
       }
     ]
   },
@@ -202,7 +200,7 @@ curl -X POST \
 In this request for example, if `MySampleFont` is not found while processing the request, the system default font (`ArialMT`) will be used as `manageMissingFonts` is set to `useDefault`
 ```shell
 curl -X POST \
-  https://image.adobe.io/pie/psdService/documentOperations \
+  https://image.adobe.io/pie/psdService/text \
   -H "Authorization: Bearer $token"  \
   -H "x-api-key: $apiKey" \
   -H "Content-Type: application/json" \
@@ -223,22 +221,22 @@ curl -X POST \
     "layers":[
       {
         "name": "My Text Layer",
-        "type": "textLayer",
         "text": {
-            "content": "CHANGED TO NEW TEXT WITH NEW FONT",
+            "content": "CHANGED TO NEW TEXT",
+            "orientation": "horizontal",
             "characterStyles": [{
-                "fontName": "VeganStylePersonalUse",
+                "size": 15,
                 "orientation": "horizontal",
-                "fontColor": {
-                    "rgb":{
-                       "red":26086,
-                       "green":23002,
-                       "blue":8224
-                    }
+                "color": {
+                    "red":255,
+                    "green":0,
+                    "blue":0
                 }
+            }],
+            "paragraphStyles": [{
+              "alignment": "right"
             }]
-        },
-        "edit": {}
+        }
       }
     ]
   },
