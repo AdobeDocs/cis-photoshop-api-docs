@@ -21,7 +21,7 @@ export apiKey="<YOUR_API_KEY>"
 The `/smartObject` endpoint can take an input PSD file with an embedded smartobject and can replace with another smartobject.
 This API is a simple API developed to ease the smartObject replacement workflow for an user.
 
-This example shows how you can replace an embedded smart object.  <a href=https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_code/s3-smart-object-replacement>Sample Code</a>
+This example shows how you can replace an embedded smart object.  <a href="https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/s3-smart-object-replacement">Sample Code</a>
 
 ``` shell
 curl -X POST \
@@ -95,7 +95,7 @@ A call to this API initiates an asynchronous job and returns a response containi
 
 ### Example 3: Making a text layer edit
 
-<a href=https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_code/azure-blob-text-edit>Sample Code</a>
+<a href="https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/azure-blob-text-edit">Sample Code</a>
 
 ```shell
 curl -X POST \
