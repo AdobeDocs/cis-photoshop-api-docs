@@ -31,7 +31,7 @@
           "Lightroom"
         ],
         "summary": "Auto straighten an image",
-        "description": "Initiates an asynchronous job to auto straighten an image. \\\nTo get status of this job, call [Status API](/api/#operation/acrstatus).",
+        "description": "Initiates an asynchronous job to auto straighten an image. \\\nTo get status of this job, call [Status API](./#operation/acrstatus).",
         "operationId": "autoStraighten",
         "parameters": [
           {
@@ -170,7 +170,7 @@
           "Lightroom"
         ],
         "summary": "Auto tone an image",
-        "description": "Initiates an asynchronous job to auto tone an image.\nTo get status of this job, call [Status API](/api/#operation/acrstatus).",
+        "description": "Initiates an asynchronous job to auto tone an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).",
         "operationId": "autoTone",
         "parameters": [
           {
@@ -309,7 +309,7 @@
           "Lightroom"
         ],
         "summary": "Apply edits on an image.",
-        "description": "Initiates an asynchronous job to apply a set of edit parameters on an image.\nTo get status of this job, call [Status API](/api/#operation/acrstatus).",
+        "description": "Initiates an asynchronous job to apply a set of edit parameters on an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).",
         "operationId": "edit",
         "parameters": [
           {
@@ -448,7 +448,7 @@
           "Lightroom"
         ],
         "summary": "Apply a presets on an image",
-        "description": "Initiates an asynchronous job to apply a preset on an image.\nTo get status of this job, call [Status API](/api/#operation/acrstatus).",
+        "description": "Initiates an asynchronous job to apply a preset on an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).",
         "operationId": "presets",
         "parameters": [
           {
@@ -587,7 +587,7 @@
           "Lightroom"
         ],
         "summary": "Apply xmp on an image.",
-        "description": "Initiates an asynchronous job to apply an XMP setting to an image.\nTo get status of this job, call [Status API](/api/#operation/acrstatus).",
+        "description": "Initiates an asynchronous job to apply an XMP setting to an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).",
         "operationId": "xmp",
         "parameters": [
           {
@@ -795,7 +795,7 @@
           "Sensei"
         ],
         "summary": "Create Image Cutout",
-        "description": " Generates a PNG file in 4 channel RGBA format with the generated cutout mask \\\n applied to the input image generate a PNG file in 4 channel RGBA format with the generated cutout \\\n mask applied to the input image.\nTo get status of this job, call [Status API](/api/#operation/icstatus).",
+        "description": " Generates a PNG file in 4 channel RGBA format with the generated cutout mask \\\n applied to the input image generate a PNG file in 4 channel RGBA format with the generated cutout \\\n mask applied to the input image.\nTo get status of this job, call [Status API](./#operation/icstatus).",
         "operationId": "cutout",
         "parameters": [
           {
@@ -934,7 +934,7 @@
           "Sensei"
         ],
         "summary": "Create Mask",
-        "description": " Generates a mask PNG.\nTo get status of this job, call [Status API](/api/#operation/icstatus).",
+        "description": " Generates a mask PNG.\nTo get status of this job, call [Status API](./#operation/icstatus).",
         "operationId": "mask",
         "parameters": [
           {
@@ -2242,7 +2242,7 @@
           "Photoshop"
         ],
         "summary": "Get the status of documentManifest",
-        "description": "Returns the status of documentManifest API. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned .",
+        "description": "Returns the status of documentManifest API. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned.",
         "operationId": "documentManifestStatus",
         "parameters": [
           {
