@@ -523,7 +523,7 @@ curl -X GET \
   https://image.adobe.io/pie/psdService/status/de2415fb-82c6-47fc-b102-04ad651c5ed4 \
   -H "Authorization: Bearer $token"  \
   -H "x-api-key: $apiKey" \
-  -H "Content-Type: application/json" \
+  -H "Content-Type: application/json"
 ```
 ### Example 13: Poll for job status for documentManifest
 
@@ -1265,7 +1265,7 @@ curl -X GET \
   https://image.adobe.io/sensei/status/e3a13d81-a462-4b71-9964-28b2ef34aca7 \
   -H "Authorization: Bearer $token"  \
   -H "x-api-key: $apiKey" \
-  -H "Content-Type: application/json" \
+  -H "Content-Type: application/json"
 ```
 
 Once the job is complete your successful `/status` response will look similar to the response below; The output will have been placed in your requested location. In the event of failure the errors will be shown instead
