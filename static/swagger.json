@@ -2242,7 +2242,7 @@
           "Photoshop"
         ],
         "summary": "Get the status of documentManifest",
-        "description": "Returns the status of documentManifest API. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned .",
+        "description": "Returns the status of documentManifest API. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned.",
         "operationId": "documentManifestStatus",
         "parameters": [
           {
