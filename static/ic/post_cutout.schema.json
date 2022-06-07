@@ -12,6 +12,7 @@
     "input":{
       "type":"object",
       "required":["href","storage"],
+      "description": "Maximum supported input file resolution is 10k by 10k",
       "properties":{
         "href": {
           "description": "Either a presignedURL for storage='external' OR Creative Cloud assets path for storage='adobe'.",
@@ -61,24 +62,15 @@
           "type": "string",
           "enum":["performance","batch"],
           "default": "performance",
-          "description": "The value 'performance' optimizes for speed and 'batch' ensures the job will not fail due to timeout"
-        },
-        "process": {
-          "type": "object",
-          "hidden": true,
-          "properties": {
-            "postprocess": {
-              "type": "boolean"
-            }
-          }
+          "description": "The value 'performance' optimizes for speed. 'batch' ensures the job will ultimately run regardless of wait time"
         },
         "service": {
           "type": "object",
           "properties": {
             "version": {
               "type":"string",
-              "enum":["2.0","3.0"],
-              "default": "2.0",
+              "enum":["4","4.0"],
+              "default": "4",
               "description": "Version of the service"
             }
           }
@@ -117,7 +109,7 @@
             "space":{
               "type":"string",
               "enum":["rgba","rgb"],
-              "description": "Color space for the output image",
+              "description": "Color space for the output image. Defaults to 'rgba for /cutout and 'rgb' for a /mask",
               "example": "rgb"
             }
           }
