@@ -83,7 +83,7 @@
             "example": "ResourceNotFound"
           },
           "code": {
-            "type": "int",
+            "type": "integer",
             "format": "int",
             "description": "A machine-readable error code",
             "example": 404
