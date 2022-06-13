@@ -11,8 +11,8 @@
   "properties":{
     "input":{
       "type":"object",
-      "required":["href","storage"],
       "description": "Maximum supported input file resolution is 10k by 10k",
+      "required":["href","storage"],
       "properties":{
         "href": {
           "description": "Either a presignedURL for storage='external' OR Creative Cloud assets path for storage='adobe'.",
@@ -63,6 +63,16 @@
           "enum":["performance","batch"],
           "default": "performance",
           "description": "The value 'performance' optimizes for speed. 'batch' ensures the job will ultimately run regardless of wait time"
+        },
+        "process": {
+          "type": "object",
+          "hidden": true,
+          "description": "Internal Only",
+          "properties": {
+            "postprocess": {
+              "type": "boolean"
+            }
+          }
         },
         "service": {
           "type": "object",
