@@ -31,6 +31,22 @@
       ],
       "example": "string"
     },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "service": {
+          "type": "object",
+          "properties": {
+            "version": {
+              "type":"string",
+              "enum":["4.0"],
+              "default": "4.0",
+              "description": "Version of the service"
+            }
+          }
+        }
+      }
+    },
     "output": {
       "type": "object",
       "properties": {
@@ -83,7 +99,7 @@
           "type": "string",
           "enum":["performance","batch"],
           "default": "performance",
-          "description": "The value 'performance' optimizes for speed and 'batch' ensures the job will not fail due to timeout"
+          "description": "The value 'performance' optimizes for speed. 'batch' ensures the job will ultimately run regardless of wait time"
         }
       }
     },
@@ -106,7 +122,7 @@
             "example": "ResourceNotFound"
           },
           "code": {
-            "type": "int",
+            "type": "integer",
             "format": "int",
             "description": "A machine-readable error code",
             "example": 404
