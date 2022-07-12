@@ -148,6 +148,65 @@
               }
             }
           }
+        },
+        "additionalImages": {
+          "type": "array",
+          "description": "Image objects which tells the API where to download additional images that is needed for your action.  Currently, the only allowed placeholder within your is PEGASUS_ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_X where X is the index of the additionalImages array",
+          "minItems": 1,
+          "items": {
+            "required": [
+              "href",
+              "storage"
+            ],
+            "properties": {
+              "storage": {
+                "$ref": "file_input.schema.json#/definitions/storage"
+              },
+              "href": {
+                "$ref": "file_input.schema.json#/definitions/href"
+              }
+            },
+            "if": {
+              "properties": {
+                "storage": {
+                  "pattern": "(^azure|external|dropbox$)"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "href": {
+                  "format": "uri",
+                  "description": "A URI representing the path to the input file"
+                }
+              }
+            },
+            "else": {
+              "if": {
+                "properties": {
+                  "storage": {
+                    "pattern": "(^cclib$)"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "href": {
+                    "pattern": "^/?(api)/.+",
+                    "description": "A string representing the path to the input CC Libraries file"
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "href": {
+                    "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                    "description": "A string representing the path to the input CC Storage file"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },

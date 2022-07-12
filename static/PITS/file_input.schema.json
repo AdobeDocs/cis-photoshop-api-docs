@@ -35,6 +35,16 @@
         "$ref": "#/definitions/input_object"
       }
     },
+    "input_objects_max_2": {
+      "": "Used when the inputs array can only contain two input objects. First input is for before image and second input is for after image",
+      "type": "array",
+      "description": "An object describing an input file. Currently supported filetypes include:`jpeg`, `png`, `psd`, `tiff`. First input contains before image and second input contains after image",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "$ref": "#/definitions/input_object"
+      }
+    },
     "input_objects": {
       "": "used when the inputs array can only contain N input objects",
       "type": "array",
