@@ -1,0 +1,42 @@
+{
+  "$schema":"http://json-schema.org/draft-07/schema#",
+  "$id":"post_mask.schema.json",
+  "title":"post_mask",
+  "description":"Initiates an asynchronous job to generate a mask for an image",
+  "type":"object",
+  "required":[
+    "options"
+  ],
+  "properties":{
+    "options":{
+      "type":"object",
+      "minProperties":1,
+      "required":[
+        "maskType",
+        "version"
+      ],
+      "properties":{
+        "referenceJobId":{
+          "type":"string",
+          "description": "If present, it indicates that the input asset to this job would be from the reference job ID specified."
+        },
+        "maskType":{
+          "type":"string",
+          "description": "The type of mask to generate.",
+          "enum": [
+            "selectSubject",
+            "selectObject",
+            "selectSky",
+            "selectSkin"
+          ]
+        },
+        "version":{
+          "type":"string",
+          "description": "The version of Camera RAW to use while generating the mask."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
