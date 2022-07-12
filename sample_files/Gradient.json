@@ -1,0 +1,106 @@
+[
+    {
+        "_obj": "make",
+        "_target": [
+            {
+                "_ref": "contentLayer"
+            }
+        ],
+        "using": {
+            "_obj": "contentLayer",
+            "type": {
+                "_obj": "gradientLayer",
+                "angle": {
+                    "_unit": "angleUnit",
+                    "_value": 45
+                },
+                "gradient": {
+                    "_obj": "gradientClassEvent",
+                    "colors": [
+                        {
+                            "_obj": "colorStop",
+                            "color": {
+                                "_obj": "RGBColor",
+                                "blue": 69.00389447808266,
+                                "grain": 219.99611109495164,
+                                "red": 253.9961090683937
+                            },
+                            "location": 0,
+                            "midpoint": 50,
+                            "type": {
+                                "_enum": "colorStopType",
+                                "_value": "userStop"
+                            }
+                        },
+                        {
+                            "_obj": "colorStop",
+                            "color": {
+                                "_obj": "RGBColor",
+                                "blue": 153.00000607967378,
+                                "grain": 112.000000923872,
+                                "red": 251.00000023841859
+                            },
+                            "location": 4096,
+                            "midpoint": 50,
+                            "type": {
+                                "_enum": "colorStopType",
+                                "_value": "userStop"
+                            }
+                        }
+                    ],
+                    "gradientForm": {
+                        "_enum": "gradientForm",
+                        "_value": "customStops"
+                    },
+                    "interfaceIconFrameDimmed": 4096,
+                    "name": "Orange_03",
+                    "transparency": [
+                        {
+                            "_obj": "transferSpec",
+                            "location": 0,
+                            "midpoint": 50,
+                            "opacity": {
+                                "_unit": "percentUnit",
+                                "_value": 99.6078431372549
+                            }
+                        },
+                        {
+                            "_obj": "transferSpec",
+                            "location": 4096,
+                            "midpoint": 50,
+                            "opacity": {
+                                "_unit": "percentUnit",
+                                "_value": 100
+                            }
+                        }
+                    ]
+                },
+                "gradientsInterpolationMethod": {
+                    "_enum": "gradientInterpolationMethodType",
+                    "_value": "perceptual"
+                },
+                "type": {
+                    "_enum": "gradientType",
+                    "_value": "linear"
+                }
+            }
+        }
+    },
+    {
+        "_obj": "set",
+        "_target": [
+            {
+                "_enum": "ordinal",
+                "_ref": "layer",
+                "_value": "targetEnum"
+            }
+        ],
+        "to": {
+            "_obj": "layer",
+            "opacity": {
+                "_unit": "percentUnit",
+                "_value": 21
+            }
+        }
+    }
+]

@@ -12,7 +12,6 @@ This is a list of currently supported features.  Please also see the [Release No
 The APIs are documented at [Photoshop API](../api/#tag/Photoshop)
 
 ### SmartObject
-
 The Photoshop APIs currently support creating and editing of Embedded Smart Objects. Support for Linked Smart Objects is forthcoming.
 
 - In order to update an embedded smart object that is referenced by multiple layers you need to update each of those layers, then only the effect will be reflected in all layers referencing the same smart object.
@@ -25,10 +24,12 @@ The APIs are documented [here](../api/#operation/smartObject).
 We also have an example of replacing a Smart Object within a layer.
 [Smart Object Example Code](../code-sample/#example-1-smartobject).
 For better performance, we rasterize our smart objects that are bigger than  2000 pixels * 2000 pixels.
-For optimal processing, please make sure the embedded smart object that you want to replace only contains alphanumeric characters in it's name.
+For optimal processing, please make sure the embedded smart object that you want to replace only contains alphanumeric characters in it's name.<br />
+
+Example of Smart Object replacement with a sample image.
+![alt image](./smartObject.png?raw=true "Original Image")
 
 ### Text(`New!`)
-
 The Photoshop /text API supports editing one or more text layers from a Photoshop document. The APIs are documented [here](./api/#operation/text)
 
 It enables user to
@@ -52,12 +53,14 @@ The following are known limitations for the Alpha release
 [Here](../code-sample/#example-17-edit-text-layers) is a code example.
 
 ### ProductCrop(`New!`)
-
 The ProductCrop API supports applying smart crop to your image. The APIs are documented [here](./api/#operation/productCrop)
 
 It enables user to
 - Identify the product and get it cropped smartly.
 - Enter the required padding they need in their cropped image.
+
+Example of Product Crop with a sample image.
+![alt image](./productcrop.png?raw=true "Original Image")
 
 #### Known Limitations
 - The current model is trained to return a crop that respects the salient object within an image. There is a current known issue that when a person or portrait is contained within a salient object, the model will crop with the person as the focal area rather than the salient object that contains it. This is problematic in the case of an item where an image of a person is contained within a design (i.e. a t-shirt, collectible or art). Rather than crop to the intended item, the service will crop to the person within the item.
@@ -66,7 +69,6 @@ We intend to correct this issue in future releases.
 [Here](../code-sample/#example-18--applying-product-crop) is a code example.
 
 ### DepthBlur(`New!`)
-
 The DepthBlur API supports applying depth blur to your image. The APIs are documented [here](./api/#operation/depthBlur)
 
 Depth Blur is part of the Neural Filters gallery in Photoshop. It allows you to target the area and range of blur in photos, creating wide-aperture depth of field blur effects. You may choose different focal points or remove the focal point and control the depth blur through manipulating the focal range slider. Setting focusSubject to true will select the most prominent subject in the image and apply depth blur around that subject.
@@ -97,6 +99,9 @@ The following are known limitations for the Alpha release
 
 Here are examples of submitting and executing Photoshop Actions.
 [Execute Photoshop Actions with all actions](../code-sample/#example-15--photoshop-actions---play-all-actions-in-atn-file) and [Execute Photoshop Actions with a specific action](../code-sample/#example-16--photoshop-actions-play-a-specific-action)
+
+This example image is running a simple [gradient action](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/Gradient.json) on the source image
+![alt image](./psactions.png?raw=true "Original Image")
 
 ### Rendering / Conversions
 
@@ -219,15 +224,16 @@ Any input image format that is supported by Lightroom is also supported by the A
 At this point the output formats supported are JPG, DNG and PNG.
 
 ### AutoTone
-
-Automatically tone an image to correct exposure/contrast/sharpness/etc. Code example [here](../code-sample/#example-1-autotone-an-image)
+Automatically tone an image to correct exposure/contrast/sharpness/etc. Code example [here](../code-sample/#example-1-autotone-an-image).<br />
+Example of AutoTone with a sample image
+![alt image](./auto_tone.png?raw=true "Original Image")
 
 ### AutoStraighten
-
-Applies the Auto Upright transformation on an image. Code example [here](../code-sample/#example-2-autostraighten-an-image)
+Applies the Auto Upright transformation on an image. Code example [here](../code-sample/#example-2-autostraighten-an-image).<br />
+Example of AutoStraighten with a sample image
+![alt image](./auto_straighten.png?raw=true "Original Image")
 
 ### Presets
-
 Apply one or more XMP Lightroom presets to an image, by referencing preset file(s) stored on cloud. Code example [here](../code-sample/#example-3--apply-presets-to-an-image)
 The preset file can be created by editing an image in lightroom and exporting it as a `.xmp` file.
 The details on how to create a preset can be found [here](https://helpx.adobe.com/lightroom-cc/how-to/photo-presets-lightroom-cc.html).
@@ -235,9 +241,13 @@ If the use case would be to be able to create an `.xmp` file from a set of slide
 1. Start with the empty `.xmp` file from [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample-code/lr-sample-app/crs.xml) and add the corresponding slider values
 2. Or please look ahead in this documentation page at the [/edit API](/features/#edit)
 
-### Edit
+Example of Presets with a sample image with a [BW preset](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/black_and_white.xmp)
+![alt image](./presets.png?raw=true "Original Image")
 
-Apply one or more Lightroom edits to an image. Code example [here](../code-sample/#example-4-apply-edits-to-an-image)
+### Edit
+Apply one or more Lightroom edits to an image. Code example [here](../code-sample/#example-4-apply-edits-to-an-image).<br />
+Example of Edit with a sample image with dehaze applied.
+![alt image](./edit.png?raw=true "Original Image")
 
 ### XMP
 Apply a Lightroom preset to an image, by passing in the preset XMP contents inline through the API. Code example [here](../code-sample/#example-5-apply-xmp-to-an-image)
@@ -245,27 +255,23 @@ Apply a Lightroom preset to an image, by passing in the preset XMP contents inli
 ## Sensei
 These are the APIs powered by Sensei, Adobe’s Artificial Intelligence Technology, and Photoshop. The APIs can identify the main subject of an image and produce two types of outputs. You can create a greyscale [mask](https://en.wikipedia.org/wiki/Layers_(digital_image_editing)#Layer_mask) png file that you can composite onto the original image (or any other).  You can also create a cutout where the mask has already composited onto your original image so that everything except the main subject has been removed.
 
-
-| Original        | Mask           | Cutout  |
-| :-------------: |:-------------:| :-----:|
-| ![alt image](./sensei_orig.jpg?raw=true "Original Image") | ![alt image](./sensei_mask.png?raw=true "Mask")| ![alt image](./sensei_cutout.png?raw=true "Original Image")|
-
 The APIs are documented at [Sensei API Reference](../api/#tag/Sensei)
 
 ### Image Cutout
-
-Initiate a job to create an image cutout. Code example [here](../code-sample/#example-1-generate-image-cutout).
+Initiate a job to create an image cutout. Code example [here](../code-sample/#example-1-generate-image-cutout).<br />
+Example of Image Cutout with a sample image
+![alt image](./sensei_image_cutout.png?raw=true "Original Image")
 
 ### Image Mask
-
-Initiate a job to create an image mask. Code example [here](../code-sample/#example-2-generate-image-mask).
+Initiate a job to create an image mask. Code example [here](../code-sample/#example-2-generate-image-mask).<br />
+Example of Image Mask with a sample image
+![alt image](./sensei_image_mask.png?raw=true "Original Image")
 
 ## Customized Workflow
 You can make a 'customized workflow' by chaining different APIs. Example of which can be found [here](../code-sample/#example-3-generate-imagecutout-result-as-photoshop-path)
 
 
 ## Using Webhooks through Adobe I/O Events (`Pre-Release Feature!!`)
-
 Adobe I/O Events offers the possibility to build an event-driven application, based on events originating from Photoshop and Lightroom APIs. To start listening for events, your application needs to register a webhook URL, specifying the Event Types to receive. Whenever a matching event gets triggered, your application is notified through an HTTP POST request to the webhook URL.
 The Event Provider for Photoshop and Lightroom APIs is `Imaging API Events`.
 This event provider has two event types:
