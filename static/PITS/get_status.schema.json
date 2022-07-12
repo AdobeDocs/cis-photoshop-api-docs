@@ -13,7 +13,6 @@
     "outputs": {
       "type": "array",
       "minItems": 1,
-      "description" : "`outputs` block will contain items only when there is a success in the API called.",
       "items": {
         "properties": {
           "input": {
@@ -72,75 +71,6 @@
         }
       }
     },
-    "errors": {
-      "type": "array",
-      "minItems": 1,
-      "description" : "`errors` block will contain items only when there is an error from the API called. e.g if `/documentOperation` API throws an error we will see items in this `errors` block on the status API call",
-      "items": {
-        "properties": {
-          "title": {
-            "type": "string",
-            "format": "string",
-            "description": "A short, human-readable summary of the problem",
-            "example": "Requested resource was not found"
-          },
-          "type": {
-            "type": "string",
-            "format": "string",
-            "description": "A machine-readable error type",
-            "example": "ResourceNotFound"
-          },
-          "code": {
-            "type": "integer",
-            "format": "int",
-            "description": "A machine-readable error code",
-            "example": 404
-          },
-          "details": {
-            "type": "object",
-            "description": "Further descriptions of the exact error where details is substituted for a specific issue.",
-            "properties": {
-              "name": {
-                "type": "string",
-                "description": "Name for the detailed error.",
-                "example": "<path_to_invalid_file>"
-              },
-              "reason": {
-                "type": "string",
-                "description": "Details of error reason.",
-                "example": "Unable to access the input href"
-              }
-            }
-          }
-        },
-          "_links": {
-            "type": "object",
-            "properties": {
-              "renditions": {
-                "type": "array",
-                "minItems": 1,
-                "description": "Array of rendition objects",
-                "items": {
-                  "properties": {
-                    "href": {
-                      "$ref": "file_input.schema.json#/definitions/href"
-                    },
-                    "storage": {
-                      "$ref": "file_input.schema.json#/definitions/storage"
-                    },
-                    "width": {
-                      "$ref": "file_output.schema.json#/definitions/width"
-                    },
-                    "type": {
-                      "$ref": "file_output.schema.json#/definitions/type"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
     "_links": {
       "type": "object",
       "properties": {
