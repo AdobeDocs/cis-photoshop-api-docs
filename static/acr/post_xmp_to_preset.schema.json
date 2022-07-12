@@ -1,12 +1,11 @@
 {
   "$schema":"http://json-schema.org/draft-07/schema#",
-  "$id":"post_xmp.schema.json",
-  "title":"post_xmp",
+  "$id":"post_xmp_to_preset.schema.json",
+  "title":"post_xmp_to_preset",
   "description":"Initiates an asynchronous job to apply xmp data to an image",
   "type":"object",
   "required":[
     "inputs",
-    "outputs",
     "options"
   ],
   "properties":{
@@ -23,9 +22,6 @@
         }
       }
     },
-    "outputs":{
-      "$ref":"outputs.schema.json#/definitions/outputs"
-    },
     "options":{
       "type":"object",
       "minProperties":1,
@@ -36,14 +32,10 @@
         "xmp":{
           "type":"string",
           "description": "The XMP to apply."
-        },
-        "orientation":{
-          "type":"number",
-          "description": "The combination of flip and/or rotate to apply",
-          "minimum": 1,
-          "maximum": 8
         }
-      }
+      },
+      "additionalProperties": false
     }
-  }
+  },
+  "additionalProperties": false
 }
