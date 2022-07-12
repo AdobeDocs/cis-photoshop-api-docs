@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "post_social_media_rendition_action.schema.json",
+  "title": "post_social_media_rendition_action_json",
+  "description": "Initiates an asynchronous job to play Social Media Rendition Actions JSON",
+  "type": "object",
+  "required": [
+    "inputs",
+    "outputs"
+  ],
+  "properties": {
+    "inputs": {
+      "$ref": "file_input.schema.json#/definitions/input_objects_max_2"
+    },
+    "outputs": {
+      "$ref": "file_output_pegasus.schema.json#/definitions/output_objects"
+    }
+  }
+}

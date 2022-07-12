@@ -24,6 +24,7 @@
         "type": {
           "description": "desired image format. 'image/vnd.adobe.photoshop' specifies a PSD file",
           "enum": [
+            "image/gif",
             "image/jpeg",
             "image/png",
             "image/tiff",
