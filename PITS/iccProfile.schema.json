@@ -32,8 +32,7 @@
                 "azure",
                 "dropbox",
                 "adobe",
-                "cclib",
-                "Ad"
+                "cclib"
               ],
               "default": "external"
             },
