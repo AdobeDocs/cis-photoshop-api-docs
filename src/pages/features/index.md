@@ -226,7 +226,7 @@ At this point the output formats supported are JPG, DNG and PNG.
 ### AutoTone
 Automatically tone an image to correct exposure/contrast/sharpness/etc. Code example [here](../code-sample/#example-1-autotone-an-image).<br />
 Example of AutoTone with a sample image
-![alt image](./auto_tone.png?raw=true "Original Image")
+![alt image](./auto_toneno.png?raw=true "Original Image")
 
 ### AutoStraighten
 Applies the Auto Upright transformation on an image. Code example [here](../code-sample/#example-2-autostraighten-an-image).<br />
@@ -246,6 +246,7 @@ Example of Presets with a sample image with a [BW preset](https://github.com/Ado
 
 ### Edit
 Apply one or more Lightroom edits to an image. Code example [here](../code-sample/#example-4-apply-edits-to-an-image).<br />
+
 Example of Edit with a sample image with dehaze applied.
 ![alt image](./edit.png?raw=true "Original Image")
 
