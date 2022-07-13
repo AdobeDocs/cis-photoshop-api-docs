@@ -6,9 +6,7 @@
   "definitions": {
     "href": {
       "description": "Either a presignedGETURL OR a Creative Cloud assets path for storage='adobe'.",
-      "type": "string",
-      "minLength": 1,
-      "example": "presignedURL"
+      "type": "string"
     },
     "storage": {
       "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox) or Adobe's Creative Cloud files. If you are using presigned url for dropbox or azure, use `storage=\"dropbox\"` or `storage=\"azure\"` else it is `storage=\"external\"`",

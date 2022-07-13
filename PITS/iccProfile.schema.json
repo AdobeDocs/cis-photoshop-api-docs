@@ -19,7 +19,7 @@
           "minProperties": 1,
           "properties": {
             "href": {
-              "description": "Either a presignedGETURL OR a Creative Cloud assets path for storage='adobe'.HERE...",
+              "description": "Either a presignedGETURL OR a Creative Cloud assets path for storage='adobe'.",
               "type": "string",
               "minLength": 1,
               "example": "presignedURL"
