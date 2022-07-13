@@ -25,9 +25,11 @@
       "description": "The job status",
       "enum": [
         "pending",
+        "starting",
         "running",
         "succeeded",
-        "failed"
+        "failed",
+        "err_details"
       ],
       "example": "string"
     },

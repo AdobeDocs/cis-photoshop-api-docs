@@ -726,7 +726,7 @@
           "Lightroom"
         ],
         "summary": "Get the status of a job.",
-        "description": "Returns the status of a job. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned .",
+        "description": "Returns the status of a job. Please expand `200 Successful Operation` under `Responses` to know details of the Status Returned .",
         "operationId": "acrstatus",
         "parameters": [
           {
@@ -776,7 +776,7 @@
           }
         ],
         "responses": {
-          "202": {
+          "200": {
             "description": "Successful operation",
             "content": {
               "application/json": {
@@ -1073,7 +1073,7 @@
           "Sensei"
         ],
         "summary": "Get the status of a job.",
-        "description": "Returns the status of a job. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned .",
+        "description": "Returns the status of a job. Please expand `200 Successful Operation` under `Responses` to know details of the Status Returned .",
         "operationId": "icstatus",
         "parameters": [
           {
@@ -1123,7 +1123,7 @@
           }
         ],
         "responses": {
-          "202": {
+          "200": {
             "description": "Successful operation",
             "content": {
               "application/json": {
@@ -2242,7 +2242,7 @@
           "Photoshop"
         ],
         "summary": "Get the status of documentManifest",
-        "description": "Returns the status of documentManifest API. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned.",
+        "description": "Returns the status of documentManifest API. Please expand `200 Successful Operation` under `Responses` to know details of the Status Returned.",
         "operationId": "documentManifestStatus",
         "parameters": [
           {
@@ -2292,7 +2292,7 @@
           }
         ],
         "responses": {
-          "202": {
+          "200": {
             "description": "Successful operation",
             "content": {
               "application/json": {
@@ -2589,7 +2589,7 @@
           "Photoshop"
         ],
         "summary": "Get the status of a job.",
-        "description": "Returns the status of a job. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned.",
+        "description": "Returns the status of a job. Please expand `200 Successful Operation` under `Responses` to know details of the Status Returned.",
         "operationId": "pitsstatus",
         "parameters": [
           {
@@ -2639,7 +2639,7 @@
           }
         ],
         "responses": {
-          "202": {
+          "200": {
             "description": "Successful operation",
             "content": {
               "application/json": {
