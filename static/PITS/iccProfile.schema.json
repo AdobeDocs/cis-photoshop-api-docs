@@ -19,7 +19,7 @@
           "minProperties": 1,
           "properties": {
             "href": {
-              "description": "Either a presignedGETURL OR a Creative Cloud assets path for storage='adobe'.",
+              "description": "Either a presignedGETURL OR a Creative Cloud assets path for storage='adobe'.HERE...",
               "type": "string",
               "minLength": 1,
               "example": "presignedURL"
@@ -32,7 +32,8 @@
                 "azure",
                 "dropbox",
                 "adobe",
-                "cclib"
+                "cclib",
+                "Ad"
               ],
               "default": "external"
             },
