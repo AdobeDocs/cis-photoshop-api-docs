@@ -96,7 +96,7 @@
       "then": {
         "properties": {
           "href": {
-            "format": "uri",
+            "type": "string",
             "description": "A URI representing the path to the input file"
           }
         }
