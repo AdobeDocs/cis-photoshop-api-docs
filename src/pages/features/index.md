@@ -27,6 +27,9 @@ We also have an example of replacing a Smart Object within a layer.
 For better performance, we rasterize our smart objects that are bigger than  2000 pixels * 2000 pixels.
 For optimal processing, please make sure the embedded smart object that you want to replace only contains alphanumeric characters in it's name.
 
+Example of Smart Object replacement with a sample image.
+![alt image](./smartobject_example.png?raw=true "Original Image")
+
 ### Text(`New!`)
 
 The Photoshop /text API supports editing one or more text layers from a Photoshop document. The APIs are documented [here](./api/#operation/text)
@@ -50,6 +53,9 @@ The following are known limitations for the Alpha release
 - The API cannot automatically detect missing fonts in the layers. To prevent potential missing fonts from being replaced, please provide a href to the font(s) in the options.fonts section of the API. For more details on specifying custom fonts, please refer to the example section below.
 
 [Here](../code-sample/#example-17-edit-text-layers) is a code example.
+
+Example of Text with a sample image. Here font is changed from the original image.
+![alt image](./textlayer_example.png?raw=true "Original Image")
 
 ### ProductCrop(`New!`)
 
@@ -97,6 +103,9 @@ The following are known limitations for the Alpha release
 
 Here are examples of submitting and executing Photoshop Actions.
 [Execute Photoshop Actions with all actions](../code-sample/#example-15--photoshop-actions---play-all-actions-in-atn-file) and [Execute Photoshop Actions with a specific action](../code-sample/#example-16--photoshop-actions-play-a-specific-action)
+
+Example of Photoshop Actions with a sample image. Action Graphic Design is applied on the original image.
+![alt image](./psactions_example.png?raw=true "Original Image")
 
 ### Rendering / Conversions
 
@@ -220,7 +229,10 @@ At this point the output formats supported are JPG, DNG and PNG.
 
 ### AutoTone
 
-Automatically tone an image to correct exposure/contrast/sharpness/etc. Code example [here](../code-sample/#example-1-autotone-an-image)
+Automatically tone an image to correct exposure/contrast/sharpness/etc. Code example [here](../code-sample/#example-1-autotone-an-image)<br />
+
+Example of AutoTone with a sample image.
+![alt image](./autotone_example.png?raw=true "Original Image")
 
 ### AutoStraighten
 
@@ -235,6 +247,9 @@ If the use case would be to be able to create an `.xmp` file from a set of slide
 1. Start with the empty `.xmp` file from [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample-code/lr-sample-app/crs.xml) and add the corresponding slider values
 2. Or please look ahead in this documentation page at the [/edit API](/features/#edit)
 
+Example of Presets with a sample image. Presets for Aged Photo is applied on the original image.
+![alt image](./preset_example.png?raw=true "Original Image")
+
 ### Edit
 
 Apply one or more Lightroom edits to an image. Code example [here](../code-sample/#example-4-apply-edits-to-an-image)
@@ -245,20 +260,21 @@ Apply a Lightroom preset to an image, by passing in the preset XMP contents inli
 ## Sensei
 These are the APIs powered by Sensei, Adobe’s Artificial Intelligence Technology, and Photoshop. The APIs can identify the main subject of an image and produce two types of outputs. You can create a greyscale [mask](https://en.wikipedia.org/wiki/Layers_(digital_image_editing)#Layer_mask) png file that you can composite onto the original image (or any other).  You can also create a cutout where the mask has already composited onto your original image so that everything except the main subject has been removed.
 
-
-| Original        | Mask           | Cutout  |
-| :-------------: |:-------------:| :-----:|
-| ![alt image](./sensei_orig.jpg?raw=true "Original Image") | ![alt image](./sensei_mask.png?raw=true "Mask")| ![alt image](./sensei_cutout.png?raw=true "Original Image")|
-
 The APIs are documented at [Sensei API Reference](../api/#tag/Sensei)
 
 ### Image Cutout
 
-Initiate a job to create an image cutout. Code example [here](../code-sample/#example-1-generate-image-cutout).
+Initiate a job to create an image cutout. Code example [here](../code-sample/#example-1-generate-image-cutout).<br />
+
+Example of Image Cutout with a sample image.
+![alt image](./imagecutout_cutout_example.png?raw=true "Original Image")
 
 ### Image Mask
 
-Initiate a job to create an image mask. Code example [here](../code-sample/#example-2-generate-image-mask).
+Initiate a job to create an image mask. Code example [here](../code-sample/#example-2-generate-image-mask).<br />
+
+Example of Image mask with a sample image.
+![alt image](./imagecutout_mask_example.png?raw=true "Original Image")
 
 ## Customized Workflow
 You can make a 'customized workflow' by chaining different APIs. Example of which can be found [here](../code-sample/#example-3-generate-imagecutout-result-as-photoshop-path)

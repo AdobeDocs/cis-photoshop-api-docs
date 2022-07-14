@@ -41,6 +41,13 @@ curl --request GET \
   --header "Authorization: Bearer <YOUR_ACCESS_TOKEN>" \
   --header "x-api-key: <YOUR_CLIENT_ID>"
   ```
+
+If you are using Windows machine don't use the backslash for the curl commands. e.g
+``` shell
+curl --request GET --url https://image.adobe.io/pie/psdService/hello --header "Authorization: Bearer <YOUR_ACCESS_TOKEN>" --header "x-api-key: <YOUR_CLIENT_ID>"
+```
+
+
 Congrats! You just made your first request to the Photoshop API.
 
 `NOTE: Your token will expire every 24 hours and will need to be refreshed after it expires.`
