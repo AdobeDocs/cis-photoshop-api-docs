@@ -97,6 +97,7 @@
                 "type": "string"
               },
               "quality": {
+                "type": "number",
                 "not": {}
               }
             }
@@ -113,7 +114,7 @@
           "then": {
             "properties": {
               "href": {
-                "format": "uri",
+                "type": "string",
                 "description": "A URI representing the path to the output file"
               }
             }
