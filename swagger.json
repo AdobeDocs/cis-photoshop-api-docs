@@ -308,7 +308,7 @@
         "tags": [
           "Lightroom"
         ],
-        "summary": "Apply edits on an image.",
+        "summary": "Apply edits on an image",
         "description": "Initiates an asynchronous job to apply a set of edit parameters on an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).",
         "operationId": "edit",
         "parameters": [
@@ -586,7 +586,7 @@
         "tags": [
           "Lightroom"
         ],
-        "summary": "Apply xmp on an image.",
+        "summary": "Apply xmp on an image",
         "description": "Initiates an asynchronous job to apply an XMP setting to an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).",
         "operationId": "xmp",
         "parameters": [
@@ -725,8 +725,8 @@
         "tags": [
           "Lightroom"
         ],
-        "summary": "Get the status of a job.",
-        "description": "Returns the status of a job. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned .",
+        "summary": "Get the status of a job",
+        "description": "Returns the status of a job. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
         "operationId": "acrstatus",
         "parameters": [
           {
@@ -776,7 +776,7 @@
           }
         ],
         "responses": {
-          "202": {
+          "200": {
             "description": "Successful operation",
             "content": {
               "application/json": {
@@ -1072,8 +1072,8 @@
         "tags": [
           "Sensei"
         ],
-        "summary": "Get the status of a job.",
-        "description": "Returns the status of a job. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned .",
+        "summary": "Get the status of a job",
+        "description": "Returns the status of a job. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
         "operationId": "icstatus",
         "parameters": [
           {
@@ -1123,7 +1123,7 @@
           }
         ],
         "responses": {
-          "202": {
+          "200": {
             "description": "Successful operation",
             "content": {
               "application/json": {
@@ -2242,7 +2242,7 @@
           "Photoshop"
         ],
         "summary": "Get the status of documentManifest",
-        "description": "Returns the status of documentManifest API. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned.",
+        "description": "Returns the status of documentManifest API. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
         "operationId": "documentManifestStatus",
         "parameters": [
           {
@@ -2292,7 +2292,7 @@
           }
         ],
         "responses": {
-          "202": {
+          "200": {
             "description": "Successful operation",
             "content": {
               "application/json": {
@@ -2588,8 +2588,8 @@
         "tags": [
           "Photoshop"
         ],
-        "summary": "Get the status of a job.",
-        "description": "Returns the status of a job. Please expand `202 Successful Operation` under `Responses` to know details of the Status Returned.",
+        "summary": "Get the status of a job",
+        "description": "Returns the status of a job. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
         "operationId": "pitsstatus",
         "parameters": [
           {
@@ -2639,7 +2639,7 @@
           }
         ],
         "responses": {
-          "202": {
+          "200": {
             "description": "Successful operation",
             "content": {
               "application/json": {
