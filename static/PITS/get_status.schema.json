@@ -28,8 +28,7 @@
               "starting",
               "running",
               "succeeded",
-              "failed",
-              "err_details"
+              "failed"
             ],
             "example": "string"
           },

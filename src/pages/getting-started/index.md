@@ -26,9 +26,9 @@ You should see a zip file named **config.zip** in your Downloads folder.
 1. Open the contents of the zip and locate the file name **private.key**.
 1. Open the file named **private.key** in a text editor like Atom or Sublime.
 1. Copy the entire contents of the file and paste it in your project page in the section labeled **Generate access token** and click on **Generate Token** on the bottom right hand corner:
-![Screenshot](images/Step9.png)
+![Screenshot](images/Step9_new.png)
 1. Congrats! You have just created a JWT token. You can copy the token from **Access Token**:
-![Screenshot](images/Step10.png)
+![Screenshot](images/Step10_new.png)
 
 Please note that token expires every 24 hours and you will have to generate a new one after it expires. See [Automating your JWT token](/authentication/#automating-your-jwt-token) for information on how to automate this process for your application.
 
