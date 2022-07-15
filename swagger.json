@@ -31,7 +31,7 @@
           "Lightroom"
         ],
         "summary": "Auto straighten an image",
-        "description": "Initiates an asynchronous job to auto straighten an image. \\\nTo get status of this job, call [Status API](./#operation/acrstatus).",
+        "description": "Initiates an asynchronous job to auto straighten an image. \\\nTo get status of this job, call [Status API](./#operation/acrstatus).\\\n To know more about this feature refer [AutoStraighten](../features/#autoStraighten)",
         "operationId": "autoStraighten",
         "parameters": [
           {
@@ -170,7 +170,7 @@
           "Lightroom"
         ],
         "summary": "Auto tone an image",
-        "description": "Initiates an asynchronous job to auto tone an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).",
+        "description": "Initiates an asynchronous job to auto tone an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).\\\n To know more about this feature refer [AutoTone](../features/#autotone)",
         "operationId": "autoTone",
         "parameters": [
           {
@@ -309,7 +309,7 @@
           "Lightroom"
         ],
         "summary": "Apply edits on an image",
-        "description": "Initiates an asynchronous job to apply a set of edit parameters on an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).",
+        "description": "Initiates an asynchronous job to apply a set of edit parameters on an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).\\\n To know more about this feature refer [Edit](../features/#edit)",
         "operationId": "edit",
         "parameters": [
           {
@@ -448,7 +448,7 @@
           "Lightroom"
         ],
         "summary": "Apply a presets on an image",
-        "description": "Initiates an asynchronous job to apply a preset on an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).",
+        "description": "Initiates an asynchronous job to apply a preset on an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).\\\n To know more about this feature refer [Presets](../features/#presets)",
         "operationId": "presets",
         "parameters": [
           {
@@ -587,7 +587,7 @@
           "Lightroom"
         ],
         "summary": "Apply xmp on an image",
-        "description": "Initiates an asynchronous job to apply an XMP setting to an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).",
+        "description": "Initiates an asynchronous job to apply an XMP setting to an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).\\\n To know more about this feature refer [XMP](../features/#xmp)",
         "operationId": "xmp",
         "parameters": [
           {
@@ -795,7 +795,7 @@
           "Sensei"
         ],
         "summary": "Create Image Cutout",
-        "description": " Generates a PNG file in 4 channel RGBA format with the generated cutout mask \\\n applied to the input image generate a PNG file in 4 channel RGBA format with the generated cutout \\\n mask applied to the input image.\nTo get status of this job, call [Status API](./#operation/icstatus).",
+        "description": " Generates a PNG file in 4 channel RGBA format with the generated cutout mask \\\n applied to the input image generate a PNG file in 4 channel RGBA format with the generated cutout \\\n mask applied to the input image.\nTo get status of this job, call [Status API](./#operation/icstatus).\\\n To know more about this feature refer [Image Cutout](../features/#image-cutout)",
         "operationId": "cutout",
         "parameters": [
           {
@@ -934,7 +934,7 @@
           "Sensei"
         ],
         "summary": "Create Mask",
-        "description": " Generates a mask PNG.\nTo get status of this job, call [Status API](./#operation/icstatus).",
+        "description": " Generates a mask PNG.\nTo get status of this job, call [Status API](./#operation/icstatus).\\\n To know more about this feature refer [Image Mask](../features/#image-mask)",
         "operationId": "mask",
         "parameters": [
           {
@@ -1142,7 +1142,7 @@
           "Photoshop"
         ],
         "summary": "Create renditions",
-        "description": " Create renditions.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "description": " Create renditions.\nTo get status of this job, call [Status API](./#operation/pitsstatus). \\\n To know more about this feature refer [Rendering Conversions](../features/#rendering--conversions)",
         "operationId": "renditionCreate",
         "parameters": [
           {
@@ -1289,7 +1289,7 @@
           "Photoshop"
         ],
         "summary": "Replace Smart Object",
-        "description": " Edits a PSD for replacing embedded smart object and then generate renditions and/or save a new psd.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "description": " Edits a PSD for replacing embedded smart object and then generate renditions and/or save a new psd.\nTo get status of this job, call [Status API](./#operation/pitsstatus).\\\n To know more about this feature refer [SmartObject](../features/#smartobject)",
         "operationId": "smartObject",
         "parameters": [
           {
@@ -1428,7 +1428,7 @@
           "Photoshop"
         ],
         "summary": "Execute Photoshop Actions",
-        "description": " Executes Photoshop Actions on a given image.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "description": " Executes Photoshop Actions on a given image.\nTo get status of this job, call [Status API](./#operation/pitsstatus). \\\n To know more about this feature refer [Photoshop Actions](../features/#photoshop-actionsnew)",
         "operationId": "photoshopActions",
         "parameters": [
           {
@@ -1567,7 +1567,7 @@
           "Photoshop"
         ],
         "summary": "Execute Product Crop",
-        "description": " Executes Product Crop on a given image.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "description": " Executes Product Crop on a given image.\nTo get status of this job, call [Status API](./#operation/pitsstatus).\\\n To know more about this feature refer [ProductCrop](../features/#productcropnew)",
         "operationId": "productCrop",
         "parameters": [
           {
@@ -1706,7 +1706,7 @@
           "Photoshop"
         ],
         "summary": "Execute Depth Blur",
-        "description": " Executes Depth Blur on a given image.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "description": " Executes Depth Blur on a given image.\nTo get status of this job, call [Status API](./#operation/pitsstatus). \\\n To know more about this feature refer [DepthBlur](../features/#depthblurnew)",
         "operationId": "depthBlur",
         "parameters": [
           {
@@ -1845,7 +1845,7 @@
           "Photoshop"
         ],
         "summary": "Edit text layers",
-        "description": " Edit one or more text layers.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "description": " Edit one or more text layers.\nTo get status of this job, call [Status API](./#operation/pitsstatus). \\\n To know more about this feature refer [Text](../features/#textnew)",
         "operationId": "text",
         "parameters": [
           {
@@ -1984,7 +1984,7 @@
           "Photoshop"
         ],
         "summary": "Apply psd edits",
-        "description": " Apply psd edits.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "description": " Apply psd edits.\nTo get status of this job, call [Status API](./#operation/pitsstatus).\\\n To know more about this feature refer [Document Level Edits](../features/#document-level-edits) and [Layer Level Edits](../features/#layer-level-edits)",
         "operationId": "documentOperations",
         "parameters": [
           {
@@ -2450,7 +2450,7 @@
           "Photoshop"
         ],
         "summary": "Create an artboard",
-        "description": " Creates an artboard.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "description": " Creates an artboard.\nTo get status of this job, call [Status API](./#operation/pitsstatus).\\\n To know more about this feature refer [Artboards](../features/#artboards)",
         "operationId": "artboardCreate",
         "parameters": [
           {
