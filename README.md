@@ -15,6 +15,12 @@ For local development, simply use :
 $ npm install
 $ npm run dev
 ```
+
+If you have a M1 mac. You need to install vips before `npm install`. Run
+```
+brew install vips
+```
+
 For running API doc locally 
 
 ```
