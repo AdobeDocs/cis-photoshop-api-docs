@@ -166,39 +166,20 @@
             ]
           },
           "then": {
-            "allOf": [{
-                "if": {
-                  "properties": {
-                    "type": {
-                      "enum": [
-                        "adjustmentLayer"
-                      ]
-                    }
-                  }
-                },
-                "then": {
-                  "required": [
-                    "adjustments"
-                  ]
-                }
-              },
-              {
-                "if": {
-                  "properties": {
-                    "type": {
-                      "enum": [
-                        "smartObject"
-                      ]
-                    }
-                  }
-                },
-                "then": {
-                  "required": [
-                    "input"
+            "if": {
+              "properties": {
+                "type": {
+                  "enum": [
+                    "adjustmentLayer"
                   ]
                 }
               }
-            ]
+            },
+            "then": {
+              "required": [
+                "adjustments"
+              ]
+            }
           }
         },
         {

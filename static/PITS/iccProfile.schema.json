@@ -13,6 +13,23 @@
           "type": "string",
           "description": "The image mode .Allowed values for iccProfile file `grayscale`, `rgb`, `cmyk` . Allowed values for iccProfile Name `rgb`, `grayscale`. "
         },
+        "profileName": {
+          "type": "string",
+          "description": "The name of the color profile",
+          "enum": [
+            "Adobe RGB (1998)",
+            "Apple RGB",
+            "ColorMatch RGB",
+            "sRGB IEC61966-2.1",
+            "Dot Gain 10%",
+            "Dot Gain 15%",
+            "Dot Gain 20%",
+            "Dot Gain 25%",
+            "Dot Gain 30%",
+            "Gray Gamma 1.8",
+            "Gray Gamma 2.2"
+          ]
+        },
         "input": {
           "type": "object",
           "description": "An object describing the icc profile. ",
@@ -35,23 +52,6 @@
                 "cclib"
               ],
               "default": "external"
-            },
-            "profileName": {
-              "type": "string",
-              "description": "The name of the color profile",
-              "enum": [
-                "Adobe RGB (1998)",
-                "Apple RGB",
-                "ColorMatch RGB",
-                "sRGB IEC61966-2.1",
-                "Dot Gain 10%",
-                "Dot Gain 15%",
-                "Dot Gain 20%",
-                "Dot Gain 25%",
-                "Dot Gain 30%",
-                "Gray Gamma 1.8",
-                "Gray Gamma 2.2"
-              ]
             }
           }
         }

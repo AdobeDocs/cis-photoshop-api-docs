@@ -68,7 +68,9 @@
                   "smartObject"
                 ]
               }
-            },
+            }
+          },
+          "then": {
             "required": [
               "input"
             ]
