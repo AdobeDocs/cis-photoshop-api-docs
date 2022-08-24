@@ -174,7 +174,9 @@
                         "adjustmentLayer"
                       ]
                     }
-                  },
+                  }
+                },
+                "then": {
                   "required": [
                     "adjustments"
                   ]
@@ -188,7 +190,9 @@
                         "smartObject"
                       ]
                     }
-                  },
+                  }
+                },
+                "then": {
                   "required": [
                     "input"
                   ]
