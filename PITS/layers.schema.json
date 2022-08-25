@@ -138,30 +138,6 @@
                   "required": [
                     "type"
                   ]
-                },
-                "then": {
-                  "allOf": [{
-                      "properties": {
-                        "fillToCanvas": {
-                          "$ref": "#/definitions/fill_to_canvas"
-                        }
-                      }
-                    },
-                    {
-                      "properties": {
-                        "verticalAlign": {
-                          "$ref": "#/definitions/vertical_align"
-                        }
-                      }
-                    },
-                    {
-                      "properties": {
-                        "horizontalAlign": {
-                          "$ref": "#/definitions/horizontal_align"
-                        }
-                      }
-                    }
-                  ]
                 }
               }
             ],
@@ -190,62 +166,18 @@
             ]
           },
           "then": {
-            "allOf": [{
-                "if": {
-                  "properties": {
-                    "type": {
-                      "enum": [
-                        "adjustmentLayer"
-                      ]
-                    }
-                  }
-                },
-                "then": {
-                  "required": [
-                    "adjustments"
-                  ]
-                }
-              },
-              {
-                "if": {
-                  "properties": {
-                    "type": {
-                      "enum": [
-                        "layer",
-                        "smartObject"
-                      ]
-                    }
-                  }
-                },
-                "then": {
-                  "allOf": [{
-                      "properties": {
-                        "fillToCanvas": {
-                          "$ref": "#/definitions/fill_to_canvas"
-                        }
-                      }
-                    },
-                    {
-                      "properties": {
-                        "verticalAlign": {
-                          "$ref": "#/definitions/vertical_align"
-                        }
-                      }
-                    },
-                    {
-                      "properties": {
-                        "horizontalAlign": {
-                          "$ref": "#/definitions/horizontal_align"
-                        }
-                      }
-                    }
+            "if": {
+              "properties": {
+                "type": {
+                  "enum": [
+                    "adjustmentLayer"
                   ]
                 }
               }
-            ],
-            "dependencies": {
-              "smartObject": [
-                "input"
+            },
+            "then": {
+              "required": [
+                "adjustments"
               ]
             }
           }

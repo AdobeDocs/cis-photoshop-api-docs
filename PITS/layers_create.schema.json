@@ -65,43 +65,18 @@
             "properties": {
               "type": {
                 "enum": [
-                  "smartObject",
-                  "layer"
+                  "smartObject"
                 ]
               }
             }
           },
           "then": {
-            "allOf": [{
-                "properties": {
-                  "fillToCanvas": {
-                    "$ref": "#/definitions/fill_to_canvas"
-                  }
-                }
-              },
-              {
-                "properties": {
-                  "verticalAlign": {
-                    "$ref": "#/definitions/vertical_align"
-                  }
-                }
-              },
-              {
-                "properties": {
-                  "horizontalAlign": {
-                    "$ref": "#/definitions/horizontal_align"
-                  }
-                }
-              }
+            "required": [
+              "input"
             ]
           }
         }
-      ],
-      "dependencies": {
-        "smartObject": [
-          "input"
-        ]
-      }
+      ]
     },
     "adjustments": {
       "type": "object",
