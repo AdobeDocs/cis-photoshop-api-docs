@@ -21,11 +21,6 @@ The Photoshop API is designed with REST-like principles and uses standard HTTP r
 
 The [Getting Started](../photoshop-api-docs/getting-started/) page will walk you through how to use our API.
 
-
-## Public Beta
-
-If you'd like to join our newly announced beta, please sign-up [here](https://www.adobe.com/go/photoshopapi_signup) and follow the steps to generate your trial credentials. Please keep in mind the trial is currently limited to 5,000 calls, must be in a non-production environment, and requires acceptance of our pre-release terms. 
-
 ## Support
 
 Please reach out to psdservices@adobe.com or submit a ticket here https://psd-services.zendesk.com/hc/en-us/requests/new for support or feedback.
