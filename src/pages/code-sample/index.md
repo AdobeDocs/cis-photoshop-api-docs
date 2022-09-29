@@ -160,10 +160,12 @@ curl -X POST \
     }
   ],
   "options":{
-    "fonts": {
+    "fonts": [
+      {
         "storage": "<storage>",
         "href": "<SIGNED_GET_URL_TO_VeganStylePersonalUse.ttf>"
-    },
+      }
+    ],
     "layers":[
       {
         "name": "My Text Layer",
@@ -214,10 +216,12 @@ curl -X POST \
   "options":{
     "manageMissingFonts": "useDefault",
     "globalFont": "MySampleFont",
-    "fonts": {
+    "fonts": [
+      {
         "storage": "<storage>",
         "href": "<SIGNED_GET_URL_TO_VeganStylePersonalUse.ttf>"
-    },
+      }
+    ],
     "layers":[
       {
         "name": "My Text Layer",
@@ -818,10 +822,12 @@ curl -X POST \
     }
   ],
   "options": {
-    "fonts": [{
-      "storage": "<storage>",
-      "href": "<SIGNED_GET_URL>"
-    }],
+    "fonts": [
+      {
+        "storage": "<storage>",
+        "href": "<SIGNED_GET_URL>"
+      }
+    ],
     "layers": [
       {
         "name": "<name_of_text_layer_1_to_edit>",
