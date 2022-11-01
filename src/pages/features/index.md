@@ -125,16 +125,16 @@ Here is an example of creating JPEG and PNG rendtions of a PSD document.
   - Toggle layer visibility
   - Move or resize the layer via it's bounds
   - Delete layers
-- Adjustment layers  (`Pre-Release Feature!!`)
+- Adjustment layers
   - Add or edit an adjustment layer. The following types of adjustment layers are currently supported:
   - Brightness and Contrast
   - Exposure
   - Hue and Saturation
   - Color Balance
-- Image/Pixel layers (`Pre-Release Feature!!`)
+- Image/Pixel layers
   - Add a new pixel layer, with optional image
   - Swap the image in an existing pixel layer
-- Shape layers (`Pre-Release Feature!!`)
+- Shape layers
   - Resize a shape layer via it's bounds
 
 #### The add, edit and delete objects
@@ -280,7 +280,7 @@ Example of Image mask with a sample image.
 You can make a 'customized workflow' by chaining different APIs. Example of which can be found [here](../code-sample/#example-3-generate-imagecutout-result-as-photoshop-path)
 
 
-## Using Webhooks through Adobe I/O Events (`Pre-Release Feature!!`)
+## Using Webhooks through Adobe I/O Events 
 
 Adobe I/O Events offers the possibility to build an event-driven application, based on events originating from Photoshop and Lightroom APIs. To start listening for events, your application needs to register a webhook URL, specifying the Event Types to receive. Whenever a matching event gets triggered, your application is notified through an HTTP POST request to the webhook URL.
 The Event Provider for Photoshop and Lightroom APIs is `Imaging API Events`.
