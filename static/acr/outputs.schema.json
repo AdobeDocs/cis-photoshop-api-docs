@@ -24,7 +24,8 @@
           "enum": [
             "image/jpeg",
             "image/x-adobe-dng",
-            "image/png"
+            "image/png",
+            "application/rdf+xml"
           ],
           "type": "string"
         },
@@ -72,7 +73,7 @@
           "then": {
             "properties": {
               "href": {
-                "pattern": "^/?(files|temp|cloud-content|assets)/.*",
+                "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.*",
                 "description": "A string representing the path to the output CC file"
               }
             }
