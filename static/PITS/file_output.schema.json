@@ -197,7 +197,7 @@
             "else": {
               "properties": {
                 "href": {
-                  "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                  "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
                   "description": "A string representing the path to the output CC Storage file"
                 }
               }
@@ -314,7 +314,7 @@
             "else": {
               "properties": {
                 "href": {
-                  "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                  "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
                   "description": "A string representing the path to the output CC Storage file"
                 }
               }
