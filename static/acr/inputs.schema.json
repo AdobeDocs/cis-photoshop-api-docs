@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "inputs.schema.json",
   "title": "a file input obect",
   "description": "An input object",
   "definitions": {
@@ -23,12 +21,7 @@
     },
     "inputs": {
       "type": "object",
-      "minProperties": 1,
       "description": "An input file to add or edit",
-      "required": [
-        "href",
-        "storage"
-      ],
       "properties": {
         "storage": {
           "$ref": "#/definitions/storage"
@@ -36,28 +29,28 @@
         "href": {
           "$ref": "#/definitions/href"
         }
-      },
-      "if": {
-        "properties": {
-          "storage": {
-            "pattern": "(^adobe$)"
-          }
+      }
+    },
+    "if": {
+      "properties": {
+        "storage": {
+          "pattern": "(^adobe$)"
         }
-      },
-      "then": {
-        "properties": {
-          "href": {
-            "pattern": "^/?(files|temp|cloud-content|assets)/.+",
-            "description": "A string representing the path to the input CC file"
-          }
+      }
+    },
+    "then": {
+      "properties": {
+        "href": {
+          "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+          "description": "A string representing the path to the input CC file"
         }
-      },
-      "else": {
-        "properties": {
-          "href": {
-            "format": "uri",
-            "description": "A URI representing the path to the input file"
-          }
+      }
+    },
+    "else": {
+      "properties": {
+        "href": {
+          "format": "uri",
+          "description": "A URI representing the path to the input file"
         }
       }
     }

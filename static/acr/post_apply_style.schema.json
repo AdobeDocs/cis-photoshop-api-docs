@@ -1,6 +1,4 @@
 {
-  "$schema":"http://json-schema.org/draft-07/schema#",
-  "$id":"post_apply_style.schema.json",
   "title":"post_apply_style",
   "description":"Initiates an asynchronous job to apply a style to an image",
   "type":"object",

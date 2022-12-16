@@ -1,6 +1,4 @@
 {
-  "$schema":"http://json-schema.org/draft-07/schema#",
-  "$id":"post_cutout.schema.json",
   "title":"post_cutout",
   "description":"",
   "type":"object",
@@ -30,28 +28,28 @@
           ],
           "default": "external"
         }
-      },
-      "if": {
-        "properties": {
-          "storage": {
-            "pattern": "(^azure|external|dropbox$)"
-          }
+      }
+    },
+    "if": {
+      "properties": {
+        "storage": {
+          "pattern": "(^azure|external|dropbox$)"
         }
-      },
-      "then": {
-        "properties": {
-          "href": {
-            "type": "string",
-            "description": "A URI representing the path to the input file"
-          }
+      }
+    },
+    "then": {
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "A URI representing the path to the input file"
         }
-      },
-      "else": {
-        "properties": {
-          "href": {
-            "pattern": "^/?(files|temp|cloud-content|assets)/.+",
-            "description": "A string representing the path to the input Creative Cloud file"
-          }
+      }
+    },
+    "else": {
+      "properties": {
+        "href": {
+          "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+          "description": "A string representing the path to the input Creative Cloud file"
         }
       }
     },
@@ -66,7 +64,7 @@
         },
         "process": {
           "type": "object",
-          "hidden": true,
+          "x-internal": true,
           "description": "Internal Only",
           "properties": {
             "postprocess": {
@@ -133,29 +131,6 @@
               "default": "soft",
               "description": "A soft (feathered) mask or binary mask"
             }
-          }
-        }
-      },
-      "if": {
-        "properties": {
-          "storage": {
-            "pattern": "(^azure|external|dropbox$)"
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "href": {
-            "type": "string",
-            "description": "A URI representing the path to the input file"
-          }
-        }
-      },
-      "else": {
-        "properties": {
-          "href": {
-            "pattern": "^/?(files|temp|cloud-content|assets)/.+",
-            "description": "A string representing the path to the input Creative Cloud file"
           }
         }
       }

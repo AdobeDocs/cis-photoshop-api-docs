@@ -1,6 +1,4 @@
 {
-  "$schema":"http://json-schema.org/draft-07/schema#",
-  "$id":"post_presets.schema.json",
   "title":"post_presets",
   "description":"Initiates an asynchronous job to apply a preset on an image",
   "type":"object",
