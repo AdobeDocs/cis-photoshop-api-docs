@@ -38,6 +38,10 @@ module.exports = {
         path: '/api/'
       },
       {
+        title: 'Billing Metrics',
+        path: '/billing-metrics/'
+      },
+      {
         title: 'Release Notes',
         path: '/release-notes/'
       },
