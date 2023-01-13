@@ -221,7 +221,7 @@ Here is an example usage of `manageMissingFonts` and `globalFont`. [Handle missi
 - Create a new artboard from multiple input psd's
 
 ### Remove Background
-Initiate a job to Remove Background. Code sample [here](../code-sample/#example-20-generate-remove-background).<br />
+Initiate a job to Remove Background. Code sample [here](../code-sample/#example-20-remove-background).<br />
 
 Example of Remove Background with a sample image.
 ![alt image](./imagecutout_cutout_example.png?raw=true "Original Image")

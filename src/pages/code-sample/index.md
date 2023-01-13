@@ -965,7 +965,7 @@ curl -X POST \
 
 First be sure to follow the instructions in the [Authentication](../authentication/) section to get your token.
 
-### Example 20: Generate Remove Background
+### Example 20: Remove Background
 
 The `/cutout` api takes a single input image to generate your mask or remove background from. Using [Example.jpg](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_files/Example.jpg), a typical curl call might look like this:
 
