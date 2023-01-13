@@ -31,7 +31,7 @@ intermediate_output_get_url='A presigned GET URL for intermediate result'
 final_output_url='A presigned PUT URL for final result'
 
 
-#--------------------------------------------- Call Sensei CutOut Service -----------------------------------------
+#--------------------------------------------- Call Remove Background Service -----------------------------------------
 # call Remove Background API
 
 ic_post_response=$(
