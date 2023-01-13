@@ -30,7 +30,7 @@ For optimal processing, please make sure the embedded smart object that you want
 Example of Smart Object replacement with a sample image.
 ![alt image](./smartobject_example.png?raw=true "Original Image")
 
-### Text(`New!`)
+### Text
 
 The Photoshop /text API supports editing one or more text layers from a Photoshop document. The APIs are documented [here](./api/#operation/text)
 
@@ -57,7 +57,7 @@ The following are known limitations for the Alpha release
 Here is an example where the font was changed from the original image on the left using the Text API.
 ![alt image](./textlayer_example.png?raw=true "Original Image")
 
-### ProductCrop(`New!`)
+### ProductCrop
 
 The ProductCrop API supports applying smart crop to your image. The APIs are documented [here](./api/#operation/productCrop)
 
@@ -71,7 +71,7 @@ We intend to correct this issue in future releases.
 
 [Here](../code-sample/#example-18--applying-product-crop) is a code sample.
 
-### DepthBlur(`New!`)
+### DepthBlur
 
 The DepthBlur API supports applying depth blur to your image. The APIs are documented [here](./api/#operation/depthBlur)
 
@@ -79,7 +79,7 @@ Depth Blur is part of the Neural Filters gallery in Photoshop. It allows you to 
 
 [Here](../code-sample/#example-19--applying-depth-blur-neural-filter) is a code sample.
 
-### Photoshop Actions(`New!`)
+### Photoshop Actions
 #### Execute Photoshop Actions
 
 Adobe Photoshop APIs supports playing back Photoshop Actions recorded from Photoshop. The APIs are documented [here](../api/#operation/photoshopActions)
@@ -220,6 +220,23 @@ Here is an example usage of `manageMissingFonts` and `globalFont`. [Handle missi
 - Show artboard information in the JSON Manifest
 - Create a new artboard from multiple input psd's
 
+### Remove Background
+Initiate a job to Remove Background. Code sample [here](../code-sample/#example-20-generate-remove-background).<br />
+
+Example of Remove Background with a sample image.
+![alt image](./imagecutout_cutout_example.png?raw=true "Original Image")
+
+### Image Mask
+
+Initiate a job to create an image mask. Code sample [here](../code-sample/#example-21-generate-image-mask).<br />
+
+Example of Image mask with a sample image.
+![alt image](./imagecutout_mask_example.png?raw=true "Original Image")
+
+Remove Background and Image Mask APIs are powered by Adobe’s Artificial Intelligence Technology and Photoshop. The APIs can identify the main subject of an image and produce two types of outputs. You can create a greyscale [mask](https://en.wikipedia.org/wiki/Layers_(digital_image_editing)#Layer_mask) png file that you can composite onto the original image (or any other).  You can also create remove background where the mask has already composited onto your original image so that everything except the main subject has been removed.
+
+The APIs are documented at [Photoshop API Reference](../api/#tag/Photoshop)
+
 
 ## Lightroom
 The APIs are documented at [Lightroom API](../api/#tag/Lightroom).
@@ -257,30 +274,12 @@ Apply one or more Lightroom edits to an image. Code sample [here](../code-sample
 ### XMP
 Apply a Lightroom preset to an image, by passing in the preset XMP contents inline through the API. Code sample [here](../code-sample/#example-5-apply-xmp-to-an-image)
 
-## Sensei
-These are the APIs powered by Sensei, Adobe’s Artificial Intelligence Technology, and Photoshop. The APIs can identify the main subject of an image and produce two types of outputs. You can create a greyscale [mask](https://en.wikipedia.org/wiki/Layers_(digital_image_editing)#Layer_mask) png file that you can composite onto the original image (or any other).  You can also create a cutout where the mask has already composited onto your original image so that everything except the main subject has been removed.
-
-The APIs are documented at [Sensei API Reference](../api/#tag/Sensei)
-
-### Image Cutout
-
-Initiate a job to create an image cutout. Code sample [here](../code-sample/#example-1-generate-image-cutout).<br />
-
-Example of Image Cutout with a sample image.
-![alt image](./imagecutout_cutout_example.png?raw=true "Original Image")
-
-### Image Mask
-
-Initiate a job to create an image mask. Code sample [here](../code-sample/#example-2-generate-image-mask).<br />
-
-Example of Image mask with a sample image.
-![alt image](./imagecutout_mask_example.png?raw=true "Original Image")
 
 ## Customized Workflow
-You can make a 'customized workflow' by chaining different APIs. Example of which can be found [here](../code-sample/#example-3-generate-imagecutout-result-as-photoshop-path)
+You can make a 'customized workflow' by chaining different APIs. Example of which can be found [here](../code-sample/#example-1-generate-remove-background-result-as-photoshop-path)
 
 
-## Using Webhooks through Adobe I/O Events 
+## Using Webhooks through Adobe I/O Events
 
 Adobe I/O Events offers the possibility to build an event-driven application, based on events originating from Photoshop and Lightroom APIs. To start listening for events, your application needs to register a webhook URL, specifying the Event Types to receive. Whenever a matching event gets triggered, your application is notified through an HTTP POST request to the webhook URL.
 The Event Provider for Photoshop and Lightroom APIs is `Imaging API Events`.
