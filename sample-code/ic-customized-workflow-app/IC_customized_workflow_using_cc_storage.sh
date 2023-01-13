@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# this is a demo code snippet to use ImageCutOut service to generate cutout result as Photoshop path (Use Adobe Creative Cloud Storage)
+# this is a demo code snippet to use Remove Background api to generate remove background result as Photoshop path (Use Adobe Creative Cloud Storage)
 
 # set up authorization token variable, by default it is the first argument
 token='Your_Access_Token'
@@ -7,10 +7,10 @@ token='Your_Access_Token'
 # set api key / client id
 api_key='Your_Client_Id'
 
-# set endpoint for ImageCutOut Service. API doc: https://adobedocs.github.io/photoshop-api-docs/#api-Sensei-cutout
+# set endpoint for Remove Background api. API doc: https://developer.adobe.com/photoshop/photoshop-api-docs/api/#tag/Photoshop
 ic_endpoint='https://image.adobe.io/sensei/cutout'
 
-# set endpoint for Pegasus action service. API doc: https://adobedocs.github.io/photoshop-api-docs/#api-Photoshop-photoshopActions
+# set endpoint for Pegasus action api. API doc: https://adobedocs.github.io/photoshop-api-docs/#api-Photoshop-photoshopActions
 pegasus_endpoint='https://image.adobe.io/pie/psdService/photoshopActions'
 
 
@@ -23,12 +23,12 @@ action_url='A file URL for action file (make-path.atn file downloaded)'
 # This is the URL for intermediate result file.
 intermediate_output_url='A file URL for intermediate result'
 
-# This is the file URL final output. You will need to checkout the final cutout result with path from here.
+# This is the file URL final output. You will need to checkout the final Remove Background result with path from here.
 final_output_url='A file URL for final result'
 
 
-#--------------------------------------------- Call Sensei CutOut Service -----------------------------------------
-# call Sensei-cutout API
+#--------------------------------------------- Call Sensei Remove Background Service -----------------------------------------
+# call Remove Background API
 
 ic_post_response=$(
 curl -s $ic_endpoint \
@@ -53,7 +53,7 @@ curl -s $ic_endpoint \
 ic_status_endpoint=$(jq -r '._links.self.href' <<< $ic_post_response)
 
 
-# waiting for Sensei-cutout service result to be ready
+# waiting for Remove Background service result to be ready
 end=$((SECONDS+20)) # wait for 20 seconds
 
 
@@ -74,7 +74,7 @@ done
 
 
 
-#--------------------------------------------- Call Sensei CutOut Service -----------------------------------------
+#--------------------------------------------- Call Remove Background Service -----------------------------------------
 # call Photoshop action API
 
 pegasus_response=$(
