@@ -790,8 +790,8 @@
         "tags": [
           "Photoshop"
         ],
-        "summary": "Remove Backround",
-        "description": " Generates a PNG file in 4 channel RGBA format with the generated cutout mask \\\n applied to the input image generate a PNG file in 4 channel RGBA format with the generated cutout \\\n mask applied to the input image.\nTo get status of this job, call [Status API](./#operation/icstatus).\\\n To know more about this feature refer [Remove Backround](../features/#remove-background)",
+        "summary": "Remove Background",
+        "description": " Generates a PNG file in 4 channel RGBA format with the generated cutout mask \\\n applied to the input image generate a PNG file in 4 channel RGBA format with the generated cutout \\\n mask applied to the input image.\nTo get status of this job, call [Status API](./#operation/icstatus).\\\n To know more about this feature refer [Remove Background](../features/#remove-background)",
         "operationId": "cutout",
         "parameters": [
           {
