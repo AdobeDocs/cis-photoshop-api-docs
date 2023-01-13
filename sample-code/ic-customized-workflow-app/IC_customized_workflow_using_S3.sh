@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# this is a demo code snippet to use Remove Background service to generate cutout result as Photoshop path (use AWS S3 storage)
+# this is a demo code snippet to use Remove Background api to generate cutout result as Photoshop path (use AWS S3 storage)
 
 # set up authorization token variable, by default it is the first argument
 token='Your_Access_Token'
@@ -7,7 +7,7 @@ token='Your_Access_Token'
 # set api key / client id
 api_key='Your_Client_Id'
 
-# set endpoint for Remove Background Service. API doc: https://adobedocs.github.io/photoshop-api-docs/#api-Sensei-cutout
+# set endpoint for Remove Background api. API doc: https://adobedocs.github.io/photoshop-api-docs/#api-Sensei-cutout
 ic_endpoint='https://image.adobe.io/sensei/cutout'
 
 # set endpoint for Pegasus action service. API doc: https://adobedocs.github.io/photoshop-api-docs/#api-Photoshop-photoshopActions
@@ -20,7 +20,7 @@ input_url='A presigned GET URL for input image file'
 # This is the presign URL for action file. Please download the make-path.atn and upload to your own S3 location
 action_url='A presigned GET URL for action file (make-path.atn file downloaded)'
 
-# This is a presign PUT URL for intermediate output in the chaining process (Remove Background service will populate the file to this location)
+# This is a presign PUT URL for intermediate output in the chaining process (Remove Background api will populate the file to this location)
 intermediate_output_put_url='A presigned PUT URL for intermediate result'
 
 # This is a presign PUT URL for intermediate output in the chaining process (Photoshop action service will use intermediate results from above)
@@ -31,7 +31,7 @@ intermediate_output_get_url='A presigned GET URL for intermediate result'
 final_output_url='A presigned PUT URL for final result'
 
 
-#--------------------------------------------- Call Remove Background Service -----------------------------------------
+#--------------------------------------------- Call Remove Background API -----------------------------------------
 # call Remove Background API
 
 ic_post_response=$(
@@ -56,7 +56,7 @@ curl -s $ic_endpoint \
 ic_status_endpoint=$(jq -r '._links.self.href' <<< $ic_post_response)
 
 
-# waiting for Remove Background service result to be ready
+# waiting for Remove Background api result to be ready
 end=$((SECONDS+20)) # wait for 20 seconds
 
 # Initialize ic status
@@ -79,7 +79,7 @@ done
 
 
 
-#--------------------------------------------- Call Remove Background Service -----------------------------------------
+#--------------------------------------------- Call Remove Background API -----------------------------------------
 # call Photoshop action API
 
 pegasus_response=$(
@@ -116,7 +116,7 @@ echo ${pegasus_response}
 pegasus_status_endpoint=$(jq -r '._links.self.href' <<< $pegasus_response)
 
 
-# waiting for Pegasus service result to be ready
+# waiting for Pegasus api result to be ready
 end=$((SECONDS+20)) # almost wait 20 seconds
 
 while [[ $SECONDS -lt $end && "$pegasus_status" != "succeeded" ]]; do

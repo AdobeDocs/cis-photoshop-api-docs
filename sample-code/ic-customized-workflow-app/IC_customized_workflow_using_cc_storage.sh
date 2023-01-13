@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# this is a demo code snippet to use Remove Background service to generate remove background result as Photoshop path (Use Adobe Creative Cloud Storage)
+# this is a demo code snippet to use Remove Background api to generate remove background result as Photoshop path (Use Adobe Creative Cloud Storage)
 
 # set up authorization token variable, by default it is the first argument
 token='Your_Access_Token'
@@ -7,10 +7,10 @@ token='Your_Access_Token'
 # set api key / client id
 api_key='Your_Client_Id'
 
-# set endpoint for Remove Background Service. API doc: https://developer.adobe.com/photoshop/photoshop-api-docs/api/#tag/Photoshop
+# set endpoint for Remove Background api. API doc: https://developer.adobe.com/photoshop/photoshop-api-docs/api/#tag/Photoshop
 ic_endpoint='https://image.adobe.io/sensei/cutout'
 
-# set endpoint for Pegasus action service. API doc: https://adobedocs.github.io/photoshop-api-docs/#api-Photoshop-photoshopActions
+# set endpoint for Pegasus action api. API doc: https://adobedocs.github.io/photoshop-api-docs/#api-Photoshop-photoshopActions
 pegasus_endpoint='https://image.adobe.io/pie/psdService/photoshopActions'
 
 
