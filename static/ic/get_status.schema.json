@@ -25,7 +25,6 @@
       "description": "The job status",
       "enum": [
         "pending",
-        "starting",
         "running",
         "succeeded",
         "failed"

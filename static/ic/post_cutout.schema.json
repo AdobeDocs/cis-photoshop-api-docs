@@ -42,6 +42,7 @@
         "properties": {
           "href": {
             "type": "string",
+            "pattern": "^https://",
             "description": "A URI representing the path to the input file"
           }
         }
@@ -147,6 +148,7 @@
         "properties": {
           "href": {
             "type": "string",
+            "pattern": "^https://",
             "description": "A URI representing the path to the input file"
           }
         }
