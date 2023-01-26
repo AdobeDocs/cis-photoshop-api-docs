@@ -115,6 +115,7 @@
             "properties": {
               "href": {
                 "type": "string",
+                "pattern": "^https://",
                 "description": "A URI representing the path to the output file"
               }
             }
@@ -138,7 +139,7 @@
             "else" : {
               "properties": {
                 "href": {
-                  "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                  "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
                   "description": "A string representing the path to the output CC Storage file"
                 }
               }

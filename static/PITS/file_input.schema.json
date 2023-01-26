@@ -97,6 +97,7 @@
         "properties": {
           "href": {
             "type": "string",
+            "pattern": "^https://",
             "description": "A URI representing the path to the input file"
           }
         }
@@ -120,7 +121,7 @@
         "else" : {
           "properties": {
             "href": {
-              "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+              "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
               "description": "A string representing the path to the input CC Storage file"
             }
           }
@@ -157,6 +158,7 @@
         "properties": {
           "href": {
             "format": "uri",
+            "pattern": "^https://",
             "description": "A URI representing the path to the input action file"
           }
         }
@@ -164,7 +166,7 @@
       "else": {
         "properties": {
           "href": {
-            "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+            "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
             "description": "A string representing the path to the input CC file"
           }
         }
