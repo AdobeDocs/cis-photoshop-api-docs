@@ -12,15 +12,15 @@
   ],
   "tags": [
     {
-      "name": "Photoshop",
+      "name": "Photoshop Testing",
       "description": "APIs powered by Photoshop"
     },
     {
-      "name": "Lightroom",
+      "name": "Lightroom Testing",
       "description": "APIs powered by Lightroom"
     },
     {
-      "name": "Sensei",
+      "name": "Sensei Testing",
       "description": "APIs powered by Sensei"
     }
   ],
