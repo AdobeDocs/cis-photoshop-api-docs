@@ -42,34 +42,8 @@
           "description": "The combination of flip and/or rotate to apply",
           "minimum": 1,
           "maximum": 8
-        },
-        "masks":{
-         "type": "array",
-          "minLength": 1,
-          "description": "An array of input mask objects.",
-          "items": {
-            "required":[
-              "href",
-              "storage",
-              "digest"
-            ],
-            "properties": {
-              "href": {
-                "$ref": "inputs.schema.json#/definitions/href"
-              },
-              "storage": {
-                "$ref": "inputs.schema.json#/definitions/storage"
-              },
-              "digest": {
-                "type": "string",
-                "description": "The fingerprint of the mask."
-              }
-            },
-            "additionalProperties": false
-          }
         }
-      },
-      "additionalProperties": false
+      }
     }
   }
 }
