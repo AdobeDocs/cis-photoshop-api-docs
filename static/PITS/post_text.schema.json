@@ -250,10 +250,28 @@
                         "description": "The text's orientation",
                         "enum": ["horizontal", "vertical"]
                       },
+                      "rotate": {
+                        "type": "integer",
+                        "description": "The text's rotation in angle",
+                        "minimum": -180,
+                        "maximum": 180
+                      },
                       "antiAlias": {
                         "type": "string",
                         "description": "The text's aliasing type which determines the smoothness of the jagged edges of the text.",
                         "enum": ["antiAliasNone", "antiAliasSharp", "antiAliasCrisp", "antiAliasStrong", "antiAliasSmooth", "antiAliasPlatformLCD", "antiAliasPlatformGray"]
+                      },
+                      "eastAsianFeatures": {
+                        "type": "object",
+                        "description": "Text features specifically for eastAsian languages",
+                        "minProperties": 1,
+                        "properties": {
+                          "textStyle": {
+                            "type": "string",
+                            "description": "Base line direction for text style",
+                            "enum": ["cross", "rotated", "withSream"]
+                          }
+                        }
                       },
                       "characterStyles": {
                         "$ref": "#/definitions/character_styles"

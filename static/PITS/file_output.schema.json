@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "file_output.schema.json",
-  "title": "a file output obect",
+  "title": "a file output object",
   "description": "Represents the collective fields needed to indicate an output file, destination and format",
   "definitions": {
     "storage": {
@@ -174,6 +174,7 @@
             "properties": {
               "href": {
                 "type": "string",
+                "pattern": "^https://",
                 "description": "A URI representing the path to the output file"
               }
             }
@@ -197,7 +198,7 @@
             "else": {
               "properties": {
                 "href": {
-                  "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                  "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
                   "description": "A string representing the path to the output CC Storage file"
                 }
               }
@@ -291,6 +292,7 @@
             "properties": {
               "href": {
                 "type": "string",
+                "pattern": "^https://",
                 "description": "A URI representing the path to the output file"
               }
             }
@@ -314,7 +316,7 @@
             "else": {
               "properties": {
                 "href": {
-                  "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                  "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
                   "description": "A string representing the path to the output CC Storage file"
                 }
               }
@@ -345,16 +347,18 @@
     },
     "output_objects": {
       "type": "array",
-      "minLength": 1,
-      "description": "An array of hashes describing the output files. Output file format can be any of `psd`, `jpeg`, `png`, or `tiff` and storage type can be any of `external`, `adobe`, `azure` or `dropbox`",
+      "minItems": 1,
+      "maxItems": 25,
+      "description": "An array of hashes describing the output files. Output file format can be any of `psd`, `jpeg`, `png`, or `tiff` and storage type can be any of `external`, `adobe`, `azure` or `dropbox`. Maximum limit to generate outputfiles in one API call is 25.",
       "items": {
         "$ref": "#/definitions/output_object"
       }
     },
     "output_objects_smart_object": {
       "type": "array",
-      "minLength": 1,
-      "description": "An array of hashes describing the output files. Output file format can be any of `psd`, `jpeg`, `png`, or `tiff` and storage type can be any of `external`, `adobe`, `azure` or `dropbox`",
+      "minItems": 1,
+      "maxItems": 25,
+      "description": "An array of hashes describing the output files. Output file format can be any of `psd`, `jpeg`, `png`, or `tiff` and storage type can be any of `external`, `adobe`, `azure` or `dropbox`. Maximum limit to generate outputfiles in one API call is 25.",
       "items": {
         "$ref": "#/definitions/output_object_smart_object"
       }
