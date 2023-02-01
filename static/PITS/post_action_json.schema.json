@@ -21,6 +21,10 @@
           "$ref": "file_input.schema.json#/definitions/input_objects_action",
           "description": "An array of action objects you wish photoshopActions to execute. We currently only support one input object."
         },
+        "costOptimization": {
+          "type": "boolean",
+          "description": "If true, play actions using low operating costs stack."
+        },
         "fonts": {
           "$ref": "file_input.schema.json#/definitions/input_objects",
           "description": "An array of font objects you wish use when executing the action."
@@ -56,6 +60,7 @@
               "properties": {
                 "href": {
                   "format": "uri",
+                  "pattern": "^https://",
                   "description": "A URI representing the path to the input file"
                 }
               }
@@ -79,7 +84,7 @@
               "else": {
                 "properties": {
                   "href": {
-                    "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                    "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
                     "description": "A string representing the path to the input CC Storage file"
                   }
                 }
@@ -118,6 +123,7 @@
               "properties": {
                 "href": {
                   "format": "uri",
+                  "pattern": "^https://",
                   "description": "A URI representing the path to the input file"
                 }
               }
@@ -141,7 +147,7 @@
               "else": {
                 "properties": {
                   "href": {
-                    "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                    "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
                     "description": "A string representing the path to the input CC Storage file"
                   }
                 }
@@ -177,6 +183,7 @@
               "properties": {
                 "href": {
                   "format": "uri",
+                  "pattern": "^https://",
                   "description": "A URI representing the path to the input file"
                 }
               }
@@ -200,7 +207,7 @@
               "else": {
                 "properties": {
                   "href": {
-                    "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+                    "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
                     "description": "A string representing the path to the input CC Storage file"
                   }
                 }
