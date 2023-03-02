@@ -30,3 +30,10 @@ description: Photoshop API Licensing and Billing Metrics
     - Enterprise subscription usage limits are defined contractually on a case-by-case basis
 2. Size, Resolution and Throttling Limits:
     - Each API endpoint has its own unique limitations to be aware of. Please see the [API documentation](../api/) for additional details.
+
+## International Access  
+Our international(non U.S) subscription is available for purchase from billing addresses within the following list of allowed countries only:
+
+India, Indonesia, Malaysia, South Africa, Japan, Austria, Belgium, Bulgaria, Canada, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Isle of Man, Italy, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, and UK.
+
+We may have other options to purchase Adobe Photoshop API for customers in countries that are not included on this list. Please see our [pricing page](https://developer.adobe.com/photoshop/api/pricing/) for available purchase options or feel free to contact us for more information.  
