@@ -1,4 +1,6 @@
 {
+  "$schema":"http://json-schema.org/draft-07/schema#",
+  "$id":"post_xmp_to_preset.schema.json",
   "title":"post_xmp_to_preset",
   "description":"Initiates an asynchronous job to apply xmp data to an image",
   "type":"object",

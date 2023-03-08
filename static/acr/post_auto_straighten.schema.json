@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "post_auto_straighten.schema.json",
   "title": "post_auto_straighten",
   "description": "Initiates an asynchronous job to run auto straighten",
   "type": "object",

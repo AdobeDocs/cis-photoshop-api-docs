@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "post_learn_style.schema.json",
   "title": "post_learn_style",
   "description": "Initiates an asynchronous job to learn a style from a set of images",
   "type": "object",
