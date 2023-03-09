@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "api_response_410.schema.json",
   "title": "api_response_410",
   "description": "Provides API response",
   "type": "object",
