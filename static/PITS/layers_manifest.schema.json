@@ -64,7 +64,7 @@
     },
     "adjustments": {
       "type": "object",
-      "definition": "Supported adjustment layer attributes. Any of `brightnessContrast`, `exposure`, `hueSaturation` or `colorBalance` is required",
+      "description": "Supported adjustment layer attributes. Any of `brightnessContrast`, `exposure`, `hueSaturation` or `colorBalance` is required",
       "minProperties": 1,
       "properties": {
         "brightness_contrast":{

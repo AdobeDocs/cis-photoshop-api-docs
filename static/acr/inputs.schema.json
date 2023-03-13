@@ -40,24 +40,24 @@
       "if": {
         "properties": {
           "storage": {
-            "pattern": "(^adobe$)"
+            "pattern": "(^azure|external|dropbox$)"
           }
         }
       },
       "then": {
         "properties": {
           "href": {
-            "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
-            "description": "A string representing the path to the input CC file"
+            "format": "uri",
+            "pattern": "^https://",
+            "description": "A URI representing the path to the input action file"
           }
         }
       },
       "else": {
         "properties": {
           "href": {
-            "format": "uri",
-            "pattern": "^https://",
-            "description": "A URI representing the path to the input file"
+            "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
+            "description": "A string representing the path to the input CC file"
           }
         }
       }

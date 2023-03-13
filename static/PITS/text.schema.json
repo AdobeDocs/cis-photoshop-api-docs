@@ -6,7 +6,7 @@
   "definitions": {
     "text": {
       "type": "object",
-      "definition": "Supported text layer attributes.",
+      "description": "Supported text layer attributes.",
       "minProperties": 1,
       "properties": {
         "content": {
@@ -58,14 +58,6 @@
           "description": "The text's orientation",
           "enum": ["horizontal", "vertical"]
         }
-      },
-      "dependencies": {
-        "from": {
-          "required": ["to"]
-        },
-        "to": {
-          "required": ["from"]
-        }
       }
     },
     "paragraph_styles": {
@@ -81,14 +73,6 @@
       "description": "Array of paragraph_style object. `alignment` is required.",
       "minProperties": 1,
       "required": ["alignment"],
-      "dependencies": {
-        "from": {
-          "required": ["to"]
-        },
-        "to": {
-          "required": ["from"]
-        }
-      },
       "properties": {
         "alignment": {
           "type": "string",
