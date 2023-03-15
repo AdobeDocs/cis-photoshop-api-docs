@@ -7,4 +7,6 @@ node_modules
 yarn-error.log
 .editorconfig
 .env
-
+.yarn/cache
+.yarn/*
+src/pages/api/index.md

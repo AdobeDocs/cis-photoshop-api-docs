@@ -6,22 +6,39 @@ View the [demo](https://adobedocs.github.io/dev-site-documentation-template/) ru
 
 ## Where to ask for help
 
-The slack channel #adobeio-onsite-onboarding is our main point of contact for help. Feel free to join the channel and ask any questions. 
+The slack channel #adobeio-onsite-onboarding is our main point of contact for help. Feel free to join the channel and ask any questions.
 
 ## How to develop
 
-For local development, simply use :
+For local development
+Open a terminal at the root of your local cis-photoshop-api-doc project/site and run the following command:
+
+Run
 ```
-$ npm install
-$ npm run dev
+yarn install
+yarn dev
 ```
 
-If you have a M1 mac. You need to install vips before `npm install`. Run
+If you have a M1 mac. You need to install vips before `yarn install`. Run
 ```
 brew install vips
 ```
 
-For running API doc locally 
+Make sure to run lint locally before you check-in
+```
+npx @redocly/cli@latest lint static/swagger.json --extends minimal --format json --lint-config=off
+```
+Fix any lint errors before checking-in
+
+To clean up any cache
+
+```
+yarn clean && yarn cache clean && rm -rf node_modules && rm package-lock.json && rm yarn.lock
+```
+If you remove `yarn.lock`, make sure to create an empty `yarn.lock` file at the root of your local cis-photoshop-api-doc project after clean up and run `yarn install`
+
+
+To see the changes reflected locally, point the `swagger.json` to your local
 
 ```
 Modify src/pages/api/index.md to point openAPISpec to your local swagger.json
