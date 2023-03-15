@@ -13,10 +13,6 @@ The slack channel #adobeio-onsite-onboarding is our main point of contact for he
 For local development
 Open a terminal at the root of your local cis-photoshop-api-doc project/site and run the following command:
 
-Clean up any cache
-```
-yarn clean && yarn cache clean && rm -rf node_modules && rm package-lock.json && rm yarn.lock
-```
 Run
 ```
 yarn install
@@ -34,7 +30,15 @@ npx @redocly/cli@latest lint static/swagger.json --extends minimal --format json
 ```
 Fix any lint errors before checking-in
 
-For running API doc locally
+To clean up any cache
+
+```
+yarn clean && yarn cache clean && rm -rf node_modules && rm package-lock.json && rm yarn.lock
+```
+If you remove `yarn.lock`, make sure to create an empty `yarn.lock` file at the root of your local cis-photoshop-api-doc project after clean up and run `yarn install`
+
+
+To see the changes reflected locally, point the `swagger.json` to your local
 
 ```
 Modify src/pages/api/index.md to point openAPISpec to your local swagger.json

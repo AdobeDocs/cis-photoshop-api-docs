@@ -349,7 +349,7 @@
       "type": "array",
       "minItems": 1,
       "maxItems": 25,
-      "description": "An array of hashes describing the output files. Output file format can be any of `psd`, `jpeg`, `png`, or `tiff` and storage type can be any of `external`, `adobe`, `azure` or `dropbox`. Maximum limit to generate outputfiles in one API call is 25.",
+      "description": "An array of hashes describing the output files. Output file format can be any of `psd`, `jpeg`, `png`, or `tiff` and storage type can be any of `external`, `adobe`, `azure` or `dropbox`. Maximum limit of 25 per request.",
       "items": {
         "$ref": "#/definitions/output_object"
       }
@@ -358,7 +358,7 @@
       "type": "array",
       "minItems": 1,
       "maxItems": 25,
-      "description": "An array of hashes describing the output files. Output file format can be any of `psd`, `jpeg`, `png`, or `tiff` and storage type can be any of `external`, `adobe`, `azure` or `dropbox`. Maximum limit to generate outputfiles in one API call is 25.",
+      "description": "An array of hashes describing the output files. Output file format can be any of `psd`, `jpeg`, `png`, or `tiff` and storage type can be any of `external`, `adobe`, `azure` or `dropbox`. Maximum limit of 25 per request.",
       "items": {
         "$ref": "#/definitions/output_object_smart_object"
       }
