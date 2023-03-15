@@ -67,7 +67,7 @@
             "properties": {
               "storage": {
                 "pattern": "(^azure|external|dropbox$)",
-                "description" : "Is the asset stored on an external service (like AWS S3, Azure, Dropbox etc.)"
+                "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox etc.). If you are using presigned url for dropbox or azure, use `storage=\"dropbox\"` or `storage=\"azure\"` else it is `storage=\"external\"`"
               }
             }
           },
@@ -87,7 +87,7 @@
                 "description": "A string representing the path to the output file stored on Adobe's cloud.</br> Not available for the integrations created with JWT authentication or Service Principle."
               },
               "storage": {
-                "description" : "Is the asset stored on Adobe's cloud. </br> Not available for the integrations created with JWT authentication or Service Principle."
+                "description" : "Asset stored on Adobe's cloud `adobe`. </br> Not available for the integrations created with JWT authentication or Service Principle."
               }
             }
           }
