@@ -5,7 +5,6 @@
   "description": "Represents the collective fields needed to indicate an output file, destination and format",
   "definitions": {
     "storage": {
-      "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox) or Adobe's Creative Cloud files. If you are using presigned url for dropbox or azure, use `storage=\"dropbox\"` or `storage=\"azure\"` else it is `storage=\"external\"`",
       "type": "string",
       "enum": [
         "external",
@@ -17,7 +16,6 @@
       "default": "external"
     },
     "href": {
-      "description": "Either a presignedGETURL OR a Creative Cloud assets path for storage='adobe'.",
       "type": "string",
       "minLength": 1,
       "example": "presignedURL"
@@ -166,7 +164,8 @@
           "if": {
             "properties": {
               "storage": {
-                "pattern": "(^azure|external|dropbox$)"
+                "pattern": "(^azure|external|dropbox$)",
+                "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox). If you are using presigned url for dropbox or azure, use `storage=\"dropbox\"` or `storage=\"azure\"` else it is `storage=\"external\"`",
               }
             }
           },
@@ -175,7 +174,7 @@
               "href": {
                 "type": "string",
                 "pattern": "^https://",
-                "description": "A URI representing the path to the output file"
+                "description": "Any public url or a presignedURL for the asset output"
               }
             }
           },
@@ -191,7 +190,7 @@
               "properties": {
                 "href": {
                   "pattern": "^/?(api)/.+",
-                  "description": "A string representing the path to the output CC Libraries file"
+                  "description": "A string representing the path to the output CC Libraries file. </br> Not available for the integrations created with JWT authentication or Service Principle."
                 }
               }
             },
@@ -199,7 +198,7 @@
               "properties": {
                 "href": {
                   "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
-                  "description": "A string representing the path to the output CC Storage file"
+                  "description": "A string representing the path to the output CC Storage file. </br> Not available for the integrations created with JWT authentication or Service Principle."
                 }
               }
             }
@@ -284,7 +283,8 @@
           "if": {
             "properties": {
               "storage": {
-                "pattern": "(^azure|external|dropbox$)"
+                "pattern": "(^azure|external|dropbox$)",
+                "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox). If you are using presigned url for dropbox or azure, use `storage=\"dropbox\"` or `storage=\"azure\"` else it is `storage=\"external\"`",
               }
             }
           },
@@ -293,7 +293,7 @@
               "href": {
                 "type": "string",
                 "pattern": "^https://",
-                "description": "A URI representing the path to the output file"
+                "description": "Any public url or a presignedURL for the asset output"
               }
             }
           },
@@ -309,7 +309,7 @@
               "properties": {
                 "href": {
                   "pattern": "^/?(api)/.+",
-                  "description": "A string representing the path to the output CC Libraries file"
+                  "description": "A string representing the path to the output CC Libraries file. </br> Not available for the integrations created with JWT authentication or Service Principle."
                 }
               }
             },
@@ -317,7 +317,7 @@
               "properties": {
                 "href": {
                   "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
-                  "description": "A string representing the path to the output CC Storage file"
+                  "description": "A string representing the path to the output CC Storage file. </br> Not available for the integrations created with JWT authentication or Service Principle."
                 }
               }
             }
