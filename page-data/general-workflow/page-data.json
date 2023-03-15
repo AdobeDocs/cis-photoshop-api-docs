@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-pages-general-workflow-index-md",
-    "path": "/general-workflow/",
-    "result": {"pageContext":{"frontmatter":{"title":"General Workflow of Photoshop API","description":"General Workflow of Photoshop API"}}},
-    "staticQueryHashes": ["915530536"]}
+{"componentChunkName":"component---src-pages-general-workflow-index-md","path":"/general-workflow/","result":{"pageContext":{"frontmatter":{"title":"General Workflow of Photoshop API","description":"General Workflow of Photoshop API"}}},"staticQueryHashes":["1440646406","3508090095","915530536"]}

@@ -66,24 +66,28 @@
           "if": {
             "properties": {
               "storage": {
-                "pattern": "(^adobe$)"
+                "pattern": "(^azure|external|dropbox$)",
+                "description" : "Is the asset stored on an external service (like AWS S3, Azure, Dropbox etc.)"
               }
             }
           },
           "then": {
             "properties": {
               "href": {
-                "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.*",
-                "description": "A string representing the path to the output CC file"
+                "format": "uri",
+                "pattern": "^https://",
+                "description": "Any public url or a presignedURL for the asset output"
               }
             }
           },
           "else": {
             "properties": {
               "href": {
-                "format": "uri",
-                "pattern": "^https://",
-                "description": "A URI representing the path to the output file"
+                "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.*",
+                "description": "A string representing the path to the output file stored on Adobe's cloud.</br> Not available for the integrations created with JWT authentication or Service Principle."
+              },
+              "storage": {
+                "description" : "Is the asset stored on Adobe's cloud. </br> Not available for the integrations created with JWT authentication or Service Principle."
               }
             }
           }
@@ -94,7 +98,7 @@
       "type": "array",
       "minItems": 1,
       "maxItems": 25,
-      "description": "An array of output objects. each output object will be either 'external' or 'adobe'. Maximum limit to generate outputfiles in one API call is 25.",
+      "description": "An array of output objects. each output object will be either 'external' or 'adobe'. Maximum limit of 25 per request.",
       "items": {
         "$ref": "#/definitions/output"
       }

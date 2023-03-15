@@ -17,7 +17,6 @@
           "$ref": "file_input.schema.json#/definitions/storage"
         },
         "href": {
-          "description": "Either a Creative Cloud assets path for storage='adobe' OR a presignedPUTURL.",
           "type": "string",
           "minLength": 1
         },
@@ -107,7 +106,8 @@
           "if": {
             "properties": {
               "storage": {
-                "pattern": "(^azure|external|dropbox$)"
+                "pattern": "(^azure|external|dropbox$)",
+                "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox). If you are using presigned url for dropbox or azure, use `storage=\"dropbox\"` or `storage=\"azure\"` else it is `storage=\"external\"`"
               }
             }
           },
@@ -116,7 +116,7 @@
               "href": {
                 "type": "string",
                 "pattern": "^https://",
-                "description": "A URI representing the path to the output file"
+                "description": "Any public url or a presignedURL for the asset output"
               }
             }
           },
@@ -132,7 +132,7 @@
               "properties": {
                 "href": {
                   "pattern": "^/?(api)/.+",
-                  "description": "A string representing the path to the output CC Libraries file"
+                  "description": "A string representing the path to the output CC Libraries file. </br> Not available for the integrations created with JWT authentication or Service Principle."
                 }
               }
             },
@@ -140,7 +140,7 @@
               "properties": {
                 "href": {
                   "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
-                  "description": "A string representing the path to the output CC Storage file"
+                  "description": "A string representing the path to the output CC Storage file. </br> Not available for the integrations created with JWT authentication or Service Principle."
                 }
               }
             }
@@ -152,7 +152,7 @@
       "type": "array",
       "minItems": 1,
       "maxItems": 25,
-      "description": "An array of hashes describing the output files. Output file format can be any of `psd`, `jpeg`, `png`, or `tiff` and storage type can be any of `external`, `adobe`, `azure` or `dropbox`. Maximum limit to generate outputfiles in one API call is 25.",
+      "description": "An array of hashes describing the output files. Output file format can be any of `psd`, `jpeg`, `png`, or `tiff` and storage type can be any of `external`, `adobe`, `azure` or `dropbox`. Maximum limit of 25 per request.",
       "items": {
         "$ref": "#/definitions/output_object"
       }

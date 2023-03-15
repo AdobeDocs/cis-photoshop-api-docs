@@ -2,7 +2,6 @@
   "$schema":"http://json-schema.org/draft-07/schema#",
   "$id":"post_cutout.schema.json",
   "title":"post_cutout",
-  "description":"",
   "type":"object",
   "required":[
     "input",
@@ -15,18 +14,16 @@
       "required":["href","storage"],
       "properties":{
         "href": {
-          "description": "Either a presignedURL for storage='external' OR Creative Cloud assets path for storage='adobe'.",
           "type": "string",
           "minLength": 1
         },
         "storage": {
-          "description": "Is the asset stored on Adobe's cloud or an external service (like AWS S3, Azure, Dropbox)",
           "type": "string",
           "enum": [
-            "adobe",
             "external",
             "azure",
-            "dropbox"
+            "dropbox",
+            "adobe"
           ],
           "default": "external"
         }
@@ -34,7 +31,8 @@
       "if": {
         "properties": {
           "storage": {
-            "pattern": "(^azure|external|dropbox$)"
+            "pattern": "(^azure|external|dropbox$)",
+            "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox). If you are using presigned url for dropbox or azure, use `storage=\"dropbox\"` or `storage=\"azure\"` else it is `storage=\"external\"`"
           }
         }
       },
@@ -42,7 +40,8 @@
         "properties": {
           "href": {
             "type": "string",
-            "description": "A URI representing the path to the input file"
+            "pattern": "^https://",
+            "description": "Any public url or a presignedURL for the asset input"
           }
         }
       },
@@ -50,7 +49,10 @@
         "properties": {
           "href": {
             "pattern": "^/?(files|temp|cloud-content|assets)/.+",
-            "description": "A string representing the path to the input Creative Cloud file"
+            "description": "A string representing the path to the input file stored on Adobe's cloud.</br> Not available for the integrations created with JWT authentication or Service Principle."
+          },
+          "storage": {
+            "description" : "Asset stored on Adobe's cloud. </br> Not available for the integrations created with JWT authentication or Service Principle."
           }
         }
       }
@@ -66,8 +68,8 @@
         },
         "process": {
           "type": "object",
-          "hidden": true,
-          "description": "Internal Only",
+          "x-internal": true,
+          "description": "process is not available for the integrations created with JWT authentication or Service Principle.",
           "properties": {
             "postprocess": {
               "type": "boolean"
@@ -92,22 +94,20 @@
       "properties":{
         "href": {
           "type": "string",
-          "minLength": 1,
-          "description": "A URI representing the path to the input file"
+          "minLength": 1
         },
         "storage": {
-          "description": "Is the asset stored on Adobe's cloud or an external service (like AWS S3, Azure, Dropbox)",
           "type": "string",
           "enum": [
-            "adobe",
             "external",
             "azure",
-            "dropbox"
+            "dropbox",
+            "adobe"
           ],
           "default": "external"
         },
         "overwrite": {
-          "description": "If the file already exists, indicates if the output file should be overwritten. Only applies to CC Storage",
+          "description": "If the file already exists, indicates if the output file should be overwritten. Only applies to files stored in Adobe storage.",
           "type": "boolean",
           "default": true
         },
@@ -139,7 +139,8 @@
       "if": {
         "properties": {
           "storage": {
-            "pattern": "(^azure|external|dropbox$)"
+            "pattern": "(^azure|external|dropbox$)",
+            "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox). If you are using presigned url for dropbox or azure, use `storage=\"dropbox\"` or `storage=\"azure\"` else it is `storage=\"external\"`"
           }
         }
       },
@@ -147,7 +148,8 @@
         "properties": {
           "href": {
             "type": "string",
-            "description": "A URI representing the path to the input file"
+            "pattern": "^https://",
+            "description": "Any public url or a presignedURL for the asset output"
           }
         }
       },
@@ -155,7 +157,10 @@
         "properties": {
           "href": {
             "pattern": "^/?(files|temp|cloud-content|assets)/.+",
-            "description": "A string representing the path to the input Creative Cloud file"
+            "description": "A string representing the path to the output file stored on Adobe's cloud.</br> Not available for the integrations created with JWT authentication or Service Principle."
+          },
+          "storage": {
+            "description" : "Asset stored on Adobe's cloud. </br> Not available for the integrations created with JWT authentication or Service Principle."
           }
         }
       }

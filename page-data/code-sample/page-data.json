@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-pages-code-sample-index-md",
-    "path": "/code-sample/",
-    "result": {"pageContext":{"frontmatter":{"title":"Code Examples","description":"Code Examples."}}},
-    "staticQueryHashes": ["915530536"]}
+{"componentChunkName":"component---src-pages-code-sample-index-md","path":"/code-sample/","result":{"pageContext":{"frontmatter":{"title":"Code Examples","description":"Code Examples."}}},"staticQueryHashes":["1440646406","3508090095","915530536"]}

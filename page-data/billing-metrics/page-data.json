@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-pages-billing-metrics-index-md",
-    "path": "/billing-metrics/",
-    "result": {"pageContext":{"frontmatter":{"title":"Photoshop API Licensing and Billing Metrics","description":"Photoshop API Licensing and Billing Metrics"}}},
-    "staticQueryHashes": ["915530536"]}
+{"componentChunkName":"component---src-pages-billing-metrics-index-md","path":"/billing-metrics/","result":{"pageContext":{"frontmatter":{"title":"Photoshop API Licensing and Billing Metrics","description":"Photoshop API Licensing and Billing Metrics"}}},"staticQueryHashes":["1440646406","3508090095","915530536"]}

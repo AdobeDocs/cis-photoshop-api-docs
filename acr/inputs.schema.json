@@ -5,19 +5,17 @@
   "description": "An input object",
   "definitions": {
     "href": {
-      "description": "Either a presignedURL for storage='external' OR Creative Cloud assets path for storage='adobe' ",
       "type": "string",
       "minLength": 1
     },
     "storage": {
-      "description": "Storage platforms supported.",
       "type": "string",
       "enum": [
-        "adobe",
         "external",
         "lightroom",
         "dropbox",
-        "azure"
+        "azure",
+        "adobe",
       ],
       "default": "external"
     },
@@ -40,24 +38,28 @@
       "if": {
         "properties": {
           "storage": {
-            "pattern": "(^adobe$)"
+            "pattern": "(^azure|external|dropbox$)",
+            "description" : "Is the asset stored on an external service (like AWS S3, Azure, Dropbox etc.)"
           }
         }
       },
       "then": {
         "properties": {
           "href": {
-            "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
-            "description": "A string representing the path to the input CC file"
+            "format": "uri",
+            "pattern": "^https://",
+            "description": "Any public url or a presignedURL for the asset input"
           }
         }
       },
       "else": {
         "properties": {
           "href": {
-            "format": "uri",
-            "pattern": "^https://",
-            "description": "A URI representing the path to the input file"
+            "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
+            "description": "A string representing the path to the input file stored on Adobe's cloud.</br> Not available for the integrations created with JWT authentication or Service Principle."
+          },
+          "storage": {
+            "description" : "Is the asset stored on Adobe's cloud. </br> Not available for the integrations created with JWT authentication or Service Principle."
           }
         }
       }
