@@ -33,7 +33,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -172,7 +172,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -311,7 +311,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -450,7 +450,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -589,7 +589,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -728,7 +728,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -797,7 +797,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -936,7 +936,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -1075,7 +1075,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -1144,7 +1144,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -1291,7 +1291,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -1430,7 +1430,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -1569,7 +1569,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -1708,7 +1708,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -1847,7 +1847,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -1986,7 +1986,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -2105,7 +2105,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -2244,7 +2244,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -2313,7 +2313,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -2452,7 +2452,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
@@ -2591,7 +2591,7 @@
         "parameters": [
           {
             "name": "Authorization",
-            "description": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
             "in": "header",
             "required": true,
             "schema": {
