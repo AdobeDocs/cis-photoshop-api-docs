@@ -277,3 +277,25 @@ Apply a Lightroom preset to an image, by passing in the preset XMP contents inli
 
 ## Customized Workflow
 You can make a 'customized workflow' by chaining different APIs. Example of which can be found [here](../code-sample/#example-1-generate-remove-background-result-as-photoshop-path)
+
+
+## Using Webhooks through Adobe I/O Events
+
+Adobe I/O Events offers the possibility to build an event-driven application, based on events originating from Photoshop and Lightroom APIs. To start listening for events, your application needs to register a webhook URL, specifying the Event Types to receive. Whenever a matching event gets triggered, your application is notified through an HTTP POST request to the webhook URL.
+The Event Provider for Photoshop and Lightroom APIs is `Imaging API Events`.
+This event provider has two event types:
+1. `Photoshop API events`
+2. `Lightroom API events`
+
+As the names indicate, these event types represent events triggered by the individual APIs.
+
+### Registering your application to our Event Provider
+#### Prerequisites needed to use the Event Provider
+
+1. Only supported for a `JWT Integration`: You will have to create your own JWT Integration, please refer to [this](../authentication/#generating-a-token) section of the document for details on how to create a Service Integration.
+2. Make sure that the integration is created under your own Organization Role in https://developer.adobe.com/console and this will ensure that you have a unique `Organization ID`. A typical ID would look something like this: `ABCDEF123B6CCB7B0A495E2E@AdobeOrg` and can be found in the overview section of the details of the integration.
+3. Create a Webhook application. [This](https://www.adobe.io/apis/experienceplatform/events/docs.html#!adobedocs/adobeio-events/master/intro/webhooks_intro.md) page gives all the details of what the skeleton of a basic application would look like. You can find a sample NodeJS application [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/webhook-sample-app)
+
+#### Registering the Webhook
+Once the above prerequisites are met, you can now proceed to register the webhook to the service integration. The steps to do that can be found  [here](https://www.adobe.io/apis/experienceplatform/events/docs.html#!adobedocs/adobeio-events/master/intro/webhooks_intro.md#your-first-webhook).
+After the webhook has been successfully registered, you will start to receive the events for any submitted job that either succeeded or failed, from the Event Types selected. This eliminates the need for your application to poll for the status of the job using the jobID. Examples can be found [here](../code-sample/#triggering-an-event-from-the-apis)
