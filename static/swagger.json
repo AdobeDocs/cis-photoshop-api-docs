@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Photoshop API documentation",
-    "description": "API Documentation",
+    "description": "API Documentation Testing",
     "version": "1.0"
   },
   "servers": [
@@ -12,15 +12,15 @@
   ],
   "tags": [
     {
-      "name": "Photoshop",
+      "name": "Photoshop Testing",
       "description": "APIs powered by Photoshop"
     },
     {
-      "name": "Lightroom",
+      "name": "Lightroom Testing",
       "description": "APIs powered by Lightroom"
     },
     {
-      "name": "Sensei",
+      "name": "Sensei Testing",
       "description": "APIs powered by Sensei"
     }
   ],
@@ -28,7 +28,7 @@
     "/lrService/autoStraighten": {
       "post": {
         "tags": [
-          "Lightroom"
+          "Lightroom Testing"
         ],
         "summary": "Auto straighten an image",
         "description": "Initiates an asynchronous job to auto straighten an image. \\\nTo get status of this job, call [Status API](./#operation/acrstatus).\\\n To know more about this feature refer [AutoStraighten](../features/#autoStraighten)",
@@ -167,7 +167,7 @@
     "/lrService/autoTone": {
       "post": {
         "tags": [
-          "Lightroom"
+          "Lightroom Testing"
         ],
         "summary": "Auto tone an image",
         "description": "Initiates an asynchronous job to auto tone an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).\\\n To know more about this feature refer [AutoTone](../features/#autotone)",
@@ -306,7 +306,7 @@
     "/lrService/edit": {
       "post": {
         "tags": [
-          "Lightroom"
+          "Lightroom Testing"
         ],
         "summary": "Apply edits on an image",
         "description": "Initiates an asynchronous job to apply a set of edit parameters on an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).\\\n To know more about this feature refer [Edit](../features/#edit)",
@@ -445,7 +445,7 @@
     "/lrService/presets": {
       "post": {
         "tags": [
-          "Lightroom"
+          "Lightroom Testing"
         ],
         "summary": "Apply a presets on an image",
         "description": "Initiates an asynchronous job to apply a preset on an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).\\\n To know more about this feature refer [Presets](../features/#presets)",
@@ -723,7 +723,7 @@
     "/lrService/status/{jobId}": {
       "get": {
         "tags": [
-          "Lightroom"
+          "Lightroom Testing"
         ],
         "summary": "Get the status of a job",
         "description": "Returns the status of a job. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
@@ -792,7 +792,7 @@
     "/sensei/cutout": {
       "post": {
         "tags": [
-          "Sensei"
+          "Sensei Testing"
         ],
         "summary": "Create Image Cutout",
         "description": " Generates a PNG file in 4 channel RGBA format with the generated cutout mask \\\n applied to the input image generate a PNG file in 4 channel RGBA format with the generated cutout \\\n mask applied to the input image.\nTo get status of this job, call [Status API](./#operation/icstatus).\\\n To know more about this feature refer [Image Cutout](../features/#image-cutout)",
@@ -931,7 +931,7 @@
     "/sensei/mask": {
       "post": {
         "tags": [
-          "Sensei"
+          "Sensei Testing"
         ],
         "summary": "Create Mask",
         "description": " Generates a mask PNG.\nTo get status of this job, call [Status API](./#operation/icstatus).\\\n To know more about this feature refer [Image Mask](../features/#image-mask)",
@@ -1070,7 +1070,7 @@
     "/sensei/status/{jobId}": {
       "get": {
         "tags": [
-          "Sensei"
+          "Sensei Testing"
         ],
         "summary": "Get the status of a job",
         "description": "Returns the status of a job. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
