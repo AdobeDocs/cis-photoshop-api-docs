@@ -42,12 +42,14 @@ module.exports = {
         path: '/billing-metrics/'
       },
       {
-        title: 'Release Notes',
-        path: '/release-notes/'
-      },
-      {
         title: 'Support',
-        path: '/support/'
+        menu:[{
+          title: 'Submit a ticket',
+          path: 'https://psd-services.zendesk.com/hc/en-us/requests/new'
+        }, {
+          title: 'Community Forums',
+          path: 'https://community.adobe.com/t5/photoshop-developers/ct-p/ct-photoshop-developers?page=1&sort=latest_replies&lang=all&tabid=all&topics=label-psautomationapi'
+        }]
       }
     ],
     subPages: [
