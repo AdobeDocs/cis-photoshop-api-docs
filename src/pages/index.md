@@ -18,7 +18,7 @@ contributors:
 
 # Adobe Photoshop API
 
-Unlock the potential of Photoshop, Lightroom, and cutting edge Sensei services through an easy-to-use RESTful API interface.
+Unlock the potential of Photoshop, Lightroom, and cutting edge Sensei services through an easy-to-use RESTful API.
 
 ## Welcome to Photoshop API!
 
@@ -26,7 +26,7 @@ The Photoshop API allows you to efficiently produce and scale content by automat
 
 - Create internal applications to help scale your content supply chain or build web applications to help unlock creativity anywhere.
 
-- Generate thousands of variations and renditions within minutes instead of days. 
+- Generate thousands of variations and renditions within minutes instead of days.
 
 ## Overview
 

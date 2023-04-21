@@ -38,10 +38,6 @@ module.exports = {
         path: '/api/'
       },
       {
-        title: 'Billing Metrics',
-        path: '/billing-metrics/'
-      },
-      {
         title: 'Support',
         menu:[{
           title: 'Submit a ticket',

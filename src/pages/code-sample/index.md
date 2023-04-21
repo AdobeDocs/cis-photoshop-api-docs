@@ -17,8 +17,8 @@ export token="<YOUR_TOKEN>"
 export apiKey="<YOUR_API_KEY>"
 ```
 
-### Example 1: Replacing a SmartObject
-The `/smartObject` endpoint can take an input PSD file with an embedded smartobject and can replace with another smartobject.
+### Example 1: Replacing a smartObject
+The `/smartObject` endpoint can take an input PSD file with an embedded smartObject and can replace with another smartObject.
 This API is a simple API developed to ease the smartObject replacement workflow for an user.
 
 This example shows how you can replace an embedded smart object.  <a href="https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/s3-smart-object-replacement">Sample Code</a>
@@ -54,7 +54,7 @@ curl -X POST \
 ]}'
 ```
 
-### Example 2: Creating a SmartObject
+### Example 2: Creating a smartObject
 This example shows how you can create an embedded smart object using the `/smartObject` endpoint.
 
 ``` shell
@@ -295,7 +295,7 @@ curl -X POST \
 
 ### Example 7: Swapping the image in a smart object layer
 
-In this example we are replacing the smartobject using `documentOperations` API
+In this example we are replacing the smartObject using `documentOperations` API
 
 ```shell
 curl -X POST \
@@ -452,7 +452,7 @@ curl -X POST \
 A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api) and [Example 14](/code-sample/#example-14-poll-for-job-status-for-all-other-apis)
 
 ### Example 10: Create a document rendition
-Generate multiple output rendition with the Simple API `renditionCreate`
+Generate multiple output renditions with the API `renditionCreate`
 
 ```shell
 curl -X POST \
