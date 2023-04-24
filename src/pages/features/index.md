@@ -5,11 +5,11 @@ description: Learn about the available features in Photoshop API.
 
 # Supported Features
 
-This is a list of currently supported features.  Please also see the [Release Notes](../release-notes/index.md) for a list of newly added features
+This is a list of currently supported features.  Please also see the [Release Notes](../release-notes/index.md) for a list of newly added features.
 
 ## Photoshop
 
-The APIs are documented at [Photoshop API](../api/#tag/Photoshop)
+The APIs are documented at [Photoshop API](../api/#tag/Photoshop).
 
 ### SmartObject
 
@@ -22,8 +22,7 @@ The Photoshop APIs currently support creating and editing of Embedded Smart Obje
 - If your document contains transparent pixels (e.g some .png) for the smart object layer, you may not get consistent bounds.
 
 The APIs are documented [here](../api/#operation/smartObject).
-We also have an example of replacing a Smart Object within a layer.
-[Smart Object Example Code](../code-sample/#example-1-smartobject).
+We also have an [example](../code-sample/#example-1-smartobject) of replacing a Smart Object within a layer.
 For better performance, we rasterize our smart objects that are bigger than  2000 pixels * 2000 pixels.
 For optimal processing, please make sure the embedded smart object that you want to replace only contains alphanumeric characters in it's name.
 
@@ -32,23 +31,23 @@ Example of Smart Object replacement with a sample image.
 
 ### Text
 
-The Photoshop /text API supports editing one or more text layers from a Photoshop document. The APIs are documented [here](./api/#operation/text)
+The /text API supports editing one or more text layers from a Photoshop document. The APIs are documented [here](./api/#operation/text).
 
-It enables user to
-- Format text properties such as antialias, orientation and be able to edit text contents. (Note: Changing only the text properties will not change any character/paragraph styling)
+It enables users to
+- Format text properties such as antialias, orientation and be able to edit text contents. (Note: Changing only the text properties will not change any character/paragraph styling).
 - Some of the key character properties that can be formatted include (but not limited to):
-  - Text treatments such as strikethrough, underline, fontCaps
-  - Character size and color
-  - Line and character spacing through leading, tracking, autoKern settings
-- All the paragraph properties are supported
-- Use custom fonts when specified through the options.fonts section in the API request body
+  - Text treatments such as strikethrough, underline, fontCaps.
+  - Character size and color.
+  - Line and character spacing through leading, tracking, autoKern settings.
+- All the paragraph properties are supported.
+- Use custom fonts when specified through the options.fonts section in the API request body.
 
 #### Usage Recommendations
 - Ensure that the input file is a PSD and that it contains one or more text layers.
 - Please refer to [Font Handling](/features/#font-handling) and [Handle Missing Fonts](/features/#handle-missing-fonts-in-the-document) for better understanding.
 
 #### Known Limitations
-The following are known limitations for the Alpha release
+The following are known limitations:
 
 - The API cannot automatically detect missing fonts in the layers. To prevent potential missing fonts from being replaced, please provide a href to the font(s) in the options.fonts section of the API. For more details on specifying custom fonts, please refer to the example section below.
 
@@ -59,7 +58,7 @@ Here is an example where the font was changed from the original image on the lef
 
 ### ProductCrop
 
-The ProductCrop API supports applying smart crop to your image. The APIs are documented [here](./api/#operation/productCrop)
+The ProductCrop API supports applying smart crop to your image. The APIs are documented [here](./api/#operation/productCrop).
 
 It enables user to
 - Identify the product and get it cropped smartly.
@@ -73,7 +72,7 @@ We intend to correct this issue in future releases.
 
 ### DepthBlur
 
-The DepthBlur API supports applying depth blur to your image. The APIs are documented [here](./api/#operation/depthBlur)
+The DepthBlur API supports applying depth blur to your image. The APIs are documented [here](./api/#operation/depthBlur).
 
 Depth Blur is part of the Neural Filters gallery in Photoshop. It allows you to target the area and range of blur in photos, creating wide-aperture depth of field blur effects. You may choose different focal points or remove the focal point and control the depth blur through manipulating the focal range slider. Setting focusSubject to true will select the most prominent subject in the image and apply depth blur around that subject.
 
@@ -95,11 +94,11 @@ For more information on how to create Photoshop Actions, see <a href="https://he
 * Make sure to test your actions on Photoshop, with several different input/images. If it has any errors on Photoshop, it won't run successfully on our servers either.
 
 #### Known Limitations
-The following are known limitations for the Alpha release
+The following are known limitations:
 
-* Not supported, 3D and Video features
-* Custom presets (for example color swatches and brushes)
-* The action should operate on one document.  Multiple documents support will be in a future release
+* 3D and Video features are not supported.
+* Custom presets (for example color swatches and brushes).
+* The action should operate on one document.  Multiple documents support will be in a future release.
 
 Here are examples of submitting and executing Photoshop Actions.
 [Execute Photoshop Actions with all actions](../code-sample/#example-15--photoshop-actions---play-all-actions-in-atn-file) and [Execute Photoshop Actions with a specific action](../code-sample/#example-16--photoshop-actions-play-a-specific-action)
@@ -109,35 +108,35 @@ In this example we applied a custom Action we created called "Graphic Design."
 
 ### Rendering / Conversions
 
-- Create a new PSD document
-- Create a JPEG, TIFF or PNG rendition of various sizes
-- Request thumbnail previews of all renderable layers
-- Convert between any of the supported filetypes (PSD, JPEG, TIFF, PNG)
+- Create a new PSD document.
+- Create a JPEG, TIFF or PNG rendition of various sizes.
+- Request thumbnail previews of all renderable layers.
+- Convert between any of the supported filetypes (PSD, JPEG, TIFF, PNG).
 
-Here is an example of creating JPEG and PNG rendtions of a PSD document.
+Here is an example of creating JPEG and PNG rendtions of a PSD document:
 [Render PSD document](../code-sample/#example-10-create-a-document-rendition)
 
 ### Layer level edits
 
 - General layer edits
-  - Edit the layer name
-  - Toggle the layer locked state
-  - Toggle layer visibility
-  - Move or resize the layer via it's bounds
-  - Delete layers
+  - Edit the layer name.
+  - Toggle the layer locked state.
+  - Toggle layer visibility.
+  - Move or resize the layer via it's bounds.
+  - Delete layers.
 - Adjustment layers
   - Add or edit an adjustment layer. The following types of adjustment layers are currently supported:
-  - Brightness and Contrast
-  - Exposure
-  - Hue and Saturation
-  - Color Balance
+    - Brightness and Contrast.
+    - Exposure.
+    - Hue and Saturation.
+    - Color Balance.
 - Image/Pixel layers
-  - Add a new pixel layer, with optional image
-  - Swap the image in an existing pixel layer
+  - Add a new pixel layer, with optional image.
+  - Swap the image in an existing pixel layer.
 - Shape layers
-  - Resize a shape layer via it's bounds
+  - Resize a shape layer via it's bounds.
 
-#### The add, edit and delete objects
+#### The add, edit and delete layers
 
 The `/documentOperations` API should primarily be used to make layer and/or document level edits to your PSD and then generate new renditions with the changes. You can pass in a flat array of only the layers that you wish to act upon, in the `options.layers` argument of the request body.
 The layer name (or the layer id) will be used by the service to identify the correct layer to operation upon in your PSD.
@@ -154,7 +153,7 @@ Here are some examples of making various layer level edits.
 
 #### Text layers Edits
 
-The Photoshop API currently support creating and editing of Text Layer with different fonts, character styles and paragraph styles. The set of text attributes that can be edited is listed below:
+The Photoshop API currently supports creating and editing of Text Layer with different fonts, character styles and paragraph styles. The set of text attributes that can be edited is listed below:
 - Edit the text contents
 - Change the font (See the `Fonts` section for more info)
 - Edit the font size
@@ -162,7 +161,7 @@ The Photoshop API currently support creating and editing of Text Layer with diff
 - Edit the text orientation (horizontal/vertical)
 - Edit the paragraph alignment (left, center, right, justify, justifyLeft, justifyCenter, justifyRight)
 
-The APIs are documented [here](../api/#operation/documentOperations)
+The APIs are documented [here](../api/#operation/documentOperations).
 
 We also have an example of making a simple text layer edit.
 
@@ -292,9 +291,10 @@ As the names indicate, these event types represent events triggered by the indiv
 ### Registering your application to our Event Provider
 #### Prerequisites needed to use the Event Provider
 
-1. Only supported for a `JWT Integration`: You will have to create your own JWT Integration, please refer to [this](../authentication/#generating-a-token) section of the document for details on how to create a Service Integration.
-2. Make sure that the integration is created under your own Organization Role in https://developer.adobe.com/console and this will ensure that you have a unique `Organization ID`. A typical ID would look something like this: `ABCDEF123B6CCB7B0A495E2E@AdobeOrg` and can be found in the overview section of the details of the integration.
+1. In order to use the Adobe I/O Events you will need to create a project on Adobe I/O Console.
+2. You can follow the steps listed in [Getting Started](../getting-started/#getting-started-from-adobe-io-console) page if you haven't created one yet.
 3. Create a Webhook application. [This](https://www.adobe.io/apis/experienceplatform/events/docs.html#!adobedocs/adobeio-events/master/intro/webhooks_intro.md) page gives all the details of what the skeleton of a basic application would look like. You can find a sample NodeJS application [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/webhook-sample-app)
+
 
 #### Registering the Webhook
 Once the above prerequisites are met, you can now proceed to register the webhook to the service integration. The steps to do that can be found  [here](https://www.adobe.io/apis/experienceplatform/events/docs.html#!adobedocs/adobeio-events/master/intro/webhooks_intro.md#your-first-webhook).

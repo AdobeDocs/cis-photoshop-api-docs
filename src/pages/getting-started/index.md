@@ -11,35 +11,41 @@ The first step in accessing the Photoshop APIs is getting authenticated. For tha
 ## Get access
 Here are the steps to get started with the Photoshop APIs.
 
-1. If you **haven't signed up** and generated credentials, please follow this link and follow the steps on the confirmation modal: https://www.adobe.com/go/photoshopapi_signup.
+1. Go to https://developer.adobe.com/photoshop/api/signup/?ref=signup.
+1. Sign in to your adobe developer account.
+1. Click on the blue "Sign up" button.
+![Screenshot](images/Step2.png)
 
-1. If you **have** already signed up and need a new key, go to https://developer.adobe.com/console/home and **sign in to the IO Console.**
-1. Click on **Create new project** under the **Quick start** section on the middle of your screen:
-![Screenshot](images/Step3.png)
-1. Click on **Add API**:
-![Screenshot](images/Step4.png)
-1. Select the **Adobe Photoshop APIs (Trial)** and click on **Next**:
-![Screenshot](images/Step5.png)
-1. Select **OPTION1 Generate a key pair** and click **Generate keypair**:
-![Screenshot](images/Step6.png)
-You should see a zip file named **config.zip** in your Downloads folder.
-1. Open the contents of the zip and locate the file name **private.key**.
-1. Open the file named **private.key** in a text editor like Atom or Sublime.
-1. Copy the entire contents of the file and paste it in your project page in the section labeled **Generate access token** and click on **Generate Token** on the bottom right hand corner:
+1. Fill the "Sign up for free trial" Form and Submit.
+![Screenshot](images/TrialForm.png)
+
+1. Enter a new project name and check the box to agree to the Adobe developer terms.
+1. Click on the blue “Create credentials” button and keep an eye out for the *config.zip* file that will automatically download.
+![Screenshot](images/CreateCredential.png)
+
+1. Click on the blue “Generate access token in I/O console” button.
+![Screenshot](images/GenerateAccess.png)
+
+1. You should end up on a screen similar to the picture below.
 ![Screenshot](images/Step9_new.png#1)
+
+1. Now its time to grab that config.zip file we mentioned earlier. Unzip the file and open the private.key documents.
+![Screenshot](images/PrivateKey.png)
+
+1. Copy the entire contents of the file including “-----BEGIN PRIVATE KEY-----” and “-----END PRIVATE KEY-----” portions
+1. Paste them into “Generate access token” section and click on “Generate token”
 1. Congrats! You have just created a JWT token. You can copy the token from **Access Token**:
 ![Screenshot](images/Step10_new.png#2)
 
 Please note that token expires every 24 hours and you will have to generate a new one after it expires. See [Automating your JWT token](/authentication/#automating-your-jwt-token) for information on how to automate this process for your application.
 
-You’ll automatically get an API key when you create your project in Adobe I/O Console. Copy **API KEY (CLIENT ID)** from **Project Overview** page.
-
 ## Hello World
 
 Once you have created your token you can follow the steps below to make your first API call.
 
-1. Open your terminal and paste the code below. Make sure to replace the variables "YOUR_ACCESS_TOKEN"  with the token you generated on adobe io console.
-1. You are also going to need your  **API KEY (CLIENT ID)** which can be found in your adobe io console.You will need to pass in your API key in the **x-api-key** field.
+1. Open your terminal and paste the code below.
+1. Replace the variables "YOUR_ACCESS_TOKEN"  with the token you generated on Adobe I/O Console.
+1. Replace <YOUR_CLIENT_ID>. You can find this on the same page you generated your token on.
 1. Once all variables have been replaced you can run the command.
 
 ``` shell
@@ -57,12 +63,31 @@ curl --request GET --url https://image.adobe.io/pie/psdService/hello --header "A
 
 Congrats! You just made your first request to the Photoshop API.
 
-`NOTE: Your token will expire every 24 hours and will need to be refreshed after it expires.`
+`NOTE: Your token will expire every 24 hours and will need to be refreshed after it expires. We recommend using our SDK to automate this process. See the next section for more information on your automation options.`
+
+## Getting started from Adobe I/O Console
+You can also directly go to Adobe I/O Console to signup. This section is alternative to [Get access](#get-access), if you **have** already signed up.
+1. Go to https://developer.adobe.com/console/home and **sign in to the IO Console.**
+1. Click on **Create new project** under the **Quick start** section on the middle of your screen:
+![Screenshot](images/Step3.png)
+1. Click on **Add API**:
+![Screenshot](images/Step4.png)
+1. Select the **Adobe Photoshop APIs (Trial)** and click on **Next**:
+![Screenshot](images/Step5.png)
+1. Select **OPTION1 Generate a key pair** and click **Generate keypair**:
+![Screenshot](images/Step6.png)
+You should see a zip file named **config.zip** in your Downloads folder.
+1. Open the contents of the zip and locate the file name **private.key**.
+1. Open the file named **private.key** in a text editor like Atom or Sublime.
+1. Copy the entire contents of the file and paste it in your project page in the section labeled **Generate access token** and click on **Generate Token** on the bottom right hand corner:
+![Screenshot](images/Step9_new.png#1)
+1. Congrats! You have just created a JWT token. You can copy the token from **Access Token**:
+![Screenshot](images/Step10_new.png#2)
 
 ## Automating your JWT token#
 
 Check out these modules for a quick path to automating your token retrieval:
-
+- [Photoshop API SDK](https://github.com/adobe/adobe-photoshop-api-sdk)
 - [JWT Instructions for Python](https://www.datanalyst.info/python/adobe-io-user-management/adobe-io-jwt-authentication-with-python/)
 - [JWT Instructions for Node](https://www.npmjs.com/package/@adobe/jwt-auth)
 
