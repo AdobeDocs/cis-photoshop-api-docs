@@ -5,17 +5,19 @@
   "description": "An input object",
   "definitions": {
     "href": {
+      "description": "Either a presignedURL for storage='external' OR Creative Cloud assets path for storage='adobe' ",
       "type": "string",
       "minLength": 1
     },
     "storage": {
+      "description": "Storage platforms supported.",
       "type": "string",
       "enum": [
+        "adobe",
         "external",
         "lightroom",
         "dropbox",
-        "azure",
-        "adobe"
+        "azure"
       ],
       "default": "external"
     },
@@ -38,28 +40,24 @@
       "if": {
         "properties": {
           "storage": {
-            "pattern": "(^azure|external|dropbox$)",
-            "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox etc.). If you are using presigned url for dropbox or azure, use `storage=\"dropbox\"` or `storage=\"azure\"` else it is `storage=\"external\"`"
+            "pattern": "(^adobe$)"
           }
         }
       },
       "then": {
         "properties": {
           "href": {
-            "format": "uri",
-            "pattern": "^https://",
-            "description": "Any public url or a presignedURL for the asset input"
+            "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
+            "description": "A string representing the path to the input CC file"
           }
         }
       },
       "else": {
         "properties": {
           "href": {
-            "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
-            "description": "A string representing the path to the input file stored on Adobe's cloud.</br> Not available for the integrations created with JWT authentication or Service Principle."
-          },
-          "storage": {
-            "description" : "Asset stored on Adobe's cloud. </br> Not available for the integrations created with JWT authentication or Service Principle."
+            "format": "uri",
+            "pattern": "^https://",
+            "description": "A URI representing the path to the input file"
           }
         }
       }
