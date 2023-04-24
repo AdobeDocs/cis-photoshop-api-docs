@@ -12,12 +12,10 @@
   ],
   "tags": [
     {
-      "name": "Photoshop",
-      "description": "APIs powered by Photoshop"
+      "name": "Photoshop"
     },
     {
-      "name": "Lightroom",
-      "description": "APIs powered by Lightroom"
+      "name": "Lightroom"
     }
   ],
   "security": [],
