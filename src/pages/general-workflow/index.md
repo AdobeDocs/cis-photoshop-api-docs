@@ -25,6 +25,25 @@ You can use any of the following services for input and output storage.
 - Dropbox: Generate temporary upload/download URLs. More info [here](https://www.dropbox.com/developers/documentation).
   You can create file upload link for dropbox [here](https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_upload_link)
 
+**Note :** You can test to see if your public url or presigned url is working.
+
+Run the curl command below to see if your input file path is working
+  ```
+  curl -X GET <Your file path> --output <some-file.jpg>
+  ```
+  If you are using a presigned url, put your file path within ""
+  ```  
+  curl -X GET "<Your file path>" --output <some-file.jpg>
+  ```
+Run the curl command below to see if your output file path is working
+  ```
+  curl -X PUT <Your file path> -d <some-file.txt>
+  ```
+  If you are using a presigned url, put your file path within ""
+  ```
+  curl -X PUT "<Your file path>" -d <some-file.txt>
+  ```  
+
 ## Current Limitations
 There are a few limitations to the APIs you should be aware of ahead of time.  
 - Multi-part uploads and downloads are not yet supported.
