@@ -19,9 +19,11 @@
       "properties": {
         "actionJSON": {
           "type": "array",
-          "description": "An action object created as actionJSON to execute.",
+          "description": "An array of photoshop actions created as actionJSON to execute.",
           "minItems": 1,
-          "items": {}
+          "items": {
+            "description": "Each item contains an object with photoshop action"
+          }
         },
         "fonts": {
           "$ref": "file_input.schema.json#/definitions/input_objects",
