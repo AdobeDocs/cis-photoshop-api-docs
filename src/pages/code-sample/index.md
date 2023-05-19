@@ -2,7 +2,7 @@
 title: Code Examples
 description: Code Examples.
 ---
-# Example Code
+# Sample Code
 
 ## Photoshop
 
@@ -16,8 +16,316 @@ export token="<YOUR_TOKEN>"
 ```shell
 export apiKey="<YOUR_API_KEY>"
 ```
+### Executing an actionJSON
+The `/actionJSON` endpoint can take an input file and apply any Photoshop actions on it. This code sample shows an actionJSON created to apply crop and gradient layer to the input file.
 
-### Example 1: Replacing a smartObject
+```shell
+curl -X POST \
+  https://image.adobe.io/pie/psdService/actionJSON \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "inputs": [{
+  "href": "<SIGNED_GET_URL>",
+  "storage": "<storage>"
+  }],
+  "options": {
+    "actionJSON": [{
+        "_obj": "crop",
+        "angle": {
+          "_unit": "angleUnit",
+          "_value": 0.0
+        },
+        "constrainProportions": false,
+        "cropAspectRatioModeKey": {
+          "_enum": "cropAspectRatioModeClass",
+          "_value": "pureAspectRatio"
+        },
+        "delete": true,
+        "to": {
+          "_obj": "rectangle",
+          "bottom": {
+            "_unit": "pixelsUnit",
+            "_value": 469.0
+          },
+          "left": {
+            "_unit": "pixelsUnit",
+            "_value": 0.0
+          },
+          "right": {
+            "_unit": "pixelsUnit",
+            "_value": 750.0
+          },
+          "top": {
+            "_unit": "pixelsUnit",
+            "_value": 0.0
+          }
+        }
+      },
+      {
+        "_obj": "crop",
+        "angle": {
+          "_unit": "angleUnit",
+          "_value": 0.0
+        },
+        "constrainProportions": false,
+        "cropAspectRatioModeKey": {
+          "_enum": "cropAspectRatioModeClass",
+          "_value": "pureAspectRatio"
+        },
+        "delete": true,
+        "to": {
+          "_obj": "rectangle",
+          "bottom": {
+            "_unit": "pixelsUnit",
+            "_value": 368.421875
+          },
+          "left": {
+            "_unit": "pixelsUnit",
+            "_value": 108.515625
+          },
+          "right": {
+            "_unit": "pixelsUnit",
+            "_value": 603.375
+          },
+          "top": {
+            "_unit": "pixelsUnit",
+            "_value": 0.0
+          }
+        }
+      },
+      {
+        "_obj": "make",
+        "_target": [{
+          "_ref": "contentLayer"
+        }],
+        "using": {
+          "_obj": "contentLayer",
+          "type": {
+            "_obj": "gradientLayer",
+            "angle": {
+              "_unit": "angleUnit",
+              "_value": 90.0
+            },
+            "gradient": {
+              "_obj": "gradientClassEvent",
+              "colors": [{
+                "_obj": "colorStop",
+                "color": {
+                  "_obj": "RGBColor",
+                  "blue": 0.0,
+                  "grain": 0.0,
+                  "red": 0.0
+                },
+                "location": 0,
+                "midpoint": 50,
+                "type": {
+                  "_enum": "colorStopType",
+                  "_value": "userStop"
+                }
+              }, {
+                "_obj": "colorStop",
+                "color": {
+                  "_obj": "RGBColor",
+                  "blue": 0.0,
+                  "grain": 0.0,
+                  "red": 0.0
+                },
+                "location": 4096,
+                "midpoint": 50,
+                "type": {
+                  "_enum": "colorStopType",
+                  "_value": "userStop"
+                }
+              }],
+              "gradientForm": {
+                "_enum": "gradientForm",
+                "_value": "customStops"
+              },
+              "interfaceIconFrameDimmed": 4096.0,
+              "name": "Color to Transparent",
+              "transparency": [{
+                "_obj": "transferSpec",
+                "location": 0,
+                "midpoint": 50,
+                "opacity": {
+                  "_unit": "percentUnit",
+                  "_value": 100.0
+                }
+              }, {
+                "_obj": "transferSpec",
+                "location": 4096,
+                "midpoint": 50,
+                "opacity": {
+                  "_unit": "percentUnit",
+                  "_value": 0.0
+                }
+              }]
+            },
+            "gradientsInterpolationMethod": {
+              "_enum": "gradientInterpolationMethodType",
+              "_value": "perceptual"
+            },
+            "type": {
+              "_enum": "gradientType",
+              "_value": "linear"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "outputs": [{
+    "type": "image/jpeg",
+    "storage": "<storage>",
+    "href": "<SIGNED_POST_URL>",
+  }]
+}'
+```
+
+### Executing an actionJSON with multiple inputs
+
+With `/actionJSON` endpoint you can use multiple images to do compositing on the actionJSON.
+
+In order to supply multiple images and have it specified in the actionJSON, you need to create a Placeholder Value in your actionJSON.   The placeholder value must be "PEGASUS_ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_X" where "X" is the index of the "additionalImages" array.
+
+For example, say you have an actionJSON that requires 2 additional Images.  
+
+PEGASUS_ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0 == options.additionalImages[0]
+PEGASUS_ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_1 == options.additionalImages[1]
+
+```shell
+curl -X POST \
+  https://image.adobe.io/pie/psdService/actionJSON \
+  -H "Authorization: Bearer $token"  \
+  -H "x-api-key: $apiKey" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "inputs": [
+    {
+      "href": "<SIGNED_GET_URL>",
+      "storage": "<storage>"
+    }
+  ],
+  "options": {
+    "additionalImages": [
+      {
+        "href": "<SIGNED_GET_URL>",
+        "storage": "<storage>"
+      }
+    ],
+    "actionJSON": [
+    {
+      "ID": 3,
+      "_obj": "placeEvent",
+      "freeTransformCenterState": {
+        "_enum": "quadCenterState",
+        "_value": "QCSAverage"
+      },
+      "null": {
+        "_kind": "local",
+        "_path": "PEGASUS_ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0"
+      },
+      "offset": {
+        "_obj": "offset",
+        "horizontal": {
+          "_unit": "pixelsUnit",
+          "_value": 0
+        },
+        "vertical": {
+          "_unit": "pixelsUnit",
+          "_value": 0
+        }
+      }
+    },
+    {
+      "_obj": "autoCutout",
+      "sampleAllLayers": false
+    },
+    {
+      "_obj": "make",
+      "at": {
+        "_enum": "channel",
+        "_ref": "channel",
+        "_value": "mask"
+      },
+      "new": {
+        "_class": "channel"
+      },
+      "using": {
+        "_enum": "userMaskEnabled",
+        "_value": "revealSelection"
+      }
+    },
+    {
+      "_obj": "set",
+      "_target": [
+        {
+          "_property": "selection",
+          "_ref": "channel"
+        }
+      ],
+      "to": {
+        "_enum": "ordinal",
+        "_value": "allEnum"
+      }
+    },
+    {
+      "_obj": "align",
+      "_target": [
+        {
+          "_enum": "ordinal",
+          "_ref": "layer"
+        }
+      ],
+      "alignToCanvas": false,
+      "using": {
+        "_enum": "alignDistributeSelector",
+        "_value": "ADSBottoms"
+      }
+    },
+    {
+      "_obj": "align",
+      "_target": [
+        {
+          "_enum": "ordinal",
+          "_ref": "layer"
+        }
+      ],
+      "alignToCanvas": false,
+      "using": {
+        "_enum": "alignDistributeSelector",
+        "_value": "ADSRights"
+      }
+    },
+    {
+      "_obj": "set",
+      "_target": [
+        {
+          "_property": "selection",
+          "_ref": "channel"
+        }
+      ],
+      "to": {
+        "_enum": "ordinal",
+        "_value": "none"
+      }
+    }
+  ]
+
+  },
+  "outputs": [
+    {
+      "type": "image/jpeg",
+      "href": "<SIGNED_PUT_URL>",
+      "storage": "<storage>"
+    }
+  ]
+}'
+```
+
+### Replacing a smartObject
 The `/smartObject` endpoint can take an input PSD file with an embedded smartObject and can replace with another smartObject.
 This API is a simple API developed to ease the smartObject replacement workflow for an user.
 
@@ -54,7 +362,7 @@ curl -X POST \
 ]}'
 ```
 
-### Example 2: Creating a smartObject
+### Creating a smartObject
 This example shows how you can create an embedded smart object using the `/smartObject` endpoint.
 
 ``` shell
@@ -93,7 +401,7 @@ curl -X POST \
 
 A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api) and [Example 14](/code-sample/#example-14-poll-for-job-status-for-all-other-apis)
 
-### Example 3: Making a text layer edit
+### Making a text layer edit
 This example shows how you can edit a text layer using the `/text` endpoint. <a href="https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/azure-blob-text-edit">Sample Code</a>
 
 ```shell
@@ -142,7 +450,7 @@ curl -X POST \
 }'
 ```
 
-### Example 4: Custom font in a text layer
+### Custom font in a text layer
 This will change the font in a text layer named `My Text Layer` to a custom font `VeganStylePersonalUse`.
 **Note**: the value for the `fontName` field in the `text.characterStyles` section is the full postscript name of the custom font.
 
@@ -198,7 +506,7 @@ curl -X POST \
 }'
 ```
 
-### Example 5: Dictating actions for missing fonts
+### Dictating actions for missing fonts
 In this request for example, if `MySampleFont` is not found while processing the request, the system default font (`ArialMT`) will be used as `manageMissingFonts` is set to `useDefault`
 ```shell
 curl -X POST \
@@ -256,7 +564,7 @@ curl -X POST \
 
 A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api) and [Example 14](/code-sample/#example-14-poll-for-job-status-for-all-other-apis)
 
-### Example 6: Making a simple edit
+### Making a simple edit
 ```shell
 curl -X POST \
   https://image.adobe.io/pie/psdService/documentOperations \
@@ -293,7 +601,7 @@ curl -X POST \
 }'
 ```
 
-### Example 7: Swapping the image in a smart object layer
+### Swapping the image in a smart object layer
 
 In this example we are replacing the smartObject using `documentOperations` API
 
@@ -350,7 +658,7 @@ curl -X POST \
 
 A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api) and [Example 14](/code-sample/#example-14-poll-for-job-status-for-all-other-apis)
 
-### Example 8: Adding a new adjustment layer
+### Adding a new adjustment layer
 
 This example shows how you can add a new brightnessContrast adjustment layer to the top of your PSD.
 
@@ -398,7 +706,7 @@ curl -X POST \
 
 A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api) and [Example 14](/code-sample/#example-14-poll-for-job-status-for-all-other-apis)
 
-### Example 9: Editing a pixel layer
+### Editing a pixel layer
 
 In this example we want to replace the image in an existing pixel layer, the Hero Image layer in Example.psd.
 
@@ -451,7 +759,7 @@ curl -X POST \
 
 A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api) and [Example 14](/code-sample/#example-14-poll-for-job-status-for-all-other-apis)
 
-### Example 10: Create a document rendition
+### Create a document rendition
 Generate multiple output renditions with the API `renditionCreate`
 
 ```shell
@@ -485,7 +793,7 @@ curl -X POST \
 
 A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api) and [Example 14](/code-sample/#example-14-poll-for-job-status-for-all-other-apis)
 
-### Example 11: Retrieve a PSD's JSON manifest
+### Retrieve a PSD's JSON manifest
 
 The `/documentManifest` api can take one input PSD's to generate a JSON manifest file. The JSON manifest is the tree representation of all of the layer objects contained in the PSD document.
 
@@ -508,7 +816,7 @@ curl -X POST \
 ```
 A call to this API initiates an asynchronous job and returns a response containing an href. Use the value in the href to poll for the status of the job and the same response will also contain the JSON manifest. This is illustrated in [Example 12](/code-sample/#example-12-fetch-the-status-of-an-api) and [Example 14](/code-sample/#example-14-poll-for-job-status-for-all-other-apis)
 
-###  Example 12: Fetch the status of an API
+###  Fetch the status of an API
 Each of our Photoshop APIs, when invoked, initiates an asynchronous job and returns a response body that contains the href to poll for status of the job.
 
 ```json
@@ -529,7 +837,7 @@ curl -X GET \
   -H "x-api-key: $apiKey" \
   -H "Content-Type: application/json"
 ```
-### Example 13: Poll for job status for documentManifest
+### Poll for job status for documentManifest
 
 Once your job completes successfully (no errors/failures reported), the status response will contain your document's JSON manifest along with other metadata about the input document. The JSON Manifest is further described in the [api docs](../api/#operation/pitsstatus)
 
@@ -698,7 +1006,7 @@ Once your job completes successfully (no errors/failures reported), the status r
   }
 }
 ```
-### Example 14: Poll for job status for all Other APIs
+### Poll for job status for all Other APIs
 
 Once your job completes successfully (no errors/failures reported), this will return a response body containing the job status for each requested output. For the `/renditionCreate` API call in [Example 10](/code-sample/#example-10-create-a-document-rendition) as illustrated above, a sample response containing the job status is as shown below:
 
@@ -736,7 +1044,7 @@ Once your job completes successfully (no errors/failures reported), this will re
 }
 ```
 
-### Example 15 : Photoshop Actions - Play ALL actions in .atn file.
+### Photoshop Actions - Play ALL actions in .atn file.
 ```shell
 curl -X POST \
   https://image.adobe.io/pie/psdService/photoshopActions \
@@ -767,7 +1075,7 @@ curl -X POST \
   ]
 }'
 ```
-### Example 16 : Photoshop Actions Play a specific action
+### Photoshop Actions Play a specific action
 
 By default, Photoshop API will attempt to play all actions in an action set.  If you would like to only playback a specific action, you can specify `actionName` and the name of the action you want to invoke (see example below).
 
@@ -802,7 +1110,7 @@ curl -X POST \
   ]
 }'
 ```
-### Example 17: Edit Text Layers
+### Edit Text Layers
 
 The `/text` endpoint can take an input PSD file with one or more text layers and can apply edits to it.
 
@@ -890,7 +1198,7 @@ curl -X POST \
 }'
 ```
 
-### Example 18 : Applying Product Crop
+### Applying Product Crop
 
 The `productCrop` endpoint can take an input file and apply right crop to it. We don't support multilayered PSD.
 
@@ -926,7 +1234,7 @@ curl -X POST \
 }'
 ```
 
-### Example 19 : Applying Depth Blur Neural Filter
+### Applying Depth Blur Neural Filter
 
 The `depthBlur` endpoint can take an input file and apply the depth blur neural filter.
 
@@ -965,7 +1273,7 @@ curl -X POST \
 
 First be sure to follow the instructions in the [Authentication](../authentication/) section to get your token.
 
-### Example 20: Remove Background
+### Remove Background
 
 The `/cutout` api takes a single input image to generate your mask or remove background from. Using [Example.jpg](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_files/Example.jpg), a typical curl call might look like this:
 
@@ -1036,14 +1344,14 @@ Once the job is complete your successful `/status` response will look similar to
 }
 ```
 
-### Example 21: Generate image mask
+### Generate image mask
 
 The workflow is exactly the same as [creating Remove Background](/code-sample/#example-1-image-cutout) except you use the `/mask` endpoint instead of `/cutout`.  
 
 
 ## Lightroom
 
-### Example 1: Autotone an image
+### Autotone an image
 
 ```shell
 curl -X POST \
@@ -1078,7 +1386,7 @@ This initiates an asynchronous job and returns a request body containing the hre
 ```
 To check the status of the job completion, use the `/status` API. An example usage of the API can be found [here](/code-sample/#example-6-poll-for-status-and-results).
 
-### Example 2: Autostraighten an image
+### Autostraighten an image
 
 ```shell
 curl -X POST \
@@ -1115,7 +1423,7 @@ This initiates an asynchronous job and returns a request body containing the hre
 
 To check the status of the job completion, use the `/status` API. An example usage of the API can be found [here](/code-sample/#example-6-poll-for-status-and-results).
 
-### Example 3 : Apply presets to an image
+### Apply presets to an image
 
 ```shell
 curl -X POST \
@@ -1161,7 +1469,7 @@ This initiates an asynchronous job and returns a request body containing the hre
 ```
 To check the status of the job completion, use the `/status` API. An example usage of the API can be found [here](https://github.com/AdobeDocs/lightroom-api-docs#job-status).
 
-### Example 4: Apply edits to an image
+### Apply edits to an image
 
 ```shell
 curl -X POST \
@@ -1219,7 +1527,7 @@ This initiates an asynchronous job and returns a request body containing the hre
 
 To check the status of the job completion, use the `/status` API. An example usage of the API can be found [here](/code-sample/#example-6-poll-for-status-and-results).
 
-### Example 5: Apply xmp to an image
+### Apply xmp to an image
 
 ```shell
 curl -X POST \
@@ -1259,7 +1567,7 @@ This initiates an asynchronous job and returns a request body containing the hre
 
 To check the status of the job completion, use the `/status` API. An example usage of the API can be found [here](/code-sample/#example-6-poll-for-status-and-results).
 
-### Example 6: Poll for status and results
+### Poll for status and results
 
 Use the JobID to poll on the href that is returned in the response from one of the Lightroom APIs.
 1. Upon successful job completion, the output file will be available at the specified output href.
@@ -1302,7 +1610,7 @@ And this will return a request body containing the job status for each requested
 ```
 
 ## Customized Workflow
-### Example 1: Generate Remove Background result as Photoshop path
+### Generate Remove Background result as Photoshop path
 This workflow is ONLY for users who'd like to generate remove background result as Photoshop path instead of regular mask or remove background in above [example 1](/code-sample/#example-1-image-cutout) and [example 2](/code-sample/#example-2-image-mask). You will need to chain API calls to Remove Background service and Photoshop Service to achieve this goal.
 
 #### Sample Input/Output
@@ -1423,7 +1731,7 @@ The value in the key `body` inside the event JSON contains the result of the job
   }
 }
 ```
-### Example 2: Auto tone an image through the Lightroom API
+### Auto tone an image through the Lightroom API
 
 #### Step 1: Initiate a job to auto tone an image
 ```shell

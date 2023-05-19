@@ -17,9 +17,11 @@
       "type": "object",
       "required": ["actionJSON"],
       "properties": {
-        "actions": {
-          "$ref": "file_input.schema.json#/definitions/input_objects_action",
-          "description": "An array of action objects you wish photoshopActions to execute. We currently only support one input object."
+        "actionJSON": {
+          "type": "array",
+          "description": "An action object created as actionJSON to execute.",
+          "minItems": 1,
+          "items": {}
         },
         "fonts": {
           "$ref": "file_input.schema.json#/definitions/input_objects",
@@ -41,7 +43,7 @@
               "href": {
                 "$ref": "file_input.schema.json#/definitions/href"
               },
-              "actionName" :{
+              "actionName": {
                 "$ref": "file_input.schema.json#/definitions/actionName"
               }
             },
@@ -104,7 +106,7 @@
               "href": {
                 "$ref": "file_input.schema.json#/definitions/href"
               },
-              "actionName" :{
+              "actionName": {
                 "$ref": "file_input.schema.json#/definitions/actionName"
               }
             },
