@@ -5,11 +5,108 @@ description: Learn about the available features in Photoshop API.
 
 # Supported Features
 
-This is a list of currently supported features.  Please also see the [Release Notes](../release-notes/index.md) for a list of newly added features.
+This is a list of currently supported features.
 
 ## Photoshop
 
 The APIs are documented at [Photoshop API](../api/#tag/Photoshop).
+
+### ActionJSON
+ActionJSON API has the ability to playback photoshop actions in ActionJSON format. ActionJSON API
+
+- Unlocks the capability to convert a static .atn file to a dynamic .atn file.
+- Programmatically you can edit or update the ActionJSON.
+- You don't need to upload the ActionJSON to any storage to access by the API.
+
+The APIs are documented [here](../api/#operation/actionJSON).
+We have an [example](../code-sample/#executing-an-actionjson) of ActionJSON created to apply crop and gradient layer to the original image.
+We also have an [example](../code-sample/#executing-an-actionjson-with-multiple-inputs) for supporting multiple images in actionJSON.
+
+Example of ActionJSON with sample image, created to apply crop and gradient layer to the original image.
+![alt image](./actionjson_example.png?raw=true "Original Image")
+
+
+#### How to create an actionJSON
+There are couple of ways you can create an actionJSON.
+
+You can use the Photoshop developer UI to log action descriptors to a file. When "developer mode" is enabled, then the following menu items will be available:
+
+"Plugins > Development > Record Action Commands..." This menu item can be used to save any Photoshop command as an action descriptor to a file. After selecting the menu item and selecting the destination file, perform one of more Photoshop commands using the normal UI. Then choose "Plugins > Development > Stop Action Recording". The destination file will contain actionJSON for the performed commands.
+
+"Plugins > Development > Record Action Notifications..." This menu item will save both commands and change notifications to the selected destination file.
+
+If you already have an ".atn" file and want to convert to an actionJSON. In Photoshop
+"Open action panel > Load your action > Select your single action from action set> click on copy as Javascript > paste it in any text editor"
+Script will look like
+```
+async function vignetteSelection() {
+    let result;
+    let psAction = require("photoshop").action;
+
+    let command = [
+        // Make snapshot
+        {"_obj":"make","_target":[{"_ref":"snapshotClass"}],"from":{"_property":"currentHistoryState","_ref":"historyState"},"using":{"_enum":"historyState","_value":"fullDocument"}},
+        // Feather
+        {"descriptor": {"_obj":"feather","radius":{"_unit":"pixelsUnit","_value":5.0}}, "options": {"dialogOptions": "display"}},
+        // Layer Via Copy
+        {"_obj":"copyToLayer"},
+        // Show current layer
+        {"_obj":"show","null":[{"_enum":"ordinal","_ref":"layer","_value":"targetEnum"}],"toggleOptionsPalette":true},
+        // Make layer
+        {"_obj":"make","_target":[{"_ref":"layer"}]},
+        // Fill
+        {"_obj":"fill","mode":{"_enum":"blendMode","_value":"normal"},"opacity":{"_unit":"percentUnit","_value":100.0},"using":{"_enum":"fillContents","_value":"white"}},
+        // Move current layer
+        {"_obj":"move","_target":[{"_enum":"ordinal","_ref":"layer","_value":"targetEnum"}],"to":{"_enum":"ordinal","_ref":"layer","_value":"previous"}}
+    ];
+    result = await psAction.batchPlay(command, {});
+}
+
+async function runModalFunction() {
+    await require("photoshop").core.executeAsModal(vignetteSelection, {"commandName": "Action Commands"});
+}
+
+await runModalFunction();
+```
+Remove everything else and copy the array from the "command" variable which will look something like
+```
+[      
+ {"_obj":"make","_target":[{"_ref":"snapshotClass"}],"from":{"_property":"currentHistoryState","_ref":"historyState"},
+ "using":{"_enum":"historyState","_value":"fullDocument"}},{"descriptor": {"_obj":"feather","radius":{"_unit":"pixelsUnit","_value":5.0}},
+ "options": {"dialogOptions": "display"}},
+ {"_obj":"copyToLayer"},
+ {"_obj":"show","null":[{"_enum":"ordinal","_ref":"layer","_value":"targetEnum"}],"toggleOptionsPalette":true},
+ {"_obj":"make","_target":[{"_ref":"layer"}]},
+ {"_obj":"fill","mode":{"_enum":"blendMode","_value":"normal"},"opacity":{"_unit":"percentUnit","_value":100.0},"using":{"_enum":"fillContents","_value":"white"}},
+ {"_obj":"move","_target":[{"_enum":"ordinal","_ref":"layer","_value":"targetEnum"}],"to":{"_enum":"ordinal","_ref":"layer","_value":"previous"}}
+]
+```
+
+
+More details about actionJSON can be found [here](https://developer.adobe.com/photoshop/uxp/2022/ps_reference/media/batchplay/)
+
+##### How to enable developer mode
+  - Open Photoshop
+  - On the menu bar, select
+   Photoshop → Preferences → Plugins... (For Mac)
+   Or
+   Edit → Preferences → Plugins...(For Windows)
+  - Enable Developer Mode
+  ![alt image](./ps_developer_mode.png?raw=true "Original Image")
+  - Completely Exit Photoshop
+
+  - Enable Hidden Feature if you are using Photoshop 23.4 (July 2022) or earlier. Execute the command below.
+
+  For Mac
+  ```
+  echo "UXPEnableScriptingUtilities 1" >>  "/Users/$USER/Library/Preferences/Adobe Photoshop 2021 Settings/PSUserConfig.txt"
+  ```
+  For Windows Powershell
+  ```
+  echo  "UXPEnableScriptingUtilities 1" >> "C:\Users\$env:USERNAME\AppData\Roaming\Adobe\Adobe Photoshop 2021\Adobe Photoshop 2021 Settings\PSUserConfig.txt"
+  ```
+ - Open Photoshop
+
 
 ### SmartObject
 
@@ -22,7 +119,7 @@ The Photoshop APIs currently support creating and editing of Embedded Smart Obje
 - If your document contains transparent pixels (e.g some .png) for the smart object layer, you may not get consistent bounds.
 
 The APIs are documented [here](../api/#operation/smartObject).
-We also have an [example](../code-sample/#example-1-smartobject) of replacing a Smart Object within a layer.
+We also have an [example](../code-sample/#replacing-a-smartobject) of replacing a Smart Object within a layer.
 For better performance, we rasterize our smart objects that are bigger than  2000 pixels * 2000 pixels.
 For optimal processing, please make sure the embedded smart object that you want to replace only contains alphanumeric characters in it's name.
 
@@ -51,7 +148,7 @@ The following are known limitations:
 
 - The API cannot automatically detect missing fonts in the layers. To prevent potential missing fonts from being replaced, please provide a href to the font(s) in the options.fonts section of the API. For more details on specifying custom fonts, please refer to the example section below.
 
-[Here](../code-sample/#example-17-edit-text-layers) is a code sample.
+[Here](../code-sample/#making-a-text-layer-edit) is a code sample.
 
 Here is an example where the font was changed from the original image on the left using the Text API.
 ![alt image](./textlayer_example.png?raw=true "Original Image")
@@ -68,7 +165,7 @@ It enables user to
 - The current model is trained to return a crop that respects the salient object within an image. There is a current known issue that when a person or portrait is contained within a salient object, the model will crop with the person as the focal area rather than the salient object that contains it. This is problematic in the case of an item where an image of a person is contained within a design (i.e. a t-shirt, collectible or art). Rather than crop to the intended item, the service will crop to the person within the item.
 We intend to correct this issue in future releases.
 
-[Here](../code-sample/#example-18--applying-product-crop) is a code sample.
+[Here](../code-sample/#applying-product-crop) is a code sample.
 
 ### DepthBlur
 
@@ -76,7 +173,7 @@ The DepthBlur API supports applying depth blur to your image. The APIs are docum
 
 Depth Blur is part of the Neural Filters gallery in Photoshop. It allows you to target the area and range of blur in photos, creating wide-aperture depth of field blur effects. You may choose different focal points or remove the focal point and control the depth blur through manipulating the focal range slider. Setting focusSubject to true will select the most prominent subject in the image and apply depth blur around that subject.
 
-[Here](../code-sample/#example-19--applying-depth-blur-neural-filter) is a code sample.
+[Here](../code-sample/#applying-depth-blur-neural-filter) is a code sample.
 
 ### Photoshop Actions
 #### Execute Photoshop Actions
@@ -101,7 +198,7 @@ The following are known limitations:
 * The action should operate on one document.  Multiple documents support will be in a future release.
 
 Here are examples of submitting and executing Photoshop Actions.
-[Execute Photoshop Actions with all actions](../code-sample/#example-15--photoshop-actions---play-all-actions-in-atn-file) and [Execute Photoshop Actions with a specific action](../code-sample/#example-16--photoshop-actions-play-a-specific-action)
+[Execute Photoshop Actions with all actions](../code-sample/#photoshop-actions---play-all-actions-in-atn-file) and [Execute Photoshop Actions with a specific action](../code-sample/#photoshop-actions-play-a-specific-action)
 
 In this example we applied a custom Action we created called "Graphic Design."
 ![alt image](./psactions_example.png?raw=true "Original Image")
@@ -114,7 +211,7 @@ In this example we applied a custom Action we created called "Graphic Design."
 - Convert between any of the supported filetypes (PSD, JPEG, TIFF, PNG).
 
 Here is an example of creating JPEG and PNG rendtions of a PSD document:
-[Render PSD document](../code-sample/#example-10-create-a-document-rendition)
+[Render PSD document](../code-sample/#create-a-document-rendition)
 
 ### Layer level edits
 
@@ -147,9 +244,9 @@ The `add` and `move` blocks must also supply one of the attributes `insertAbove`
 **Note**: Adding a new layer does not require the ID to be included, the service will generate a new layer id for you.
 
 Here are some examples of making various layer level edits.
-- [Layer level editing](../code-sample/#example-6-making-a-simple-edit)
-- [Adding a new Adjustment Layer](../code-sample/#example-8-adding-a-new-adjustment-layer)
-- [Editing Image in a Pixel Layer](../code-sample/#example-9-editing-a-pixel-layer)
+- [Layer level editing](../code-sample/#making-a-simple-edit)
+- [Adding a new Adjustment Layer](../code-sample/#adding-a-new-adjustment-layer)
+- [Editing Image in a Pixel Layer](../code-sample/#editing-a-pixel-layer)
 
 #### Text layers Edits
 
@@ -165,7 +262,7 @@ The APIs are documented [here](../api/#operation/documentOperations).
 
 We also have an example of making a simple text layer edit.
 
-[Text layer Example Code](../code-sample/#example-3-making-a-text-layer-edit)
+[Text layer Example Code](../code-sample/#edit-text-layers)
 
 ##### Font handling
 
@@ -191,7 +288,7 @@ The Photoshop APIs supports using the following category of fonts:
   **Note:** This also applies to any other font present in the document which is not to be found in the first 2 categories above.
 
 Here is an example usage of a custom font
-[Custom font](../code-sample/#example-4-custom-font-in-a-text-layer)
+[Custom font](../code-sample/#custom-font-in-a-text-layer)
 
 ##### Handle missing fonts in the document.
 
@@ -220,14 +317,14 @@ Here is an example usage of `manageMissingFonts` and `globalFont`. [Handle missi
 - Create a new artboard from multiple input psd's
 
 ### Remove Background
-Initiate a job to Remove Background. Code sample [here](../code-sample/#example-20-remove-background).<br />
+Initiate a job to Remove Background. Code sample [here](../code-sample/#remove-background).<br />
 
 Example of Remove Background with a sample image.
 ![alt image](./imagecutout_cutout_example.png?raw=true "Original Image")
 
 ### Image Mask
 
-Initiate a job to create an image mask. Code sample [here](../code-sample/#example-21-generate-image-mask).<br />
+Initiate a job to create an image mask. Code sample [here](../code-sample/#generate-image-mask).<br />
 
 Example of Image mask with a sample image.
 ![alt image](./imagecutout_mask_example.png?raw=true "Original Image")
@@ -245,18 +342,18 @@ At this point the output formats supported are JPG, DNG and PNG.
 
 ### AutoTone
 
-Automatically correct exposure, contrast, sharpness, saturation, etc. Code sample [here](../code-sample/#example-1-autotone-an-image)<br />
+Automatically correct exposure, contrast, sharpness, saturation, etc. Code sample [here](../code-sample/#autotone-an-image)<br />
 
 In this example, we automatically adjusted the photo using the AutoTone API.
 ![alt image](./autotone_example.png?raw=true "Original Image")
 
 ### AutoStraighten
 
-Applies the Auto Upright transformation on an image. Code sample [here](../code-sample/#example-2-autostraighten-an-image)
+Applies the Auto Upright transformation on an image. Code sample [here](../code-sample/#autostraighten-an-image)
 
 ### Presets
 
-Apply one or more XMP Lightroom presets to an image, by referencing preset file(s) stored on cloud. Code sample [here](../code-sample/#example-3--apply-presets-to-an-image)
+Apply one or more XMP Lightroom presets to an image, by referencing preset file(s) stored on cloud. Code sample [here](../code-sample/#apply-presets-to-an-image)
 The preset file can be created by editing an image in lightroom and exporting it as a `.xmp` file.
 The details on how to create a preset can be found [here](https://helpx.adobe.com/lightroom-cc/how-to/photo-presets-lightroom-cc.html).
 If the use case would be to be able to create an `.xmp` file from a set of slider values obtained directly from a user, there are 2 ways to achieve this workflow:
@@ -268,14 +365,14 @@ In this example, we are applying the Preset called "Aged Photo" to automatically
 
 ### Edit
 
-Apply one or more Lightroom edits to an image. Code sample [here](../code-sample/#example-4-apply-edits-to-an-image)
+Apply one or more Lightroom edits to an image. Code sample [here](../code-sample/#apply-edits-to-an-image)
 
 ### XMP
-Apply a Lightroom preset to an image, by passing in the preset XMP contents inline through the API. Code sample [here](../code-sample/#example-5-apply-xmp-to-an-image)
+Apply a Lightroom preset to an image, by passing in the preset XMP contents inline through the API. Code sample [here](../code-sample/#apply-xmp-to-an-image)
 
 
 ## Customized Workflow
-You can make a 'customized workflow' by chaining different APIs. Example of which can be found [here](../code-sample/#example-1-generate-remove-background-result-as-photoshop-path)
+You can make a 'customized workflow' by chaining different APIs. Example of which can be found [here](../code-sample/#generate-remove-background-result-as-photoshop-path)
 
 
 ## Using Webhooks through Adobe I/O Events
