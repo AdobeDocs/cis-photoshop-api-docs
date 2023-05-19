@@ -35,12 +35,8 @@ You can use the Photoshop developer UI to log action descriptors to a file. When
 
 "Plugins > Development > Record Action Notifications..." This menu item will save both commands and change notifications to the selected destination file.
 
-Lastly, you can record your actions as a standard Photoshop action using the Actions panel. Then export actions to an actionJSON format by doing the following:
-Select the action set that contains the command.
-Press (macOS)"shift+option+command" or (Windows)"shift+control+alt" and choose "Save Actions..." from the panel fly-out menu.
-
 If you already have an ".atn" file and want to convert to an actionJSON. In Photoshop
-"Open action panel > Load your action > Select your action > click on copy as Javascript > paste it in any text editor"
+"Open action panel > Load your action > Select your single action from action set> click on copy as Javascript > paste it in any text editor"
 Script will look like
 ```
 async function vignetteSelection() {

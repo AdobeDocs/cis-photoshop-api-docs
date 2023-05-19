@@ -44,9 +44,6 @@
               },
               "href": {
                 "$ref": "file_input.schema.json#/definitions/href"
-              },
-              "actionName": {
-                "$ref": "file_input.schema.json#/definitions/actionName"
               }
             },
             "if": {
@@ -107,9 +104,6 @@
               },
               "href": {
                 "$ref": "file_input.schema.json#/definitions/href"
-              },
-              "actionName": {
-                "$ref": "file_input.schema.json#/definitions/actionName"
               }
             },
             "if": {
