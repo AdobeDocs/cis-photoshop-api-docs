@@ -17,7 +17,7 @@ export token="<YOUR_TOKEN>"
 export apiKey="<YOUR_API_KEY>"
 ```
 ### Executing an actionJSON
-The `/actionJSON` endpoint can take an input file and apply any Photoshop actions on it. This code sample shows an actionJSON created to apply crop and gradient layer to the input file.
+The `/actionJSON` endpoint can take an input file and apply any Photoshop Action file on it and edit the steps within the original action file. This gives you a lot of flexibility to create dynamic changes to an otherwise static Action file. In this example we are going to use a familiar asset and action file and we are going to modify the payload to return an output that executes all of the steps of the original action with one modification, instead of color we are going to use actionJSON to return a black and white image. This action file contains over 70 steps so we wont show the entire JSON payload but will share the part we modified to achieve the output. 
 
 ```shell
 curl -X POST \
@@ -32,145 +32,52 @@ curl -X POST \
   }],
   "options": {
     "actionJSON": [{
-        "_obj": "crop",
-        "angle": {
-          "_unit": "angleUnit",
-          "_value": 0.0
+        "_obj": "imageSize",
+        "constrainProportions": true,
+        "interfaceIconFrameDimmed": {
+          "_enum": "interpolationType",
+          "_value": "automaticInterpolation"
         },
-        "constrainProportions": false,
-        "cropAspectRatioModeKey": {
-          "_enum": "cropAspectRatioModeClass",
-          "_value": "pureAspectRatio"
+        "scaleStyles": true
+      }, {
+        "_obj": "imageSize",
+        "constrainProportions": true,
+        "interfaceIconFrameDimmed": {
+          "_enum": "interpolationType",
+          "_value": "automaticInterpolation"
         },
-        "delete": true,
-        "to": {
-          "_obj": "rectangle",
-          "bottom": {
-            "_unit": "pixelsUnit",
-            "_value": 469.0
-          },
-          "left": {
-            "_unit": "pixelsUnit",
-            "_value": 0.0
-          },
-          "right": {
-            "_unit": "pixelsUnit",
-            "_value": 750.0
-          },
-          "top": {
-            "_unit": "pixelsUnit",
-            "_value": 0.0
-          }
-        }
-      },
-      {
-        "_obj": "crop",
-        "angle": {
-          "_unit": "angleUnit",
-          "_value": 0.0
+        "resolution": {
+          "_unit": "densityUnit",
+          "_value": 72.0
         },
-        "constrainProportions": false,
-        "cropAspectRatioModeKey": {
-          "_enum": "cropAspectRatioModeClass",
-          "_value": "pureAspectRatio"
-        },
-        "delete": true,
-        "to": {
-          "_obj": "rectangle",
-          "bottom": {
-            "_unit": "pixelsUnit",
-            "_value": 368.421875
-          },
-          "left": {
-            "_unit": "pixelsUnit",
-            "_value": 108.515625
-          },
-          "right": {
-            "_unit": "pixelsUnit",
-            "_value": 603.375
-          },
-          "top": {
-            "_unit": "pixelsUnit",
-            "_value": 0.0
-          }
-        }
+        "scaleStyles": true
       },
       {
         "_obj": "make",
         "_target": [{
-          "_ref": "contentLayer"
+          "_ref": "adjustmentLayer"
         }],
         "using": {
-          "_obj": "contentLayer",
+          "_obj": "adjustmentLayer",
           "type": {
-            "_obj": "gradientLayer",
-            "angle": {
-              "_unit": "angleUnit",
-              "_value": 90.0
+            "_obj": "blackAndWhite",
+            "blue": 20,
+            "cyan": 60,
+            "grain": 40,
+            "magenta": 80,
+            "presetKind": {
+              "_enum": "presetKindType",
+              "_value": "presetKindDefault"
             },
-            "gradient": {
-              "_obj": "gradientClassEvent",
-              "colors": [{
-                "_obj": "colorStop",
-                "color": {
-                  "_obj": "RGBColor",
-                  "blue": 0.0,
-                  "grain": 0.0,
-                  "red": 0.0
-                },
-                "location": 0,
-                "midpoint": 50,
-                "type": {
-                  "_enum": "colorStopType",
-                  "_value": "userStop"
-                }
-              }, {
-                "_obj": "colorStop",
-                "color": {
-                  "_obj": "RGBColor",
-                  "blue": 0.0,
-                  "grain": 0.0,
-                  "red": 0.0
-                },
-                "location": 4096,
-                "midpoint": 50,
-                "type": {
-                  "_enum": "colorStopType",
-                  "_value": "userStop"
-                }
-              }],
-              "gradientForm": {
-                "_enum": "gradientForm",
-                "_value": "customStops"
-              },
-              "interfaceIconFrameDimmed": 4096.0,
-              "name": "Color to Transparent",
-              "transparency": [{
-                "_obj": "transferSpec",
-                "location": 0,
-                "midpoint": 50,
-                "opacity": {
-                  "_unit": "percentUnit",
-                  "_value": 100.0
-                }
-              }, {
-                "_obj": "transferSpec",
-                "location": 4096,
-                "midpoint": 50,
-                "opacity": {
-                  "_unit": "percentUnit",
-                  "_value": 0.0
-                }
-              }]
+            "red": 40,
+            "tintColor": {
+              "_obj": "RGBColor",
+              "blue": 179.00115966796876,
+              "grain": 211.00067138671876,
+              "red": 225.00045776367188
             },
-            "gradientsInterpolationMethod": {
-              "_enum": "gradientInterpolationMethodType",
-              "_value": "perceptual"
-            },
-            "type": {
-              "_enum": "gradientType",
-              "_value": "linear"
-            }
+            "useTint": false,
+            "yellow": 60
           }
         }
       }
@@ -179,7 +86,7 @@ curl -X POST \
   "outputs": [{
     "type": "image/jpeg",
     "storage": "<storage>",
-    "href": "<SIGNED_POST_URL>",
+    "href": "<SIGNED_POST_URL>"
   }]
 }'
 ```
