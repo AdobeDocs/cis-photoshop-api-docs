@@ -11,33 +11,93 @@ This is a list of currently supported features.
 
 The APIs are documented at [Photoshop API](../api/#tag/Photoshop).
 
+### Photoshop Actions
+#### Execute Photoshop Actions
+
+Adobe Photoshop APIs supports playing back Photoshop Actions recorded from Photoshop. The APIs are documented [here](../api/#operation/photoshopActions)
+
+An action is a series of tasks that you play back on a single file or a batch of files—menu commands, panel options, tool actions, and so on. For example, you can create an action that changes the size of an image, applies an effect to the image, and then saves the file in the desired format.
+
+For more information on how to create Photoshop Actions, see <a href="https://helpx.adobe.com/photoshop/using/actions-actions-panel.html" target="_blank">Adobe Help Center</a>
+
+#### Usage Recommendations
+* Create actions that do not open any operating system dialogs. All Photoshop dialogs are supported, but not operating system dialogs.
+* It is recommended to create Actions that do not require user interactions.
+* Input and Output file format should be any of PSD, JPEG, PNG, or TIFF.
+* Make sure to test your actions on Photoshop, with several different input/images. If it has any errors on Photoshop, it won't run successfully on our servers either.
+
+#### Known Limitations
+The following are known limitations:
+
+* 3D and Video features are not supported.
+* Custom presets (for example color swatches and brushes).
+* The action should operate on one document.  Multiple documents support will be in a future release.
+
+Here are examples of submitting and executing Photoshop Actions.
+[Execute Photoshop Actions with all actions](../code-sample/#photoshop-actions---play-all-actions-in-atn-file) and [Execute Photoshop Actions with a specific action](../code-sample/#photoshop-actions-play-a-specific-action)
+
+In this example we applied a custom Action we created called "Graphic Design."
+![alt image](./psactions_example.png?raw=true "Original Image")
+
 ### ActionJSON
-ActionJSON API has the ability to playback photoshop actions in ActionJSON format. ActionJSON API
 
-- Unlocks the capability to convert a static .atn file to a dynamic .atn file.
-- Programmatically you can edit or update the ActionJSON.
-- You don't need to upload the ActionJSON to any storage to access by the API.
+Similar to the Photoshop Actions endpoint, this api also allows you to apply Photoshop Actions to an image programmatically. However there are a few key differences which give you added flexibility.
 
-The APIs are documented [here](../api/#operation/actionJSON).
-We have an [example](../code-sample/#executing-an-actionjson) of ActionJSON created to apply crop and gradient layer to the original image.
-We also have an [example](../code-sample/#executing-an-actionjson-with-multiple-inputs) for supporting multiple images in actionJSON.
+- Ability to modify the payload converting your static actions into a dynamic one.
+- You don’t need to upload and store your actions as you do with the Photoshop Actions endpoint.
 
-Example of ActionJSON with sample image, created to apply crop and gradient layer to the original image.
-![alt image](./actionjson_example.png?raw=true "Original Image")
+You can find the api reference guide [here](../api/#operation/actionJSON).
+We have an example of ActionJSON with the same image and Action file from our Photoshop Actions example but modified the final output color to make it black and white.
 
+![alt image](./ps_action_json_example.png?raw=true "Original Image")
+Sample code can be found [here](../code-sample/#executing-an-actionjson)
+
+ActionJSON endpoint has the capability of supporting multiple inputs as a parameter passed to the actions.
+An example can be found [here](../code-sample/#executing-an-actionjson-with-multiple-inputs)
 
 #### How to create an actionJSON
-There are couple of ways you can create an actionJSON.
+**Create new action using developer mode.**
 
-You can use the Photoshop developer UI to log action descriptors to a file. When "developer mode" is enabled, then the following menu items will be available:
+If you have “developer mode” enabled in Photoshop follow the instructions below if not skip to the next section. For more information on how to enable developer mode go [here](/features/#how-to-enable-developer-mode).
 
-"Plugins > Development > Record Action Commands..." This menu item can be used to save any Photoshop command as an action descriptor to a file. After selecting the menu item and selecting the destination file, perform one of more Photoshop commands using the normal UI. Then choose "Plugins > Development > Stop Action Recording". The destination file will contain actionJSON for the performed commands.
+- Open Photoshop desktop application
+- Click on  "Plugins” from the top menu
+- Select “Development”
+- And then choose “Record Action Commands..."
+- Name your file and click on “Save”
+- You can now make edits to your document and all of your edits will be saved
 
-"Plugins > Development > Record Action Notifications..." This menu item will save both commands and change notifications to the selected destination file.
+**Once you are done recording your action:**
 
-If you already have an ".atn" file and want to convert to an actionJSON. In Photoshop
-"Open action panel > Load your action > Select your single action from action set> click on copy as Javascript > paste it in any text editor"
-Script will look like
+- Click on  "Plugins” from the top menu
+- Select “Development”
+- Choose “Stop Action Recording"
+
+The file will be saved to the directory you chose when you named your file.
+
+**New Action JSON file using Actions panel**
+
+- Open Photoshop
+- Click on "Open action panel”
+- Select “Create new Action”
+- Select your single action from action set
+- Click on copy as Javascript
+- Paste it in any text editor
+- Modify the file to trim out the actions (example is shown below in the code sample)
+- Use the action in your payload
+
+**Converting an existing Action (.atn) file into Action Json**
+
+- Open Photoshop
+- Click on "Open action panel”
+- Select “Load action”
+- Choose the action you would like to convert to Action JSON
+- Click on copy as Javascript
+- Paste it in any text editor
+- Modify the file to trim out the actions obj blocks (example is shown below in the code sample)
+- Use the action in your payload
+
+A code sample of Action JSON when you copy as Javascript
 ```
 async function vignetteSelection() {
     let result;
@@ -68,21 +128,20 @@ async function runModalFunction() {
 
 await runModalFunction();
 ```
-Remove everything else and copy the array from the "command" variable which will look something like
+Modify the javascript file to trim out the actions.
+Remove everything else from the javascript file and copy the array containing `_obj` from the `command` variable which will look something like below
 ```
 [      
  {"_obj":"make","_target":[{"_ref":"snapshotClass"}],"from":{"_property":"currentHistoryState","_ref":"historyState"},
- "using":{"_enum":"historyState","_value":"fullDocument"}},{"descriptor": {"_obj":"feather","radius":{"_unit":"pixelsUnit","_value":5.0}},
- "options": {"dialogOptions": "display"}},
+ "using":{"_enum":"historyState","_value":"fullDocument"}},
+ {"_obj":"feather","radius":{"_unit":"pixelsUnit","_value":5.0}},
  {"_obj":"copyToLayer"},
  {"_obj":"show","null":[{"_enum":"ordinal","_ref":"layer","_value":"targetEnum"}],"toggleOptionsPalette":true},
  {"_obj":"make","_target":[{"_ref":"layer"}]},
- {"_obj":"fill","mode":{"_enum":"blendMode","_value":"normal"},"opacity":{"_unit":"percentUnit","_value":100.0},"using":{"_enum":"fillContents","_value":"white"}},
+ {"_obj":"fill","mode":{"_enum":"blendMode","_value":"normal"},"opacity":{"_unit":"percentUnit","_value":100.0},"using":{"_enum":"fillContents","_value":"white"},
  {"_obj":"move","_target":[{"_enum":"ordinal","_ref":"layer","_value":"targetEnum"}],"to":{"_enum":"ordinal","_ref":"layer","_value":"previous"}}
 ]
 ```
-
-
 More details about actionJSON can be found [here](https://developer.adobe.com/photoshop/uxp/2022/ps_reference/media/batchplay/)
 
 ##### How to enable developer mode
@@ -174,34 +233,6 @@ The DepthBlur API supports applying depth blur to your image. The APIs are docum
 Depth Blur is part of the Neural Filters gallery in Photoshop. It allows you to target the area and range of blur in photos, creating wide-aperture depth of field blur effects. You may choose different focal points or remove the focal point and control the depth blur through manipulating the focal range slider. Setting focusSubject to true will select the most prominent subject in the image and apply depth blur around that subject.
 
 [Here](../code-sample/#applying-depth-blur-neural-filter) is a code sample.
-
-### Photoshop Actions
-#### Execute Photoshop Actions
-
-Adobe Photoshop APIs supports playing back Photoshop Actions recorded from Photoshop. The APIs are documented [here](../api/#operation/photoshopActions)
-
-An action is a series of tasks that you play back on a single file or a batch of files—menu commands, panel options, tool actions, and so on. For example, you can create an action that changes the size of an image, applies an effect to the image, and then saves the file in the desired format.
-
-For more information on how to create Photoshop Actions, see <a href="https://helpx.adobe.com/photoshop/using/actions-actions-panel.html" target="_blank">Adobe Help Center</a>
-
-#### Usage Recommendations
-* Create actions that do not open any operating system dialogs. All Photoshop dialogs are supported, but not operating system dialogs.
-* It is recommended to create Actions that do not require user interactions.
-* Input and Output file format should be any of PSD, JPEG, PNG, or TIFF.
-* Make sure to test your actions on Photoshop, with several different input/images. If it has any errors on Photoshop, it won't run successfully on our servers either.
-
-#### Known Limitations
-The following are known limitations:
-
-* 3D and Video features are not supported.
-* Custom presets (for example color swatches and brushes).
-* The action should operate on one document.  Multiple documents support will be in a future release.
-
-Here are examples of submitting and executing Photoshop Actions.
-[Execute Photoshop Actions with all actions](../code-sample/#photoshop-actions---play-all-actions-in-atn-file) and [Execute Photoshop Actions with a specific action](../code-sample/#photoshop-actions-play-a-specific-action)
-
-In this example we applied a custom Action we created called "Graphic Design."
-![alt image](./psactions_example.png?raw=true "Original Image")
 
 ### Rendering / Conversions
 
