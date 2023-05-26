@@ -17,7 +17,7 @@ export token="<YOUR_TOKEN>"
 export apiKey="<YOUR_API_KEY>"
 ```
 ### Executing an actionJSON
-The `/actionJSON` endpoint can take an input file and apply any Photoshop Action file on it and edit the steps within the original action file. This gives you a lot of flexibility to create dynamic changes to an otherwise static Action file. In this example we are going to use a familiar asset and action file and we are going to modify the payload to return an output that executes all of the steps of the original action with one modification, instead of color we are going to use actionJSON to return a black and white image. This action file contains over 70 steps so we wont show the entire JSON payload but will share the part we modified to achieve the output. 
+The `/actionJSON` endpoint can take an input file and apply any Photoshop Action file on it and edit the steps within the original action file. This gives you a lot of flexibility to create dynamic changes to an otherwise static Action file. In this example we are going to use a familiar asset and action file and we are going to modify the payload to return an output that executes all of the steps of the original action with one modification, instead of color we are going to use actionJSON to return a black and white image. This action file contains over 70 steps so we wont show the entire JSON payload but will share the part we modified to achieve the output.
 
 ```shell
 curl -X POST \
@@ -95,12 +95,12 @@ curl -X POST \
 
 With `/actionJSON` endpoint you can use multiple images to do compositing on the actionJSON.
 
-In order to supply multiple images and have it specified in the actionJSON, you need to create a Placeholder Value in your actionJSON.   The placeholder value must be "PEGASUS_ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_X" where "X" is the index of the "additionalImages" array.
+In order to supply multiple images and have it specified in the actionJSON, you need to create a Placeholder Value in your actionJSON.   The placeholder value must be "ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_X" where "X" is the index of the "additionalImages" array.
 
 For example, say you have an actionJSON that requires 2 additional Images.  
 
-PEGASUS_ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0 == options.additionalImages[0]
-PEGASUS_ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_1 == options.additionalImages[1]
+ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0 == options.additionalImages[0]
+ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_1 == options.additionalImages[1]
 
 ```shell
 curl -X POST \
@@ -132,7 +132,7 @@ curl -X POST \
       },
       "null": {
         "_kind": "local",
-        "_path": "PEGASUS_ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0"
+        "_path": "ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0"
       },
       "offset": {
         "_obj": "offset",
