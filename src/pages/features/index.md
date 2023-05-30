@@ -49,7 +49,7 @@ Similar to the Photoshop Actions endpoint, this api also allows you to apply Pho
 You can find the api reference guide [here](../api/#operation/actionJSON).
 We have an example of ActionJSON with the same image and Action file from our Photoshop Actions example but modified the final output color to make it black and white.
 
-![alt image](./ps_action_json_example_new.png?raw=true "Original Image")
+![alt image](./ps_action_json_example_bw.png?raw=true "Original Image")
 Sample code can be found [here](../code-sample/#executing-an-actionjson)
 
 ActionJSON endpoint has the capability of supporting multiple inputs as a parameter passed to the actions.
