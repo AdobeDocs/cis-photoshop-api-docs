@@ -151,7 +151,7 @@
         },
         "additionalImages": {
           "type": "array",
-          "description": "Image objects which tells the API where to download additional images that is needed for your action.  Currently, the only allowed placeholder within your is PEGASUS_ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_X where X is the index of the additionalImages array",
+          "description": "Image objects which tells the API where to download additional images that is needed for your action.  Currently, the only allowed placeholder within your is ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_X where X is the index of the additionalImages array",
           "minItems": 1,
           "items": {
             "required": [
