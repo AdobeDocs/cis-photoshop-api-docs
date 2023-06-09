@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "follow-redirect-url": "^2.0.1",
+    "fs": "^0.0.1-security",
+    "googleapis": "^118.0.0",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  }
+}
