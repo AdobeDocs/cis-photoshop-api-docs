@@ -24,6 +24,10 @@ You can use any of the following services for input and output storage.
   - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/azure/presignedURLs.py) in Python
 - Dropbox: Generate temporary upload/download URLs. More info [here](https://www.dropbox.com/developers/documentation).
   You can create file upload link for dropbox [here](https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_upload_link)
+- Google Drive: By generating a public url for upload/download. More info [here](https://www.labnol.org/google-api-service-account-220404).
+  Here are some code samples for getting presigned urls.
+  - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/googledrive/presignedURLs.js) in Node.js  
+
 
 **Note :** You can test to see if your public url or presigned url is working.
 
