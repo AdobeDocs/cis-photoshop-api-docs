@@ -1067,7 +1067,7 @@
         "tags": [
           "Photoshop"
         ],
-        "summary": "Get the status of a job",
+        "summary": "Get the status of a job for Remove Backround and Mask",
         "description": "Returns the status of a job. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
         "operationId": "icstatus",
         "parameters": [
@@ -2116,125 +2116,6 @@
         ]
       }
     },
-    "/pie/psdService/documentManifest": {
-      "post": {
-        "tags": [
-          "Photoshop"
-        ],
-        "summary": "Get layer info",
-        "description": " Get layer informations of a PSD document.\nTo get status of this job, call [Manifest Status API](./#operation/documentManifestStatus).",
-        "operationId": "documentManifest",
-        "parameters": [
-          {
-            "name": "Authorization",
-            "description": "Bearer: ${Authorization Token}",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-api-key",
-            "description": "API key/client id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Content-Type",
-            "description": "application/json",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-gw-ims-org-id",
-            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "./PITS/post_document_manifest.schema.json"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "202": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "./PITS/api_response_success_schema.json"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "./api_response_400_error_schema.json"
-                }
-              }
-            }
-          },
-          "402": {
-            "description": "Trial Limit Exceeded",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "./api_response_402_error_schema.json"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "./api_response_403_error_schema.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "./api_response_404_error_schema.json"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "x-codeSamples": [
-          {
-            "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/documentManifest \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"get_presigned_url\",\"storage\":\"external\"}],\\\n \"options\":{\"thumbnails\":{\"type\": \"images/png\"}}}'"
-          }
-        ]
-      }
-    },
     "/pie/psdService/documentOperations": {
       "post": {
         "tags": [
@@ -2372,75 +2253,6 @@
             "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/documentOperations \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"presigned_get_url\",\"storage\":\"external\"}],\\\n \"options\":{\"manageMissingFonts\":\"useDefault\",\\\n \"globalFont\":\"MyriadPro-Bold\", \"fonts\":[{\"href\":\"presigned_get_url\",\"storage\":\"external\"}],\\\n \"document\":{\"canvasSize\":{\"bounds\":{\"top\":200,\"left\":200,\\\n \"bottom\":500,\"right\":500}},\"imageSize\":{\"height\":100,\"width\":100},\"trim\":{\"basedOn\":\\\n \"transparentPixels\"}},\\\n \"layers\":[{\"add\":{\"insertTop\":true},\"name\":\"new adjustment layer\",\\\n \"type\":\"adjustmentLayer\",\"visible\":true,\\\n \"adjustments\":{\"brightnessContrast\":{\"brightness\":-23,\"contrast\":15}}},\\\n {\"add\":{\"insertBottom\":true},\"name\":\"new content layer\",\"type\":\"fillLayer\",\"visible\":true,\"fill\":\\\n {\"solidColor\":{\"rgb\":{\"red\":0,\"green\":255,\"blue\":255}}},\\\n \"blendOptions\":{\"opacity\":90,\"blendMode\":\"normal\"}},\\\n {\"index\":8,\"locked\":false,\"name\":\"SO Layer\",\\\n \"type\":\"smartObject\",\"visible\":true,\\\n \"add\":{\"insertTop\":true},\"input\":{\"href\":\"files/input/Simple.psd\",\"storage\":\"external\"},\\\n \"smartObject\":{\"linked\":false}},{\"id\":33,\"edit\":{},\"index\":6,\\\n \"type\":\"textLayer\",\"name\":\"my text layer\",\\\n \"locked\":true,\"visible\":true,\\\n \"bounds\":{\"top\":50,\"left\":100,\"width\":500,\"height\":450},\\\n \"text\":{\"content\":\"NEW TEXT CHANGES\",\"characterStyles\":[{\"fontSize\":12.5,\\\n \"fontName\":\"Arial-BoldMT\",\"orientation\":\"horizontal\",\\\n \"fontColor\":{\"rgb\":{\"red\":26086,\"green\":23002,\"blue\":8224}}}],\\\n \"paragraphStyles\":[{\"alignment\":\"left\"}]},\"blendOptions\":{\"opacity\":90,\\\n \"blendMode\":\"normal\"}},\\\n {\"add\":{\"insertAbove\":{\"id\":53}},\"name\":\"New Exposure Layer\",\\\n \"type\":\"adjustmentLayer\",\"locked\":false,\"visible\":true,\\\n \"adjustments\":{\"exposure\":{\"exposure\":0.25,\\\n \"offset\":0.0049,\"gammaCorrection\":1.38}}},\\\n {\"edit\":{},\"id\":78,\"index\":2,\\\n \"type\":\"adjustmentLayer\",\"name\":\"Color Balance\",\\\n \"locked\":false,\"visible\":true,\"mask\":{\"input\":{\"href\":\"files/abc.psd\",\"storage\":\"external\"},\\\n \"enabled\":false,\"linked\":true,\"offset\":{\"x\":70,\"y\":50},\"clip\":true},\\\n \"adjustments\":{\"colorBalance\":{\"shadowLevels\":[0,10,20],\\\n \"preserveLuminosity\":true,\"midtoneLevels\":[30,40,50],\"highlightLevels\":[60,70,80]}}},\\\n {\"move\":\\\n {\"insertAbove\":{\"name\":\"Hue Saturation\"}},\\\n \"name\":\"new Image layer\",\"type\":\"layer\",\"visible\":true,\"input\":{\"href\":\"presigned_get_url\",\"storage\":\"external\"}},\\\n {\"edit\":{},\"id\":77,\"index\":1,\"type\":\"adjustmentLayer\",\"name\":\"Hue Saturation\",\"locked\":false,\"visible\":true,\\\n \"adjustements\":{\"hueSaturation\":{\"channels\":[{\"channel\":\"master\",\\\n \"hue\":-5,\"saturation\":20,\"lightness\":0}],\"colorize\":false}}},\\\n  {\"type\":\"backgroundLayer\",\"index\":0,\"locked\":true,\"id\":1,\"visible\":true,\"name\":\"Background\"}]},\\\n \"outputs\":[{\"href\":\"presigned_put_url\",\"storage\":\"external\",\\\n \"type\":\"image/jpeg\",\"width\":500,\"trimToCanvas\":false,\\\n \"layers\":[{\"id\":77}]},{\"href\":\"presigned_put_url\",\"storage\":\"external\",\\\n \"type\":\"image/vnd.adobe.photoshop\"}]}'"
           }
         ]
-      }
-    },
-    "/pie/psdService/status/{jobId_documentmanifest}": {
-      "get": {
-        "tags": [
-          "Photoshop"
-        ],
-        "summary": "Get the status of documentManifest",
-        "description": "Returns the status of documentManifest API. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
-        "operationId": "documentManifestStatus",
-        "parameters": [
-          {
-            "name": "Authorization",
-            "description": "Bearer: ${Authorization Token}",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-api-key",
-            "description": "API key/client id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Content-Type",
-            "description": "application/json",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-gw-ims-org-id",
-            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "jobId_documentmanifest",
-            "in": "path",
-            "description": "The jobId to get status for.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "./PITS/get_manifest_status.schema.json"
-                }
-              }
-            }
-          }
-        }
       }
     },
     "/pie/psdService/documentCreate": {
@@ -2783,6 +2595,194 @@
               "application/json": {
                 "schema": {
                   "$ref": "./PITS/get_status.schema.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pie/psdService/documentManifest": {
+      "post": {
+        "tags": [
+          "Photoshop"
+        ],
+        "summary": "Get manifest",
+        "description": " Get layer informations of a PSD document.\nTo get status of this job, call [Manifest Status API](./#operation/documentManifestStatus).",
+        "operationId": "documentManifest",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./PITS/post_document_manifest.schema.json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./PITS/api_response_success_schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_400_error_schema.json"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Trial Limit Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_402_error_schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_403_error_schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "shell",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/documentManifest \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"get_presigned_url\",\"storage\":\"external\"}],\\\n \"options\":{\"thumbnails\":{\"type\": \"images/png\"}}}'"
+          }
+        ]
+      }
+    },
+    "/pie/psdService/status/{jobid}": {
+      "get": {
+        "tags": [
+          "Photoshop"
+        ],
+        "summary": "Get the status of a job for documentManifest",
+        "description": "Returns the status of documentManifest API. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
+        "operationId": "documentManifestStatus",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "The jobId to get status for.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./PITS/get_manifest_status.schema.json"
                 }
               }
             }

@@ -10,23 +10,23 @@ As you begin integrating the Ps APIs into your workflow, there are a few conside
 
 ## Input and Output file storage
 
-We have compiled a list of storage services that work well with our API but any public url or pre-signed url should work. If you aren't familiar with pre-signed urls you can learn more about them here.
+The Photoshop API works with any public or signed url. We have documented a few of the most common storage services and how to generate the urls programmatically.
 
-You can use any of the following services for input and output storage.
-- AWS S3: By using a presigned GET/PUT URL. More info [here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html).
-  Here are some code samples for getting presigned urls.
-  - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/aws-s3/presignedURLs.js) in Node.js. <br />Please note that creating presigned urls for AWS S3 requires signature version S3V4, as demonstrated in the sample code.
-  - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/aws-s3/presignedURLs.py) in Python
-  - You can find a sample NodeJS application [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/aws-s3/example.py)
-- Azure: By generating a SAS (Shared Access Signature) for upload/download. More info [here](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-blob/12.9.0/index.html).
-  Here are some code samples for getting presigned urls.
-  - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/azure/presignedURLs.js) in Node.js
-  - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/azure/presignedURLs.py) in Python
-- Dropbox: Generate temporary upload/download URLs. More info [here](https://www.dropbox.com/developers/documentation).
-  You can create file upload link for dropbox [here](https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_upload_link)
-- Google Drive: By generating a public url for upload/download. More info [here](https://www.labnol.org/google-api-service-account-220404).
-  Here are some code samples for getting presigned urls.
-  - [Example](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/googledrive/presignedURLs.js) in Node.js  
+**AWS S3:** Pre-signed GET/PUT URL. For more information about pre-signed urls on S3 you can go [here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html). Here are some code samples that show you how to generate your pre-signed urls programmatically:
+  - [Node.js](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/aws-s3/presignedURLs.js) <br />Please note that creating pre-signed urls for AWS S3 requires signature version S3V4, as demonstrated in the sample code.
+  - [Python](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/azure/presignedURLs.py)
+
+
+We also have a python [application](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/aws-s3/example.py) that provides a working example of how to call our api using assets stored in AWS S3.   
+
+**Google Drive:**: Signed GET/PUT URL. For more information on how to setup your Google drive account for access to creating a signed URL [here](https://www.labnol.org/google-api-service-account-220404). Here are some code samples for getting signed urls.
+  - [Node.js](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/googledrive/presignedURLs.js)
+
+**Azure:** SAS (Shared Access Signature) for upload/download. For more information on how to generate a Shared Access Signature you can go [here](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-blob/12.9.0/index.html). Here are some code samples for generating a url with Shared Access Signature.
+  - [Node.js](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/azure/presignedURLs.js)
+  - [Python](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/azure/presignedURLs.py)
+
+**Dropbox:** Temporary upload/download URLs.  For more information on how to generate an upload/download you can go [here](https://www.dropbox.com/developers/documentation). You can also create a file upload link for dropbox [here](https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_upload_link).  
 
 
 **Note :** You can test to see if your public url or presigned url is working.
