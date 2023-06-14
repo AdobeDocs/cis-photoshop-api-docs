@@ -1067,7 +1067,7 @@
         "tags": [
           "Photoshop"
         ],
-        "summary": "Get the status of a job for Remove Backround and Mask",
+        "summary": "Get the status of a job for Remove Background and Create Mask",
         "description": "Returns the status of a job. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
         "operationId": "icstatus",
         "parameters": [
@@ -1283,7 +1283,7 @@
         "tags": [
           "Photoshop"
         ],
-        "summary": "Executes actionJSON",
+        "summary": "Execute actionJSON",
         "description": " Playback photoshop actions in ActionJSON format.\nTo get status of this job, call [Status API](./#operation/pitsstatus). \\\n To know more about this feature refer [Rendering Conversions](../features/#rendering--conversions)",
         "operationId": "actionJSON",
         "parameters": [
@@ -2539,7 +2539,12 @@
           "Photoshop"
         ],
         "summary": "Get the status of a job",
-        "description": "Returns the status of a job. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
+        "description": "Returns the status of a job. Please expand `200 Successful operation` under
+        `Responses` to know details of the status returned. This API is used for returning the status of
+        a job for the apis [Create Renditions](./#operation/renditionCreate), [Execute actionJSON](./#operation/actionJSON),
+        [Replace SmartObject](./#operation/smartObject), [Execute Photoshop Actions](./#operation/photoshopActions),
+        [Execute Product Crop](./#operation/productCrop), [Execute Depth Blur](./#operation/depthBlur), [Edit Text Layers](./#operation/text),
+        [Apply psd edits](./#operation/documentOperations), [Create a new psd](./#operation/documentCreate), [Create an artboard](./#operation/artboardCreate)",
         "operationId": "pitsstatus",
         "parameters": [
           {
@@ -2608,7 +2613,7 @@
           "Photoshop"
         ],
         "summary": "Get manifest",
-        "description": " Get layer informations of a PSD document.\nTo get status of this job, call [Manifest Status API](./#operation/documentManifestStatus).",
+        "description": " Get information about the PSD document, including metadata about the file as a whole as well as detailed information about the layers included in the file.\nTo get status of this job, call [Manifest Status API](./#operation/documentManifestStatus).",
         "operationId": "documentManifest",
         "parameters": [
           {
@@ -2727,7 +2732,7 @@
           "Photoshop"
         ],
         "summary": "Get the status of a job for documentManifest",
-        "description": "Returns the status of documentManifest API. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
+        "description": "Returns the status of the Get Manifest API. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
         "operationId": "documentManifestStatus",
         "parameters": [
           {
