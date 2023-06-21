@@ -93,5 +93,5 @@ Check out these modules for a quick path to automating your token retrieval:
 
 ## Additional Information
 
-You can find details on interacting with Adobe's authentication in general
+You can find details on interacting with Adobe's authentication in 
 [General Authentication Information](https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/AuthenticationOverview/AuthenticationGuide.md)
