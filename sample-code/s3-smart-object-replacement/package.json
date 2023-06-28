@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@adobe/jwt-auth": "^1.0.1",
     "aws-sdk": "^2.1095.0",
     "request": "^2.88.2"
   }
