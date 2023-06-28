@@ -10,7 +10,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@adobe/jwt-auth": "^0.3.0",
     "aws-sdk": "^2.329.0",
     "jsonwebtoken": "~5.4",
     "request": "^2.34.0",

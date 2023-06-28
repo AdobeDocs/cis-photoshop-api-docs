@@ -46,7 +46,7 @@ def poll_status(resp, headers):
 input_scr_url = get_presigned_url(bucket, src_key, 'get_object', 3600, region)
 output_dest_url = get_presigned_url(bucket, dest_key, 'put_object', 3600, region)
 
-headers = { "Authorization": f"Bearer {token}", "x-api-key" : client_id }
+headers = { "Authorization": "Bearer {token}", "x-api-key" : client_id }
 payload = {
   "inputs":{
     "href": input_scr_url,
