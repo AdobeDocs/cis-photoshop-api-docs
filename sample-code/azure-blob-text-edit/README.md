@@ -9,11 +9,7 @@ The following code demostrates how to use <a href="https://developer.adobe.com/p
 // VISIT https://developer.adobe.com/console/projects to obtain the following information
 const imsConfig = {
   clientId: "YOUR_ADOBE_CLIENT_ID",
-  clientSecret: "YOUR_ADOBE_CLIENT_SECRET",
-  technicalAccountId: "YOUR_ADOBE_TECH_ACCOUNT_ID",
-  orgId: "YOUR_ADOBE_ORG_ID",
-  metaScopes: ["ent_ccas_sdk"],
-  privateKey: fs.readFileSync("/PATH/TO/YOUR/private.key"),
+  clientSecret: "YOUR_ADOBE_CLIENT_SECRET"
 };
 
 // FILL OUT INFORMATION ABOUT YOUR AZURE BLOB STORAGE

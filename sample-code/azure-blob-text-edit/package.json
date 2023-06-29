@@ -1,0 +1,16 @@
+{
+  "name": "azure-blob-text-edit",
+  "version": "1.0.0",
+  "description": "The following code demostrates how to use <a href=\"https://developer.adobe.com/photoshop/photoshop-api-docs/api/#operation/text\">Photoshop Text API</a>",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/storage-blob": "^12.14.0",
+    "request": "^2.88.2"
+  }
+}
