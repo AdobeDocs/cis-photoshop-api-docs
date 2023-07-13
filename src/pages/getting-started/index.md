@@ -26,16 +26,21 @@ Here are the steps to get started with the Photoshop APIs.
 1. Click on the blue “Generate access token in I/O console” button.
 ![Screenshot](images/GenerateAccess.png)
 
-1. You should end up on a screen similar to the picture below.
-![Screenshot](images/Step9_new.png#1)
+1. You should end up on a screen similar to the picture below. Click on the “Generate access token” button.
+![Screenshot](images/GenerateAccessConsole.png)
+
+1. Scroll down on this page to find "Generate Custom JWT" box.
+![Screenshot](images/Jwt.png)
 
 1. Now its time to grab that config.zip file we mentioned earlier. Unzip the file and open the private.key documents.
 ![Screenshot](images/PrivateKey.png)
 
-1. Copy the entire contents of the file including “-----BEGIN PRIVATE KEY-----” and “-----END PRIVATE KEY-----” portions
-1. Paste them into “Generate access token” section and click on “Generate token”
-1. Congrats! You have just created a JWT token. You can copy the token from **Access Token**:
-![Screenshot](images/Step10_new.png#2)
+1. Copy the entire contents of the file including “-----BEGIN PRIVATE KEY-----” and “-----END PRIVATE KEY-----” portions. Paste them into “Generate Custom JWT” section and click on “Generate token”
+1. You will see a screen like below. Copy the "Sample cURL command" and run it in your terminal.
+![Screenshot](images/Token.png)
+
+1. Congrats! You have just created a Bearer token. You can copy the token from **access_token**:
+![Screenshot](images/TokenTerminal.png)
 
 Please note that token expires every 24 hours and you will have to generate a new one after it expires. See [Automating your JWT token](/authentication/#automating-your-jwt-token) for information on how to automate this process for your application.
 
@@ -77,12 +82,17 @@ You can also directly go to Adobe I/O Console to signup. This section is alterna
 1. Select **OPTION1 Generate a key pair** and click **Generate keypair**:
 ![Screenshot](images/Step6.png)
 You should see a zip file named **config.zip** in your Downloads folder.
-1. Open the contents of the zip and locate the file name **private.key**.
-1. Open the file named **private.key** in a text editor like Atom or Sublime.
-1. Copy the entire contents of the file and paste it in your project page in the section labeled **Generate access token** and click on **Generate Token** on the bottom right hand corner:
-![Screenshot](images/Step9_new.png#1)
-1. Congrats! You have just created a JWT token. You can copy the token from **Access Token**:
-![Screenshot](images/Step10_new.png#2)
+1. Click on the “Generate access token” button on your project page.
+![Screenshot](images/GenerateAccessConsole.png)
+1. Scroll down on this page to find "Generate Custom JWT" box.
+![Screenshot](images/Jwt.png)
+1. Now its time to grab that config.zip file we mentioned earlier. Unzip the file and open the private.key documents.
+![Screenshot](images/PrivateKey.png)
+1. Copy the entire contents of the file including “-----BEGIN PRIVATE KEY-----” and “-----END PRIVATE KEY-----” portions. Paste them into “Generate Custom JWT” section and click on “Generate token”
+1. You will see a screen like below. Copy the "Sample cURL command" and run it in your terminal.
+![Screenshot](images/Token.png)
+1. Congrats! You have just created a Bearer token. You can copy the token from **access_token**:
+![Screenshot](images/TokenTerminal.png)
 
 ## Automating your JWT token#
 
