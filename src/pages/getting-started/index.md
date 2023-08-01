@@ -28,9 +28,13 @@ Here are the steps to get started with the Photoshop APIs.
 
 1. You should end up on a screen similar to the picture below.
 ![Screenshot](images/GenerateAccessTokenConsole.png)
+=======
+1. You should end up on a screen similar to the picture below. Click on the “Generate access token” button.
+![Screenshot](images/GenerateAccessConsole.png)
 
 1. Click on "Generate access token" button.
 ![Screenshot](images/CopyAccessTokenConsole.png)
+
 
 1. Congrats! You have just created a token. You can copy the token by clicking the **Copy** button:
 
@@ -39,6 +43,7 @@ Here are the steps to get started with the Photoshop APIs.
 
 1. You should end up on a screen similar to the picture below. You can now **Copy** the command.
 ![Screenshot](images/ProgrammaticToken.png)
+
 
 Please note that token expires every 24 hours and you will have to generate a new one after it expires. See [Automating your JWT token](/authentication/#automating-your-jwt-token) for information on how to automate this process for your application.
 
@@ -77,6 +82,7 @@ You can also directly go to Adobe I/O Console to signup. This section is alterna
 ![Screenshot](images/Step4.png)
 1. Select the **Adobe Photoshop APIs (Trial)** and click on **Next**:
 ![Screenshot](images/Step5.png)
+
 1. Click on **Save configured API**:
 ![Screenshot](images/ServicePrincipal.png)
 Default selection for type of Authentication is made for **OAuth Server-to-Server** and you should keep it. Service Account(JWT) authentication will be deprecated soon.  
