@@ -16,29 +16,28 @@ Here are the steps to get started with the Photoshop APIs.
 1. Click on the blue "Sign up" button.
 ![Screenshot](images/Step2.png)
 
-1. Fill the "Sign up for free trial" Form and Submit.
-![Screenshot](images/TrialForm.png)
-
-1. Enter a new project name and check the box to agree to the Adobe developer terms.
-1. Click on the blue “Create credentials” button.
-![Screenshot](images/CreateCredentialOnEasyBake.png)
-
-1. Click on the blue “Generate access token in I/O console” button.
-![Screenshot](images/GenerateAccessOnEasyBake.png)
+1. Enter a new project name and check the box to agree to the Adobe developer terms. Click on the blue “Create credentials” button.
+![Screenshot](images/CreateCredentialsOnEasyBake.png)
 
 1. You should end up on a screen similar to the picture below.
-![Screenshot](images/GenerateAccessTokenConsole.png)
-=======
+![Screenshot](images/GenerateAccessTokenEasyBake.png)
+
+1. You can click on "View cURL command" under "Generate Access token" section and copy the command to generate token programmatically.
+![Screenshot](images/GenerateCurlCmdEasyBake.png)
+You can now **Copy** the command.
+
+1. Alternatively you can click on "Manage credentials in Console" to go to IO console and get the token.
+![Screenshot](images/GenerateAccessTokenEasyBake.png)
+
 1. You should end up on a screen similar to the picture below. Click on the “Generate access token” button.
 ![Screenshot](images/GenerateAccessConsole.png)
 
-1. Click on "Generate access token" button.
+1. You will see the screen with the access token generated.
 ![Screenshot](images/CopyAccessTokenConsole.png)
-
 
 1. Congrats! You have just created a token. You can copy the token by clicking the **Copy** button:
 
-1. If you would like to generate token programmatically , you can click on "View cURL command" and copy the command.
+1. If you would like to generate token programmatically as you did on step 6, you can click on "View cURL command" and copy the command.
 ![Screenshot](images/viewCurlOnConsole.png)
 
 1. You should end up on a screen similar to the picture below. You can now **Copy** the command.
