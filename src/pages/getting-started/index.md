@@ -16,31 +16,33 @@ Here are the steps to get started with the Photoshop APIs.
 1. Click on the blue "Sign up" button.
 ![Screenshot](images/Step2.png)
 
-1. Fill the "Sign up for free trial" Form and Submit.
-![Screenshot](images/TrialForm.png)
+1. Enter a new project name and check the box to agree to the Adobe developer terms. Click on the blue “Create credentials” button.
+![Screenshot](images/CreateCredentialsOnEasyBake.png)
 
-1. Enter a new project name and check the box to agree to the Adobe developer terms.
-1. Click on the blue “Create credentials” button and keep an eye out for the *config.zip* file that will automatically download.
-![Screenshot](images/CreateCredential.png)
+1. You should end up on a screen similar to the picture below.
+![Screenshot](images/GenerateAccessTokenEasyBake.png)
 
-1. Click on the blue “Generate access token in I/O console” button.
-![Screenshot](images/GenerateAccess.png)
+1. You can click on "View cURL command" under "Generate Access token" section and copy the command to generate token programmatically.
+![Screenshot](images/GenerateCurlCmdEasyBake.png)
+You can now **Copy** the command.
+
+1. Alternatively you can click on "Manage credentials in Console" to go to IO console and get the token.
+![Screenshot](images/GenerateAccessTokenEasyBake.png)
 
 1. You should end up on a screen similar to the picture below. Click on the “Generate access token” button.
 ![Screenshot](images/GenerateAccessConsole.png)
 
-1. Scroll down on this page to find "Generate Custom JWT" box.
-![Screenshot](images/Jwt.png)
+1. You will see the screen with the access token generated.
+![Screenshot](images/CopyAccessTokenConsole.png)
 
-1. Now its time to grab that config.zip file we mentioned earlier. Unzip the file and open the private.key documents.
-![Screenshot](images/PrivateKey.png)
+1. Congrats! You have just created a token. You can copy the token by clicking the **Copy** button:
 
-1. Copy the entire contents of the file including “-----BEGIN PRIVATE KEY-----” and “-----END PRIVATE KEY-----” portions. Paste them into “Generate Custom JWT” section and click on “Generate token”
-1. You will see a screen like below. Copy the "Sample cURL command" and run it in your terminal.
-![Screenshot](images/Token.png)
+1. If you would like to generate token programmatically as you did on step 6, you can click on "View cURL command" and copy the command.
+![Screenshot](images/viewCurlOnConsole.png)
 
-1. Congrats! You have just created a Bearer token. You can copy the token from **access_token**:
-![Screenshot](images/TokenTerminal.png)
+1. You should end up on a screen similar to the picture below. You can now **Copy** the command.
+![Screenshot](images/ProgrammaticToken.png)
+
 
 Please note that token expires every 24 hours and you will have to generate a new one after it expires. See [Automating your JWT token](/authentication/#automating-your-jwt-token) for information on how to automate this process for your application.
 
@@ -79,32 +81,22 @@ You can also directly go to Adobe I/O Console to signup. This section is alterna
 ![Screenshot](images/Step4.png)
 1. Select the **Adobe Photoshop APIs (Trial)** and click on **Next**:
 ![Screenshot](images/Step5.png)
-1. Select **OPTION1 Generate a key pair** and click **Generate keypair**:
-![Screenshot](images/Step6.png)
-You should see a zip file named **config.zip** in your Downloads folder.
-1. Click on the “Generate access token” button on your project page.
-![Screenshot](images/GenerateAccessConsole.png)
-1. Scroll down on this page to find "Generate Custom JWT" box.
-![Screenshot](images/Jwt.png)
-1. Now its time to grab that config.zip file we mentioned earlier. Unzip the file and open the private.key documents.
-![Screenshot](images/PrivateKey.png)
-1. Copy the entire contents of the file including “-----BEGIN PRIVATE KEY-----” and “-----END PRIVATE KEY-----” portions. Paste them into “Generate Custom JWT” section and click on “Generate token”
-1. You will see a screen like below. Copy the "Sample cURL command" and run it in your terminal.
-![Screenshot](images/Token.png)
-1. Congrats! You have just created a Bearer token. You can copy the token from **access_token**:
-![Screenshot](images/TokenTerminal.png)
 
-## Automating your JWT token#
+1. Click on **Save configured API**:
+![Screenshot](images/ServicePrincipal.png)
+Default selection for type of Authentication is made for **OAuth Server-to-Server** and you should keep it. Service Account(JWT) authentication will be deprecated soon.  
+1. Click on **Generate access token**:
+![Screenshot](images/GenerateAccessTokenConsole.png)
+1. Congrats! You have just created a token. You can **copy** the token :
+![Screenshot](images/ProgrammaticToken.png)
+
+## Automating your token generation#
 
 Check out these modules for a quick path to automating your token retrieval:
 - [Photoshop API SDK](https://github.com/adobe/adobe-photoshop-api-sdk)
-- [JWT Instructions for Python](https://www.datanalyst.info/python/adobe-io-user-management/adobe-io-jwt-authentication-with-python/)
-- [JWT Instructions for Node](https://www.npmjs.com/package/@adobe/jwt-auth)
+- [Sample App](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/jwt-sample-app) with an example of a call to Photoshop API. The token is generated programmatically in this app. You can follow Step 11 [here](./getting-started/#get-access) to generate an access token programmatically for your integration.
 
-## Additional Service Token and JWT Information
+## Additional Information
 
-You can find details on interacting with Adobe IMS API’s and authentication in general
-1. [General Authentication Information](https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/AuthenticationOverview/AuthenticationGuide.md)
-2. [JWT/Service Token Authentication](https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/JWT/JWT.md)
-3. [IMS API’s](https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/Resources/IMS.md)
-4. [JWT Sample Code](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/jwt-sample-app)
+You can find details on interacting with Adobe's authentication in
+[General Authentication Information](https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/AuthenticationOverview/AuthenticationGuide.md)

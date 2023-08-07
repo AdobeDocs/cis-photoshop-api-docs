@@ -1,5 +1,4 @@
-const auth = require("@adobe/jwt-auth");
-let URL = require('url') 
+let URL = require('url')
 let AWS = require('aws-sdk')
 const fs = require("fs")
 const request = require('request')
@@ -14,11 +13,7 @@ const endpoint = "https://image.adobe.io/pie/psdService/smartObject"
 // VISIT https://developer.adobe.com/console/projects to obtain the following information
 const imsConfig = {
   clientId: "YOUR_ADOBE_CLIENT_ID",
-  clientSecret: "YOUR_ADOBE_CLIENT_SECRET",
-  technicalAccountId: "YOUR_ADOBE_TECH_ACCOUNT_ID",
-  orgId: "YOUR_ADOBE_ORG_ID",
-  metaScopes: ["ent_ccas_sdk"],
-  privateKey: fs.readFileSync("/PATH/TO/YOUR/private.key"),
+  clientSecret: "YOUR_ADOBE_CLIENT_SECRET"
 };
 
 // FILL OUT INFORMATION ABOUT YOUR AZURE BLOB STORAGE
@@ -35,9 +30,31 @@ const smartObjectLayerName = "NAME_OF_THE_SMARTOBJECT_LAYER";
 /**********************************************************************/
 /**********************************************************************/
 
-async function genearteIMSToken(){
-  let creds = await auth(imsConfig)
-  return creds;
+async function generateIMSToken() {
+  const url = 'https://ims-na1.adobelogin.com/ims/token/v3';
+  const options = {
+    method: 'POST',
+    url: url,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    form: {
+      grant_type: 'client_credentials',
+      client_id: imsConfig.clientId,
+      client_secret: imsConfig.clientSecret,
+      scope: 'openid,AdobeID,read_organizations'
+    }
+  };
+
+  return new Promise((resolve, reject) => {
+    request(options, (err, res, body) => {
+      if(err || res.statusCode >= 400) {
+        reject( err || body )
+      }else{
+        resolve( body )
+      }
+    })
+  })
 }
 
 async function getSignedURL(bucket, destKey, region, op){
@@ -73,7 +90,7 @@ async function postPhotoshopAPI(endpoint, apiKey, token, requestBody){
       }else{
         resolve( body )
       }
-    })    
+    })
   })
 }
 
@@ -101,13 +118,14 @@ async function pollStatus(responseBody, apiKey, token){
         }
       })
     }
-    let intervalId = setInterval(pollFunction, 1000)  
+    let intervalId = setInterval(pollFunction, 1000)
   })
 }
 
 
 async function main(){
-  let creds = await genearteIMSToken();
+  let authDetails = await generateIMSToken();
+  let creds = JSON.parse(authDetails);
   let inputUrl = await getSignedURL(s3BucketName, s3InputPath, awsRegion, 'getObject')
   let replacementImageUrl = await getSignedURL(s3BucketName, s3ReplacementImagePath, awsRegion, 'getObject')
   let outputUrl = await getSignedURL(s3BucketName, s3OutputPath, awsRegion, 'putObject')

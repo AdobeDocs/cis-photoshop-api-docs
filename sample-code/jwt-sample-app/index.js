@@ -10,8 +10,8 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-const auth = require('@adobe/jwt-auth')
 const AWS = require('aws-sdk')
+//Define your own config file setup. An example config is attached just with service url
 const config = require('./config.json')
 const fs = require('fs')
 const request = require('request-promise')
@@ -21,9 +21,9 @@ const util = require("util")
 /* eslint no-console: 0 */
 
 /* Declare service endpoints */
-const documentManifestUrl = `${config.services.psdService}/documentManifest`
-const renditionCreateUrl = `${config.services.psdService}/renditionCreate`
-const documentOperationsUrl = `${config.services.psdService}/documentOperations`
+const documentManifestUrl = `${config.psdService}/documentManifest`
+const renditionCreateUrl = `${config.psdService}/renditionCreate`
+const documentOperationsUrl = `${config.psdService}/documentOperations`
 
 /* Initialize S3 object -- we must use signatureVersion: 'v4' for presigned PUT urls */
 const region = config.sample_file.s3_region || "us-east-1"
@@ -33,27 +33,36 @@ const S3 = new AWS.S3({ apiVersion: '2006-03-01', signatureVersion: 'v4', region
 const statusRetryMillis = 200
 const statusRetries = 20
 
-/* Given the settings in the config file, create a config for @adobe/jwt-auth */
-async function buildJWTConfig () {
-  var keyFileName = config.identity.private_key_file
-  const readFile = util.promisify(fs.readFile)
-  const data = await readFile(keyFileName)
-  let privateKey = data.toString()
+const imsConfig = {
+  clientId: "YOUR_ADOBE_CLIENT_ID",
+  clientSecret: "YOUR_ADOBE_CLIENT_SECRET",
+};
 
-  // get last element of claim to use as metaScope
-  const claim = config.identity.claim
-  const metaScope = claim.substr(claim.lastIndexOf('/')+ 1)
+async function generateIMSToken() {
+  const url = 'https://ims-na1.adobelogin.com/ims/token/v3';
+  const options = {
+    method: 'POST',
+    url: url,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    form: {
+      grant_type: 'client_credentials',
+      client_id: imsConfig.clientId,
+      client_secret: imsConfig.clientSecret,
+      scope: 'openid,AdobeID,read_organizations'
+    }
+  };
 
-  return {
-    clientId: config.identity.client_id,
-    clientSecret: config.identity.client_secret,
-    technicalAccountId: config.identity.subject,
-    orgId: config.identity.issuer,
-    metaScopes: [
-      metaScope
-    ],
-    privateKey
-  }
+  return new Promise((resolve, reject) => {
+    request(options, (err, res, body) => {
+      if(err || res.statusCode >= 400) {
+        reject( err || body )
+      }else{
+        resolve( body )
+      }
+    })
+  })
 }
 
 /* Use the AWS SDK to generate a presigned GET url for our sample file in S3 */
@@ -266,11 +275,12 @@ function removeSignature(presignedUrl) {
 /* Main logic is here, using async waterfall */
 async function main () {
   writeStatus('1. START')
-  writeStatus('2. Build config for JWT')
-  const jwt_config = await buildJWTConfig()
+  writeStatus('2. Get IMS Token')
+  const authDetails = await generateIMSToken();
+  let authInfo = JSON.parse(authDetails);
+  console.log(authInfo)
 
-  writeStatus('3. Request service token')
-  const authInfo = await auth(jwt_config)
+  writeStatus('3. Request access token')
   const token = authInfo.access_token
 
   const bucket = config.sample_file.s3_bucket
