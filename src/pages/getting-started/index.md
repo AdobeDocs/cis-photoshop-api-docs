@@ -38,7 +38,7 @@ You can now **Copy** the command.
 1. Congrats! You have just created a token. You can copy the token by clicking the **Copy** button:
 
 1. If you would like to generate token programmatically as you did on step 6, you can click on "View cURL command" and copy the command.
-![Screenshot](images/viewCurlOnConsole.png)
+![Screenshot](images/ViewCurlOnConsole.png)
 
 1. You should end up on a screen similar to the picture below. You can now **Copy** the command.
 ![Screenshot](images/ProgrammaticToken.png)
