@@ -25,6 +25,10 @@
             "description": "Each item contains an object with photoshop action"
           }
         },
+        "costOptimization": {
+          "type": "boolean",
+          "description": "If true, play actions using low operating costs stack."
+        },
         "fonts": {
           "$ref": "file_input.schema.json#/definitions/input_objects",
           "description": "An array of font objects you wish use when executing the action."
