@@ -27,7 +27,8 @@
             "selectSubject",
             "selectObject",
             "selectSky",
-            "selectSkin"
+            "selectSkin",
+            "depthMap"
           ]
         },
         "version":{
