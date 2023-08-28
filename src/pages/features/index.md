@@ -46,7 +46,7 @@ Similar to the Photoshop Actions endpoint, this api also allows you to apply Pho
 - Ability to modify the payload converting your static actions into a dynamic one.
 - You don’t need to upload and store your actions as you do with the Photoshop Actions endpoint.
 
-You can find the api reference guide [here](../api/#operation/actionJSON).
+You can find the api documentation guide [here](../api/#operation/actionJSON).
 We have an example of ActionJSON with the same image and Action file from our Photoshop Actions example but modified the final output color to make it black and white.
 
 ![alt image](./ps_action_json_example_bw.png?raw=true "Original Image")
@@ -362,7 +362,7 @@ Example of Image mask with a sample image.
 
 Remove Background and Image Mask APIs are powered by Adobe’s Artificial Intelligence Technology and Photoshop. The APIs can identify the main subject of an image and produce two types of outputs. You can create a greyscale [mask](https://en.wikipedia.org/wiki/Layers_(digital_image_editing)#Layer_mask) png file that you can composite onto the original image (or any other).  You can also create remove background where the mask has already composited onto your original image so that everything except the main subject has been removed.
 
-The APIs are documented at [Photoshop API Reference](../api/#tag/Photoshop)
+The APIs are documented at [Photoshop API Documentation](../api/#tag/Photoshop)
 
 
 ## Lightroom

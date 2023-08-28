@@ -34,7 +34,7 @@ module.exports = {
         path: '/code-sample/'
       },
       {
-        title: 'API Reference',
+        title: 'API Documentation',
         path: '/api/'
       },
       {
