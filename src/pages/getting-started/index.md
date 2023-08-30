@@ -38,7 +38,7 @@ To access the Photoshop APIs, youâ€™ll need to be authenticated. For that, youâ€
   `NOTE: Your token will expire every 60 minutes and will need to be refreshed after it expires.`
 
 10. Now select Next on the wizard to see the options to automate the token generation process and build your application using [Photoshop API SDK](https://github.com/adobe/adobe-photoshop-api-sdk) and explore our APIs by looking at the [Photoshop API Documentation](../api/)
-![Screenshot](images/Build.png)
+![Screenshot](images/BuildApp.png)
 
 ## Getting started from Adobe I/O Console
 
