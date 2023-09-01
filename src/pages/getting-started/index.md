@@ -22,7 +22,7 @@ If you would like, you can edit the Project Name to enter a name of your choice.
 ![Screenshot](images/CreateCredential.png)
 
 4. You should end up on a screen similar to the picture below:
-![Screenshot](images/WelcomePSAPI.png)
+![Screenshot](images/WelcomePhotoshopAPI.png)
 
 5. Congratulations! You have successfully created an Client ID(API Key). Now select Next to generate your access token.
 ![Screenshot](images/GenerateTokenWizard.png)
@@ -36,8 +36,7 @@ If you would like, you can edit the Project Name to enter a name of your choice.
 8. You should receive the response 'Welcome to Photoshop API' in your Terminal or Command prompt.
 ![Screenshot](images/HelloworldCurlCmd.png)
 
-9. Congratulations! Your credentials are good.
-  `NOTE: Your token will expire every 60 minutes and will need to be refreshed after it expires.`
+9. Congratulations! You just made your first request to the Photoshop API.
 
 10. Now select Next on the wizard to see the options to automate the token generation process and build your application using [Photoshop API SDK](https://github.com/adobe/adobe-photoshop-api-sdk) and explore our APIs by looking at the [Photoshop API Documentation](../api/)
 ![Screenshot](images/BuildApp.png)
@@ -77,12 +76,12 @@ If you are using Windows machine don't use the backslash for the curl commands. 
 curl --request GET --url https://image.adobe.io/pie/psdService/hello --header "Authorization: Bearer <YOUR_ACCESS_TOKEN>" --header "x-api-key: <YOUR_CLIENT_ID>"
 ```
 Congratulations! You just made your first request to the Photoshop API.
-`NOTE: Your token will expire every 60 minutes and will need to be refreshed after it expires.`
 
-Go [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample-code/jwt-sample-app/index.js) to learn more about automating your token
+## Automate Token
+Note that your token will expire every 60 minutes and will need to be refreshed after it expires. You can automate the token generation by referring to our sample code in node.js [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample-code/jwt-sample-app/index.js)
 
 ## Build something cool#
-
-Check out this module and API documentation to build your application with Photoshop API:
-- [Photoshop API SDK](https://github.com/adobe/adobe-photoshop-api-sdk)
+You have now Access Token and Client Id. You can use that to build your application using Photoshop API.
+Check out this SDK and API documentation for that.
+- [Photoshop API SDK](https://github.com/adobe/adobe-photoshop-api-sdk#readme)
 - [Photoshop API Documentation](../api/)
