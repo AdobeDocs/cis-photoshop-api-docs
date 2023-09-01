@@ -9,6 +9,7 @@ contributors:
 To access the Photoshop APIs, you’ll need to be authenticated. For that, you’ll need an Authorization Token and an API Key. Follow the steps below to gain access and make your first `hello world` call.
 
 ## Get access
+### Getting started from Photoshop API Get Started page
 
 1. Go to https://developer.adobe.com/photoshop/api/signup/?ref=signup and sign in to your developer account
 ![Screenshot](images/LandingPage.png)
@@ -16,13 +17,14 @@ To access the Photoshop APIs, you’ll need to be authenticated. For that, you�
 2. Sign up and follow the prompts.
 ![Screenshot](images/SignUp.png)
 
-3. Enter a new project name, if you want to change the existing one, and check the box to agree to the Adobe developer terms. Then, select Create credentials.
+3. A new project with Project Name and your Organization will be populated. Check the box to agree to the Adobe developer terms. Then, select Create credentials.
+If you would like, you can edit the Project Name to enter a name of your choice.
 ![Screenshot](images/CreateCredential.png)
 
 4. You should end up on a screen similar to the picture below:
 ![Screenshot](images/WelcomePSAPI.png)
 
-5. Congratulations! You have successfully created an API Key (Client ID). Now select Next to generate your access token.
+5. Congratulations! You have successfully created an Client ID(API Key). Now select Next to generate your access token.
 ![Screenshot](images/GenerateTokenWizard.png)
 
 6. To generate the token, copy the cURL command by clicking on the Copy button, then paste it into the Terminal (Mac) or Command Prompt (Windows). Press Enter. Look through the JSON response on your terminal for the 'access_token' credential. You’ll need it in the next step.
@@ -40,9 +42,9 @@ To access the Photoshop APIs, you’ll need to be authenticated. For that, you�
 10. Now select Next on the wizard to see the options to automate the token generation process and build your application using [Photoshop API SDK](https://github.com/adobe/adobe-photoshop-api-sdk) and explore our APIs by looking at the [Photoshop API Documentation](../api/)
 ![Screenshot](images/BuildApp.png)
 
-## Getting started from Adobe I/O Console
+### Getting started from Adobe I/O Console
 
-You can also directly go to Adobe I/O Console to signup. This section is alternative to [Get access](#get-access), if you **have** already signed up.
+You can also directly go to Adobe I/O Console to signup. This section is alternative to [Getting started from Photoshop API Get Started page](#getting-started-from-photoshop-api-get-started-page).
 1. Go to https://developer.adobe.com/console/home and **sign in to the IO Console.**
 2. Select **Create new project** under the **Quick start** section on the middle of your screen:
 ![Screenshot](images/CreateNewProjectConsole.png)
@@ -55,7 +57,7 @@ You can also directly go to Adobe I/O Console to signup. This section is alterna
 Default selection for type of Authentication is made for **OAuth Server-to-Server** and you should keep it. Service Account(JWT) authentication will be deprecated soon.  
 6. Select **Generate access token**:
 ![Screenshot](images/GenerateAccessTokenFromConsole.png)
-7. Congrats! You have just created a token. You can **copy** the token :
+7. Congratulations! You have just created a token. You can **copy** the token :
 ![Screenshot](images/AccessTokenCurlConsole.png)
 8. Once you’ve created your token, you can follow the steps below to make your first API call.
    - Open your terminal and paste the code below.
