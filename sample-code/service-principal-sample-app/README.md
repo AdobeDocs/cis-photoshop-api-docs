@@ -1,11 +1,11 @@
-# Photoshop API JWT Example: Node.js
+# Photoshop API  Example: Node.js
 
-This sample app will show you how to use Adobe Photoshop APIs with JWT using Node.js.
+This sample app will show you how to use Adobe Photoshop APIs with Service Principal using Node.js.
 
 After setting up the sample, you will have a Node.js app that:
 
-1. Generates a JWT for your credentials
-1. Obtains an access token for the JWT
+1. Generates a Service Principal for your credentials
+1. Obtains an access token
 1. Obtains a pre-signed url from AWS for Photoshop file in S3
 1. Get the document manifest from the Photoshop file
 1. Obtains a pre-signed PUT url for saving a rendition
@@ -36,7 +36,7 @@ After setting up the sample, you will have a Node.js app that:
 
 ## Prerequisites
 
-Please be sure to follow the instructions about obtaining your JWT credentials under [Service to Service Clients](https://github.com/adobe/photoshop-api-docs/blob/master/README.md#service-to-service-clients)
+Please be sure to follow the instructions about obtaining your credentials [here](https://developer.adobe.com/photoshop/photoshop-api-docs/getting-started/)
 
 You will also need an AWS account with access to S3.
 
@@ -59,15 +59,8 @@ Set your Adobe API credentials in the file `config.json` on these lines:
 
 ```json
         "client_id": "<your API Key (Client ID)>",
-        "client_secret": "<Client secret value provided by Adobe IO>",
-        "private_key_file": "<location of your cert secret, e.g., private.key>",
-        "audience": "<Adobe IO JWT -- value of aud, e.g., https://ims-na1.adobelogin.com/c/000000000000000000000000>",
-        "claim": "<Adobe IO JWT -- key, e.g., https://ims-na1.adobelogin.com/s/ent_default_sdk>",
-        "issuer": "<Adobe IO JWT -- value of iss, e.g, 000000000000000000000000@AdobeOrg>",
-        "subject": "<Adobe IO JWT -- value of sub, e.g., 000000000000000000000000@techacct.adobe.com>"
+        "client_secret": "<Client secret value provided by Adobe IO>"
 ```
-
-The value of `private_key_file` will be the result of the `-keyout` value from creating your private key and public certificate. E.g., `private.key`.
 
 ### Specify the location of a sample file
 
@@ -101,5 +94,5 @@ The app will write output to the console to show progress and results. Many of t
 
 ## Other Resources
 
-- [Adobe Photoshop API Documentation](https://github.com/adobe/photoshop-api-docs)
-- [Adobe JWT Authentication Quick Start](https://github.com/adobeio/adobeio-documentation/blob/master/auth/JWTAuthenticationQuickStart.md)
+- [Adobe Photoshop API Documentation](https://developer.adobe.com/photoshop/photoshop-api-docs/api/)
+- [Adobe Photoshop API SDK](https://github.com/adobe/adobe-photoshop-api-sdk#readme)

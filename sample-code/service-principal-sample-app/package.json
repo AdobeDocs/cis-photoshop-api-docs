@@ -1,7 +1,7 @@
 {
-  "name": "pie-in-the-sky-jwt-sample-node",
+  "name": "service-principal-sample-node",
   "version": "1.0.1",
-  "description": "pie-in-the-sky jwt node example",
+  "description": "service-principal node example",
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js",
