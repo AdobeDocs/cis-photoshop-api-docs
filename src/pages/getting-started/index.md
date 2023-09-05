@@ -78,7 +78,7 @@ curl --request GET --url https://image.adobe.io/pie/psdService/hello --header "A
 Congratulations! You just made your first request to the Photoshop API.
 
 ## Automate Token
-Note that your token will expire every 60 minutes and will need to be refreshed after it expires. You can automate the token generation by referring to our sample code in node.js [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample-code/jwt-sample-app/index.js)
+Note that your token will expire every 60 minutes and will need to be refreshed after it expires. You can automate the token generation by referring to our sample code in node.js [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample-code/service-principal-sample-app/index.js)
 
 ## Build something cool#
 You have now Access Token and Client Id. You can use that to build your application using Photoshop API.
