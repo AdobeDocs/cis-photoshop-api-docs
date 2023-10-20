@@ -47,25 +47,25 @@ Similar to the Photoshop Actions endpoint, this api also allows you to apply Pho
 - You don’t need to upload and store your actions as you do with the Photoshop Actions endpoint.
 
 You can find the api documentation guide [here](../api/#operation/actionJSON).
-We have an example of ActionJson with the same image and Action file from our Photoshop Actions example but modified the final output color to make it black and white.
+We have an example of actionJSON with the same image and Action file from our Photoshop Actions example but modified the final output color to make it black and white.
 
 ![alt image](./ps_action_json_example_bw.png?raw=true "Original Image")
 Sample code can be found [here](../code-sample/#executing-an-actionjson)
 
-ActionJson endpoint has the capability of supporting multiple inputs as a parameter passed to the actions.
+actionJSON endpoint has the capability of supporting multiple inputs as a parameter passed to the actions.
 An example can be found [here](../code-sample/#executing-an-actionjson-with-multiple-inputs)
 
-Here is a video showing how to work with ActionJson
+Here is a video showing how to work with actionJSON
 
 <Media slots="video" width="750" height="500"/>
 
 <https://youtu.be/giFJ6qbez_I?feature=shared>
 
 
-#### How to create an ActionJson
-You can create a new ActionJson or you can convert an existing .atn file to an ActionJson. Here are some ways to get an ActionJson
+#### How to create an actionJSON
+You can create a new actionJSON or you can convert an existing .atn file to an actionJSON. Here are some ways to get an actionJSON
 
-**Create new ActionJson using developer mode.**
+**Create new actionJSON using developer mode.**
 
 If you have “developer mode” enabled in Photoshop follow the instructions below . If not follow how to enable developer mode [here](/features/#how-to-enable-developer-mode).
 
@@ -84,7 +84,7 @@ Once you are done recording your action:
 
 The file will be saved to the directory you chose when you named your file.
 
-**Create new ActionJson using actions panel**
+**Create new actionJSON using actions panel**
 
 - Open Photoshop
 - Click on "Open action panel”
@@ -95,16 +95,16 @@ The file will be saved to the directory you chose when you named your file.
 - Modify the file to trim out the actions (example is shown below in the code sample)
 - Use the action in your payload
 
-**Convert an existing Action (.atn) file into ActionJson**
+**Convert an existing Action (.atn) file into actionJSON**
 
-- We have an API that let you pass an .atn file and get an ActionJson. This is the Simplest and easiest way to get an ActionJson. You can find the api documentation guide [here](../api/#operation/actionJsonCreate)
+- We have an API that let you pass an .atn file and get an actionJSON. This is the Simplest and easiest way to get an actionJSON. You can find the api documentation guide [here](../api/#operation/actionJsonCreate)
 
-**Convert an existing Action (.atn) file into ActionJson using Photoshop**
+**Convert an existing Action (.atn) file into actionJSON using Photoshop**
 
 - Open Photoshop
 - Click on "Open action panel”
 - Select “Load action”
-- Choose the action you would like to convert to Action JSON
+- Choose the action you would like to convert to actionJSON
 - Click on copy as Javascript
 - Paste it in any text editor
 - Modify the file to trim out the actions obj blocks (example is shown below in the code sample)
@@ -155,7 +155,7 @@ Remove everything else from the javascript file and copy the array containing `_
  {"_obj":"move","_target":[{"_enum":"ordinal","_ref":"layer","_value":"targetEnum"}],"to":{"_enum":"ordinal","_ref":"layer","_value":"previous"}}
 ]
 ```
-More details about ActionJson can be found [here](https://developer.adobe.com/photoshop/uxp/2022/ps_reference/media/batchplay/)
+More details about actionJSON can be found [here](https://developer.adobe.com/photoshop/uxp/2022/ps_reference/media/batchplay/)
 
 ##### How to enable developer mode
   - Open Photoshop
