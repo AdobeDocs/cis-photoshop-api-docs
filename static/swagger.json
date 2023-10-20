@@ -1284,7 +1284,7 @@ applied to the input image \\\n Generates a PNG file in 3 channel RGB format wit
         "tags": [
           "Photoshop"
         ],
-        "summary": "Execute actionJSON",
+        "summary": "Execute ActionJson",
         "description": " Playback photoshop actions in ActionJSON format.\nTo get status of this job, call [Status API](./#operation/pitsstatus). \\\n To know more about this feature refer [Rendering Conversions](../features/#rendering--conversions)",
         "operationId": "actionJSON",
         "parameters": [
@@ -1418,6 +1418,135 @@ applied to the input image \\\n Generates a PNG file in 3 channel RGB format wit
           {
             "lang": "multiple_input_example",
             "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/actionJSON \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\": [{\"href\": \"string\",\"storage\": \"external\"}],\"options\": {\"additionalImages\": [{\"href\": \"string\",\"storage\": \"external\"}],\"actionJSON\": [{\"ID\": 3,\"_obj\": \"placeEvent\",\"freeTransformCenterState\": {\"_enum\": \"quadCenterState\",\"_value\": \"QCSAverage\"},\"null\": {\"_kind\": \"local\",\"_path\": \"PEGASUS_ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0\"},\"offset\": {\"_obj\": \"offset\",\"horizontal\": {\"_unit\": \"pixelsUnit\",\"_value\": 0},\"vertical\": {\"_unit\": \"pixelsUnit\",\"_value\": 0}}},{\"_obj\": \"autoCutout\",\"sampleAllLayers\": false},{\"_obj\":\"make\",\"at\": {\"_enum\":\"channel\",\"_ref\": \"channel\",  \"_value\": \"mask\"},\"new\": {  \"_class\": \"channel\"},\"using\": {  \"_enum\": \"userMaskEnabled\",\"_value\":\"revealSelection\"}},{\"_obj\": \"set\",\"_target\": [{\"_property\": \"selection\",\"_ref\": \"channel\"  }],\"to\": {  \"_enum\": \"ordinal\",\"_value\": \"allEnum\"}},{\"_obj\": \"align\",\"_target\": [{\"_enum\": \"ordinal\",\"_ref\": \"layer\"  }],\"alignToCanvas\": false,\"using\": {\"_enum\": \"alignDistributeSelector\",  \"_value\": \"ADSBottoms\"}},{\"_obj\": \"align\",\"_target\": [{\"_enum\": \"ordinal\",\"_ref\": \"layer\"  }],\"alignToCanvas\": false,\"using\": {\"_enum\": \"alignDistributeSelector\",\"_value\": \"ADSRights\"}},{\"_obj\": \"set\",\"_target\": [  {\"_property\": \"selection\",\"_ref\": \"channel\"}],\"to\": {\"_enum\": \"ordinal\",\"_value\": \"none\"}}]},\"outputs\":[{\"type\": \"image/jpeg\",\"href\": \"string\",\"storage\": \"external\"}]}'"
+          }
+        ]
+      }
+    },
+    "/pie/psdService/actionJsonCreate": {
+      "post": {
+        "tags": [
+          "Photoshop"
+        ],
+        "summary": "Create ActionJson",
+        "description": " Converts an atn file to actionJson.\nTo get status of this job, call [Status API](./#operation/pitsstatus). \\\n To know more about this feature refer [Rendering Conversions](../features/#rendering--conversions)",
+        "operationId": "actionJsonCreate",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./PITS/post_action_json_create.schema.json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./PITS/api_response_success_schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_400_error_schema.json"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Trial Limit Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_402_error_schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_403_error_schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "shell",
+            "source": "curl --request POST \\\n --url https://image.adobe.io/pie/psdService/actioJsonCreate \\\n --header 'Authorization: Bearer $token' \\\n --header 'content-type: application/json' \\\n --header 'x-api-key: $x-api-key' \\\n --data '{\"inputs\": [{\"storage\": \"external\",\"href\": \"string\"}] \\\n,\"options\": {\"actions\": [{\"actionName\": \"string\"}]}}'"
           }
         ]
       }
