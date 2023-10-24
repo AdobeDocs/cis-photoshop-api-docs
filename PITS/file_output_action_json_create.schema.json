@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "file_output_action_json_create.schema.json",
+  "title": "a file output obect",
+  "description": "Represents the collective fields needed to indicate an output file, destination and format",
+  "definitions": {
+    "output_object": {
+      "type": "object",
+      "description": "An object describing the requested file outputs",
+      "required": [
+        "href",
+        "storage",
+        "type"
+      ],
+      "properties": {
+        "storage": {
+          "$ref": "file_input.schema.json#/definitions/storage"
+        },
+        "href": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "description": "desired image format.",
+          "enum": [
+            "application/json"
+          ],
+          "type": "string"
+        },
+        "overwrite": {
+          "description": "if the output file already exists should it be overwritten. Will eventually support eTags",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "storage": {
+                "pattern": "(^azure|external|dropbox$)",
+                "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox). If you are using presigned url for dropbox or azure, use `storage=\"dropbox\"` or `storage=\"azure\"` else it is `storage=\"external\"`"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "href": {
+                "type": "string",
+                "pattern": "^https://",
+                "description": "Any public url or a presignedURL for the asset output"
+              }
+            }
+          },
+          "else": {
+            "if" : {
+              "properties": {
+                "storage": {
+                  "pattern": "(^cclib$)"
+                }
+              }
+            },
+            "then" : {
+              "properties": {
+                "href": {
+                  "pattern": "^/?(api)/.+",
+                  "description": "A string representing the path to the output CC Libraries file. </br> Not available for the integrations created with JWT authentication or Service Principal."
+                }
+              }
+            },
+            "else" : {
+              "properties": {
+                "href": {
+                  "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
+                  "description": "A string representing the path to the output CC Storage file. </br> Not available for the integrations created with JWT authentication or Service Principal."
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "output_objects": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 25,
+      "description": "An array of hashes describing the output files. Output file format can be `.json` and storage type can be any of `external`, `adobe`, `azure` or `dropbox`. Maximum limit of 25 per request.",
+      "items": {
+        "$ref": "#/definitions/output_object"
+      }
+    }
+  }
+}
