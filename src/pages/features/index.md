@@ -39,7 +39,7 @@ Here are examples of submitting and executing Photoshop Actions.
 In this example we applied a custom Action we created called "Graphic Design."
 ![alt image](./psactions_example.png?raw=true "Original Image")
 
-### ActionJSON
+### ActionJson
 
 Similar to the Photoshop Actions endpoint, this api also allows you to apply Photoshop Actions to an image programmatically. However there are a few key differences which give you added flexibility.
 
@@ -47,18 +47,27 @@ Similar to the Photoshop Actions endpoint, this api also allows you to apply Pho
 - You don’t need to upload and store your actions as you do with the Photoshop Actions endpoint.
 
 You can find the api documentation guide [here](../api/#operation/actionJSON).
-We have an example of ActionJSON with the same image and Action file from our Photoshop Actions example but modified the final output color to make it black and white.
+We have an example of actionJSON with the same image and Action file from our Photoshop Actions example but modified the final output color to make it black and white.
 
 ![alt image](./ps_action_json_example_bw.png?raw=true "Original Image")
 Sample code can be found [here](../code-sample/#executing-an-actionjson)
 
-ActionJSON endpoint has the capability of supporting multiple inputs as a parameter passed to the actions.
+actionJSON endpoint has the capability of supporting multiple inputs as a parameter passed to the actions.
 An example can be found [here](../code-sample/#executing-an-actionjson-with-multiple-inputs)
 
-#### How to create an actionJSON
-**Create new action using developer mode.**
+Here is a video showing how to work with actionJSON
 
-If you have “developer mode” enabled in Photoshop follow the instructions below if not skip to the next section. For more information on how to enable developer mode go [here](/features/#how-to-enable-developer-mode).
+<Media slots="video" width="750" height="500"/>
+
+<https://youtu.be/giFJ6qbez_I?feature=shared>
+
+
+#### How to create an actionJSON
+You can create a new actionJSON or you can convert an existing .atn file to an actionJSON. Here are some ways to get an actionJSON
+
+**Create new actionJSON using developer mode.**
+
+If you have “developer mode” enabled in Photoshop follow the instructions below . If not follow how to enable developer mode [here](/features/#how-to-enable-developer-mode).
 
 - Open Photoshop desktop application
 - Click on  "Plugins” from the top menu
@@ -67,7 +76,7 @@ If you have “developer mode” enabled in Photoshop follow the instructions be
 - Name your file and click on “Save”
 - You can now make edits to your document and all of your edits will be saved
 
-**Once you are done recording your action:**
+Once you are done recording your action:
 
 - Click on  "Plugins” from the top menu
 - Select “Development”
@@ -75,7 +84,7 @@ If you have “developer mode” enabled in Photoshop follow the instructions be
 
 The file will be saved to the directory you chose when you named your file.
 
-**New Action JSON file using Actions panel**
+**Create new actionJSON using actions panel**
 
 - Open Photoshop
 - Click on "Open action panel”
@@ -86,12 +95,16 @@ The file will be saved to the directory you chose when you named your file.
 - Modify the file to trim out the actions (example is shown below in the code sample)
 - Use the action in your payload
 
-**Converting an existing Action (.atn) file into Action Json**
+**Convert an existing Action (.atn) file into actionJSON**
+
+- We have an API that let you pass an .atn file and get an actionJSON. This is the Simplest and easiest way to get an actionJSON. You can find the api documentation guide [here](../api/#operation/actionJsonCreate)
+
+**Convert an existing Action (.atn) file into actionJSON using Photoshop**
 
 - Open Photoshop
 - Click on "Open action panel”
 - Select “Load action”
-- Choose the action you would like to convert to Action JSON
+- Choose the action you would like to convert to actionJSON
 - Click on copy as Javascript
 - Paste it in any text editor
 - Modify the file to trim out the actions obj blocks (example is shown below in the code sample)
