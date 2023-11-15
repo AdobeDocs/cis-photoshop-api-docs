@@ -66,28 +66,24 @@
           "if": {
             "properties": {
               "storage": {
-                "pattern": "(^azure|external|dropbox$)",
-                "description": "Asset stored on an external service (like AWS S3, Azure, Dropbox etc.). If you are using presigned url for dropbox or azure, use `storage=\"dropbox\"` or `storage=\"azure\"` else it is `storage=\"external\"`"
+                "pattern": "(^adobe$)"
               }
             }
           },
           "then": {
             "properties": {
               "href": {
-                "format": "uri",
-                "pattern": "^https://",
-                "description": "Any public url or a presignedURL for the asset output"
+                "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.*",
+                "description": "A string representing the path to the output CC file"
               }
             }
           },
           "else": {
             "properties": {
               "href": {
-                "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.*",
-                "description": "A string representing the path to the output file stored on Adobe's cloud.</br> Not available for the integrations created with JWT authentication or Service Principle."
-              },
-              "storage": {
-                "description" : "Asset stored on Adobe's cloud `adobe`. </br> Not available for the integrations created with JWT authentication or Service Principle."
+                "format": "uri",
+                "pattern": "^https://",
+                "description": "A URI representing the path to the output file"
               }
             }
           }
@@ -98,7 +94,7 @@
       "type": "array",
       "minItems": 1,
       "maxItems": 25,
-      "description": "An array of output objects. each output object will be either 'external' or 'adobe'. Maximum limit of 25 per request.",
+      "description": "An array of output objects. each output object will be either 'external' or 'adobe'. Maximum limit to generate outfiles in one API call is 25.",
       "items": {
         "$ref": "#/definitions/output"
       }
