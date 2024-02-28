@@ -69,3 +69,6 @@ adobe.io/{product}/community/contribute
 ### Launching a deploy
 
 You can deploy using the GitHub actions deploy workflow see [deploy instructions](https://github.com/adobe/gatsby-theme-aio#deploy-to-azure-storage-static-websites).
+
+## How to file an issue (for customers)
+For issues, bugs, questions, or feedback please file a ticket by submitting a form at https://psd-services.zendesk.com/hc/en-us/requests/new
