@@ -36,6 +36,7 @@ The Photoshop and Lightroom API is designed with REST-like principles and uses s
 
 The [Getting Started](../photoshop-api-docs/getting-started/) page will walk you through how to use our API.
 
+
 <br/>
 <br/>
 <br/>
