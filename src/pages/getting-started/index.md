@@ -10,11 +10,11 @@ The first step in accessing the Photoshop and Lightroom APIs is getting authenti
 
 ## Get access
 
-Here are the steps to get started with the Photoshop and Lightroom APIs
+Here are the steps to get started with the Photoshop and Lightroom APIs.
 
-### Getting started from Adobe I/O Console
+### Getting started from Developer Console
 
- If you *have* already been provisioned with access through your organization you will need to create a project in developer console. If you have already got your API key and Secret , you can skip these steps.
+ If you *have* already been provisioned with access through your organization you will need to create a project in developer console. If you have already got your API key, you can skip these steps.
 1. Go to https://developer.adobe.com/console/home and **sign in to the IO Console.**
 2. Select **Create new project** under the **Quick start** section on the middle of your screen:
 ![Screenshot](images/CreateNewProjectConsole.png)
