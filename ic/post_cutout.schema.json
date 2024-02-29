@@ -48,7 +48,7 @@
       "else": {
         "properties": {
           "href": {
-            "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+            "pattern": "^/?(temp|cloud-content|assets)/.+",
             "description": "A string representing the path to the input file stored on Adobe's cloud.</br> Not available for the integrations created with JWT authentication or Service Principle."
           },
           "storage": {
@@ -156,7 +156,7 @@
       "else": {
         "properties": {
           "href": {
-            "pattern": "^/?(files|temp|cloud-content|assets)/.+",
+            "pattern": "^/?(temp|cloud-content|assets)/.+",
             "description": "A string representing the path to the output file stored on Adobe's cloud.</br> Not available for the integrations created with JWT authentication or Service Principle."
           },
           "storage": {

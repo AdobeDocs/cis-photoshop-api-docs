@@ -5,10 +5,12 @@
   "description": "An input object",
   "definitions": {
     "href": {
+      "description": "Either a presignedURL for storage='external' OR Creative Cloud assets path for storage='adobe' ",
       "type": "string",
       "minLength": 1
     },
     "storage": {
+      "description": "Storage platforms supported.",
       "type": "string",
       "enum": [
         "external",
@@ -55,7 +57,7 @@
       "else": {
         "properties": {
           "href": {
-            "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
+            "pattern": "^/?(temp|cloud-content|assets|pubs)/.+",
             "description": "A string representing the path to the input file stored on Adobe's cloud.</br> Not available for the integrations created with JWT authentication or Service Principle."
           },
           "storage": {
