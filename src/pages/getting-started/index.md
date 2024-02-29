@@ -4,61 +4,40 @@ description: Page for Authentication
 contributors:
   - https://github.com/khound
 ---
-# Getting started with Photoshop API
+# Getting started with Photoshop and Lightroom API
 
-To access the Photoshop APIs, you’ll need to be authenticated. For that, you’ll need an Authorization Token and an API Key. Follow the steps below to gain access and make your first `hello world` call.
+The first step in accessing the Photoshop and Lightroom APIs is getting authenticated. For that you will need an Authorization Token and an API Key. With the steps below, we'll show you how to gain access and make your first `hello world` call.
 
 ## Get access
-### Getting started from Photoshop API Get Started page
 
-1. Go to https://developer.adobe.com/photoshop/api/signup/?ref=signup and sign in to your developer account
-![Screenshot](images/LandingPage.png)
-
-2. Sign up and follow the prompts.
-![Screenshot](images/SignUp.png)
-
-3. A new project with Project Name and your Organization will be populated. Check the box to agree to the Adobe developer terms. Then, select Create credentials.
-If you would like, you can edit the Project Name to enter a name of your choice.
-![Screenshot](images/CreateCredential.png)
-
-4. You should end up on a screen similar to the picture below:
-![Screenshot](images/WelcomePhotoshopAPI.png)
-
-5. Congratulations! You have successfully created an Client ID(API Key). Now select Next to generate your access token.
-![Screenshot](images/GenerateTokenWizard.png)
-
-6. To generate the token, copy the cURL command by clicking on the Copy button, then paste it into the Terminal (Mac) or Command Prompt (Windows). Press Enter. Look through the JSON response on your terminal for the 'access_token' credential. You’ll need it in the next step.
-![Screenshot](images/AccessTokenCurlCmd.png)
-
-7. Let's verify your credentials with a call to the 'Hello World' API. Copy the cURL then paste it into the Terminal (Mac) or Command Prompt (Windows) and replace the '$YOUR_ACCESS_TOKEN' section of the code snippet with the token you generated previously.
-![Screenshot](images/TestCredential.png)
-
-8. You should receive the response 'Welcome to Photoshop API' in your Terminal or Command prompt.
-![Screenshot](images/HelloworldCurlCmd.png)
-
-9. Congratulations! You just made your first request to the Photoshop API.
-
-10. Now select Next on the wizard to see the options to automate the token generation process and build your application using [Photoshop API SDK](https://github.com/adobe/adobe-photoshop-api-sdk) and explore our APIs by looking at the [Photoshop API Documentation](../api/)
-![Screenshot](images/BuildApp.png)
+Here are the steps to get started with the Photoshop and Lightroom APIs
 
 ### Getting started from Adobe I/O Console
 
-You can also directly go to Adobe I/O Console to signup. This section is alternative to [Getting started from Photoshop API Get Started page](#getting-started-from-photoshop-api-get-started-page).
+ If you *have* already been provisioned with access through your organization you will need to create a project in developer console. If you have already got your API key and Secret , you can skip these steps.
 1. Go to https://developer.adobe.com/console/home and **sign in to the IO Console.**
 2. Select **Create new project** under the **Quick start** section on the middle of your screen:
 ![Screenshot](images/CreateNewProjectConsole.png)
 3. Choose **Add API**:
 ![Screenshot](images/AddAPIConsole.png)
-4. Select the **Adobe Photoshop API** and click on **Next**:
-![Screenshot](images/SelectAPIConsole.png)
+4. Select the **Photoshop - Firefly and Creative Cloud Automation** and click on **Next**:
+![Screenshot](images/AddAPIConsolePSFF.png)
 5. Select **Save configured API**:
 ![Screenshot](images/ServicePrincipalConsole.png)
-Default selection for type of Authentication is made for **OAuth Server-to-Server** and you should keep it. Service Account(JWT) authentication will be deprecated soon.  
-6. Select **Generate access token**:
+Default selection for type of Authentication is made for **OAuth Server-to-Server** and you should keep it. Service Account(JWT) authentication will be deprecated soon.
+6. Add the Lightroom API to your project by clicking on **Add to Project** and selecting **API**
+![Screenshot](images/AddAnotherAPI.png)
+7. Select the **Lightroom - Firefly and Creative Cloud Automation** and click on **Next**:
+![Screenshot](images/AddAPIConsoleLRFF.png)
+Repeat step 5
+8. Repeat step 6 and select **Remove Background - Firefly and Creative Cloud Automation** and click on **Next**:
+![Screenshot](images/AddAPIConsoleRBFF.png)
+Repeat step 5
+9. Select **Generate access token**:
 ![Screenshot](images/GenerateAccessTokenFromConsole.png)
-7. Congratulations! You have just created a token. You can **copy** the token :
+10. Congratulations! You have just created a token. You can **copy** the token :
 ![Screenshot](images/AccessTokenCurlConsole.png)
-8. Once you’ve created your token, you can follow the steps below to make your first API call.
+11. Once you’ve created your token, you can follow the steps below to make your first API call.
    - Open your terminal and paste the code below.
    - Replace the variables "YOUR_ACCESS_TOKEN" with the token you generated on Adobe I/O Console.
    - Replace <YOUR_CLIENT_ID>. You can find this on the same page you generated your token on.
