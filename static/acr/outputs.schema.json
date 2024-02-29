@@ -83,7 +83,7 @@
           "else": {
             "properties": {
               "href": {
-                "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.*",
+                "pattern": "^/?(temp|cloud-content|assets|pubs)/.*",
                 "description": "A string representing the path to the output file stored on Adobe's cloud.</br> Not available for the integrations created with JWT authentication or Service Principle."
               },
               "storage": {
@@ -98,7 +98,7 @@
       "type": "array",
       "minItems": 1,
       "maxItems": 25,
-      "description": "An array of output objects. each output object will be either 'external' or 'adobe'. Maximum limit of 25 per request.",
+      "description": "An array of output objects. each output object will be either 'external' or 'adobe'. Maximum limit to generate outfiles in one API call is 25.",
       "items": {
         "$ref": "#/definitions/output"
       }

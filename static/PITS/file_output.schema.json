@@ -197,7 +197,7 @@
             "else": {
               "properties": {
                 "href": {
-                  "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
+                  "pattern": "^/?(temp|cloud-content|assets|pubs)/.+",
                   "description": "A string representing the path to the output CC Storage file. </br> Not available for the integrations created with JWT authentication or Service Principle."
                 }
               }
@@ -316,7 +316,7 @@
             "else": {
               "properties": {
                 "href": {
-                  "pattern": "^/?(files|temp|cloud-content|assets|pubs)/.+",
+                  "pattern": "^/?(temp|cloud-content|assets|pubs)/.+",
                   "description": "A string representing the path to the output CC Storage file. </br> Not available for the integrations created with JWT authentication or Service Principle."
                 }
               }
