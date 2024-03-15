@@ -9,4 +9,4 @@ yarn-error.log
 .env
 .yarn/cache
 .yarn/*
-src/pages/api/index.md
+
