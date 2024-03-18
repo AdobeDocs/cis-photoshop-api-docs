@@ -16,7 +16,8 @@
         "azure",
         "dropbox",
         "adobe",
-        "cclib"
+        "cclib",
+        "acp"
       ],
       "default": "external"
     },
@@ -97,32 +98,52 @@
         }
       },
       "else": {
-        "if" : {
+        "if": {
           "properties": {
             "storage": {
               "pattern": "(^cclib$)"
             }
           }
         },
-        "then" : {
+        "then": {
           "properties": {
             "href": {
               "pattern": "^/?(api)/.+",
               "description": "A string representing the path to the input CC Libraries file"
             },
             "storage": {
-              "description" : "Asset stored on Adobe's cclib `cclib`. </br> Not available for the integrations created with JWT authentication or Service Principle."
+              "description": "Asset stored on Adobe's cclib `cclib`. </br> Not available for the integrations created with JWT authentication or Service Principle."
             }
           }
         },
-        "else" : {
-          "properties": {
-            "href": {
-              "pattern": "^/?(temp|cloud-content|assets|pubs)/.+",
-              "description": "A string representing the path to the input CC Storage file. </br> Not available for the integrations created with JWT authentication or Service Principle."
-            },
-            "storage": {
-              "description" : "Asset stored on Adobe's cloud `adobe`. </br> Not available for the integrations created with JWT authentication or Service Principle."
+        "else": {
+          "if": {
+            "properties": {
+              "storage": {
+                "pattern": "(^acp$)"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "href": {
+                "pattern": "^/?(urn:aaid:sc:?(VA6|VA6C2|VA7|IRL1|JPN3|US|APAC|EMEA):).+",
+                "description": "A string representing the urnId to the input ACP storage file"
+              },
+              "storage": {
+                "description": "Asset stored on Adobe's cloud storage `acp`. </br> Not available for the integrations created with JWT authentication or Service Principle."
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "href": {
+                "pattern": "^/?(temp|cloud-content|assets|pubs)/.+",
+                "description": "A string representing the path to the input CC Storage file. </br> Not available for the integrations created with JWT authentication or Service Principle."
+              },
+              "storage": {
+                "description": "Asset stored on Adobe's cloud `adobe`. </br> Not available for the integrations created with JWT authentication or Service Principle."
+              }
             }
           }
         }
@@ -164,10 +185,27 @@
         }
       },
       "else": {
-        "properties": {
-          "href": {
-            "pattern": "^/?(temp|cloud-content|assets|pubs)/.+",
-            "description": "A string representing the path to the input CC file"
+        "if": {
+          "properties": {
+            "storage": {
+              "pattern": "(^acp$)"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "href": {
+              "pattern": "^/?(urn:aaid:sc:?(VA6|VA6C2|VA7|IRL1|JPN3|US|APAC|EMEA):).+",
+              "description": "A string representing the urnId to the input ACP storage file"
+            }
+          }
+        },
+        "else": {
+          "properties": {
+            "href": {
+              "pattern": "^/?(temp|cloud-content|assets|pubs)/.+",
+              "description": "A string representing the path to the input CC file"
+            }
           }
         }
       }
