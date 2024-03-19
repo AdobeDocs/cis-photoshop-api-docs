@@ -46,7 +46,7 @@ Similar to the Photoshop Actions endpoint, this api also allows you to apply Pho
 - Ability to modify the payload converting your static actions into a dynamic one.
 - You don’t need to upload and store your actions as you do with the Photoshop Actions endpoint.
 
-You can find the api documentation guide [here](../api/#operation/actionJSON).
+You can find the api reference guide [here](../api/#operation/actionJSON).
 We have an example of actionJSON with the same image and Action file from our Photoshop Actions example but modified the final output color to make it black and white.
 
 ![alt image](./ps_action_json_example_bw.png?raw=true "Original Image")
@@ -97,7 +97,7 @@ The file will be saved to the directory you chose when you named your file.
 
 **Convert an existing Action (.atn) file into actionJSON**
 
-- We have an API that let you pass an .atn file and get an actionJSON. This is the Simplest and easiest way to get an actionJSON. You can find the api documentation guide [here](../api/#operation/actionJsonCreate)
+- We have an API that let you pass an .atn file and get an actionJSON. This is the Simplest and easiest way to get an actionJSON. You can find the api reference guide [here](../api/#operation/actionJsonCreate)
 
 **Convert an existing Action (.atn) file into actionJSON using Photoshop**
 
@@ -283,7 +283,7 @@ The `/documentOperations` API should primarily be used to make layer and/or docu
 The layer name (or the layer id) will be used by the service to identify the correct layer to operation upon in your PSD.
 
 The `add`, `edit`, `move` and `delete` blocks indicate the action you would like to be taken on a particular layer object. Any layer block passed into the API that is missing one of these attributes will be ignored.
-The `add` and `move` blocks must also supply one of the attributes `insertAbove`, `insertBelow`, `insertInto`, `insertTop` or `insertBottom` to indicate where you want to move the layer to. More details on this can be found in the API documentation.
+The `add` and `move` blocks must also supply one of the attributes `insertAbove`, `insertBelow`, `insertInto`, `insertTop` or `insertBottom` to indicate where you want to move the layer to. More details on this can be found in the API reference.
 
 **Note**: Adding a new layer does not require the ID to be included, the service will generate a new layer id for you.
 
@@ -375,44 +375,7 @@ Example of Image mask with a sample image.
 
 Remove Background and Image Mask APIs are powered by Adobe’s Artificial Intelligence Technology and Photoshop. The APIs can identify the main subject of an image and produce two types of outputs. You can create a greyscale [mask](https://en.wikipedia.org/wiki/Layers_(digital_image_editing)#Layer_mask) png file that you can composite onto the original image (or any other).  You can also create remove background where the mask has already composited onto your original image so that everything except the main subject has been removed.
 
-The APIs are documented at [Photoshop API Documentation](../api/#tag/Photoshop)
-
-
-## Lightroom
-The APIs are documented at [Lightroom API](../api/#tag/Lightroom).
-Any input image format that is supported by Lightroom is also supported by the APIs. To look at the list of these formats in more detail, please refer to: https://helpx.adobe.com/lightroom-classic/help/supported-file-formats.html
-
-At this point the output formats supported are JPG, DNG and PNG.
-
-### AutoTone
-
-Automatically correct exposure, contrast, sharpness, saturation, etc. Code sample [here](../code-sample/#autotone-an-image)<br />
-
-In this example, we automatically adjusted the photo using the AutoTone API.
-![alt image](./autotone_example.png?raw=true "Original Image")
-
-### AutoStraighten
-
-Applies the Auto Upright transformation on an image. Code sample [here](../code-sample/#autostraighten-an-image)
-
-### Presets
-
-Apply one or more XMP Lightroom presets to an image, by referencing preset file(s) stored on cloud. Code sample [here](../code-sample/#apply-presets-to-an-image)
-The preset file can be created by editing an image in lightroom and exporting it as a `.xmp` file.
-The details on how to create a preset can be found [here](https://helpx.adobe.com/lightroom-cc/how-to/photo-presets-lightroom-cc.html).
-If the use case would be to be able to create an `.xmp` file from a set of slider values obtained directly from a user, there are 2 ways to achieve this workflow:
-1. Start with the empty `.xmp` file from [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample-code/lr-sample-app/crs.xml) and add the corresponding slider values
-2. Or please look ahead in this documentation page at the [/edit API](/features/#edit)
-
-In this example, we are applying the Preset called "Aged Photo" to automatically make the adjustments.
-![alt image](./preset_example.png?raw=true "Original Image")
-
-### Edit
-
-Apply one or more Lightroom edits to an image. Code sample [here](../code-sample/#apply-edits-to-an-image)
-
-### XMP
-Apply a Lightroom preset to an image, by passing in the preset XMP contents inline through the API. Code sample [here](../code-sample/#apply-xmp-to-an-image)
+The APIs are documented at [Photoshop API Reference](../api/#tag/Photoshop)
 
 
 ## Customized Workflow
@@ -421,11 +384,10 @@ You can make a 'customized workflow' by chaining different APIs. Example of whic
 
 ## Using Webhooks through Adobe I/O Events
 
-Adobe I/O Events offers the possibility to build an event-driven application, based on events originating from Photoshop and Lightroom APIs. To start listening for events, your application needs to register a webhook URL, specifying the Event Types to receive. Whenever a matching event gets triggered, your application is notified through an HTTP POST request to the webhook URL.
-The Event Provider for Photoshop and Lightroom APIs is `Imaging API Events`.
+Adobe I/O Events offers the possibility to build an event-driven application, based on events originating from Photoshop. To start listening for events, your application needs to register a webhook URL, specifying the Event Types to receive. Whenever a matching event gets triggered, your application is notified through an HTTP POST request to the webhook URL.
+The Event Provider for Photoshop APIs is `Imaging API Events`.
 This event provider has two event types:
 1. `Photoshop API events`
-2. `Lightroom API events`
 
 As the names indicate, these event types represent events triggered by the individual APIs.
 

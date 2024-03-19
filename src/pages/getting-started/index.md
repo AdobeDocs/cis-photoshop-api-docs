@@ -4,13 +4,13 @@ description: Page for Authentication
 contributors:
   - https://github.com/khound
 ---
-# Getting started with Photoshop and Lightroom API
+# Getting started with Photoshop
 
-The first step in accessing the Photoshop and Lightroom APIs is getting authenticated. For that you will need an Authorization Token and an API Key. With the steps below, we'll show you how to gain access and make your first `hello world` call.
+The first step in accessing the Photoshop APIs is getting authenticated. For that you will need an Authorization Token and an API Key. With the steps below, we'll show you how to gain access and make your first `hello world` call.
 
 ## Get access
 
-Here are the steps to get started with the Photoshop and Lightroom APIs.
+Here are the steps to get started with the Photoshop APIs.
 
 ### Getting started from Developer Console
 
@@ -25,19 +25,14 @@ Here are the steps to get started with the Photoshop and Lightroom APIs.
 5. Select **Save configured API**:
 ![Screenshot](images/ServicePrincipalConsole.png)
 Default selection for type of Authentication is made for **OAuth Server-to-Server** and you should keep it. Service Account(JWT) authentication will be deprecated soon.
-6. Add the Lightroom API to your project by clicking on **Add to Project** and selecting **API**
-![Screenshot](images/AddAnotherAPI.png)
-7. Select the **Lightroom - Firefly and Creative Cloud Automation** and click on **Next**:
-![Screenshot](images/AddAPIConsoleLRFF.png)
-Repeat step 5
-8. Repeat step 6 and select **Remove Background - Firefly and Creative Cloud Automation** and click on **Next**:
+6. Repeat step 4 and select **Remove Background - Firefly and Creative Cloud Automation** and click on **Next**:
 ![Screenshot](images/AddAPIConsoleRBFF.png)
 Repeat step 5
-9. Select **Generate access token**:
+7. Select **Generate access token**:
 ![Screenshot](images/GenerateAccessTokenFromConsole.png)
-10. Congratulations! You have just created a token. You can **copy** the token :
+8. Congratulations! You have just created a token. You can **copy** the token :
 ![Screenshot](images/AccessTokenCurlConsole.png)
-11. Once you’ve created your token, you can follow the steps below to make your first API call.
+9. Once you’ve created your token, you can follow the steps below to make your first API call.
    - Open your terminal and paste the code below.
    - Replace the variables "YOUR_ACCESS_TOKEN" with the token you generated on Adobe I/O Console.
    - Replace <YOUR_CLIENT_ID>. You can find this on the same page you generated your token on.
@@ -61,6 +56,6 @@ Note that your token will expire every 60 minutes and will need to be refreshed 
 
 ## Build something cool#
 You have now Access Token and Client Id. You can use that to build your application using Photoshop API.
-Check out this SDK and API documentation for that.
+Check out this SDK and API Reference for that.
 - [Photoshop API SDK](https://github.com/adobe/adobe-photoshop-api-sdk#readme)
-- [Photoshop API Documentation](../api/)
+- [Photoshop API Reference](../api/)

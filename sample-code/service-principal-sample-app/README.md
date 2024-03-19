@@ -94,5 +94,5 @@ The app will write output to the console to show progress and results. Many of t
 
 ## Other Resources
 
-- [Adobe Photoshop API Documentation](https://developer.adobe.com/photoshop/photoshop-api-docs/api/)
+- [Adobe Photoshop API Reference](https://developer.adobe.com/photoshop/photoshop-api-docs/api/)
 - [Adobe Photoshop API SDK](https://github.com/adobe/adobe-photoshop-api-sdk#readme)

@@ -27,7 +27,7 @@ intermediate_output_url='A file URL for intermediate result'
 final_output_url='A file URL for final result'
 
 
-#--------------------------------------------- Call Sensei Remove Background Service -----------------------------------------
+#--------------------------------------------- Call AI/ML Remove Background Service -----------------------------------------
 # call Remove Background API
 
 ic_post_response=$(
