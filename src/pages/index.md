@@ -5,7 +5,7 @@ Keywords::
 - Photoshop API Reference
 - Remove background API Reference
 - Smart Object API Reference
-- Create Mask AAPI Reference
+- Create Mask API Reference
 -
 contributors:
   - https://github.com/khound
@@ -16,25 +16,27 @@ contributors:
 
 ![Hero image](./hero.png)
 
-# Adobe Photoshop API
+# Adobe Photoshop API-Firefly Services
 
-Unlock the potential of Photoshop and cutting edge AI/ML services through an easy-to-use RESTful API.
-
-## Welcome to Photoshop API!
-
-The Photoshop API allows you to efficiently produce and scale content by automating repetitive, mundane tasks that would otherwise take time from a valuable creative or budget with outsourcing to an agency. Our API extends an organization’s capabilities to do more with the tools they already have at their fingertips.
-
-- Create internal applications to help scale your content supply chain or build web applications to help unlock creativity anywhere.
-
-- Generate thousands of variations and renditions within minutes instead of days.
+Unlock the potential of Adobe Photoshop and cutting edge AI/ML services through an easy-to-use RESTful API.
 
 ## Overview
 
-The Photoshop API will allow you to make both layer and document level edits to Photoshop PSD and other image files via a wide range of image editing features that span Photoshop and AI/ML services.
+Welcome to the Adobe Photoshop API, now integrated into Firefly Services. Our API follows REST-like principles, utilizing standard HTTP response codes, verbs, and authentication methods that return JSON-encoded responses. While the examples provided are in cURL, feel free to develop your application in any preferred language.
 
-The Photoshop API is designed with REST-like principles and uses standard HTTP response codes, verbs and authentication that returns JSON-encoded responses. The [examples](../code-sample/) you see are written in cURL but we support the language of your choice.
+This guide will assist you in:
+- Creating a project within the Adobe Developer Console
 
-The [Getting Started](../getting-started/) page will walk you through how to use our API.
+- Obtaining and authenticating your credentials
+
+- Validating your credentials with a simple `Hello World` call
+
+- Constructing personalized workflows by chaining API calls to various endpoints within the Firefly Services APIs
+
+- Developing event-driven applications through Adobe I/O Events
+
+Visit the [Getting Started](../getting-started/) page for a step-by-step walkthrough, covering project setup, credential acquisition, and initiating your first call to our `Hello World` endpoint for credential validation.
+
 
 <br/>
 <br/>

@@ -1275,7 +1275,7 @@ Sample output from [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/bl
 You can download the sample end-to-end bash script [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/ic-customized-workflow-app) and then follow the comments to try it out this customized workflow.
 
 ## Triggering an Event from the API's
-In order to start receiving the events in your Webhook Application, the additional thing that needs to be done is to pass in your IMS ORG ID in a header: `x-gw-ims-org-id: <YOUR_IMS_ORG_ID>`, when you make an API call to initiate a job. Please have a look at the examples below that demonstrates the usage of the new header and a sample event received for that job.
+In order to start receiving the events in your Webhook Application, the additional thing that needs to be done is to pass in your IMS ORG ID in a header: `x-gw-ims-org-id: <YOUR_IMS_ORG_ID>`, when you make an API call to initiate a job. Please have a look at the example below that demonstrates the usage of the new header and a sample event received for that job.
 ### Example 1: Retrieving a PSD manifest from the Photoshop API
 
 #### Step 1: Initiate a job to retrieve a PSD's JSON manifest
@@ -1371,91 +1371,6 @@ The value in the key `body` inside the event JSON contains the result of the job
       "_links":{
         "self":{
           "href":"https://image.adobe.io/pie/psdService/status/8ec6e4f5-b580-41ac-b693-a72f150fec59"
-        }
-      }
-    }
-  }
-}
-```
-### Auto tone an image through the Lightroom API
-
-#### Step 1: Initiate a job to auto tone an image
-```shell
-curl -X POST \
-  https://image.adobe.io/lrService/autoTone \
-  -H "Authorization: Bearer $token" \
-  -H "Content-Type: application/json" \
-  -H "x-api-key: <YOUR_API_KEY>" \
-  -H 'x-gw-ims-org-id: <YOUR_IMS_ORG_ID>' \
-  -d '{
-    "inputs": {
-      "href": "<SIGNED_GET_URL>",
-      "storage": "<storage>"
-    },
-    "outputs": [
-    {
-      "href": "<SIGNED_POST_URL>",
-      "type": "<type>",
-      "storage": "<storage>"
-    }
-  ]
-}'
-```
-
-This initiates an asynchronous job and returns a request body containing the href to poll for job status.
-
-```json
-{
-    "_links": {
-        "self": {
-            "href": "https://image.adobe.io/lrService/status/eb4a9211-eb8a-4e88-b853-b9c08ba47427"
-        }
-    }
-}
-```
-#### Step 2: Receive the Job's status on the Webhook application when the job is complete
-The value in the key `body` inside the event JSON contains the result of the job. Here is a sample event received from the job initiated above:
-```json
-{
-  "event_id": "7b59cc70-88d7-4895-b204-87f5350a0cce",
-  "event": {
-    "header": {
-      "msgType": "JOB_COMPLETION_STATUS",
-      "msgId": "eb4a9211-eb8a-4e88-b853-b9c08ba47427",
-      "imsOrgId": "<YOUR_IMS_ORG_ID>",
-      "eventCode": "lightroom-job-status",
-      "_pipelineMeta": {
-        "pipelineMessageId": "1586290300876:944289:VA7_A1:149:0"
-      },
-      "_smarts": {
-        "definitionId": "3ee6c9056a9d72fc40e09ddf5fdbb0af752e8e49",
-        "runningSmartId": "psmart-yw6wosjksniuuathenny"
-      },
-      "_adobeio": {
-        "imsOrgId": "<YOUR_IMS_ORG_ID>",
-        "providerMetadata": "di_event_code",
-        "eventCode": "lightroom-job-status"
-      }
-    },
-    "body": {
-      "jobId": "eb4a9211-eb8a-4e88-b853-b9c08ba47427",
-      "outputs": [
-        {
-          "input": "<SIGNED_GET_URL>",
-          "status": "succeeded",
-          "_links": {
-            "self": [
-              {
-                "href": "<SIGNED_POST_URL>",
-                "storage": "<storage>"
-              }
-            ]
-          }
-        }
-      ],
-      "_links": {
-        "self": {
-          "href": "https://image.adobe.io/lrService/status/eb4a9211-eb8a-4e88-b853-b9c08ba47427"
         }
       }
     }

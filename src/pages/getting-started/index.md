@@ -6,7 +6,7 @@ contributors:
 ---
 # Getting started with Photoshop
 
-The first step in accessing the Photoshop APIs is getting authenticated. For that you will need an Authorization Token and an API Key. With the steps below, we'll show you how to gain access and make your first `hello world` call.
+The first step in accessing the Photoshop API is making sure your organization is provisioned with access to Firefly Services. Once you have confirmed your have access you will need to create a project in the Adobe Developer Console and obtain a set of credentials. Follow the guide below create a project and make your first `Hello World` call.
 
 ## Get access
 
@@ -14,7 +14,8 @@ Here are the steps to get started with the Photoshop APIs.
 
 ### Getting started from Developer Console
 
- If you *have* already been provisioned with access through your organization you will need to create a project in developer console. If you have already got your API key, you can skip these steps.
+After you have confirmed you have access to Firefly Services you will need to create a project in developer console. If you have already obtained a set of credentials you can skip these steps.
+
 1. Go to https://developer.adobe.com/console/home and **sign in to the Developer Console**.
 2. Select **Create new project** under the **Quick start** section on the middle of your screen:
 ![Screenshot](images/CreateNewProjectConsole.png)
@@ -51,11 +52,8 @@ curl --request GET --url https://image.adobe.io/pie/psdService/hello --header "A
 ```
 Congratulations! You just made your first request to the Photoshop API.
 
-## Automate Token
-Note that your token will expire every 60 minutes and will need to be refreshed after it expires. You can automate the token generation by referring to our sample code in node.js [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample-code/service-principal-sample-app/index.js)
-
 ## Build something cool#
 You have now Access Token and Client Id. You can use that to build your application using Photoshop API.
 Check out this SDK and API Reference for that.
-- [Photoshop API SDK](https://github.com/adobe/adobe-photoshop-api-sdk#readme)
+- [Firefly Services SDK](https://github.com/Firefly-Services)
 - [Photoshop API Reference](../api/)
