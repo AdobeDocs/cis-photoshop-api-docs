@@ -1,6 +1,6 @@
 ---
-title: General Workflow of Photoshop API
-description: General Workflow of Photoshop API
+title: General Workflow of Lightroom API
+description: General Workflow of Lightroom API
 ---
 # General Workflow for our API
 
@@ -10,7 +10,7 @@ As you begin integrating the Ps APIs into your workflow, there are a few conside
 
 ## Input and Output file storage
 
-The Photoshop API works with any public or signed url. We have documented a few of the most common storage services and how to generate the urls programmatically.
+The Lightroom API works with any public or signed url. We have documented a few of the most common storage services and how to generate the urls programmatically.
 
 **AWS S3:** Pre-signed GET/PUT URL. For more information about pre-signed urls on S3 you can go [here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html). Here are some code samples that show you how to generate your pre-signed urls programmatically:
   - [Node.js](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/storage-app/aws-s3/presignedURLs.js) <br />Please note that creating pre-signed urls for AWS S3 requires signature version S3V4, as demonstrated in the sample code.

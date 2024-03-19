@@ -1,12 +1,8 @@
 ---
-title: Overview - Adobe Photoshop API
-description: This is the overview page of Adobe Photoshop API
+title: Overview - Adobe Lightroom API
+description: This is the overview page of Adobe Lightroom API
 Keywords::
-- Photoshop API documentation
-- Remove background API documentation
-- Smart Object API documentation
-- Create Mask API documentation
--
+- Lightroom API - Fireflu Servives documentation
 contributors:
   - https://github.com/khound
   - https://github.com/archyposada
@@ -16,25 +12,31 @@ contributors:
 
 ![Hero image](./hero.png)
 
-# Adobe Photoshop and Lightroom API
+# Adobe Lightroom API - Firefly Services
 
-Unlock the potential of Photoshop, Lightroom, and cutting edge Sensei services through an easy-to-use RESTful API.
-
-## Welcome to Photoshop and Lightroom API!
-
-The Photoshop and Lightroom API allows you to efficiently produce and scale content by automating repetitive, mundane tasks that would otherwise take time from a valuable creative or budget with outsourcing to an agency. Our API extends an organization’s capabilities to do more with the tools they already have at their fingertips.
-
-- Create internal applications to help scale your content supply chain or build web applications to help unlock creativity anywhere.
-
-- Generate thousands of variations and renditions within minutes instead of days.
+Unlock the potential of Lightroom through an easy-to-use RESTful API.
 
 ## Overview
 
-The Photoshop and Lightroom API will allow you to make both layer and document level edits to Photoshop PSD and other image files via a wide range of image editing features that span Photoshop, Lightroom, and Sensei services.
+Welcome to the Adobe Lightroom API, now integrated into Firefly Services. Our API follows REST-like principles, utilizing standard HTTP response codes, verbs, and authentication methods that return JSON-encoded responses. While the examples provided are in cURL, feel free to develop your application in any preferred language.
 
-The Photoshop and Lightroom API is designed with REST-like principles and uses standard HTTP response codes, verbs and authentication that returns JSON-encoded responses. The [examples](../photoshop-api-docs/code-sample/) you see are written in cURL but we support the language of your choice.
+This guide will assist you in:
 
-The [Getting Started](../photoshop-api-docs/getting-started/) page will walk you through how to use our API.
+
+- Creating a project within the Adobe Developer Console
+
+- Obtaining and authenticating your credentials
+
+- Validating your credentials with a simple "hello world" call
+
+- Programmatically generating XMP files from slider values and accessing other Lightroom features
+
+- Constructing personalized workflows by chaining API calls to various endpoints within the Firefly Services APIs
+
+- Developing event-driven applications through Adobe I/O Events
+
+Visit the [Getting Started](../Lightroom-api-docs/getting-started/) page for a step-by-step walkthrough, covering project setup, credential acquisition, and initiating your first call to our "Hello World" endpoint for credential validation.
+
 
 <br/>
 <br/>

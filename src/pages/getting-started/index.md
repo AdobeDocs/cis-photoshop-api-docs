@@ -4,24 +4,21 @@ description: Page for Authentication
 contributors:
   - https://github.com/khound
 ---
-# Getting started with Photoshop and Lightroom API
+# Getting started with Lightroom API
 
-The first step in accessing the Photoshop and Lightroom APIs is getting authenticated. For that you will need an Authorization Token and an API Key. With the steps below, we'll show you how to gain access and make your first `hello world` call.
+The first step in accessing the Lightroom API is making sure your organization is provisioned with access to Firefly Services. Once you have confirmed your have access you will need to create a project in the Adobe Developer Console and obtain a set of credentials. Follow the guide below create a project and make your first `hello world` call.
 
-## Get access
+### Getting started from the Adobe Developer Console
 
-Here are the steps to get started with the Photoshop and Lightroom APIs.
+ After you have confirmed you have access to Firefly Services you will need to create a project in developer console. If you have already obtained a set of credentials you can skip these steps.
 
-### Getting started from Developer Console
-
- If you *have* already been provisioned with access through your organization you will need to create a project in developer console. If you have already got your API key, you can skip these steps.
 1. Go to https://developer.adobe.com/console/home and **sign in to the Developer Console**.
 2. Select **Create new project** under the **Quick start** section on the middle of your screen:
 ![Screenshot](images/CreateNewProjectConsole.png)
 3. Choose **Add API**:
 ![Screenshot](images/AddAPIConsole.png)
-4. Select the **Photoshop - Firefly and Creative Cloud Automation** and click on **Next**:
-![Screenshot](images/AddAPIConsolePSFF.png)
+4. Select the **Lightroom - Firefly Services ** and click on **Next**:
+![Screenshot](images/AddAPIConsoleLRFF.png)
 5. Select **Save configured API**:
 ![Screenshot](images/ServicePrincipalConsole.png)
 Default selection for type of Authentication is made for **OAuth Server-to-Server** and you should keep it. Service Account(JWT) authentication will be deprecated soon.

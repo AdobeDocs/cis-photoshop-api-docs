@@ -14,7 +14,7 @@ module.exports = {
   siteMetadata: {
     pages: [
       {
-        title: 'Photoshop API Overview',
+        title: 'Overview',
         path: '/'
       },
       {
@@ -34,7 +34,7 @@ module.exports = {
         path: '/code-sample/'
       },
       {
-        title: 'API Documentation',
+        title: 'API Reference',
         path: '/api/'
       },
       {
