@@ -26,7 +26,7 @@ This guide will assist you in:
 
 - Obtaining and authenticating your credentials
 
-- Validating your credentials with a simple "hello world" call
+- Validating your credentials with a simple "Hello World" call
 
 - Programmatically generating XMP files from slider values and accessing other Lightroom features
 
