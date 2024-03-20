@@ -2,11 +2,15 @@
 title: General Workflow of Lightroom API
 description: General Workflow of Lightroom API
 ---
-# General Workflow for our API
+# General Workflow for Lightroom API
 
-The typical workflow involves making one or more calls to our API, to edit PSD or other image files, and to create new image renditions.
+The typical workflow involves making one or more calls to our API, to edit a PNG, JPG or other supported image files, and to create new image renditions.
 
-As you begin integrating the Ps APIs into your workflow, there are a few considerations to keep in mind which we've outlined below:
+As you begin integrating the Lightroom API into your workflow, there are a few considerations to keep in mind which we've outlined below:
+
+## Supported input formats
+
+All image formats compatible with Lightroom are likewise supported by the APIs. For a comprehensive list of these formats, please consult: https://helpx.adobe.com/lightroom-classic/help/supported-file-formats.html
 
 ## Input and Output file storage
 
@@ -61,9 +65,3 @@ For increased reliability and stability we have added a retry mechanism for all 
 - You should only retry requests that have a 5xx response code. A 5xx error response indicates there was a problem processing the request on the server.
 - You should implement an exponential back-off retry strategy with 3 retry attempts.
 - You should not retry requests for any other response code.
-
-## Compatibility with Photoshop versions
-
-- The APIs will open any PSD created with Photoshop 1.0 or later.
-- When saving as PSD, the APIs will create PSDs compatible with the current shipping Photoshop.
-- In regards to "maximize compatibility" referenced in https://helpx.adobe.com/photoshop/using/file-formats.html#maximize_compatibility_for_psd_and_psb_files  the API's default to “yes”

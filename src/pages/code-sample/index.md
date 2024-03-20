@@ -6,7 +6,7 @@ description: Code Examples.
 
 ## Lightroom
 
-### Autotone an image
+### Apply Autotone to an image
 
 ```shell
 curl -X POST \
@@ -264,128 +264,9 @@ And this will return a request body containing the job status for each requested
 }
 ```
 
-## Customized Workflow
-### Generate Remove Background result as Photoshop path
-This workflow is ONLY for users who'd like to generate remove background result as Photoshop path instead of regular mask or remove background in above [example 1](/code-sample/#example-1-image-cutout) and [example 2](/code-sample/#example-2-image-mask). You will need to chain API calls to Remove Background service and Photoshop Service to achieve this goal.
-
-#### Sample Input/Output
-Sample input from [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_files/ic_customized_workflow/input.jpg).
-Sample output from [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_files/ic_customized_workflow/result_with_path.jpg) (Note: you will need to open result in Photoshop Desktop application so that you will see the path in path panel)
-
-#### Instructions
-
-1. Download the make-file.atn file from [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample_files/ic_customized_workflow/make-path.atn) (this file will be used in the Photoshop action API call)
-2. Make the first API call to Remove Background service to generate intermediate result as RGBA remove background
-3. Make the second API call to Photoshop action service to use above intermediate result as well as the make-file.atn file to generate final JPEG format result with desired PS path embedded
-4. Open the final result with Photoshop Desktop app to check generated path in path panel
-
-
-#### Sample Code
-You can download the sample end-to-end bash script [here](https://github.com/AdobeDocs/cis-photoshop-api-docs/tree/main/sample-code/ic-customized-workflow-app) and then follow the comments to try it out this customized workflow.
-
 ## Triggering an Event from the API's
-In order to start receiving the events in your Webhook Application, the additional thing that needs to be done is to pass in your IMS ORG ID in a header: `x-gw-ims-org-id: <YOUR_IMS_ORG_ID>`, when you make an API call to initiate a job. Please have a look at the examples below that demonstrates the usage of the new header and a sample event received for that job.
-### Example 1: Retrieving a PSD manifest from the Photoshop API
+In order to start receiving the events in your Webhook Application, you will need to pass in your IMS ORG ID in a header: `x-gw-ims-org-id: <YOUR_IMS_ORG_ID>`, when you make an API call to initiate a job. Please have a look at the example below that demonstrates the usage of the new header and a sample event received for that job.
 
-#### Step 1: Initiate a job to retrieve a PSD's JSON manifest
-
-The `/documentManifest` api can take one or more input PSD's to generate JSON manifest files from. The JSON manifest is the tree representation of all of the layer objects contained in the PSD document. Using Example.psd, with the use case of a document stored in your external storage, a typical curl call might look like this:
-
-```shell
-curl -X POST \
-  https://image.adobe.io/pie/psdService/documentManifest \
-  -H "Authorization: Bearer $token"  \
-  -H "x-api-key: $apiKey" \
-  -H "Content-Type: application/json" \
-  -H 'x-gw-ims-org-id: <YOUR_IMS_ORG_ID>' \
-  -d '{
-  "inputs": [
-    {
-      "href":"<SIGNED_GET_URL>",
-      "storage":"<storage>"
-    }
-  ]
-}'
-```
-
-This initiates an asynchronous job and returns a response containing the href to poll for job status and the JSON manifest.
-```json
-{
-    "_links": {
-        "self": {
-            "href": "https://image.adobe.io/pie/psdService/status/63c6e812-6cb8-43de-8a60-3681a9ec6feb"
-        }
-    }
-}
-```
-#### Step 2: Receive the Job's status on the Webhook application when the job is complete
-The value in the key `body` inside the event JSON contains the result of the job. Here is a sample event received from the job initiated above:
-```json
-{
-  "event_id": "b412a90e-8bc0-4f0d-931e-9e9b8d24993d",
-  "event": {
-    "header": {
-      "msgType": "JOB_COMPLETION_STATUS",
-      "msgId": "8afa1a46-2733-406c-a646-e1c1acdee333",
-      "imsOrgId": "<YOUR_IMS_ORG_ID>",
-      "eventCode": "photoshop-job-status",
-      "_pipelineMeta": {
-        "pipelineMessageId": "1586288145511:631472:VA7_A1:142:0"
-      },
-      "_smarts": {
-        "definitionId": "3ee6c9056a9d72fc40e09ddf5fdbb0af752e8e49",
-        "runningSmartId": "psmart-yw6wosjksniuuathenny"
-      },
-      "_adobeio": {
-        "imsOrgId": "<YOUR_IMS_ORG_ID>",
-        "providerMetadata": "di_event_code",
-        "eventCode": "photoshop-job-status"
-      }
-    },
-    "body": {
-      "jobId": "63c6e812-6cb8-43de-8a60-3681a9ec6feb",
-      "outputs": [
-        {
-          "status": "succeeded",
-          "layers": [
-            {
-              "id": 2,
-              "index": 0,
-              "type": "layer",
-              "name": "Layer",
-              "locked": false,
-              "visible": true,
-              "bounds": {
-                "top": 0,
-                "left": 0,
-                "width": 100,
-                "height": 100
-              },
-              "blendOptions": {
-                "opacity": 100,
-                "mode": "normal"
-              }
-            }
-          ],
-          "document": {
-            "name": "test.psd",
-            "width": 1000,
-            "height": 1000,
-            "bitDepth": 8,
-            "imageMode": "rgb",
-            "photoshopBuild": "Adobe Creative Imaging Service"
-          }
-        }
-      ],
-      "_links":{
-        "self":{
-          "href":"https://image.adobe.io/pie/psdService/status/8ec6e4f5-b580-41ac-b693-a72f150fec59"
-        }
-      }
-    }
-  }
-}
-```
 ### Auto tone an image through the Lightroom API
 
 #### Step 1: Initiate a job to auto tone an image

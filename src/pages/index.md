@@ -22,7 +22,6 @@ Welcome to the Adobe Lightroom API, now integrated into Firefly Services. Our AP
 
 This guide will assist you in:
 
-
 - Creating a project within the Adobe Developer Console
 
 - Obtaining and authenticating your credentials
@@ -35,7 +34,7 @@ This guide will assist you in:
 
 - Developing event-driven applications through Adobe I/O Events
 
-Visit the [Getting Started](../Lightroom-api-docs/getting-started/) page for a step-by-step walkthrough, covering project setup, credential acquisition, and initiating your first call to our "Hello World" endpoint for credential validation.
+Visit the [Getting Started](../getting-started/) page for a step-by-step walkthrough, covering project setup, credential acquisition, and initiating your first call to our "Hello World" endpoint for credential validation.
 
 
 <br/>
