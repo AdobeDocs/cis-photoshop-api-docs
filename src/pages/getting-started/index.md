@@ -58,4 +58,4 @@ Congratulations! You just made your first request to the Photoshop API.
 ## Build something cool
 Once you've acquired your credentials and Access Token, you're ready to utilize them for building your application with the Lightroom API. Explore our SDK and API Reference for further guidance.
 - [Firefly Services SDK](https://github.com/Firefly-Services)
-- [Photoshop API Reference](../api/)
+- [Lightroom API Reference](../api/)
