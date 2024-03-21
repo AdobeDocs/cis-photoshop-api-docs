@@ -26,8 +26,7 @@
     "details": {
       "type": "string",
       "description": "Further descriptions of the exact error where details is substituted for a specific issue.",
-      "example" : "You have exceeded the limit for the free trial.
-      To subscribe and get more API calls, check out our pricing page at https://developer.adobe.com/photoshop/api/pricing/"
+      "example" : "You have exceeded the limit for the free trial. To upgrade to a paid account please contact your Adobe Account Manager."
     }
   }
 }
