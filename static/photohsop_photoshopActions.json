@@ -1,0 +1,160 @@
+{
+  "openapi": "3.1",
+  "info": {
+    "title": "Photoshop API Reference",
+    "description": "API Reference",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://image.adobe.io"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Photoshop"
+    }
+  ],
+  "security": [],
+  "paths": {
+    "/pie/psdService/photoshopActions": {
+      "post": {
+        "tags": [
+          "Photoshop"
+        ],
+        "summary": "Execute Photoshop Actions",
+        "description": " Executes Photoshop Actions on a given image.\nTo get status of this job, call [Status API](./#operation/pitsstatus). \\\n To know more about this feature refer [Photoshop Actions](../features/#photoshop-actions)",
+        "operationId": "photoshopActions",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./PITS/post_photoshop_actions.schema.json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./PITS/api_response_success_schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_400_error_schema.json"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Trial Limit Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_402_error_schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_403_error_schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "shell",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/photoshopActions \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"get_presigned_url\",\"storage\":\"external\"}],\\\n \"options\":{\"actions\":[{\"href\":\"https://get-presigned-url.com/Oil-paint.atn\",\"storage\":\"string\"}]}\\\n \"outputs\":[{\"href\":\"https://put-presigned-url.com/output.jpg\",\"storage\":\"external\",\"type\":\"image/jpeg\"}]}'"
+          }
+        ]
+      }
+    }
+  }
+}

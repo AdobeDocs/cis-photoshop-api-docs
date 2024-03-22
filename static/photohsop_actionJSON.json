@@ -1,0 +1,164 @@
+{
+  "openapi": "3.1",
+  "info": {
+    "title": "Photoshop API Reference",
+    "description": "API Reference",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://image.adobe.io"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Photoshop"
+    }
+  ],
+  "security": [],
+  "paths": {
+    "/pie/psdService/actionJSON": {
+      "post": {
+        "tags": [
+          "Photoshop"
+        ],
+        "summary": "Execute actionJSON",
+        "description": " Playback photoshop actions in actionJSON format.\nTo get status of this job, call [Status API](./#operation/pitsstatus). \\\n To know more about this feature refer [Rendering Conversions](../features/#rendering--conversions)",
+        "operationId": "actionJSON",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./PITS/post_action_json.schema.json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./PITS/api_response_success_schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_400_error_schema.json"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Trial Limit Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_402_error_schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_403_error_schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "shell",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/actionJSON \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\": [{\"href\": \"string\",\"storage\": \"external\"}],\"options\": {\"actionJSON\": [{\"_obj\": \"crop\",\"angle\": {\"_unit\": \"angleUnit\",\"_value\": 0.0},\\\n\"constrainProportions\": false,\"cropAspectRatioModeKey\": {\"_enum\": \"cropAspectRatioModeClass\",\"_value\": \"pureAspectRatio\"},\"delete\": true,\"to\": {\"_obj\": \"rectangle\",\"bottom\": {\"_unit\": \"pixelsUnit\",\"_value\": 469.0},\"left\": {\"_unit\": \"pixelsUnit\",\"_value\": 0.0},\"right\": {\"_unit\": \"pixelsUnit\",\"_value\": 750.0},\"top\": {\"_unit\": \"pixelsUnit\",\"_value\": 0.0}}},{\"_obj\": \"crop\",\"angle\": {\"_unit\": \"angleUnit\",\"_value\": 0.0},\"constrainProportions\": false,\"cropAspectRatioModeKey\": {\"_enum\": \"cropAspectRatioModeClass\",\"_value\": \"pureAspectRatio\"},\"delete\": true,\"to\": {\"_obj\": \"rectangle\",\"bottom\": {\"_unit\": \"pixelsUnit\",\"_value\": 368.421875},\"left\": {\"_unit\": \"pixelsUnit\",\"_value\": 108.515625},\"right\": {\"_unit\": \"pixelsUnit\",\"_value\": 603.375},\"top\": {\"_unit\": \"pixelsUnit\",\"_value\": 0.0}}},{\"_obj\": \"make\",\"_target\": [{\"_ref\": \"contentLayer\"}],\"using\": {\"_obj\": \"contentLayer\",\"type\": {\"_obj\": \"gradientLayer\",\"angle\": {\"_unit\": \"angleUnit\",\"_value\": 90.0},\"gradient\": {\"_obj\": \"gradientClassEvent\",\"colors\": [{\"_obj\": \"colorStop\",\"color\": {\"_obj\": \"RGBColor\",\"blue\": 0.0,\"grain\": 0.0,\"red\": 0.0},\"location\": 0,\"midpoint\": 50,\"type\": {\"_enum\": \"colorStopType\",\"_value\": \"userStop\"}}, {\"_obj\": \"colorStop\",\"color\": {\"_obj\": \"RGBColor\",\"blue\": 0.0,\"grain\": 0.0,\"red\": 0.0},\"location\": 4096,\"midpoint\": 50,\"type\": {\"_enum\": \"colorStopType\",\"_value\": \"userStop\"}}],\"gradientForm\": {\"_enum\": \"gradientForm\",\"_value\": \"customStops\"},\"interfaceIconFrameDimmed\": 4096.0,\"name\": \"Color to Transparent\",\"transparency\": [{\"_obj\": \"transferSpec\",\"location\": 0,\"midpoint\": 50,\"opacity\": {\"_unit\": \"percentUnit\",\"_value\": 100.0}}, {\"_obj\": \"transferSpec\",\"location\": 4096,\"midpoint\": 50,\"opacity\": {\"_unit\": \"percentUnit\",\"_value\": 0.0}}]},\"gradientsInterpolationMethod\":{\"_enum\": \"gradientInterpolationMethodType\",\"_value\": \"perceptual\"},\"type\": {\"_enum\": \"gradientType\",\"_value\": \"linear\"}}}}]},\"outputs\": [{\"storage\": \"external\",\"type\": \"image/jpeg\",t\"overwrite\": true,\"href\": \"string\"}]}'"
+          },
+          {
+            "lang": "multiple_input_example",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/actionJSON \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\": [{\"href\": \"string\",\"storage\": \"external\"}],\"options\": {\"additionalImages\": [{\"href\": \"string\",\"storage\": \"external\"}],\"actionJSON\": [{\"ID\": 3,\"_obj\": \"placeEvent\",\"freeTransformCenterState\": {\"_enum\": \"quadCenterState\",\"_value\": \"QCSAverage\"},\"null\": {\"_kind\": \"local\",\"_path\": \"PEGASUS_ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0\"},\"offset\": {\"_obj\": \"offset\",\"horizontal\": {\"_unit\": \"pixelsUnit\",\"_value\": 0},\"vertical\": {\"_unit\": \"pixelsUnit\",\"_value\": 0}}},{\"_obj\": \"autoCutout\",\"sampleAllLayers\": false},{\"_obj\":\"make\",\"at\": {\"_enum\":\"channel\",\"_ref\": \"channel\",  \"_value\": \"mask\"},\"new\": {  \"_class\": \"channel\"},\"using\": {  \"_enum\": \"userMaskEnabled\",\"_value\":\"revealSelection\"}},{\"_obj\": \"set\",\"_target\": [{\"_property\": \"selection\",\"_ref\": \"channel\"  }],\"to\": {  \"_enum\": \"ordinal\",\"_value\": \"allEnum\"}},{\"_obj\": \"align\",\"_target\": [{\"_enum\": \"ordinal\",\"_ref\": \"layer\"  }],\"alignToCanvas\": false,\"using\": {\"_enum\": \"alignDistributeSelector\",  \"_value\": \"ADSBottoms\"}},{\"_obj\": \"align\",\"_target\": [{\"_enum\": \"ordinal\",\"_ref\": \"layer\"  }],\"alignToCanvas\": false,\"using\": {\"_enum\": \"alignDistributeSelector\",\"_value\": \"ADSRights\"}},{\"_obj\": \"set\",\"_target\": [  {\"_property\": \"selection\",\"_ref\": \"channel\"}],\"to\": {\"_enum\": \"ordinal\",\"_value\": \"none\"}}]},\"outputs\":[{\"type\": \"image/jpeg\",\"href\": \"string\",\"storage\": \"external\"}]}'"
+          }
+        ]
+      }
+    }
+  }
+}

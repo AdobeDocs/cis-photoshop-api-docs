@@ -1,0 +1,90 @@
+{
+  "openapi": "3.1",
+  "info": {
+    "title": "Photoshop API Reference",
+    "description": "API Reference",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://image.adobe.io"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Photoshop"
+    }
+  ],
+  "security": [],
+  "paths": {
+    "/sensei/status/{jobId}": {
+      "get": {
+        "tags": [
+          "Photoshop"
+        ],
+        "summary": "Get the status of a job for Remove Background and Create Mask",
+        "description": "Returns the status of a job. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
+        "operationId": "icstatus",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "The jobId to get status for.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./ic/get_status.schema.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

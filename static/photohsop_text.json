@@ -1,0 +1,160 @@
+{
+  "openapi": "3.1",
+  "info": {
+    "title": "Photoshop API Reference",
+    "description": "API Reference",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://image.adobe.io"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Photoshop"
+    }
+  ],
+  "security": [],
+  "paths": {
+    "/pie/psdService/text": {
+      "post": {
+        "tags": [
+          "Photoshop"
+        ],
+        "summary": "Edit text layers",
+        "description": " Edit one or more text layers.\nTo get status of this job, call [Status API](./#operation/pitsstatus). \\\n To know more about this feature refer [Text](../features/#text)",
+        "operationId": "text",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./PITS/post_text.schema.json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./PITS/api_response_success_schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_400_error_schema.json"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Trial Limit Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_402_error_schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_403_error_schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_404_error_schema.json"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Asset Link Invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_410_error_schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "shell",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/text \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data ' \\\n {\"inputs\":[{\"href\":\"<path_to_input_psd>\",\"storage\":\"external\"}],\\\n \"options\":{\"fonts\":[{\"storage\":\"external\",\\\n \"href\":\"<path_to_font>\"}],\"layers\":[{\"name\":\"<name_of_text_layer_1_to_edit>\",\\\n \"text\":{\"orientation\":\"horizontal\",\"contents\":\"New text Contents 1\",\\\n \"antiAlias\":\"antiAliasSharp\",\\\n \"characterStyles\":[{\"autoKern\":\"metricsKern\",\\\n \"fontPostScriptName\":\"<font_postscript_name>\",\\\n \"fontCaps\":\"allCaps\",\"size\":25,\"leading\":20,\\\n \"tracking\":20,\"syntheticBold\":true,\"ligature\":true,\\\n \"syntheticItalic\":true,\\\n \"color\":{\"blue\":100,\"green\":200,\"red\":163}}],\\\n \"paragraphStyles\":[{\"align\":\"right\"}]}},{\"name\":\"<name_of_text_layer_2_to_edit>\",\\\n \"text\":{\"contents\":\"New text Contents 2\",\"characterStyles\":[{\"size\":45, \\\n \"stylisticAlternates\":true,\"leading\":100,\\\n \"tracking\":100,\"baseline\":\"subScript\",\\\n \"strikethrough\":true,\"underline\":true,\"verticalScale\":150,\\\n \"horizontalScale\":200,\"color\":{\"blue\":300,\"green\":100,\"red\":63}}]}}]},\\\n \"outputs\":[{\"href\":\"<path_to_output_psd>\",\"type\":\"vnd.adobe.photoshop\",\"storage\":\"external\"}]}'"
+          }
+        ]
+      }
+    }
+  }
+}
