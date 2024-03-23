@@ -4615,9 +4615,9 @@ __metadata:
   linkType: hard
 
 "@types/prop-types@npm:*":
-  version: 15.7.11
-  resolution: "@types/prop-types@npm:15.7.11"
-  checksum: 7519ff11d06fbf6b275029fe03fff9ec377b4cb6e864cac34d87d7146c7f5a7560fd164bdc1d2dbe00b60c43713631251af1fd3d34d46c69cd354602bc0c7c54
+  version: 15.7.12
+  resolution: "@types/prop-types@npm:15.7.12"
+  checksum: ac16cc3d0a84431ffa5cfdf89579ad1e2269549f32ce0c769321fdd078f84db4fbe1b461ed5a1a496caf09e637c0e367d600c541435716a55b1d9713f5035dfe
   languageName: node
   linkType: hard
 
@@ -4631,13 +4631,13 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:*":
-  version: 18.2.67
-  resolution: "@types/react@npm:18.2.67"
+  version: 18.2.69
+  resolution: "@types/react@npm:18.2.69"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 9e48122b0e8d0ae20601f613aca32289eeb94d55c58ff03a7dc532d80ed289a1ba9715f14b773bd926ccdd63e503717f14264143ef531dc370063abe09dee0b2
+  checksum: 7657978c4bbca41f566481b5507cdf571575e6631d0f8105ec2f6eea4029c315f9381182369bd5c700f3f2ea247dd2d12005381b937c9ad1771f86acd7201768
   languageName: node
   linkType: hard
 
@@ -14772,9 +14772,9 @@ __metadata:
   linkType: hard
 
 "mobx@npm:^6.3.2, mobx@npm:^6.6.2":
-  version: 6.12.0
-  resolution: "mobx@npm:6.12.0"
-  checksum: 482914d39199cadc8808907a2b9dbc634c74534d6c6d6cb34984c199aa94665ce07e7d183c0e97d54f4b06c8e42fec0a48c79484f4bbeac04a4dfd0f160290c6
+  version: 6.12.1
+  resolution: "mobx@npm:6.12.1"
+  checksum: 102ac3a62a79451640ee47baaec6ae710157597d432bf9547c085da8d901ec767bd09e5f751adbb674d904f0a0e1b89a9f5654fd3f47c65dad137bab9254bc38
   languageName: node
   linkType: hard
 
@@ -15417,12 +15417,13 @@ __metadata:
   linkType: hard
 
 "object.hasown@npm:^1.1.3":
-  version: 1.1.3
-  resolution: "object.hasown@npm:1.1.3"
+  version: 1.1.4
+  resolution: "object.hasown@npm:1.1.4"
   dependencies:
-    define-properties: ^1.2.0
-    es-abstract: ^1.22.1
-  checksum: 76bc17356f6124542fb47e5d0e78d531eafa4bba3fc2d6fc4b1a8ce8b6878912366c0d99f37ce5c84ada8fd79df7aa6ea1214fddf721f43e093ad2df51f27da1
+    define-properties: ^1.2.1
+    es-abstract: ^1.23.2
+    es-object-atoms: ^1.0.0
+  checksum: bc46eb5ca22106fcd07aab1411508c2c68b7565fe8fb272f166fb9bf203972e8b5c86a5a4b2c86204beead0626a7a4119d32cefbaf7c5dd57b400bf9e6363cb6
   languageName: node
   linkType: hard
 
