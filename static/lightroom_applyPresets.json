@@ -23,7 +23,7 @@
           "Lightroom"
         ],
         "summary": "Apply a presets on an image",
-        "description": "Initiates an asynchronous job to apply a preset on an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).\\\n To know more about this feature refer [Presets](../features/#presets)",
+        "description": "Initiates an asynchronous job to apply a preset on an image.\nTo get status of this job, call [Get Status API](./#operation/acrstatus).",
         "operationId": "presets",
         "parameters": [
           {

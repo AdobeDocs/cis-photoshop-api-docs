@@ -26,18 +26,17 @@ This guide will assist you in:
 
 - Obtaining and authenticating your credentials
 
-- Validating your credentials with a simple "Hello World" call
-
 - Programmatically generating XMP files from slider values and accessing other Lightroom features
 
 - Constructing personalized workflows by chaining API calls to various endpoints within the Firefly Services APIs
 
 - Developing event-driven applications through Adobe I/O Events
 
-Visit the [Getting Started](../getting-started/) page for a step-by-step walkthrough, covering project setup, credential acquisition, and initiating your first call to our "Hello World" endpoint for credential validation.
+## Discover
+
+Follow the [Getting Started Guide](../guides/get-started.md) for step by step instructions on how to create your project in the Adobe Develper Console and obtain your credentials. 
+
+Once you're ready to start building we recommend you take a look at the [Adobe Firefly Services SDK](./sdks/) It's a comprehensive toolkit designed to streamline your development journey. All of the APIs included in Firefly Services can be accessed with this one SDK, all in one easy to find place.
 
 
-<br/>
-<br/>
-<br/>
-<br/>
+<br/><br/><br/><br/>

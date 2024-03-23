@@ -54,7 +54,7 @@ Prerequisites needed to use the Event Provider
 
 1. In order to use the Adobe I/O Events you will need to create a project on Adobe I/O Console.
 2. You can follow the steps listed in [Getting Started](../getting-started/#getting-started-from-adobe-io-console) page if you haven't created one yet.
-3. Create a Webhook application. [This](https://www.adobe.io/apis/experienceplatform/events/docs.html#!adobedocs/adobeio-events/master/intro/webhooks_intro.md) page gives all the details of what the skeleton of a basic application would look like. You can find a sample NodeJS application [here](https://github.com/AdobeDocs/cis-Lightroom-api-docs/tree/main/sample-code/webhook-sample-app)
+3. You can learn more about createing a Webhook application [here.](https://www.adobe.io/apis/experienceplatform/events/docs.html#!adobedocs/adobeio-events/master/intro/webhooks_intro.md) This page provides all of the details you will need to build a basic application. 
 
 
 ### Registering the Webhook

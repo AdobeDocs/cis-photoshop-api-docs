@@ -17,7 +17,7 @@
             "Lightroom"
           ],
           "summary": "Apply edits on an image",
-          "description": "Initiates an asynchronous job to apply a set of edit parameters on an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).\\\n To know more about this feature refer [Edit](../features/#edit)",
+          "description": "Initiates an asynchronous job to apply a set of edit parameters on an image.\nTo get status of this job, call [Status API](./#operation/acrstatus)",
           "operationId": "edit",
           "parameters": [
             {

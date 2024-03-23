@@ -23,7 +23,7 @@
           "Lightroom"
         ],
         "summary": "Get the status of a job",
-        "description": "Returns the status of a job. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
+        "description": "Returns the status of a job. Please expand `200 Successful operation` under `Responses` to see more details of the status returned.",
         "operationId": "acrstatus",
         "parameters": [
           {

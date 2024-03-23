@@ -23,7 +23,7 @@
           "Lightroom"
         ],
         "summary": "Apply xmp on an image",
-        "description": "Initiates an asynchronous job to apply an XMP setting to an image.\nTo get status of this job, call [Status API](./#operation/acrstatus).\\\n To know more about this feature refer [XMP](../features/#xmp)",
+        "description": "Initiates an asynchronous job to apply an XMP setting to an image.\nTo get status of this job, call [Status API](./#operation/acrstatus)",
         "operationId": "xmp",
         "parameters": [
           {

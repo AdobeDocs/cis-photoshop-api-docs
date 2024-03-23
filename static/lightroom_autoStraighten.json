@@ -18,7 +18,7 @@
           "Lightroom"
         ],
         "summary": "Apply autoStraighten to an image",
-        "description": "Initiates an asynchronous job to auto straighten an image. \\\nTo get status of this job, call [Status API](./#operation/acrstatus).\\\n To know more about this feature refer [AutoStraighten](../features/#autoStraighten)",
+        "description": "Initiates an asynchronous job to auto straighten an image. \\\nTo get status of this job, call [Status API](./#operation/acrstatus)",
         "operationId": "autoStraighten",
         "parameters": [
           {
