@@ -23,7 +23,7 @@
           "Photoshop"
         ],
         "summary": "Create Mask",
-        "description": " Generates a mask PNG.\nTo get status of this job, call [Status API](./#operation/icstatus).\\\n To know more about this feature refer [Image Mask](../features/#image-mask)",
+        "description": " Generates a mask PNG.\nTo get status of this job, call [Status API](./#operation/icstatus).",
         "operationId": "mask",
         "parameters": [
           {

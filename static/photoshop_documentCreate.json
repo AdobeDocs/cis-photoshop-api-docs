@@ -23,7 +23,7 @@
           "Photoshop"
         ],
         "summary": "Create a new psd",
-        "description": "Create a new psd optionaly with layers and generate renditions or save as PSD.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "description": "Create a new psd optionaly with layers and generate renditions or save as PSD.",
         "operationId": "documentCreate",
         "parameters": [
           {

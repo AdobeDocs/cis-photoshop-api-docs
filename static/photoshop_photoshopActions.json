@@ -23,7 +23,7 @@
           "Photoshop"
         ],
         "summary": "Execute Photoshop Actions",
-        "description": " Executes Photoshop Actions on a given image.\nTo get status of this job, call [Status API](./#operation/pitsstatus). \\\n To know more about this feature refer [Photoshop Actions](../features/#photoshop-actions)",
+        "description": " Executes Photoshop Actions on a given image.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
         "operationId": "photoshopActions",
         "parameters": [
           {

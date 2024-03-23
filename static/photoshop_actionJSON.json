@@ -23,7 +23,7 @@
           "Photoshop"
         ],
         "summary": "Execute actionJSON",
-        "description": " Playback photoshop actions in actionJSON format.\nTo get status of this job, call [Status API](./#operation/pitsstatus). \\\n To know more about this feature refer [Rendering Conversions](../features/#rendering--conversions)",
+        "description": " Playback Photoshop Actions in actionJSON format.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
         "operationId": "actionJSON",
         "parameters": [
           {

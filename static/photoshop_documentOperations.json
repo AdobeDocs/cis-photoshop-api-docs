@@ -23,7 +23,7 @@
           "Photoshop"
         ],
         "summary": "Apply psd edits",
-        "description": " Apply psd edits.\nTo get status of this job, call [Status API](./#operation/pitsstatus).\\\n To know more about this feature refer [Document Level Edits](../features/#document-level-edits) and [Layer Level Edits](../features/#layer-level-edits)",
+        "description": " Apply psd edits.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
         "operationId": "documentOperations",
         "parameters": [
           {

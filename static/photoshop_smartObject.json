@@ -23,7 +23,7 @@
           "Photoshop"
         ],
         "summary": "Replace Smart Object",
-        "description": " Edits a PSD for replacing embedded smart object and then generate renditions and/or save a new psd.\nTo get status of this job, call [Status API](./#operation/pitsstatus).\\\n To know more about this feature refer [SmartObject](../features/#smartobject)",
+        "description": " Edits a PSD for replacing embedded smart object and then generate renditions and/or save a new psd.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
         "operationId": "smartObject",
         "parameters": [
           {

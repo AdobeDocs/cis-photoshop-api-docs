@@ -23,7 +23,7 @@
           "Photoshop"
         ],
         "summary": "Create actionJSON",
-        "description": " Converts an atn file to actionJSON.\nTo get status of this job, call [Status API](./#operation/pitsstatus). \\\n To know more about this feature refer [Rendering Conversions](../features/#rendering--conversions)",
+        "description": " Converts an atn file to actionJSON.\nTo get status of this job, call [Status API](./#operation/pitsstatus)",
         "operationId": "actionJsonCreate",
         "parameters": [
           {

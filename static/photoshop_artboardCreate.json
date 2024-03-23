@@ -23,7 +23,7 @@
           "Photoshop"
         ],
         "summary": "Create an artboard",
-        "description": " Creates an artboard.\nTo get status of this job, call [Status API](./#operation/pitsstatus).\\\n To know more about this feature refer [Artboards](../features/#artboards)",
+        "description": " Creates an artboard.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
         "operationId": "artboardCreate",
         "parameters": [
           {

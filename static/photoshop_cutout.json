@@ -23,7 +23,7 @@
           "Photoshop"
         ],
         "summary": "Remove Background",
-        "description": " Generates a PNG file in 4 channel RGBA format with the cutout operation applied to the input image \\\n Generates a PNG file in 3 channel RGB format with the mask operation applied to the input image.\\\n To get status of this job, call [Status API](./#operation/icstatus).\\\n To know more about this feature refer [Remove Background](../features/#remove-background)",
+        "description": " Generates a PNG file in 4 channel RGBA format with the cutout operation applied to the input image \\\n Generates a PNG file in 3 channel RGB format with the mask operation applied to the input image.\\\n To get status of this job, call [Status API](./#operation/icstatus)",
         "operationId": "cutout",
         "parameters": [
           {
