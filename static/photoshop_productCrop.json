@@ -10,20 +10,12 @@
       "url": "https://image.adobe.io"
     }
   ],
-  "tags": [
-    {
-      "name": "Photoshop"
-    }
-  ],
   "security": [],
   "paths": {
     "/pie/psdService/productCrop": {
       "post": {
-        "tags": [
-          "Photoshop"
-        ],
         "summary": "Execute Product Crop",
-        "description": " Executes Product Crop on a given image.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "description": "This endpoint indentifies the subject of the your input file and automatically crops to keep the subject in the center. To get status of this job, call the 'Get Status' endpoint.",
         "operationId": "productCrop",
         "parameters": [
           {

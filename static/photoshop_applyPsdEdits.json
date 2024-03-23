@@ -10,20 +10,12 @@
       "url": "https://image.adobe.io"
     }
   ],
-  "tags": [
-    {
-      "name": "Photoshop"
-    }
-  ],
   "security": [],
   "paths": {
     "/pie/psdService/documentOperations": {
       "post": {
-        "tags": [
-          "Photoshop"
-        ],
-        "summary": "Apply psd edits",
-        "description": " Apply psd edits.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "summary": "Apply PSD edits",
+        "description": " Apply a variety of documeent and layer level edits. You can get the status of the job by caling the 'Get Status' endpoint.",
         "operationId": "documentOperations",
         "parameters": [
           {

@@ -10,21 +10,13 @@
       "url": "https://image.adobe.io"
     }
   ],
-  "tags": [
-    {
-      "name": "Photoshop"
-    }
-  ],
   "security": [],
   "paths": {
-    "/pie/psdService/documentCreate": {
+    "/pie/psdService/text": {
       "post": {
-        "tags": [
-          "Photoshop"
-        ],
-        "summary": "Create a new psd",
-        "description": "Create a new psd optionaly with layers and generate renditions or save as PSD.",
-        "operationId": "documentCreate",
+        "summary": "Edit Text",
+        "description": "This endpoint allows you to edit one or more text layers. To get status of this job, call the 'Get Status' endpoint.",
+        "operationId": "text",
         "parameters": [
           {
             "name": "Authorization",
@@ -67,7 +59,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "./PITS/post_document_create.schema.json"
+                "$ref": "./PITS/post_text.schema.json"
               }
             }
           },
@@ -151,7 +143,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/documentCreate \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"options\":{\"document\":{\"height\":1000,\"width\":1000,\"resolution\":72,\\\n \"mode\":\"rgb\", \"fill\":\"transparent\",\"depth\":16},\\\n \"manageMissingFonts\":\"useDefault\",\"globalFont\":\"MyriadPro-Bold\",\\\n \"fonts\":[{\"href\":\"get_presigned_url\",\"storage\":\"external\"}],\\\n \"layers\":[{\"name\":\"new adjustment layer\",\"type\":\"adjustmentLayer\",\"visible\":true,\\\n \"adjustments\":{\"brightnessContrast\":{\"brightness\":-23,\"contrast\":15}}},{\"name\":\"new content layer\",\\\n \"type\":\"fillLayer\",\"visible\":true,\"fill\":{\"solidColor\":{\"rgb\":{\"red\":0,\"green\":255,\"blue\":255}}},\\\n \"blendOptions\":{\"opacity\":90,\"blendMode\":\"normal\"}},{\"locked\":false,\"name\":\"SO Layer\",\\\n \"type\":\"smartObject\",\"visible\":true,\"input\":{\"href\":\"files/input/Simple.psd\",\"storage\":\"adobe\"},\\\n \"smartObject\":{\"linked\":false}},{\"type\":\"textLayer\",\"name\":\"my text layer\",\"locked\":true,\"visible\":true,\\\n \"bounds\":{\"top\":50,\"left\":100,\"width\":500,\"height\":450},\\\n \"text\":{\"content\":\"NEW TEXT CHANGES\",\\\n \"characterStyles\":[{\"fontSize\":12.5,\"fontName\":\"Arial-BoldMT\",\\\n \"orientation\":\"horizontal\",\"fontColor\":{\"rgb\":{\"red\":26086,\"green\":23002,\"blue\":8224}}}],\\\n \"paragraphStyles\":[{\"alignment\":\"left\"}]},\"blendOptions\":{\"opacity\":90,\"blendMode\":\"normal\"}},\\\n {\"name\":\"New Exposure Layer\",\"type\":\"adjustmentLayer\",\"locked\":false,\"visible\":true,\\\n \"adjustments\":{\"exposure\":{\"exposure\":0.25,\"offset\":0.0049,\"gammaCorrection\":1.38}}},\\\n {\"type\":\"adjustmentLayer\",\"name\":\"Color Balance\",\"locked\":false,\"visible\":true,\\\n \"mask\":{\"input\":{\"href\":\"files/abc.psd\",\"storage\":\"adobe\"},\\\n \"enabled\":false,\"linked\":true,\\\n \"offset\":{\"x\":70,\"y\":50},\"clip\":true},\\\n \"adjustments\":{\"colorBalance\":{\"shadowLevels\":[0,10,20],\"preserveLuminosity\":true,\"midtoneLevels\":[30,40,50],\\\n \"highlightLevels\":[60,70,80]}}},{\"name\":\"new Image layer\",\"type\":\"layer\",\"visible\":true,\\\n \"input\":{\"href\":\"hget_presigned_url\",\"storage\":\"external\"}},\\\n {\"type\":\"adjustmentLayer\",\"name\":\"Hue Saturation\",\\\n \"locked\":false,\"visible\":true,\"adjustements\":{\"hueSaturation\":\\\n {\"channels\":[{\"channel\":\"master\",\"hue\":-5,\"saturation\":20,\"lightness\":0}],\"colorize\":false}}},\\\n {\"type\":\"backgroundLayer\",\"locked\":true,\"visible\":true,\"name\":\"Background\"}]},\\\n\"outputs\":[{\"href\":\"put_presigned_url\",\"storage\":\"external\",\\\n \"type\":\"image/jpeg\",\"width\":500,\"trimToCanvas\":false,\\\n\"layers\":[{\"id\":77}]},{\"href\":\"put_presigned_url\",\"storage\":\"external\",\\\n \"type\":\"image/vnd.adobe.photoshop\"}]}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/text \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data ' \\\n {\"inputs\":[{\"href\":\"<path_to_input_psd>\",\"storage\":\"external\"}],\\\n \"options\":{\"fonts\":[{\"storage\":\"external\",\\\n \"href\":\"<path_to_font>\"}],\"layers\":[{\"name\":\"<name_of_text_layer_1_to_edit>\",\\\n \"text\":{\"orientation\":\"horizontal\",\"contents\":\"New text Contents 1\",\\\n \"antiAlias\":\"antiAliasSharp\",\\\n \"characterStyles\":[{\"autoKern\":\"metricsKern\",\\\n \"fontPostScriptName\":\"<font_postscript_name>\",\\\n \"fontCaps\":\"allCaps\",\"size\":25,\"leading\":20,\\\n \"tracking\":20,\"syntheticBold\":true,\"ligature\":true,\\\n \"syntheticItalic\":true,\\\n \"color\":{\"blue\":100,\"green\":200,\"red\":163}}],\\\n \"paragraphStyles\":[{\"align\":\"right\"}]}},{\"name\":\"<name_of_text_layer_2_to_edit>\",\\\n \"text\":{\"contents\":\"New text Contents 2\",\"characterStyles\":[{\"size\":45, \\\n \"stylisticAlternates\":true,\"leading\":100,\\\n \"tracking\":100,\"baseline\":\"subScript\",\\\n \"strikethrough\":true,\"underline\":true,\"verticalScale\":150,\\\n \"horizontalScale\":200,\"color\":{\"blue\":300,\"green\":100,\"red\":63}}]}}]},\\\n \"outputs\":[{\"href\":\"<path_to_output_psd>\",\"type\":\"vnd.adobe.photoshop\",\"storage\":\"external\"}]}'"
           }
         ]
       }

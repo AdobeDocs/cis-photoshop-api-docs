@@ -10,21 +10,13 @@
       "url": "https://image.adobe.io"
     }
   ],
-  "tags": [
-    {
-      "name": "Photoshop"
-    }
-  ],
   "security": [],
   "paths": {
-    "/sensei/cutout": {
+    "/sensei/mask": {
       "post": {
-        "tags": [
-          "Photoshop"
-        ],
-        "summary": "Remove Background",
-        "description": " Generates a PNG file in 4 channel RGBA format with the cutout operation applied to the input image \\\n Generates a PNG file in 3 channel RGB format with the mask operation applied to the input image.\\\n To get status of this job, call [Status API](./#operation/icstatus)",
-        "operationId": "cutout",
+        "summary": "Create Mask",
+        "description": " This endpoint uses Remove Background AI/ML model to returrn a PNG file with a mask applied around the subject. To get status of this job, call the 'Get Status - Mask' endpoint.",
+        "operationId": "mask",
         "parameters": [
           {
             "name": "Authorization",
@@ -151,7 +143,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/sensei/cutout \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"input\":{\"href\":\"string\",\"storage\":\"external\"},\\\n \"output\":{\"href\":\"string\",\"storage\":\"external\",\"mask\":{\"format\":\"soft\"}}}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/sensei/mask \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"input\":{\"href\":\"string\",\"storage\":\"external\"},\\\n \"output\":{\"href\":\"string\",\"storage\":\"external\",\"mask\":{\"format\":\"soft\"}}}'"
           }
         ]
       }

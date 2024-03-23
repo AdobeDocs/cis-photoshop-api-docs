@@ -19,9 +19,6 @@
   "paths": {
     "/pie/psdService/actionJSON": {
       "post": {
-        "tags": [
-          "Photoshop"
-        ],
         "summary": "Execute actionJSON",
         "description": " Playback Photoshop Actions in actionJSON format.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
         "operationId": "actionJSON",

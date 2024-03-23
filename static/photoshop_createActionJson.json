@@ -10,21 +10,13 @@
       "url": "https://image.adobe.io"
     }
   ],
-  "tags": [
-    {
-      "name": "Photoshop"
-    }
-  ],
   "security": [],
   "paths": {
-    "/sensei/mask": {
+    "/pie/psdService/actionJsonCreate": {
       "post": {
-        "tags": [
-          "Photoshop"
-        ],
-        "summary": "Create Mask",
-        "description": " Generates a mask PNG.\nTo get status of this job, call [Status API](./#operation/icstatus).",
-        "operationId": "mask",
+        "summary": "Create actionJSON",
+        "description": "This endpoint converts an atn file to actionJSON. This allows you to make dynamic changes to the Photoshop Action without having to go back into desktop. To get status of this job, call the 'Get Status' endpoint.",
+        "operationId": "actionJsonCreate",
         "parameters": [
           {
             "name": "Authorization",
@@ -67,7 +59,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "./ic/post_cutout.schema.json"
+                "$ref": "./PITS/post_action_json_create.schema.json"
               }
             }
           },
@@ -79,7 +71,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./ic/api_response_success_schema.json"
+                  "$ref": "./PITS/api_response_success_schema.json"
                 }
               }
             }
@@ -124,16 +116,6 @@
               }
             }
           },
-          "409": {
-            "description": "File Overwrite Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "./api_response_409_error_schema.json"
-                }
-              }
-            }
-          },
           "410": {
             "description": "Asset Link Invalid",
             "content": {
@@ -151,7 +133,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/sensei/mask \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"input\":{\"href\":\"string\",\"storage\":\"external\"},\\\n \"output\":{\"href\":\"string\",\"storage\":\"external\",\"mask\":{\"format\":\"soft\"}}}'"
+            "source": "curl --request POST \\\n --url https://image.adobe.io/pie/psdService/actioJsonCreate \\\n --header 'Authorization: Bearer $token' \\\n --header 'content-type: application/json' \\\n --header 'x-api-key: $x-api-key' \\\n --data '{\"inputs\": [{\"storage\": \"external\",\"href\": \"string\"}] \\\n,\"options\": {\"actions\": [{\"actionName\": \"string\"}]}}'"
           }
         ]
       }

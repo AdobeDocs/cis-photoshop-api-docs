@@ -10,21 +10,13 @@
       "url": "https://image.adobe.io"
     }
   ],
-  "tags": [
-    {
-      "name": "Photoshop"
-    }
-  ],
   "security": [],
   "paths": {
-    "/pie/psdService/actionJsonCreate": {
+    "/pie/psdService/renditionCreate": {
       "post": {
-        "tags": [
-          "Photoshop"
-        ],
-        "summary": "Create actionJSON",
-        "description": " Converts an atn file to actionJSON.\nTo get status of this job, call [Status API](./#operation/pitsstatus)",
-        "operationId": "actionJsonCreate",
+        "summary": "Create Renditions",
+        "description": "This endpoint allows you to create a new PSD document and create various renditions of different sizes. You can also convert any supported input file format to PSD, JPEG, TIFF, or PNG. To get status of this job, call the 'Get Status' endpoint.",
+        "operationId": "renditionCreate",
         "parameters": [
           {
             "name": "Authorization",
@@ -67,7 +59,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "./PITS/post_action_json_create.schema.json"
+                "$ref": "./PITS/post_rendition_create.schema.json"
               }
             }
           },
@@ -124,6 +116,16 @@
               }
             }
           },
+          "409": {
+            "description": "File Overwrite Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./api_response_409_error_schema.json"
+                }
+              }
+            }
+          },
           "410": {
             "description": "Asset Link Invalid",
             "content": {
@@ -141,7 +143,15 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n --url https://image.adobe.io/pie/psdService/actioJsonCreate \\\n --header 'Authorization: Bearer $token' \\\n --header 'content-type: application/json' \\\n --header 'x-api-key: $x-api-key' \\\n --data '{\"inputs\": [{\"storage\": \"external\",\"href\": \"string\"}] \\\n,\"options\": {\"actions\": [{\"actionName\": \"string\"}]}}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/renditionCreate \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"string\",\"storage\":\"external\"}],\\\n \"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/jpeg\",\"quality\": 5},\\\n {\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/png\",\\\n \"layers\":[{\"name\":\"bug\"},{\"name\":\"flower\"}]}]}'"
+          },
+          {
+            "lang": "batch_example",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/renditionCreate \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"presigned_get_url_to_folder_containing_files\",\\\n \"storage\":\"external\"}],\"outputs\":[{\"href\":\"presigned_put_url\",\\\n \"storage\":\"external\",\"type\":\"image/jpeg\",\\\n \"width\":0,\"quality\":3},\\\n {\"href\":\"presigned_put_url\",\"storage\":\"external\",\\\n \"type\":\"image/png\",\"width\":0,\"compression\":\"medium\"},\\\n {\"href\":\"presigned_put_url\",\"storage\":\"external\",\"type\":\"image/vnd.adobe.photoshop\"}]}'"
+          },
+          {
+            "lang": "icc_profile_example",
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/renditionCreate \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"presigned_getURL\",\"storage\":\"external\"}],\\\n \"outputs\":[{\"href\":\"presigned_getURL\",\"storage\":\"external\",\\\n \"type\":\"images/jpeg\",\\\n \"iccProfile\":{\"imageMode\":\"rgb\",\"iccProfile\":{\"href\":\"presigned_getURL\",\"storage\":\"external\"}}}]}'"
           }
         ]
       }

@@ -1,0 +1,82 @@
+{
+  "openapi": "3.1",
+  "info": {
+    "title": "Photoshop API Reference",
+    "description": "API Reference",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://image.adobe.io"
+    }
+  ],
+  "security": [],
+  "paths": {
+    "/pie/psdService/status/{jobId}": {
+      "get": {
+        "summary": "Get Status",
+        "description": "This API is used for returning the status of a job for the followoing endpoints Create Rendition, Execute actionJSON, Replace SmartObject, Photoshop Actions, Product Crop, Execute Depth Blur, Edit Text, Apply PSD Edits, Create PSD, Create Artboard.Returns the status of a job. Please expand `200 Successful operation` under `Responses` to see the details of the status returned.",
+        "operationId": "pitsstatus",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Bearer: ${Authorization Token}",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "description": "API key/client id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "description": "application/json",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-gw-ims-org-id",
+            "description": "IMS organization ID. This needs to be sent only if it is desirable to receive the job status through Adobe I/O Events.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "The jobId to get status for.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./PITS/get_status.schema.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

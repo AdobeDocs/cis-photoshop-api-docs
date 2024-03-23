@@ -10,21 +10,13 @@
       "url": "https://image.adobe.io"
     }
   ],
-  "tags": [
-    {
-      "name": "Photoshop"
-    }
-  ],
   "security": [],
   "paths": {
-    "/pie/psdService/photoshopActions": {
+    "/pie/psdService/documentManifest": {
       "post": {
-        "tags": [
-          "Photoshop"
-        ],
-        "summary": "Execute Photoshop Actions",
-        "description": " Executes Photoshop Actions on a given image.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
-        "operationId": "photoshopActions",
+        "summary": "Get Manifest",
+        "description": "This endpoint returns information about the PSD document, including metadata and detailed information about the layers included in the file. To get status of this job, call the 'Get Status - Manifest' endpoint.",
+        "operationId": "documentManifest",
         "parameters": [
           {
             "name": "Authorization",
@@ -67,7 +59,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "./PITS/post_photoshop_actions.schema.json"
+                "$ref": "./PITS/post_document_manifest.schema.json"
               }
             }
           },
@@ -124,26 +116,6 @@
               }
             }
           },
-          "409": {
-            "description": "File Overwrite Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "./api_response_409_error_schema.json"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "Asset Link Invalid",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "./api_response_410_error_schema.json"
-                }
-              }
-            }
-          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -151,7 +123,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/photoshopActions \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"get_presigned_url\",\"storage\":\"external\"}],\\\n \"options\":{\"actions\":[{\"href\":\"https://get-presigned-url.com/Oil-paint.atn\",\"storage\":\"string\"}]}\\\n \"outputs\":[{\"href\":\"https://put-presigned-url.com/output.jpg\",\"storage\":\"external\",\"type\":\"image/jpeg\"}]}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/documentManifest \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"get_presigned_url\",\"storage\":\"external\"}],\\\n \"options\":{\"thumbnails\":{\"type\": \"images/png\"}}}'"
           }
         ]
       }

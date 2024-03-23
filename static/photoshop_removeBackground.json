@@ -10,21 +10,13 @@
       "url": "https://image.adobe.io"
     }
   ],
-  "tags": [
-    {
-      "name": "Photoshop"
-    }
-  ],
   "security": [],
   "paths": {
-    "/pie/psdService/renditionCreate": {
+    "/sensei/cutout": {
       "post": {
-        "tags": [
-          "Photoshop"
-        ],
-        "summary": "Create renditions",
-        "description": " Create renditions.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
-        "operationId": "renditionCreate",
+        "summary": "Remove Background",
+        "description": "This endpoint will identify the main subject of your image and removes the background automatcaully. It also provides options to return a PNG file in 4 channel RGBAor 3 channel RGB format. To get status of this job, call the 'Get Status - Mask' endpoint.",
+        "operationId": "cutout",
         "parameters": [
           {
             "name": "Authorization",
@@ -67,7 +59,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "./PITS/post_rendition_create.schema.json"
+                "$ref": "./ic/post_cutout.schema.json"
               }
             }
           },
@@ -79,7 +71,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./PITS/api_response_success_schema.json"
+                  "$ref": "./ic/api_response_success_schema.json"
                 }
               }
             }
@@ -151,15 +143,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/renditionCreate \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"string\",\"storage\":\"external\"}],\\\n \"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/jpeg\",\"quality\": 5},\\\n {\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/png\",\\\n \"layers\":[{\"name\":\"bug\"},{\"name\":\"flower\"}]}]}'"
-          },
-          {
-            "lang": "batch_example",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/renditionCreate \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"presigned_get_url_to_folder_containing_files\",\\\n \"storage\":\"external\"}],\"outputs\":[{\"href\":\"presigned_put_url\",\\\n \"storage\":\"external\",\"type\":\"image/jpeg\",\\\n \"width\":0,\"quality\":3},\\\n {\"href\":\"presigned_put_url\",\"storage\":\"external\",\\\n \"type\":\"image/png\",\"width\":0,\"compression\":\"medium\"},\\\n {\"href\":\"presigned_put_url\",\"storage\":\"external\",\"type\":\"image/vnd.adobe.photoshop\"}]}'"
-          },
-          {
-            "lang": "icc_profile_example",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/pie/psdService/renditionCreate \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":[{\"href\":\"presigned_getURL\",\"storage\":\"external\"}],\\\n \"outputs\":[{\"href\":\"presigned_getURL\",\"storage\":\"external\",\\\n \"type\":\"images/jpeg\",\\\n \"iccProfile\":{\"imageMode\":\"rgb\",\"iccProfile\":{\"href\":\"presigned_getURL\",\"storage\":\"external\"}}}]}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/sensei/cutout \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"input\":{\"href\":\"string\",\"storage\":\"external\"},\\\n \"output\":{\"href\":\"string\",\"storage\":\"external\",\"mask\":{\"format\":\"soft\"}}}'"
           }
         ]
       }

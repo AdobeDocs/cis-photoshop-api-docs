@@ -10,20 +10,12 @@
       "url": "https://image.adobe.io"
     }
   ],
-  "tags": [
-    {
-      "name": "Photoshop"
-    }
-  ],
   "security": [],
   "paths": {
     "/pie/psdService/artboardCreate": {
       "post": {
-        "tags": [
-          "Photoshop"
-        ],
-        "summary": "Create an artboard",
-        "description": " Creates an artboard.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "summary": "Create Artboard",
+        "description": " This endpoint allows you to create an Artboard from multipe input files and returns the Artboard information in the JSON manifest. Creates an artboard.To get status of this job, call the 'Get Status' endpoint.",
         "operationId": "artboardCreate",
         "parameters": [
           {

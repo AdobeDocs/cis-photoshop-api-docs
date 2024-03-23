@@ -10,20 +10,12 @@
       "url": "https://image.adobe.io"
     }
   ],
-  "tags": [
-    {
-      "name": "Photoshop"
-    }
-  ],
   "security": [],
   "paths": {
     "/pie/psdService/depthBlur": {
       "post": {
-        "tags": [
-          "Photoshop"
-        ],
-        "summary": "Execute Depth Blur",
-        "description": " Executes Depth Blur on a given image.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "summary": "Depth Blur",
+        "description": "This endpoint identifies the subject and applies Depth Blur the background on any supported input file. To get status of this job, call the 'Get Status' endpoint.",
         "operationId": "depthBlur",
         "parameters": [
           {

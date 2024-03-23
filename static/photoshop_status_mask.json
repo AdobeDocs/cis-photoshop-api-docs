@@ -10,20 +10,12 @@
       "url": "https://image.adobe.io"
     }
   ],
-  "tags": [
-    {
-      "name": "Photoshop"
-    }
-  ],
   "security": [],
   "paths": {
     "/sensei/status/{jobId}": {
       "get": {
-        "tags": [
-          "Photoshop"
-        ],
-        "summary": "Get the status of a job for Remove Background and Create Mask",
-        "description": "Returns the status of a job. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
+        "summary": "Get Status - Mask",
+        "description": "This endpoint returns the status of a job for Remove Background and Create Mask. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
         "operationId": "icstatus",
         "parameters": [
           {

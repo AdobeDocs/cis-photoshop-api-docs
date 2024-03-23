@@ -10,19 +10,11 @@
       "url": "https://image.adobe.io"
     }
   ],
-  "tags": [
-    {
-      "name": "Photoshop"
-    }
-  ],
   "security": [],
   "paths": {
     "/pie/psdService/status/{jobid}": {
       "get": {
-        "tags": [
-          "Photoshop"
-        ],
-        "summary": "Get the status of a job for documentManifest",
+        "summary": "Get the status of a job for Get Manifest",
         "description": "Returns the status of the Get Manifest API. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
         "operationId": "documentManifestStatus",
         "parameters": [
