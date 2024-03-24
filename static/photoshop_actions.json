@@ -15,7 +15,7 @@
     "/pie/psdService/photoshopActions": {
       "post": {
         "summary": "Playback Photoshop Actions",
-        "description": " Executes Photoshop Actions playback on supported input files. To get status of this job, call the 'Get Status' endpoint.",
+        "description": "This endpoint executes Photoshop Actions playback on supported input files. To get status of this job, call the 'Get Status' endpoint.",
         "operationId": "photoshopActions",
         "parameters": [
           {

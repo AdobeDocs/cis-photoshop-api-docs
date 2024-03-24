@@ -14,8 +14,8 @@
   "paths": {
     "/pie/psdService/status/{jobid}": {
       "get": {
-        "summary": "Get the status of a job for Get Manifest",
-        "description": "Returns the status of the Get Manifest API. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
+        "summary": "Get Status - Manifest",
+        "description": "This endpoint returns the status of the Get Manifest API. Please expand `200 Successful operation` under `Responses` to know details of the status returned.",
         "operationId": "documentManifestStatus",
         "parameters": [
           {

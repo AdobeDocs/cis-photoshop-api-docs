@@ -10,17 +10,12 @@
       "url": "https://image.adobe.io"
     }
   ],
-  "tags": [
-    {
-      "name": "Photoshop"
-    }
-  ],
   "security": [],
   "paths": {
     "/pie/psdService/actionJSON": {
       "post": {
         "summary": "Execute actionJSON",
-        "description": " Playback Photoshop Actions in actionJSON format.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "description": "Playback Photoshop Actions in actionJSON format.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
         "operationId": "actionJSON",
         "parameters": [
           {
