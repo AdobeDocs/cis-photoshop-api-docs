@@ -15,7 +15,7 @@
     "/pie/psdService/renditionCreate": {
       "post": {
         "summary": "Create Renditions",
-        "description": "This endpoint allows you to create a new PSD document and create various renditions of different sizes. You can also convert any supported input file format to PSD, JPEG, TIFF, or PNG. To get status of this job, call the 'Get Status' endpoint.",
+        "description": "This endpoint allows you to create a new PSD document and various renditions of different sizes. You can also convert any supported input file format to PSD, JPEG, TIFF, or PNG. To get status of this job, call the 'Get Status' endpoint.",
         "operationId": "renditionCreate",
         "parameters": [
           {

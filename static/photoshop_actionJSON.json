@@ -14,8 +14,8 @@
   "paths": {
     "/pie/psdService/actionJSON": {
       "post": {
-        "summary": "Execute actionJSON",
-        "description": "Playback Photoshop Actions in actionJSON format.\nTo get status of this job, call [Status API](./#operation/pitsstatus).",
+        "summary": "Playback actionJSON",
+        "description": "This endpoint allows you to modify the contents of an ATN file programmatically and apply them to your input files. To get status of this job, call the 'Get Status' endpoint.",
         "operationId": "actionJSON",
         "parameters": [
           {

@@ -15,7 +15,7 @@
     "/pie/psdService/depthBlur": {
       "post": {
         "summary": "Depth Blur",
-        "description": "This endpoint identifies the subject and applies Depth Blur the background on any supported input file. To get status of this job, call the 'Get Status' endpoint.",
+        "description": "This endpoint identifies the subject of an image and applies Depth Blur on any supported input file. To get status of this job, call the 'Get Status' endpoint.",
         "operationId": "depthBlur",
         "parameters": [
           {

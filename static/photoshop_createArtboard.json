@@ -15,7 +15,7 @@
     "/pie/psdService/artboardCreate": {
       "post": {
         "summary": "Create Artboard",
-        "description": " This endpoint allows you to create an Artboard from multipe input files and returns the Artboard information in the JSON manifest. Creates an artboard.To get status of this job, call the 'Get Status' endpoint.",
+        "description": " This endpoint allows you to create an Artboard from multipe input files and returns the Artboard information in the JSON manifest. To get status of this job, call the 'Get Status' endpoint.",
         "operationId": "artboardCreate",
         "parameters": [
           {

@@ -15,7 +15,7 @@
     "/sensei/cutout": {
       "post": {
         "summary": "Remove Background",
-        "description": "This endpoint will identify the main subject of your image and removes the background automatcaully. It also provides options to return a PNG file in 4 channel RGBAor 3 channel RGB format. To get status of this job, call the 'Get Status - Mask' endpoint.",
+        "description": "This endpoint will identify the main subject of your image and removes the background automatically. It also provides options to return a PNG file in 4 channel RGBA or 3 channel RGB format. To get status of this job, call the 'Get Status - Mask' endpoint.",
         "operationId": "cutout",
         "parameters": [
           {
