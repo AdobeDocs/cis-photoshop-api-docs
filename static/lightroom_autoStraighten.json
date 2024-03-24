@@ -1,7 +1,7 @@
 {
   "openapi": "3.1",
   "info": {
-    "title": "Lightroom API AutoStraighten",
+    "title": "Lightroom API Reference",
     "description": "API Documentation",
     "version": "1.0"
   },
@@ -14,9 +14,6 @@
   "paths": {
     "/lrService/autoStraighten": {
       "post": {
-        "tags": [
-          "Lightroom"
-        ],
         "summary": "Apply autoStraighten to an image",
         "description": "Initiates an asynchronous job to auto straighten an image. \\\nTo get status of this job, call [Status API](./#operation/acrstatus)",
         "operationId": "autoStraighten",

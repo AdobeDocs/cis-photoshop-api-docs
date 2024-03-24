@@ -10,20 +10,12 @@
       "url": "https://image.adobe.io"
     }
   ],
-  "tags": [
-    {
-      "name": "Lightroom"
-    }
-  ],
   "security": [],
   "paths": {
     "/lrService/presets": {
       "post": {
-        "tags": [
-          "Lightroom"
-        ],
-        "summary": "Apply a presets on an image",
-        "description": "Initiates an asynchronous job to apply a preset on an image.\nTo get status of this job, call [Get Status API](./#operation/acrstatus).",
+        "summary": "Apply Preset",
+        "description": "This endpoint initiates an asynchronous job to apply a preset on an image. To get status of this job, call the 'Get Status' endpoint.",
         "operationId": "presets",
         "parameters": [
           {
