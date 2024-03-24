@@ -35,9 +35,44 @@ This guide will assist you in:
 
 ## Discover
 
-Follow the [Getting Started Guide](../guides/get-started.md) for step by step instructions on how to create your project in the Adobe Develper Console and obtain your credentials. 
+<DiscoverBlock slots="heading, link, text"/>
 
-Once you're ready to start building we recommend you take a look at the [Adobe Firefly Services SDK](./sdks/) It's a comprehensive toolkit designed to streamline your development journey. All of the APIs included in Firefly Services can be accessed with this one SDK, all in one easy to find place.
+### Get Started
 
+[Getting Started Guide](../get-started.md)
+
+Get started with the Adobe Firefly Services.
+
+<DiscoverBlock slots="link, text"/>
+
+[Tutorials](./tutorials/) 
+
+Explore our tutorials page for comprehensive guidance.  
+
+<DiscoverBlock slots="heading, link, text"/>
+
+### API References
+
+[Firefly API](../../firefly-api/)
+
+Integrate generative AI into your creative workflows.
+
+<DiscoverBlock slots="link, text"/>
+
+[Lightroom API](../../lightroom/)
+
+Unlock the potential of Lightroom in the cloud.
+
+<DiscoverBlock slots="link, text"/>
+
+[Photoshop API](../../photoshop/)
+
+Unlock the potential of Photoshop in the cloud.
+
+<DiscoverBlock slots="link, text"/>
+
+[Content Tagging API](https://experienceleague.adobe.com/docs/experience-platform/intelligent-services/content-commerce-ai/overview.html)
+
+Leverage Content Tagging API to craft personalized experiences. 
 
 <br/><br/><br/><br/>

@@ -10,37 +10,47 @@ This is a list of currently supported features in the Adobe Photoshop API, which
 
 ## Photoshop Actions
 
-An action is a series of tasks that you play back on a single file or a batch of files—menu commands, panel options, tool actions, and more. For example, you can create an action that changes the size of an image, applies an effect to the image, and then saves the file in the desired format. All of these taks could be executed in one API call.
+An action is a series of tasks that you play back on a single file or a batch of files—menu commands, panel options, tool actions, and more. For example, you can create an action that changes the size of an image, applies an effect to the image, and then saves the file in the desired format. All of these taks could be executed in one API call. 
 
-For more information on how to create Photoshop Actions, see <a href="https://helpx.adobe.com/photoshop/using/actions-actions-panel.html" target="_blank">Adobe Help Center</a>
+Actions created in Photoshop produce an ATN file which can then be used to edit images programmtically using our API. 
+
+For more information on how to create Photoshop Actions, see the <a href="https://helpx.adobe.com/photoshop/using/actions-actions-panel.html" target="_blank">Adobe Help Center</a>
+
+#### Supported Input and Output formats
+* PSD, 
+* JPEG
+* PNG 
+* TIFF
 
 #### Usage Recommendations
-* Create an Action that does not open any operating system dialogs. All Photoshop dialogs are supported, but not operating system dialogs.
-* It is recommended to create Actions that do not require user interactions.
-* Input and Output file formats that are currently supported are PSD, JPEG, PNG, or TIFF.
-* Make sure to test your actions on Photoshop, with several different input/images. If it has any errors on Photoshop, it won't run successfully on our servers either.
+* We currently do not support operating system dialogs but all other Photoshop dialogs are supported.
+* We recommended creating Actions that do not require user interactions.
+* Make sure to test your actions on Photoshop, with several different input/images. If it has any errors in Photoshop, it won't run successfully on our servers either.
 
 #### Known Limitations
 The following are known limitations:
 
 * 3D and Video features are not supported.
 * Custom presets (for example color swatches and brushes).
-* The Action should operate on one document.  Multiple documents support will be in a future release.
+* This endpoint does not currently support multiple file inputs. 
 
-Here are examples of submitting and executing Photoshop Actions.
-[Execute Photoshop Actions with all actions](../code-sample/#photoshop-actions---play-all-actions-in-atn-file) and [Execute Photoshop Actions with a specific action](../code-sample/#photoshop-actions-play-a-specific-action)
+You can choose to playback all of the tasks recorded in an Action or you can selectively choose a particular task within and exclude the rest.
 
-In this example we applied a custom Action we created called "Graphic Design."
+Here are some examples of submitting and executing Photoshop Actions:
+[Execute Photoshop Action with all recorded tasks](../code-sample/#photoshop-actions---play-all-actions-in-atn-file)  
+[Execute Photoshop Action with a specific task while excluding the rest](../code-sample/#photoshop-actions-play-a-specific-action)
+
+In this example we applied a custom Action called "Graphic Design." This ATN file had over 75 recorded Photoshop tasks including Select Subject, Camera Raw Filer adjustments, Content-Aware Fill, Transform, Fill Layer, and more.
 ![alt image](./psactions_example.png?raw=true "Original Image")
 
 ## ActionJson
 
-Similar to the Photoshop Actions endpoint, this endpoint also allows you to apply Photoshop Actions to an image programmatically. However there are a few key differences which give you added flexibility.
+Similar to the Photoshop Actions endpoint, this endpoint also allows you to apply the contents of ATN file to an image programmatically. However, there are a few key differences which give you added flexibility.
 
 - Ability to modify the payload.
-- You don’t need to upload and store your Actions as you do with the Photoshop Actions endpoint.
+- You don’t need to upload and store your ATN file as you do with the Photoshop Actions endpoint.
 
-In this example output below we took the same input image and Action file from the previous example and dynamically modified the Action to execute all of the same tasks with an adiitional step of adding a black and white filter.
+In the example below we took the same input image and ATN file from the previous example and dynamically modified the Action to execute all of the same tasks with an adiitional step of adding a black and white filter.
 
 ![alt image](./ps_action_json_example_bw.png?raw=true "Original Image")
 You can find a code sample [here](./code-sample/#executing-an-actionjson)
@@ -169,27 +179,26 @@ More details about actionJSON can be found [here](https://developer.adobe.com/ph
  - Open Photoshop
 
 
-## SmartObject
+## Smart Object
 
-The Photoshop APIs currently support creating and editing of Embedded Smart Objects. Support for Linked Smart Objects is forthcoming.
+The Smart Object endpoint allows you to create and edit an embedded Smart Objects within a PSD. The Smart Object that's replaced will be positioned within the bounding box of the original image. Whether the new image is larger or smaller than the original, it will adjust to fit within the original bounding box while preserving its aspect ratio. To alter the bounds of the replaced image, you can specify bounds parameters in the API call.
 
-- In order to update an embedded smart object that is referenced by multiple layers you need to update each of those layers, then only the effect will be reflected in all layers referencing the same smart object.
+### Known Limitations
 
-- The replaced smart object is placed within the bounding box of the original image. If the new image is bigger or smaller than the original image, it fits into the original bounding box maintaining the aspect ratio. You can change the bounds of the replaced image by passing bounds parameters in the API call.
+- If your document contains transparent pixels, (e.g some .png), you may not get consistent bounds.
+- We currently do not support Linked Smart Objects. 
+- In order to update an embedded Smart Object that is referenced by multiple layers you need to update each of those layers in order for the Smart Object to be replaced in those layers. 
 
-- If your document contains transparent pixels (e.g some .png) for the smart object layer, you may not get consistent bounds.
-
-The APIs are documented [here](../api/#operation/smartObject).
-We also have an [example](../code-sample/#replacing-a-smartobject) of replacing a Smart Object within a layer.
+Here is an [example](../code-sample/#replacing-a-smartobject) of replacing a Smart Object within a layer.
 For better performance, we rasterize our smart objects that are bigger than  2000 pixels * 2000 pixels.
 For optimal processing, please make sure the embedded smart object that you want to replace only contains alphanumeric characters in it's name.
 
-Example of Smart Object replacement with a sample image.
+In this example, we generated a Smart Object within the "socks" layer and utilized the API to substitute the original image with a new pattern. This process facilitated the creation of two variations of the identical photograph.
 ![alt image](./smartobject_example.png?raw=true "Original Image")
 
 ## Text
 
-The /text API supports editing one or more text layers from a Photoshop document. The APIs are documented [here](./api/#operation/text).
+The Edit Text endpoint supports editing one or more text layers within a PSD.
 
 It enables users to
 - Format text properties such as antialias, orientation and be able to edit text contents. (Note: Changing only the text properties will not change any character/paragraph styling).
@@ -202,41 +211,32 @@ It enables users to
 
 ### Usage Recommendations
 - Ensure that the input file is a PSD and that it contains one or more text layers.
-- Please refer to [Font Handling](/features/#font-handling) and [Handle Missing Fonts](/features/#handle-missing-fonts-in-the-document) for better understanding.
+- Please refer to [Font Handling](../photoshop/features/#font-handling) and [Handle Missing Fonts](../photoshop/features/#handle-missing-fonts-in-the-document) for a better understanding.
+- You can find a code sample [here.](../code-sample/#making-a-text-layer-edit) is a code sample.
 
 ### Known Limitations
-The following are known limitations:
 
 - The API cannot automatically detect missing fonts in the layers. To prevent potential missing fonts from being replaced, please provide a href to the font(s) in the options.fonts section of the API. For more details on specifying custom fonts, please refer to the example section below.
 
-[Here](../code-sample/#making-a-text-layer-edit) is a code sample.
-
-Here is an example where the font was changed from the original image on the left using the Text API.
+In this example, the font on the original image was altered using the Text API, as depicted in the image on the left.
 ![alt image](./textlayer_example.png?raw=true "Original Image")
 
-## ProductCrop
+## Product Crop
 
-The ProductCrop API supports applying smart crop to your image. The APIs are documented [here](./api/#operation/productCrop).
-
-It enables user to
-- Identify the product and get it cropped smartly.
-- Enter the required padding they need in their cropped image.
+The Product Crop endpoint facilitates smart cropping for images, automatically detecting the subject and ensuring it remains the focal point of the cropped image. Users can identify the product and specify the desired padding for their cropped image. You can see some sample code [here.](../code-sample/#applying-product-crop)
 
 ### Known Limitations
 - The current model is trained to return a crop that respects the salient object within an image. There is a current known issue that when a person or portrait is contained within a salient object, the model will crop with the person as the focal area rather than the salient object that contains it. This is problematic in the case of an item where an image of a person is contained within a design (i.e. a t-shirt, collectible or art). Rather than crop to the intended item, the service will crop to the person within the item.
 We intend to correct this issue in future releases.
 
-[Here](../code-sample/#applying-product-crop) is a code sample.
-
 ## DepthBlur
 
-The DepthBlur API supports applying depth blur to your image. The APIs are documented [here](./api/#operation/depthBlur).
+The DepthBlur API supports applying depth blur to your image. Depth Blur is part of the Neural Filters gallery in Photoshop. It allows you to target the area and range of blur in photos, creating wide-aperture depth of field blur effects. You may choose different focal points or remove the focal point and control the depth blur through manipulating the focal range slider. Setting focusSubject to true will select the most prominent subject in the image and apply depth blur around that subject.
 
-Depth Blur is part of the Neural Filters gallery in Photoshop. It allows you to target the area and range of blur in photos, creating wide-aperture depth of field blur effects. You may choose different focal points or remove the focal point and control the depth blur through manipulating the focal range slider. Setting focusSubject to true will select the most prominent subject in the image and apply depth blur around that subject.
-
-[Here](../code-sample/#applying-depth-blur-neural-filter) is a code sample.
+You can find a code sample [here.](../code-sample/#applying-depth-blur-neural-filter)
 
 ## Rendering / Conversions
+This endpoint allows you to create a new PSD document and various renditions of different sizes. You can also convert any supported input file format to PSD, JPEG, TIFF, or PNG
 
 - Create a new PSD document.
 - Create a JPEG, TIFF or PNG rendition of various sizes.
@@ -291,13 +291,11 @@ The Photoshop API currently supports creating and editing of Text Layer with dif
 - Edit the text orientation (horizontal/vertical)
 - Edit the paragraph alignment (left, center, right, justify, justifyLeft, justifyCenter, justifyRight)
 
-The APIs are documented [here](../api/#operation/documentOperations).
-
 We also have an example of making a simple text layer edit.
 
 [Text layer Example Code](../code-sample/#edit-text-layers)
 
-## Font handling
+### Font handling
 
 In order to be able to correctly operate on text layers in the PSD, the corresponding fonts needed for these layers will need to be available when the server is processing the PSD. These include fonts from the following cases:
 1. The font that is in the text layer being edited, but the font itself is not being changed
@@ -323,7 +321,7 @@ The Photoshop APIs supports using the following category of fonts:
 Here is an example usage of a custom font
 [Custom font](../code-sample/#custom-font-in-a-text-layer)
 
-##### Handle missing fonts in the document.
+#### Handle missing fonts in the document.
 
 The API provides two options to control the behavior when there are missing fonts, as the request is being processed:
 - Specify a global font which would act as a default font for the current request: The `globalFont` field in the `options` section of the request can be used to specify the full postscript name of this font.
@@ -337,9 +335,79 @@ For any textLayer edit/add operation, if the font used specifically for that lay
 
 Here is an example usage of `manageMissingFonts` and `globalFont`. [Handle missing fonts](../code-sample/#example-5-dictating-actions-for-missing-fonts)
 
-#### Limitations
+### Limitations
 
-- Most of the text attributes retain their respective original values. There are some attributes however that do not retain their original values. For example (and not limited to): tracking, leading, kerning
+- Most of the text attributes retain their respective original values. There are some attributes however that do not retain their original values. For example (and not limited to): tracking, leading, kerning.
+
+### Supported Fonts 
+
+This is a list of all of the supported Postscript fonts for Photoshop API. We currently do not support custom fonts. 
+
+### Photoshop CC
+|                                   |
+|---------------------------------- |
+| AcuminVariableConcept             |
+| AdobeArabic-Bold                  |
+| AdobeArabic-BoldItalic            |
+| AdobeArabic-Italic                |
+| AdobeArabic-Regular               |
+| AdobeDevanagari-Bold              |
+| AdobeDevanagari-BoldItalic        |
+| AdobeDevanagari-Italic            |
+| AdobeDevanagari-Regular           |
+| AdobeFanHeitiStd-Bold             |
+| AdobeGothicStd-Bold               |
+| AdobeGurmukhi-Bold                |
+| AdobeGurmukhi-Regular             |
+| AdobeHebrew-Bold                  |
+| AdobeHebrew-BoldItalic            |
+| AdobeHebrew-Italic                |
+| AdobeHebrew-Regular               |
+| AdobeHeitiStd-Regular             |
+| AdobeMingStd-Light                |
+| AdobeMyungjoStd-Medium            |
+| AdobePiStd                        |
+| AdobeSongStd-Light                |
+| AdobeThai-Bold                    |
+| AdobeThai-BoldItalic              |
+| AdobeThai-Italic                  |
+| AdobeThai-Regular                 |
+| CourierStd                        |
+| CourierStd-Bold                   |
+| CourierStd-BoldOblique            |
+| CourierStd-Oblique                |
+| EmojiOneColor                     |
+| KozGoPr6N-Bold                    |
+| KozGoPr6N-Medium                  |
+| KozGoPr6N-Regular                 |
+| KozMinPr6N-Regular                |
+| MinionPro-Regular                 |
+| MinionVariableConcept-Italic      |
+| MinionVariableConcept-Roman       |
+| MyriadArabic-Bold                 |
+| MyriadArabic-BoldIt               |
+| MyriadArabic-It                   |
+| MyriadArabic-Regular              |
+| MyriadHebrew-Bold                 |
+| MyriadHebrew-BoldIt               |
+| MyriadHebrew-It                   |
+| MyriadHebrew-Regular              |
+| MyriadPro-Bold                    |
+| MyriadPro-BoldIt                  |
+| MyriadPro-It                      |
+| MyriadPro-Regular                 |
+| MyriadVariableConcept-Italic      |
+| MyriadVariableConcept-Roman       |
+| NotoSansKhmer-Regular             |
+| NotoSansLao-Regular               |
+| NotoSansMyanmar-Regular           |
+| NotoSansSinhala-Regular           |
+| SourceCodeVariable-Italic         |
+| SourceCodeVariable-Roman          |
+| SourceSansVariable-Italic         |
+| SourceSansVariable-Roman          |
+| SourceSerifVariable-Roman         |
+| TrajanColor-Concept               |
 
 ## Document level edits
 - Crop a PSD
@@ -350,25 +418,19 @@ Here is an example usage of `manageMissingFonts` and `globalFont`. [Handle missi
 - Create a new artboard from multiple input psd's
 
 ## Remove Background
-Initiate a job to Remove Background. Code sample [here](../code-sample/#remove-background).<br />
+The Remove Background endpoint can recognize the primary subject within an image and eliminate the background, providing the subject as the output. YOu can see a code sample [here.](../code-sample/#remove-background).<br />
 
 Example of Remove Background with a sample image.
 ![alt image](./imagecutout_cutout_example.png?raw=true "Original Image")
 
-## Image Mask
-
-Initiate a job to create an image mask. Code sample [here](../code-sample/#generate-image-mask).<br />
+## Create Mask
+This endpoint allows you to  can create a greyscale mask png file that you can composite onto the original image (or any other). You can find a code sample [here.](../code-sample/#generate-image-mask).<br />
 
 Example of Image mask with a sample image.
 ![alt image](./imagecutout_mask_example.png?raw=true "Original Image")
 
-Remove Background and Image Mask APIs are powered by Adobe’s Artificial Intelligence Technology and Photoshop. The APIs can identify the main subject of an image and produce two types of outputs. You can create a greyscale [mask](https://en.wikipedia.org/wiki/Layers_(digital_image_editing)#Layer_mask) png file that you can composite onto the original image (or any other).  You can also create remove background where the mask has already composited onto your original image so that everything except the main subject has been removed.
-
-The APIs are documented at [Photoshop API Reference](../api/#tag/Photoshop)
-
-
 ## Customized Workflow
-You can make a 'customized workflow' by chaining different APIs. Example of which can be found [here](../code-sample/#generate-remove-background-result-as-photoshop-path)
+You can make a 'customized workflow' by chaining different endpoints together. [Here](../code-sample/#generate-remove-background-result-as-photoshop-path) is an example using the Remove Background endpoint.
 
 
 ## Webhooks through Adobe I/O Events
