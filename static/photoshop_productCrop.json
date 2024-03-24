@@ -14,7 +14,7 @@
   "paths": {
     "/pie/psdService/productCrop": {
       "post": {
-        "summary": "Execute Product Crop",
+        "summary": "Product Crop",
         "description": "This endpoint indentifies the subject of the your input file and automatically crops to keep the subject in the center. To get status of this job, call the 'Get Status' endpoint.",
         "operationId": "productCrop",
         "parameters": [
