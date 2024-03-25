@@ -15,7 +15,7 @@
     "/sensei/mask": {
       "post": {
         "summary": "Create Mask",
-        "description": "This endpoint uses the Remove Background AI/ML model to returrn a PNG file with a mask applied around the subject. To get status of this job, call the 'Get Status - Mask' endpoint.",
+        "description": "This endpoint uses the Remove Background AI/ML model to returrn a PNG file with a mask applied around the subject. To check the status of this process, utilize the `Get Status - Mask` endpoint.",
         "operationId": "mask",
         "parameters": [
           {

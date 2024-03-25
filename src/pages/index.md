@@ -1,22 +1,34 @@
 ---
-title: Overview - Adobe Photoshop API
+title: Adobe Photoshop API Overview
 description: This is the overview page of Adobe Photoshop API
-Keywords::
-- Photoshop API Reference
-- Remove background API Reference
-- Smart Object API Reference
-- Create Mask API Reference
--
+keywords:
+  - Photoshop API guides
+  - Photoshop API Overview
+  - Photoshop API documentation
+  - Photoshop API usage examples
+  - Photoshop API SDK
+  - Photoshop APIs
+  - Photoshop API
+  - Photoshop API SDK
+  - Photoshop Node.js SDK
+  - Photoshop API tutorials
+  - Photoshop API How-to guides  
+  - Photoshop API code sample
+  - Photoshop API Tutorials
+  - Photoshop API Developer documentation
+  - Getting started with Photoshop API
+  - Photoshop API reference
 contributors:
   - https://github.com/khound
   - https://github.com/archyposada
+hideBreadcrumbNav: true
 ---
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
 
 ![Hero image](./hero.png)
 
-# Adobe Photoshop API-Firefly Services
+# Adobe Photoshop API - Firefly Services
 
 Unlock the potential of Adobe Photoshop and cutting edge AI/ML services through an easy-to-use RESTful API.
 
@@ -39,13 +51,13 @@ This guide will assist you in:
 
 ### Get Started
 
-[Getting Started Guide](../get-started.md)
+[Getting Started Guide](../guides/get-started.md)
 
 Get started with the Adobe Firefly Services.
 
 <DiscoverBlock slots="link, text"/>
 
-[Tutorials](./tutorials/) 
+[Tutorials](../guides/tutorials/index.md) 
 
 Explore our tutorials page for comprehensive guidance.  
 
@@ -53,19 +65,13 @@ Explore our tutorials page for comprehensive guidance.
 
 ### API References
 
-[Firefly API](../../firefly-api/)
+[Firefly API](..firefly-api/guides/api/generative_expand/index.md)
 
 Integrate generative AI into your creative workflows.
 
 <DiscoverBlock slots="link, text"/>
 
-[Lightroom API](../../lightroom/)
-
-Unlock the potential of Lightroom in the cloud.
-
-<DiscoverBlock slots="link, text"/>
-
-[Photoshop API](../../photoshop/)
+[Lightroom](../lightroom/api/lightroom_applyPresets.md)
 
 Unlock the potential of Photoshop in the cloud.
 

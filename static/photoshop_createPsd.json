@@ -14,8 +14,8 @@
   "paths": {
     "/pie/psdService/documentCreate": {
       "post": {
-        "summary": "Create a new PSD",
-        "description": "This endpoint allows you to create a new PSD with options to create individual layers, generate new renditions or save as PSD. To get status of this job, call the 'Get Status' endpoint.",
+        "summary": "Create PSD",
+        "description": "This endpoint allows you to create a new PSD with options to create individual layers, generate new renditions or save as PSD. To check the status of this process, utilize the `Get Status` endpoint.",
         "operationId": "documentCreate",
         "parameters": [
           {

@@ -1,7 +1,14 @@
 ---
-title: General Workflow of Photoshop API
-description: General Workflow of Photoshop API
+title: Adobe Photoshop API general workflow
+description: Learn the general workflow of the Photoshop API
+keywords:
+  - Photoshop API general workflow
+contributors:
+  - https://github.com/khound
+  - https://github.com/archyposada
+hideBreadcrumbNav: true
 ---
+
 # General Workflow for Photoshop API
 
 The typical workflow involves making one or more calls to our API, to edit PSD or other image files, and to create new image renditions.

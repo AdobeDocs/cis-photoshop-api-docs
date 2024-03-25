@@ -15,7 +15,7 @@
     "/pie/psdService/text": {
       "post": {
         "summary": "Edit Text",
-        "description": "This endpoint allows you to edit one or more text layers. To get status of this job, call the 'Get Status' endpoint.",
+        "description": "This endpoint allows you to edit one or more text layers. To check the status of this process, utilize the `Get Status` endpoint.",
         "operationId": "text",
         "parameters": [
           {

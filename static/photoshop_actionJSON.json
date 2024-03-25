@@ -14,8 +14,8 @@
   "paths": {
     "/pie/psdService/actionJSON": {
       "post": {
-        "summary": "Playback actionJSON",
-        "description": "This endpoint allows you to modify the contents of an ATN file programmatically and apply them to your input files. To get status of this job, call the 'Get Status' endpoint.",
+        "summary": "Playback ActionJSON",
+        "description": "This endpoint allows you to modify the contents of an ATN file programmatically and apply them to your input files. To check the status of this process, utilize the `Get Status` endpoint.",
         "operationId": "actionJSON",
         "parameters": [
           {

@@ -15,8 +15,7 @@
     "/pie/psdService/documentManifest": {
       "post": {
         "summary": "Get Manifest",
-        "description": "This endpoint returns information about the PSD document including metadata and details about the layers included in the file. To get status of this job, call the 'Get Status - Manifest' endpoint.",
-        "operationId": "documentManifest",
+        "description": "This endpoint returns information about the PSD document including metadata and details about the layers included in the file. To check the status of this process, utilize the `Get Status - Manifest` endpoint.",
         "parameters": [
           {
             "name": "Authorization",

@@ -15,7 +15,7 @@
     "/pie/psdService/smartObject": {
       "post": {
         "summary": "Replace Smart Object",
-        "description": "This endpoint allows you to replace a Smart Object within a PSD layer and generate new renditions. To get status of this job, call the 'Get Status' endpoint.",
+        "description": "This endpoint allows you to replace a Smart Object within a PSD layer and generate new renditions. To check the status of this process, utilize the `Get Status` endpoint.",
         "operationId": "smartObject",
         "parameters": [
           {
