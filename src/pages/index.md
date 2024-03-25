@@ -38,11 +38,8 @@ Welcome to the Adobe Photoshop API, now integrated into Firefly Services. Our AP
 
 This guide will assist you in:
 - Creating a project within the Adobe Developer Console
-
 - Obtaining and authenticating your credentials
-
 - Constructing personalized workflows by chaining API calls to various endpoints within the Firefly Services APIs
-
 - Developing event-driven applications through Adobe I/O Events
 
 ## Discover
