@@ -15,7 +15,7 @@
     "/lrService/presets": {
       "post": {
         "summary": "Apply Preset",
-        "description": "This endpoint initiates an asynchronous job to apply a preset on an image. To get status of this job, call the 'Get Status' endpoint.",
+        "description": "This endpoint initiates an asynchronous job to apply a preset on an image. To check the status of this process, utilize the `Get Status` endpoint.",
         "operationId": "presets",
         "parameters": [
           {

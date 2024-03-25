@@ -14,8 +14,8 @@
   "paths": {
     "/lrService/autoStraighten": {
       "post": {
-        "summary": "Apply autoStraighten to an image",
-        "description": "Initiates an asynchronous job to auto straighten an image. \\\nTo get status of this job, call [Status API](./#operation/acrstatus)",
+        "summary": "Auto Straighten",
+        "description": "Initiates an asynchronous job to auto straighten an image. To check the status of this process, utilize the `Get Status` endpoint.",
         "operationId": "autoStraighten",
         "parameters": [
           {

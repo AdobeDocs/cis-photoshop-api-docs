@@ -14,9 +14,9 @@
   "paths": {
     "/lrService/autoStraighten": {
       "post": {
-        "summary": "Auto Straighten",
-        "description": "This endpoint initiates an asynchronous job to auto straighten an image. To get status of this job, call the 'Get Status' endpoint.",
-        "operationId": "autoStraighten",
+        "summary": "Auto Tone",
+        "description": "This endpoint initiates an asynchronous job to auto straighten an image. To check the status of this process, utilize the `Get Status` endpoint.",
+        "operationId": "autoTone",
         "parameters": [
           {
             "name": "Authorization",
@@ -59,7 +59,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "./acr/post_auto_straighten.schema.json"
+                "$ref": "./acr/post_auto_tone.schema.json"
               }
             }
           },
@@ -143,7 +143,7 @@
         "x-codeSamples": [
           {
             "lang": "shell",
-            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/autoStraighten \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":{\"href\":\"string\",\"storage\":\"external\"},\\\n\"options\":{\"uprightMode\":\"full\",\"constrainCrop\":false},\"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/jpeg\"}]}'"
+            "source": "curl --request POST \\\n  --url https://image.adobe.io/lrService/autoTone \\\n  --header 'Authorization: Bearer $token' \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: $x-api-key' \\\n  --data '{\"inputs\":{\"href\":\"string\",\"storage\":\"external\"},\\\n\"options\":{\"uprightMode\":\"full\",\"constrainCrop\":false},\"outputs\":[{\"href\":\"string\",\"storage\":\"external\",\"type\":\"image/jpeg\"}]}'"
           }
         ]
       }

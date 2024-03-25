@@ -15,7 +15,7 @@
     "/lrService/xmp": {
       "post": {
         "summary": "Apply XMP",
-        "description": "This endpoint initiates an asynchronous job to apply an XMP setting to an image.To get status of this job, call the 'Get Status' endpoint.",
+        "description": "This endpoint initiates an asynchronous job to apply an XMP setting to an image. To check the status of this process, utilize the `Get Status` endpoint.",
         "operationId": "xmp",
         "parameters": [
           {

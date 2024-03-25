@@ -1,6 +1,12 @@
 ---
-title: Code Examples
-description: Code Examples.
+title: Adobe Lightroom API Code Samples
+description: This page contains Code Samples for Lightroom API 
+keywords: 
+  - Lighgtroom API code sample
+contributors:
+  - https://github.com/khound
+  - https://github.com/archyposada
+hideBreadcrumbNav: true
 ---
 # Sample Code
 
@@ -39,7 +45,7 @@ This initiates an asynchronous job and returns a request body containing the hre
     }
 }
 ```
-To check the status of the job completion, use the `/status` API. An example usage of the API can be found [here](/code-sample/#example-6-poll-for-status-and-results).
+To verify the completion status of the task, utilize the `Get Status` API. Refer to [this link](../code-sample/#poll-for-status-and-results) for an example demonstrating how to check the status.  
 
 ### Autostraighten an image
 
@@ -76,7 +82,7 @@ This initiates an asynchronous job and returns a request body containing the hre
 }
 ```
 
-To check the status of the job completion, use the `/status` API. An example usage of the API can be found [here](/code-sample/#example-6-poll-for-status-and-results).
+To verify the completion status of the task, utilize the `Get Status` API. Refer to [this link](../code-sample/#poll-for-status-and-results) for an example demonstrating how to check the status.
 
 ### Apply presets to an image
 
@@ -122,7 +128,7 @@ This initiates an asynchronous job and returns a request body containing the hre
     }
 }
 ```
-To check the status of the job completion, use the `/status` API. An example usage of the API can be found [here](https://github.com/AdobeDocs/lightroom-api-docs#job-status).
+To verify the completion status of the task, utilize the `Get Status` API. Refer to [this link](../code-sample/#poll-for-status-and-results) for an example demonstrating how to check the status.
 
 ### Apply edits to an image
 
@@ -180,7 +186,7 @@ This initiates an asynchronous job and returns a request body containing the hre
 }
 ```
 
-To check the status of the job completion, use the `/status` API. An example usage of the API can be found [here](/code-sample/#example-6-poll-for-status-and-results).
+To verify the completion status of the task, utilize the `Get Status` API. Refer to [this link](../code-sample/#poll-for-status-and-results) for an example demonstrating how to check the status.
 
 ### Apply xmp to an image
 
@@ -220,7 +226,7 @@ This initiates an asynchronous job and returns a request body containing the hre
 }
 ```
 
-To check the status of the job completion, use the `/status` API. An example usage of the API can be found [here](/code-sample/#example-6-poll-for-status-and-results).
+To verify the completion status of the task, utilize the `Get Status` API. Refer to [this link](../code-sample/#poll-for-status-and-results) for an example demonstrating how to check the status.
 
 ### Poll for status and results
 

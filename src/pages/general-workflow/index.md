@@ -1,12 +1,19 @@
 ---
-title: General Workflow of Lightroom API
-description: General Workflow of Lightroom API
+title: Adobe Lightroom API general workflow
+description: This page contains documentation on the Lightroom API
+keywords: 
+  - Lightroom API General Workflow
+contributors:
+  - https://github.com/khound
+  - https://github.com/archyposada
+hideBreadcrumbNav: true
 ---
+
 # General Workflow for Lightroom API
 
-The typical workflow involves making one or more calls to our API, to edit a PNG, JPG or other supported image files, and to create new image renditions.
+The usual workflow entails initiating one or more calls to our API to modify PNG, JPG, or other compatible image files and generate new renditions.
 
-As you begin integrating the Lightroom API into your workflow, there are a few considerations to keep in mind which we've outlined below:
+As you start incorporating the Lightroom API into your workflow, there are several factors to consider, as outlined below:
 
 ## Supported input formats
 

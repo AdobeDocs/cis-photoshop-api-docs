@@ -14,7 +14,7 @@
   "paths": {    "/lrService/edit": {
         "post": {
           "summary": "Apply Edits",
-          "description": "This endpoint allows you to adjust the values in the Lightroom Edit Panel and aopply them to an image programmtically. To get status of this job, call the 'Get Status' endpoint.",
+          "description": "This endpoint enables you to programmatically adjust values within the Lightroom Edit Panel and apply them to an image. To check the status of this process, utilize the `Get Status` endpoint.",
           "operationId": "edit",
           "parameters": [
             {
