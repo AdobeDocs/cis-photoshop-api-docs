@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "post_action_json_create.schema.json",
   "title": "post_action_json_create",
-  "description": "Initiates an asynchronous job to convert an .atn file to actionJSON",
+  "description": "Initiates an asynchronous job to convert an .atn file to actionJson",
   "definitions": {
     "action_object": {
       "type": "object",
