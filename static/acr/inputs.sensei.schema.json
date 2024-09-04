@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "inputs.schema.json",
-  "title": "a file input obect",
+  "$id": "inputs.sensei.schema.json",
+  "title": "a file input obect for ACR sensei APis",
   "description": "An input object",
   "definitions": {
     "href": {
@@ -35,6 +35,15 @@
         },
         "href": {
           "$ref": "#/definitions/href"
+        },
+        "type": {
+          "type":"string",
+          "description": "The type of input to the API.",
+          "enum": [
+            "input",
+            "embeddedDepthMap",
+            "depthMap"
+          ]
         }
       },
       "if": {
